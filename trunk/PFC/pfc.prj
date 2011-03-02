@@ -1,0 +1,60 @@
+275 Patch Control
+
+0
+0
+1
+tesis.tex
+10
+5
+0
+
+
+
+
+
+
+tesis.tex
+TeX:ES
+420491259 0 -1 1389 -1 1390 0 0 690 749 0 412 228 -1 -1 0 0 68 -1 -1 68 1 0 1390 -1   0
+config\pfc_options.tex
+TeX
+1060859 0 -1 0 -1 2351 44 46 590 795 0 32 532 -1 -1 0 0 1 -1 -1 1 1 0 2351 -1   0
+config\rename.tex
+TeX:UNIX
+1159163 0 -1 0 -1 0 66 69 612 818 0 22 0 -1 -1 0 0 1 -1 -1 1 1 0 0 -1   0
+cover\cover.tex
+TeX:UNIX
+1159163 0 -1 1323 -1 461 22 23 568 772 0 102 342 -1 -1 0 0 1 -1 -1 1 1 0 461 -1   0
+cover\supervisorApproval.tex
+TeX
+1060859 0 -1 0 -1 0 88 92 634 841 0 22 0 -1 -1 0 0 87 -1 -1 87 1 0 0 -1   0
+C:\Documents and Settings\Pablo\Mis documentos\Downloads\Versao Final\Additional Files\AOSDPerpectivesModularity.tex
+TeX
+403714043 0 -1 0 -1 0 110 115 656 864 0 22 0 -1 -1 0 0 43 -1 -1 43 1 0 0 -1   0
+C:\Documents and Settings\Pablo\Mis documentos\Docencia\20092010\ISII\Tema8\Slides\is2tema8.tex
+TeX:ES:UNIX:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES:ES
+286371835 0 -1 5936 -1 937 198 207 1045 714 0 22 190 -1 -1 0 0 79 -1 -1 79 1 0 937 -1   0
+C:\Documents and Settings\Pablo\Mis documentos\Docencia\20092010\ISII\Tema8\Slides\is2-tema8.bib
+BibTeX:UNIX
+269583346 0 245 114 245 1 22 22 1080 518 0 22 532 -1 -1 0 0 81 0 0 81 1 0 1 245   0
+C:\Documents and Settings\Pablo\Mis documentos\My Dropbox\Reviews\EA@AOSD\reviews\review_form_1.txt
+ASCII:UNIX
+273786746 0 73 1 76 53 44 46 590 795 0 542 1444 -1 -1 0 0 -1 -1 -1 -1 1 0 53 76   0
+C:\Escritura\WinEdt\Exec\Acrobat OpenDoc.edt
+ASCII:EDT
+269494138 7 106 87 106 1 110 115 656 864 1 80 1045 -1 -1 0 0 -1 -1 -1 -1 1 0 1 106   0
+
+*tesis.tex
+>
+*config/pfc_options.tex
+*config/rename.tex
+*cover/cover.tex
+*cover/firstPage.tex
+*config/begin.tex
+*cover/acknowledgements.tex
+*config/toc.tex
+*Config/headers.tex
+*config/chapters.tex
+*introduction/introduction.tex
+*config/appendix.tex
+<
