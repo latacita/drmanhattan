@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=latex 2010.1.18)  2 MAR 2011 17:51
+This is pdfTeX, Version 3.1415926-1.40.10 (MiKTeX 2.8) (preloaded format=latex 2010.1.18)  2 MAR 2011 18:05
 entering extended mode
 **pfc.tex
 ("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\pfc.tex"
@@ -250,23 +250,27 @@ TextBlockOrigin set to 0pt x 0pt
 ))
 ("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\config/r
 ename.tex")
-No file pfc.aux.
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 51.
-LaTeX Font Info:    ... okay on input line 51.
+("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\pfc.aux"
+
+LaTeX Warning: Label `chap:introduction' multiply defined.
+
+)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
+LaTeX Font Info:    ... okay on input line 53.
 Package minitoc(hints) Info: I0049
 (minitoc(hints))             ==> You requested the hints option. 
 (minitoc(hints))             Some hints are eventually given below.
-ABD: EveryShipout initializing macros
+ ABD: EveryShipout initializing macros
 ("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\cover/co
 ver.tex"
 File: images/ingInformatica.eps Graphic file (type eps)
@@ -330,29 +334,33 @@ knowledgements.tex" [1
 ])
 ("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\config/t
 oc.tex"
-
-Package minitoc Warning: W0010
-(minitoc)                No file pfc.toc. 
-(minitoc)                MINITOCS NOT PREPARED on input line 2.
-
-[3
+Package minitoc Info: I0024
+(minitoc)             PREPARING MINITOCS FROM pfc.toc on input line 2.
+Package minitoc Info: I0033
+(minitoc)             Writing pfc.mtc1.
+Package minitoc Info: I0033
+(minitoc)             Writing pfc.mtc2.
+ [3
 
 ] [4
 
 ]
-No file pfc.toc.
+("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\pfc.toc"
+)
 \tf@toc=\write4
-[5] [6
+ [5] [6
 
 ]
-No file pfc.lof.
+("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\pfc.lof"
+)
 \tf@lof=\write5
-[7] [8
+ [7] [8
 
 ]
-No file pfc.lot.
+("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\pfc.lot"
+)
 \tf@lot=\write6
-[9] [10
+ [9] [10
 
 ])
 ("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\Config/h
@@ -362,9 +370,8 @@ hapters.tex")
 ("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\introduc
 tion/introduction.tex"
 Cap\'{\i }tulo 1.
-Package minitoc Info: I0006
-(minitoc)             pfc.mtc1 is empty on input line 35.
-
+("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\pfc.mtc1
+")
 Underfull \hbox (badness 10000) in paragraph at lines 56--57
 
  []
@@ -374,7 +381,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
+[1
 
+
+]
 Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
@@ -389,10 +399,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 64--65
 
  []
 
-[1
 
-
-]
 Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
@@ -413,6 +420,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--73
  []
 
 )
+("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\backgrou
+nd/background.tex" [2]
+Cap\'{\i }tulo 2.
+Package minitoc Info: I0006
+(minitoc)             pfc.mtc2 is empty on input line 15.
+)
 ("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\config/a
 ppendix.tex")
 Package minitoc Info: I0009
@@ -421,20 +434,23 @@ Package minitoc Info: I0009
 Package minitoc(hints) Info: I0019
 (minitoc(hints))             No hints have been written 
 (minitoc(hints))             in the pfc.log file..
- [2]
+ [3
+
+
+]
 ("C:\Documents and Settings\Pablo\Mis documentos\Alumnos\Pando\Doc\PFC\pfc.aux"
 )
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 3889 strings out of 495286
- 51627 string characters out of 3181048
+ 3927 strings out of 495286
+ 52887 string characters out of 3181048
  127873 words of memory out of 3000000
- 6799 multiletter control sequences out of 15000+200000
- 17676 words of font info for 44 fonts, out of 3000000 for 9000
+ 6814 multiletter control sequences out of 15000+200000
+ 21690 words of font info for 55 fonts, out of 3000000 for 9000
  15 hyphenation exceptions out of 8191
- 34i,11n,43p,316b,360s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,11n,43p,316b,362s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on pfc.dvi (14 pages, 12372 bytes).
+Output written on pfc.dvi (15 pages, 16848 bytes).
