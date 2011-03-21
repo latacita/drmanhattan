@@ -1,16 +1,60 @@
 %==================================================================%
-% Author : Pando Muñoz, Manuel                                     %
-%          Sánchez Barreiro, Pablo                                 %
+% Author : Pando MuÃ¯Â¿Â½oz, Manuel                                     %
+%          SÃ¯Â¿Â½nchez Barreiro, Pablo                                 %
 % Version: 1.0, 02/03/2011                                         %                   %                                                                  %
 % Memoria del Proyecto Fin de Carrera                              %
-% Archivo raíz para el capítulo de antecedentes                    %
+% Archivo raÃ¯Â¿Â½z para el capÃ¯Â¿Â½tulo de antecedentes                    %
 %==================================================================%
+
 
 \chapterheader{Antecedentes}{Antecedentes}
 \label{chap:introduction}
 
-El presente capítulo describe brevemente las tecnologías sobre las que se fundamenta el presente proyecto. Más concretamente, se explica el funcionamiento de ...
+El presente cap\'itulo describe brevemente las tecnolog\'ias sobre las que se fundamenta el presente proyecto. M\'as concretamente, se explica el funcionamiento de ...\newline
+
+\begin{description}
+
+\item[Daemon:]
+
+En inform\'atica demonio o daemon es un tipo de proceso que se ejecuta en segundo plano, generalmente iniciado en tiempo de arranque, sin usar los sistema de entrada/salida est\'andar, escriben lo que deseen mostrar en ficheros especiales. En los sistemas Windows se conocen como servicios ya que son usados para, precisamente, proporcionar un servicio al usuario.
+
+En los sistemas linux, cada daemon suele tener un script en la carpeta /etc/init.d/ que permite iniciarlo, pararlo o consultar su estado.
+
+El nombre del ejecutable suele acabar en "d".
+
+Normalmente est\'an cargados en memoria esperando una se\~nal para ser ejecutados, por lo que su gasto de recursos no suele ser significativo.
+Adem\'as suelen ser concurrentes, es decir, cuando se va a atender una petici\'on, el daemon crea un hilo especifico para ejecutar las \'ordenes de esa petici\'on concreta, de modo que el hilo principal puede seguir a la espera de nuevas peticiones.\newline
+
+
+\item[Iptables:]
+
+Netfilter es un framework que permite filtrar de paquetes, traducci\'on de direcciones y puertos de red y varias funcionalidades mas para el manejo de paquetes. Es parte del n\'ucleo de linux desde la versi\'on 2.4 del mismo, sustituyendo a ipchains, bastante limitado en comparaci\'on con Netfilter.
+
+Iptables es una aplicaci\'on de l\'inea de comandos, que permite a un usuario con privilegios de administrador, configurar un conjunto de reglas para el filtrado de paquetes.
+
+Tambi\'en es parte del mismo proyecto que Netfilter, por lo que generalmente se suele hablar solamente de iptables, puesto que es el programa con el que interact\'ua directamente el usuario, para referirse al d\'uo netfilter/iptables.
+
+Ejemplo de uso de iptables
+\begin{center}
+\# iptables -A INPUT -s 195.65.34.234 -j ACCEPT\\
+\end{center}
+El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo es aceptar todos los paquetes entrantes provenientes del host indicado, si lo deseamos, en vez de la IP podemos poner su FQDN sin problemas. Del mismo modo, si lo que queremos es no aceptar las peticiones se cambiar\'ia ACCEPT por DROP y si nos queremos referir a los paquetes salientes OUTPUT por INPUT.\newline
+
+
+\item[Red local:]
+
+Una Red local o LAN es un conjunto de equipos inform\'aticos conectados entre si en un \'area relativamente peque\~na. 
+
+Cada uno de estos equipos interconectados en la red se conoce como nodo. Estos nodos son capaces de enviar, recibir y procesar comandos con el fin de transportar datos para de este modo poder compartir informaci\'on y recursos en la red.
+
+El funcionamiento de la red est\'a estandarizado siendo el protocolo TCP/IP el m\'as extendido.
+
+Entre las ventajas de las redes locales cabe destacar el ahorro en hardware, si se desea que todos los equipos puedan imprimir no es necesario disponer de una impresora para cada equipo, sirve con una conectada a la red, y del mismo modo, el ahorro en la factura de internet, puesto que con una sola conexi\'on se puede dar acceso a todos los equipos de la red.
+
+Otra ventaja, probablemente la m\'as importante desde el punto de vista t\'ecnico es que al estar estandarizados como han de comunicarse los nodos en la red permite la conexi\'on de equipos heterog\'eneos.\newline
+\end{description}
 
 \chaptertoc
 
-\todo{Pon aquí las secciones que te hagan falta para que un no experto en el tema pueda entender como está hecho tu proyecto}
+\todo{Pon aqu\'i las secciones que te hagan falta para que un no experto en el tema pueda entender como est\'a hecho tu proyecto}
+
