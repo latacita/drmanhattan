@@ -1,0 +1,21 @@
+package servidor;
+
+public class LanzadorServidor {
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					GUIServidor window = new GUIServidor();
+					window.frmDrmanhattan.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+}
