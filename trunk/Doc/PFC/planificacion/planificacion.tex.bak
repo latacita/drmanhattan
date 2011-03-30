@@ -1,0 +1,21 @@
+%==================================================================%
+% Author : Pando Muñoz, Manuel                                     %
+%          Sánchez Barreiro, Pablo                                 %
+% Version: 1.0, 30/03/2011                                         %                   %                                                                  %
+% Memoria del Proyecto Fin de Carrera                              %
+% Archivo raíz para el capítulo de descripción general             %
+%==================================================================%
+
+
+\chapterheader{Descripción y Planificación}{Descripción y Planificación del Proyecto}
+\label{chap:planificacion}
+
+%==================================================================%
+% TODO(Pablo) : Completa este párrafo introductorio de manera      %
+%               adecuada                                           %
+%==================================================================%
+
+El presente cap\'itulo describe \todo{a completar}
+
+\chaptertoc
+

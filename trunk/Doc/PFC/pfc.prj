@@ -4,9 +4,9 @@
 0
 1
 pfc.tex
-20
-3
-1
+21
+4
+0
 
 
 
@@ -15,10 +15,13 @@ pfc.tex
 
 pfc.tex
 TeX:ES
-152055803 1 -1 3011 -1 3018 264 276 832 951 0 462 589 -1 -1 0 0 68 -1 -1 68 1 0 3018 -1   0
+420491259 0 -1 3204 -1 3204 264 276 832 951 0 22 798 -1 -1 0 0 68 -1 -1 68 1 0 3204 -1   0
+planificacion\planificacion.tex
+TeX
+1060859 0 -1 2714 -1 2728 176 184 722 933 0 22 1002 -1 -1 0 0 -1 -1 -1 -1 1 0 2728 -1   0
 background\background.tex
 TeX
-269496315 0 -1 722 -1 724 286 299 854 993 0 22 266 -1 -1 0 0 68 -1 -1 68 1 0 724 -1   0
+17838075 1 -1 0 -1 1130 286 299 854 993 0 22 456 -1 -1 0 0 68 -1 -1 68 1 0 1130 -1   0
 introduction\introduction.tex
 TeX
 1060859 1 -1 1272 -1 1388 308 322 876 1016 0 22 399 -1 -1 0 0 79 -1 -1 79 1 0 1388 -1   0
@@ -79,5 +82,5 @@ ASCII
 *config/pfc_options.tex
 *config/rename.tex
 *config/chapters.tex
-*background/background.tex
+*planificacion/planificacion.tex
 <

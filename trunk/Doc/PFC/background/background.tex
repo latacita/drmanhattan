@@ -19,6 +19,35 @@ El presente cap\'itulo describe brevemente las tecnolog\'ias sobre las que se fu
 
 \chaptertoc
 
+\section{Red local}
+
+%============================================================================%
+% NOTA(Pablo): Poner un párrafo de como se ha llegado hasta aquí             %
+%============================================================================%
+Una Red local o LAN es un conjunto de computadoras conectadas entre sí en un \'area relativamente peque\~na.
+
+%============================================================================%
+% NOTA(Pablo): Poner ejemplo de área relativamente pequeña y explicar cómo   %
+%              y en que se diferencian las LANs de las WANs.                 %
+%============================================================================%
+
+Cada uno de estos equipos interconectados en la red se conoce como nodo. Estos nodos son capaces de enviar, recibir y procesar comandos con el fin de transportar datos, así como compartir informaci\'on y recursos a través de la red.
+
+%============================================================================%
+% NOTA(Pablo): Esto queda suelto                                             %
+%============================================================================%
+El funcionamiento de la red est\'a estandarizado siendo el protocolo TCP/IP el m\'as extendido.
+
+%============================================================================%
+% NOTA(Pablo): Esto suena a escribir por escribir, así que mejor lo quitamos %
+%============================================================================%
+% Entre las ventajas de las redes locales cabe destacar el ahorro en hardware, 
+% si se desea que todos los equipos puedan imprimir no es necesario disponer de % una impresora para cada equipo, sirve con una conectada a la red, y del mismo % modo, el ahorro en la factura de internet, puesto que con una sola conexi\'on % se puede dar acceso a todos los equipos de la red.
+%
+% Otra ventaja, probablemente la m\'as importante desde el punto de vista 
+% t\'ecnico es que al estar estandarizados como han de comunicarse los nodos en % la red permite la conexi\'on de equipos heterog\'eneos.
+%============================================================================%
+
 %==================================================================%
 % TODO(Pablo) : Esto así a pelo queda muy duro, quizás haya que    %
 %               explicar antes cómo es la arquitectura global de   %
@@ -104,23 +133,16 @@ Netfilter es un framework que permite filtrar de paquetes, traducci\'on de direc
 % programa con el que interact\'ua directamente el usuario, para referirse 
 % al d\'uo netfilter/iptables.
 % 
+
 Ejemplo de uso de iptables
 \begin{center}
 \# iptables -A INPUT -s 195.65.34.234 -j ACCEPT\\
 \end{center}
-El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo es aceptar todos los paquetes entrantes provenientes del host indicado, si lo deseamos, en vez de la IP podemos poner su FQDN sin problemas. Del mismo modo, si lo que queremos es no aceptar las peticiones se cambiar\'ia ACCEPT por DROP y si nos queremos referir a los paquetes salientes OUTPUT por INPUT.\newline
 
-
-\section{Red local}
-
-Una Red local o LAN es un conjunto de equipos inform\'aticos conectados entre si en un \'area relativamente peque\~na.
-
-Cada uno de estos equipos interconectados en la red se conoce como nodo. Estos nodos son capaces de enviar, recibir y procesar comandos con el fin de transportar datos para de este modo poder compartir informaci\'on y recursos en la red.
-
-El funcionamiento de la red est\'a estandarizado siendo el protocolo TCP/IP el m\'as extendido.
-
-Entre las ventajas de las redes locales cabe destacar el ahorro en hardware, si se desea que todos los equipos puedan imprimir no es necesario disponer de una impresora para cada equipo, sirve con una conectada a la red, y del mismo modo, el ahorro en la factura de internet, puesto que con una sola conexi\'on se puede dar acceso a todos los equipos de la red.
-
-Otra ventaja, probablemente la m\'as importante desde el punto de vista t\'ecnico es que al estar estandarizados como han de comunicarse los nodos en la red permite la conexi\'on de equipos heterog\'eneos.\newline
-
+El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo es aceptar todos los paquetes entrantes provenientes del host indicado\footnote{en vez de la IP podemos poner su FQDN (\emph{Fully Qualified Domain Name) sin lo desearamos}. Del mismo modo, si lo que queremos es no aceptar las peticiones se cambiar\'ia ACCEPT por DROP y si nos queremos referir a los paquetes salientes OUTPUT por INPUT.
+%============================================================================%
+% NOTA(Pablo): Por defecto ¿qué pasa cuando un paquete                       %
+%              proviniente de un host llega y no se ha tocado iptables?      %
+%              ¿Se rechaza o se acepta?                                      %
+%============================================================================%
 
