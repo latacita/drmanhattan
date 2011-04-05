@@ -10,21 +10,29 @@
 %=====================================================================%
 %                       My imported packages                          %
 %=====================================================================%
-\usepackage[latin1]{inputenc}
+
+%%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{url}
 \usepackage{amsfonts}
-\usepackage[spanish,activeacute]{babel}
+
+%\usepackage[spanish,activeacute]{babel}
+\usepackage[spanish]{babel}
 
 
-
-% Esto se aÃ±ade porque a alg\'un gracioso le apetec\'ia que la fuente
+% Esto se añade porque a alg\'un gracioso le apetec\'ia que la fuente
 % de la portada fuese Arial
 \usepackage[T1]{fontenc}
 %\usepackage[scaled]{uarial}
 
+\begin{small}
+\begin{normalsize}
 
+\end{normalsize}
+\end{small}
 % File with main configuration
 \input{config/pfc_options.tex}
 % File with some names
@@ -71,9 +79,9 @@
 %\input{introduction/preface-lff.tex}   % preface
 
 % Toc
-%\input{config/toc.tex}
+\input{config/toc.tex}
 
-%\input{Config/headers.tex}
+\input{Config/headers.tex}
 
 \input{config/chapters.tex}
 
@@ -84,7 +92,7 @@
 \input{planificacion/planificacion.tex}
 
 % Cap\'itulo 2: Resumen del Estado del Arte
-\input{background/background.tex}
+%\input{background/background.tex}
 
 % Cap\'itulo 6: Definici\'on Arquitect\'onica y Dise\~no Software
 
