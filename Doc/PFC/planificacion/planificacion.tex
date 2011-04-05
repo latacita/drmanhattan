@@ -1,17 +1,17 @@
 %==================================================================%
-% Author : Pando MuÒoz, Manuel                                     %
-%          S·nchez Barreiro, Pablo                                 %
+% Author : Pando Mu√±oz, Manuel                                     %
+%          S√°nchez Barreiro, Pablo                                 %
 % Version: 1.0, 30/03/2011                                         %                   %                                                                  %
 % Memoria del Proyecto Fin de Carrera                              %
-% Archivo raÌz para el capÌtulo de descripciÛn general             %
+% Archivo ra√≠z para el cap√≠tulo de descripci√≥n general             %
 %==================================================================%
 
 
-\chapterheader{DescripciÛn y PlanificaciÛn}{DescripciÛn y PlanificaciÛn del Proyecto}
+\chapterheader{Descripci√≥n y Planificaci√≥n}{Descripci√≥n y Planificaci√≥n del Proyecto}
 \label{chap:planificacion}
 
 %==================================================================%
-% TODO(Pablo) : Completa este p·rrafo introductorio de manera      %
+% TODO(Pablo) : Completa este p√°rrafo introductorio de manera      %
 %               adecuada                                           %
 %==================================================================%
 
@@ -19,26 +19,80 @@ El presente cap\'itulo describe \todo{a completar}
 
 \chaptertoc
 
-\section{DescripciÛn Funcional del Sistema}
+\section{Descripci√≥n Funcional del Sistema}
 \label{sec:planificacion:descFuncional}
 
-\todo{Escribir un p·rrafo introductorio}
+%\todo{Escribir un p√°rrafo introductorio}
 
-Es una aplicaciÛn cliente servidor orientada al control del acceso a internet por parte de los alumnos mientras se realiza una prueba en salas con ordenadores en red local.
 
-Una vez instalada en los equipos, permitir·, desde el servidor, habilitar o denegar el acceso a la red de los clientes. AsÌ mismo, facilita tanto el envÌo de ficheros desde el servidor a todos los clientes, como puede ser el enunciado o archivos necesarios para la realizaciÛn, como la recepciÛn y almacenaje de los resultados de cada cliente en el servidor. En el caso de la recepciÛn de los resultados se efectuar· una comprobaciÛn de integridad de los mismos a fin de garantizar la entrega de archivos correctos, si se detecta que un fichero se ha recibido daÒado se intentar· reenviar, si persiste el error se notificar· en los logs.
+En la siguiente secci√≥n se describe el √°mbito funcional del sistema, en otras palabras, las caracter√≠sticas que se espera que tenga la aplicaci√≥n deseada. Definirlas de modo correcto es muy importante, ya que los requisitos de alto nivel dependen directamente y si estos son incorrectos, obtendr√≠amos una aplicaci√≥n in√∫til que no cumple con lo requerido.
+\newline
 
-En el computador donde se ejecute el servidor se guardar·n ciertos logs tales como la hora a la que comienza o finaliza un examen o cuando finaliza un alumno particular, cuando se reciben los ficheros de resultado, posibles errores, etc
-Al profesor se le da la opciÛn de programar una hora de fin antes de comenzar o, si lo prefiere, finalizar manualmente. En las pruebas temporizadas desde el cliente se podr· consultar el tiempo restante.
+El proyecto consiste en desarollar una aplicaci√≥n que, utilizando la red local instalada en los laboratorios de la Facultad de Ciencias, sea capaz principalmente de, desde un computador distinguido, el del profesor, controlar el uso del resto de los computadores, los de los alumnos, que hagan de la red. Est√° especialmente orientado a denegar accesos no deseados durante pruebas evaluables, evitando por ejemplo, la realizaci√≥n de un test pudiendo consultar dudas en internet, sin necesitar desconectar f√≠sicamente la red. 
+\newline
 
-Tanto en el servidor como en el cliente dispondr·n de interfaces gr·ficas sencillas para facilitar las operaciones.
+Esto es deseable puesto que en ocasiones es necesario que los alumnos dispongan de ciertos archivos al comenzar, y recoger los archivos resultantes al final de la prueba, con esta aplicaci√≥n se permite, aprovechando la conexi√≥n existente entre computadores, el env√≠o y recogida de estos archivos, garantizando transferencias correctas, de un modo m√°s c√≥modo y sencillo, que el profesor vaya con un dispositivo de almacenamiento recogiendo los resultados individualmente cuando un alumno finaliza.
+\newline
 
-\section{MetodologÌa de Desarrollo}
+El componente que se ejecutar√° en el computador del profesor ha de ser capaz de permitir conectarse a todos los alumnos que vayan a realizar la prueba, y como se ha comentado, al principio de la misma, si se desea, enviar un archivo dado, a los alumnos conectados a modo de enunciado, y notificar al resto de computadores el inicio de la prueba y que, por tanto, el acceso a la red ya no est√° permitido, del mismo modo, cuando cada alumno decide que ha acabado, en caso de que entreguen ficheros como resultado, recogerlos y almacenarlos en el computador del profesor, en un directorio seleccionado por √©l, sin necesidad de intervenci√≥n del mismo, adem√°s de volver a permitir el acceso a la red al computador del alumno que concluye la prueba.
+\newline
+
+Cuando el profesor decide iniciar una prueba puede optar por establecer una hora l√≠mite para la finalizaci√≥n autom√°tica, o no, en ambos casos se permite concluirlo manualmente por el profesor.
+\newline
+
+Adem√°s, se guardar√°n registros de cada prueba con el fin de tener una noci√≥n de lo que est√° ocurriendo en la prueba actual o en alguna pasada, por ejemplo, la hora a la que empieza, a la que finaliza, cu√°ndo acaba un alumno, si se recogen ficheros de resultados, d√≥nde se almacenan.
+\newline
+
+Las funcionalidades m√°s importantes presentadas al usuario en el componente a ejecutar por el alumno son dos, conectarse al computador del profesor y enviar el archivo de resultados al decidir finalizar la prueba.
+\newline
+
+Tanto el profesor como los alumnos dispondr√°n de interfaces gr√°ficas sencillas e intuitivas para facilitar lo m√°ximo posible el uso de la aplicaci√≥n.
+
+
+\section{Metodolog√≠a de Desarrollo}
 \label{sec:planificacion:metodologia}
 
 \section{Requisitos de Alto Nivel del Sistema}
 \label{sec:planificacion:requisitos}
 
+En esta secci√≥n se enumeran los requisitos de alto nivel del sistema.
+Un requisito es una propiedad que debe ser exhibida por un software para resolver un problema particular.
+Los requisitos han de tener ciertas caracter√≠sticas, entre ellas ser:
+\begin{itemize}
+
+\item \emph{No ambig√ºos,} no puede haber varias interpretaciones para un requisito puesto que se puede optar por una soluci√≥n no deseada por el cliente.
+
+\item \emph{Entendible,} se comprende f√°cilmente el significado.
+
+\item \emph{Verificable,} es necesario que existan t√©cnicas para comprobar que cada requisito es construido correctamente.
+
+\end{itemize}
+
+	
+El conjunto de requisitos ha de ser, entre otras cosas:
+
+\begin{itemize}
+
+\item \emph{Completo,} de tal forma que todo lo que deba hacer la aplicaci√≥n est√© recogido.
+\item \emph{Consistente,} no deben existir conflictos entre requisitos.
+\item \emph{No redundante,} es decir, que un problema s√≥lo lo resuelva un √∫nico requisito.
+	
+\end{itemize}
 
 
+Requisitos de alto nivel:
 
+\begin{enumerate}
+
+\item Profesor - Comenzar prueba
+\item Profesor - Enviar enunciado
+\item Profesor - Establecer hora fin prueba
+\item Profesor - Finalizar prueba
+\item Denegar acceso a red al comenzar
+\item Permitir acceso a red al finalizar
+\item Comprobaci√≥n de integridad de los archivos transmitidos
+\item Crear y guardar logs en el computador profesor
+\item Alumno - Conectarse a profesor
+\item Alumno - Enviar resultado
+
+\end{enumerate}

@@ -1,17 +1,17 @@
 %==================================================================%
-% Author : Pando Mu�oz, Manuel                                     %
-%          S�nchez Barreiro, Pablo                                 %
+% Author : Pando Muñoz, Manuel                                     %
+%          Sánchez Barreiro, Pablo                                 %
 % Version: 1.0, 30/03/2011                                         %                   %                                                                  %
 % Memoria del Proyecto Fin de Carrera                              %
-% Archivo ra�z para el cap�tulo de descripci�n general             %
+% Archivo raíz para el capítulo de descripción general             %
 %==================================================================%
 
 
-\chapterheader{Descripci�n y Planificaci�n}{Descripci�n y Planificaci�n del Proyecto}
+\chapterheader{Descripción y Planificación}{Descripción y Planificación del Proyecto}
 \label{chap:planificacion}
 
 %==================================================================%
-% TODO(Pablo) : Completa este p�rrafo introductorio de manera      %
+% TODO(Pablo) : Completa este párrafo introductorio de manera      %
 %               adecuada                                           %
 %==================================================================%
 
@@ -19,3 +19,51 @@ El presente cap\'itulo describe \todo{a completar}
 
 \chaptertoc
 
+\section{Descripción Funcional del Sistema}
+\label{sec:planificacion:descFuncional}
+
+%\todo{Escribir un párrafo introductorio}
+
+En la siguiente sección describiré el ámbito funcional del sistema, en otras palabras, las características que se espera que tenga el sistema deseado, definirlas de modo correcto es muy importante, ya que los requisitos de alto nivel del sistema dependen directamente y si estos son incorrectos, obtendríamos una aplicación inútil que no cumple con lo requerido.
+
+El proyecto consiste en desarollar una aplicación que, utilizando la red local instalada en los laboratorios de la Facultad de Ciencias, sea capaz principalmente de, desde un computador distinguido, el del profesor, controlar el uso del resto de los computadores, los de los alumnos, que hagan de la red. Está especialmente orientado a denegar accesos no deseados durante pruebas evaluables, evitando por ejemplo, la realización de un test pudiendo consultar dudas en internet, sin necesitar desconectar físicamente la red. Esto es deseable puesto que en ocasiones es necesario que los alumnos dispongan de ciertos archivos al comenzar, y recoger los archivos resultantes al final de la prueba, con esta aplicación se permite, aprovechando la conexión existente entre computadores, el envío y recogida de estos archivos, garantizando transferencias correctas, de un modo más cómodo y sencillo, que el profesor vaya con un dispositivo de almacenamiento recogiendo los resultados individualmente cuando un alumno finaliza.
+
+El componente que se ejecutará en el computador del profesor ha de ser capaz de permitir conectarse a todos los alumnos que vayan a realizar la prueba, y como se ha comentado, al principio de la misma, si se desea, enviar un archivo dado, a los alumnos conectados a modo de enunciado, y notificar al resto de computadores el inicio de la prueba y que, por tanto, el acceso a la red ya no está permitido, del mismo modo, cuando cada alumno decide que ha acabado, en caso de que entreguen ficheros como resultado, recogerlos y almacenarlos en el computador del profesor, en un directorio seleccionado por él, sin necesidad de intervención del mismo, además de volver a permitir el acceso a la red al computador del alumno que concluye la prueba.
+
+Cuando el profesor decide iniciar una prueba puede optar por establecer una hora límite para la finalización automática, o no, en ambos casos se permite concluirlo manualmente por el profesor.
+
+Además, se guardarán registros de cada prueba con el fin de tener una noción de lo que está ocurriendo en la prueba actual o en alguna pasada, por ejemplo, como la hora a la que empieza, a la que finaliza, cuándo acaba un alumno, si se recogen ficheros de resultados, dónde se almacenan.
+
+Las funcionalidades más importantes presentadas al usuario en el componente a ejecutar por el alumno son dos, conectarse al computador del profesor y enviar el archivo de resultados al decidir finalizar la prueba.
+
+Tanto el profesor como los alumnos dispondrán de interfaces gráficas sencillas e intuitivas para facilitar lo máximo posible el uso de la aplicación.
+
+
+\section{Metodología de Desarrollo}
+\label{sec:planificacion:metodologia}
+
+\section{Requisitos de Alto Nivel del Sistema}
+\label{sec:planificacion:requisitos}
+
+En esta sección se enumeran los requisitos de alto nivel del sistema.
+Un requisito es una propiedad que debe ser exhibida por un software para resolver un problema particular.
+Los requisitos han de tener ciertas características, entre ellas ser:
+	No ambigüos, no puede haber varias interpretaciones para un requisito puesto que se puede optar por una solución no deseada por el cliente. 
+	Entendible, se comprende fácilmente el significado.
+	Verificable, es necesario que existan técnicas para comprobar que cada requisito es construido correctamente.
+	
+El conjunto de requisitos ha de ser, entre otras cosas:
+	Completo, de tal forma que todo lo que deba hacer la aplicación esté recogido.
+	Consistente, no deben existir conflictos entre requisitos.
+	No redundante, es decir, que un problema sólo lo resuelva un único requisito.
+
+Profesor - Comenzar prueba
+Profesor - Enviar enunciado
+Profesor - Establecer hora fin prueba
+Profesor - Finalizar prueba
+Denegar acceso a red al comenzar
+Permitir acceso a red al finalizar
+Comprobación de integridad de los archivos transmitidos
+Crear y guardar logs en el computador profesor
+Alumno - Conectarse a profesor
+Alumno - Enviar resultado
