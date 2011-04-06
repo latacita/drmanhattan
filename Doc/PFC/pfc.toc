@@ -1,5 +1,0 @@
-\select@language {spanish}
-\contentsline {chapter}{\numberline {1}Descripci\IeC {\'o}n y Planificaci\IeC {\'o}n del Proyecto}{1}
-\contentsline {section}{\numberline {1.1}Descripci\IeC {\'o}n Funcional del Sistema}{1}
-\contentsline {section}{\numberline {1.2}Metodolog\IeC {\'\i }a de Desarrollo}{2}
-\contentsline {section}{\numberline {1.3}Requisitos de Alto Nivel del Sistema}{2}
