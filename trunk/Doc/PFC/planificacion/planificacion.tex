@@ -1,98 +1,153 @@
 %==================================================================%
-% Author : Pando MuÃ±oz, Manuel                                     %
-%          SÃ¡nchez Barreiro, Pablo                                 %
+% Author : Pando Muñoz, Manuel                                    %
+%          Sánchez Barreiro, Pablo                                %
 % Version: 1.0, 30/03/2011                                         %                   %                                                                  %
 % Memoria del Proyecto Fin de Carrera                              %
-% Archivo raÃ­z para el capÃ­tulo de descripciÃ³n general             %
+% Archivo raíz para el capítulo de descripción general             %
 %==================================================================%
 
 
-\chapterheader{DescripciÃ³n y PlanificaciÃ³n}{DescripciÃ³n y PlanificaciÃ³n del Proyecto}
+\chapterheader{Descripción y Planificación}{Descripción y Planificación del Proyecto}
 \label{chap:planificacion}
 
-%==================================================================%
-% TODO(Pablo) : Completa este pÃ¡rrafo introductorio de manera      %
-%               adecuada                                           %
-%==================================================================%
 
 El presente cap\'itulo describe \todo{a completar}
 
 \chaptertoc
 
-\section{DescripciÃ³n Funcional del Sistema}
+\section{Descripción Funcional del Sistema}
 \label{sec:planificacion:descFuncional}
 
-%\todo{Escribir un pÃ¡rrafo introductorio}
+La presente sección describe el ámbito funcional del sistema software que deseamos construir, es decir, del \emph{DrManhattan}, que es un \emph{Sistema de Control de Accesos a Red para los Laboratorios de la Facultad de Ciencias}.
 
+%==========================================================================%
+% NOTA(Pablo): Esta información se considera sabida, por lo que no hay
+%              que aportarla
+%==========================================================================%
+% Definirlas de modo correcto es muy importante, ya que los requisitos de 
+% alto nivel dependen directamente y si estos son incorrectos, obtendrÃ­amos 
+% una aplicaciÃ³n inÃºtil que no cumple con lo requerido. \newline
 
-En la siguiente secciÃ³n se describe el Ã¡mbito funcional del sistema, en otras palabras, las caracterÃ­sticas que se espera que tenga la aplicaciÃ³n deseada. Definirlas de modo correcto es muy importante, ya que los requisitos de alto nivel dependen directamente y si estos son incorrectos, obtendrÃ­amos una aplicaciÃ³n inÃºtil que no cumple con lo requerido.
-\newline
+El objetivo del \emph{DrManhattan} es controlar el acceso a la red local, existente en cada laboratorio de la Facultad de Ciencias de la Universidad de Cantabria, de los computadores conectados a ella. 
+%==========================================================================%
+% NOTA(Pablo): Ya sabemos que es lo que hay que controlar, ahora un buen
+%              Ingeniero de Requisitos debe averiguar por qué hay que 
+%              controlarlo y para qué hay que controlarlo. Esos son los 
+%              dos objetivos principales y justificación última de cada 
+%              decisión que se tome en el proyecto
+%
+%              El por qué y el para qué te lo he escrito yo
+%==========================================================================%
+Se desea realizar dicho control sobre todo durante la realización de pruebas evaluables, de cara a evitar que se realicen accesos a contenidos no autorizados (e.g., páginas de internet con posibles soluciones a los problemas planteados, el directorio de trabajo de algún compañero, etc.) durante la realización de dichas pruebas. El sistema que se venía utilizando hasta ahora para evitar el mal uso de la red local consistía simplemente en desconectar la alimentación del concentrador de interconexión, deshabilitando la red. Es decir, se aplicaba el principio de muerto el perro, se acabó la rabia. 
 
-El proyecto consiste en desarollar una aplicaciÃ³n que, utilizando la red local instalada en los laboratorios de la Facultad de Ciencias, sea capaz principalmente de, desde un computador distinguido, el del profesor, controlar el uso del resto de los computadores, los de los alumnos, que hagan de la red. EstÃ¡ especialmente orientado a denegar accesos no deseados durante pruebas evaluables, evitando por ejemplo, la realizaciÃ³n de un test pudiendo consultar dudas en internet, sin necesitar desconectar fÃ­sicamente la red. 
-\newline
+No obstante, el tener los diversos computadores interconectados mediante una red local, no sólo tiene inconvenientes, sino que también posee varias ventajas. Por ejemplo, ayuda a facilitar la distribución de material electrónico que resulte necesario para la realización del examen. También puede ser de gran utilidad para recoger los ejercicios realizados por los alumnos de una manera rápida y cómodo, ya que el alumno sólo tendría que enviar el material producido durante la prueba al computador o dirección que le indique el profesor. El método utilizado actualmente para realizar esta tarea consiste en que el profesor acude al computador del alumno cuando este desea entregar los ejercicios realizados y el profesor copia tales ejercicios en una memoria USB. Este proceso es lento, tedioso y en muchas ocasiones las memorias USB no son reconocidas por los computadores del laboratorio, lo que exige recurrir a otras técnicas. El tiempo empleado por los docentes para recopilar los ejercicios realizados por los alumnas suele oscilar entre la media hora y la hora completa, mientras que usando la red local dicho proceso podría realizarse en cuestión de minutos (cuando no menos).
 
-Esto es deseable puesto que en ocasiones es necesario que los alumnos dispongan de ciertos archivos al comenzar, y recoger los archivos resultantes al final de la prueba, con esta aplicaciÃ³n se permite, aprovechando la conexiÃ³n existente entre computadores, el envÃ­o y recogida de estos archivos, garantizando transferencias correctas, de un modo mÃ¡s cÃ³modo y sencillo, que el profesor vaya con un dispositivo de almacenamiento recogiendo los resultados individualmente cuando un alumno finaliza.
-\newline
+%==========================================================================%
+% NOTA(Pablo): Como ahora tenemos un por qué y un para qué, el siguiente
+%              párrafo sale por si sólo como consecuencia de lo anterior  
+%              Sale el concepto de ordenador distinguido, por lo que es 
+%              mejor darle nombre
+%==========================================================================%
+Por tanto, el acceso de los computadores a la red local (e internet), se deberá controlar desde un computador distinguido, al que llamaremos \emph{Wathcman}, 
+que será normalmente el computador asignado al docente. Dicho computador será el encargado de conceder y denegar el acceso a la red al resto de computadores conectados a la red local.
 
-El componente que se ejecutarÃ¡ en el computador del profesor ha de ser capaz de permitir conectarse a todos los alumnos que vayan a realizar la prueba, y como se ha comentado, al principio de la misma, si se desea, enviar un archivo dado, a los alumnos conectados a modo de enunciado, y notificar al resto de computadores el inicio de la prueba y que, por tanto, el acceso a la red ya no estÃ¡ permitido, del mismo modo, cuando cada alumno decide que ha acabado, en caso de que entreguen ficheros como resultado, recogerlos y almacenarlos en el computador del profesor, en un directorio seleccionado por Ã©l, sin necesidad de intervenciÃ³n del mismo, ademÃ¡s de volver a permitir el acceso a la red al computador del alumno que concluye la prueba.
-\newline
+Se desea que el acceso a la red esté habilitado en las siguientes circunstancias:
 
-Cuando el profesor decide iniciar una prueba puede optar por establecer una hora lÃ­mite para la finalizaciÃ³n automÃ¡tica, o no, en ambos casos se permite concluirlo manualmente por el profesor.
-\newline
+\begin{enumerate}
+	\item Al comienzo de la realización de las pruebas, de forma que el docente pueda distribuir material electrónico necesario o de interés para la realización de la prueba (e.g., manuales, el enunciado de la prueba, etc.) entre los diferentes computadores de forma cómoda y eficiente.
+	\item Cuando el alumno haya finalizado la prueba, de forma que se puedan enviar los resultados a través de la red, evitando el penoso proceso de tener que recogerlos de forma individual mediante copia en un memoria USB o dispositivo similar. En estos casos, sería además deseable, con objeto de evitar posteriores problemas, que el sistema comprobase la integridad de los archivos recibidos, es decir, que comprobase que no se han sufrido alteración alguna durante la transmisión. 
+\end{enumerate}
 
-AdemÃ¡s, se guardarÃ¡n registros de cada prueba con el fin de tener una nociÃ³n de lo que estÃ¡ ocurriendo en la prueba actual o en alguna pasada, por ejemplo, la hora a la que empieza, a la que finaliza, cuÃ¡ndo acaba un alumno, si se recogen ficheros de resultados, dÃ³nde se almacenan.
-\newline
+Durante el periodo de tiempo que un alumno esté realizando una prueba, se debe denegar el acceso a la red del computador que esté utilizando para la realización de la prueba.
 
-Las funcionalidades mÃ¡s importantes presentadas al usuario en el componente a ejecutar por el alumno son dos, conectarse al computador del profesor y enviar el archivo de resultados al decidir finalizar la prueba.
-\newline
+%==========================================================================%
+% NOTA(Pablo): Ya tienes la información sobre cuando se conectan y 
+%              desconectan los computadores a la red
+%==========================================================================%
+Por tanto, la secuencia de realización de una prueba evaluable sería tal como sigue:
 
-Tanto el profesor como los alumnos dispondrÃ¡n de interfaces grÃ¡ficas sencillas e intuitivas para facilitar lo mÃ¡ximo posible el uso de la aplicaciÃ³n.
+\begin{enumerate}
+	\item El profesor y los alumnos acceden al aula y encienden sus correspondientes computadores. El acceso a la red está habilitado para todo el mundo.
+	\item El profesor envía el material necesario para la realización de la prueba a los computadores de los alumnos.
+	\item A continuación, una vez que un alumno comienza la prueba, se le deniega el acceso a la red al computador que esté utilizando. elm inicio de la prueba lo puede señalar tanto el alumno individualmente desde su propio computador como el profesor desde el computador que actué como \emph{Watchmen} de forma simultánea para todos los alumnos.
+	\item Si durante la realización de la prueba un alumno considera que ha acabado y está satisfecho con los resultados producidos, indicará al sistema que ha concluido la prueba. Los ficheros producidos como material evaluable se enviarán al \emph{Watchmen}. Se comprobará que se han recibido correctamente y no están corruptos, por lo que se pueden abrir y leer sin problema alguno. Obviamente, para el envío de los ficheros de resultados habrá que habilitar de nuevo la red, pero se ha de evitar que el alumno pueda modificar dichos ficheros.
+	\item Debe existir también la posibilidad de que el docente decida que el tiempo de realización de la prueba ha concluido, por lo que deberá realizarse todo el proceso descrito en el punto anterior, pero para todos los computadores que se encuentren activos en ese momento y siendo el proceso iniciado desde el \emph{Watchman}, en lugar de desde el propio computador del alumno.
+\end{enumerate}
 
+%==========================================================================%
+% NOTA(Pablo): El sistema ya está descrito, vamos ahora con los aspectos
+%              adicionales
+%==========================================================================%
+Además, se guardarán registros de los eventos ocurridos en cada prueba, con el objetivo de tener información que permita auditar el transcurso de la misma. dicho registro debe mantener constancia de eventos tales como hora de inicio de la prueba, hora de entrega de cada ejercicio, número de ficheros que se entregan, etc. 
 
-\section{MetodologÃ­a de Desarrollo}
+%==========================================================================%
+% NOTA(Pablo): Observa el párrafo de enlace
+%==========================================================================%
+La siguiente sección detalla la metodología de desarrollo que usaremos para la construcción de este sistema.
+
+\section{Metodología de Desarrollo}
 \label{sec:planificacion:metodologia}
+
+\todo{Describe brevemente la metodología en plan abstracto}
 
 \section{Requisitos de Alto Nivel del Sistema}
 \label{sec:planificacion:requisitos}
 
-En esta secciÃ³n se enumeran los requisitos de alto nivel del sistema.
-Un requisito es una propiedad que debe ser exhibida por un software para resolver un problema particular.
-Los requisitos han de tener ciertas caracterÃ­sticas, entre ellas ser:
-\begin{itemize}
+%==========================================================================%
+% NOTA(Pablo): Ligando las secciones, que siempre queda muy bien
+%==========================================================================%
+Esta sección describe el primer paso en nuestro proceso de desarrollo, de acuerdo a la metodología descrita en la sección anterior, que es la identificación de los requisitos de alto nivel que ha de satisfacer nuestro sistema software, de acuerdo a la descripción del ámbito funcional proporcionada en la Sección~\ref{sec:planificacion:descFuncional}.
 
-\item \emph{No ambigÃ¼os,} no puede haber varias interpretaciones para un requisito puesto que se puede optar por una soluciÃ³n no deseada por el cliente.
+%==========================================================================%
+% NOTA(Pablo): Todo esto se considera sabido, por lo que no hay que 
+%              escribirlo
+%==========================================================================%
+% Definirlas de modo correcto es muy importante, ya que los requisitos de
+% alto nivel dependen directamente y si estos son incorrectos, obtendríamos
+% una aplicación inútil que no cumple con lo requerido. 
+% 
+% Un requisito es una propiedad que debe ser exhibida por un software para 
+% resolver un problema particular.
+% Los requisitos han de tener ciertas características, entre ellas ser:
+% \begin{itemize}
+%    \item \emph{No ambiguos,} no puede haber varias interpretaciones para un %requisito puesto que se puede optar por una solución no deseada por el cliente.
+%
+%\item \emph{Entendible,} se comprende fácilmente el significado.
+%
+%\item \emph{Verificable,} es necesario que existan técnicas para comprobar que cada requisito es construido correctamente.
+%
+%\end{itemize}
+%El conjunto de requisitos ha de ser, entre otras cosas:
+%
+%\begin{itemize}
+%
+%\item \emph{Completo,} de tal forma que todo lo que deba hacer la aplicación estÃ© recogido.
+%\item \emph{Consistente,} no deben existir conflictos entre requisitos.
+%\item \emph{No redundante,} es decir, que un problema sÃ³lo lo resuelva un Ãºnico requisito.
+%
+%\end{itemize}
 
-\item \emph{Entendible,} se comprende fÃ¡cilmente el significado.
+En concreto, se han identificado los siguientes requisitos de alto nivel para nuestro sistema
 
-\item \emph{Verificable,} es necesario que existan tÃ©cnicas para comprobar que cada requisito es construido correctamente.
+\begin{tabular}{||p{@4cm}|l||}
+\hline \hline
+R01 & Un computador de la red debe poder ser designado como \emph{Watchman}.
+\\ \hline
+R02 & Todos los computadores que no sean \emph{Watchman} serán computadores 
+normales, y podrán ser utilizados para la realización de las pruebas evaluables.
+\\ \hline
+R03 & El profesor debe ser capaz desde el \emph{Watcman} de indicar el inicio de la prueba. \\ \hline
+R04 & etc ....
+\end{tabular}
 
-\end{itemize}
-
-	
-El conjunto de requisitos ha de ser, entre otras cosas:
-
-\begin{itemize}
-
-\item \emph{Completo,} de tal forma que todo lo que deba hacer la aplicaciÃ³n estÃ© recogido.
-\item \emph{Consistente,} no deben existir conflictos entre requisitos.
-\item \emph{No redundante,} es decir, que un problema sÃ³lo lo resuelva un Ãºnico requisito.
-	
-\end{itemize}
+%\item Profesor - Enviar enunciado
+%\item Profesor - Establecer hora fin prueba
+%\item Profesor - Finalizar prueba
+%\item Denegar acceso a red al comenzar
+%\item Permitir acceso a red al finalizar
+%\item ComprobaciÃ³n de integridad de los archivos transmitidos
+%\item Crear y guardar logs en el computador profesor
+%\item Alumno - Conectarse a profesor
+%\item Alumno - Enviar resultado
 
 
-Requisitos de alto nivel:
-
-\begin{enumerate}
-
-\item Profesor - Comenzar prueba
-\item Profesor - Enviar enunciado
-\item Profesor - Establecer hora fin prueba
-\item Profesor - Finalizar prueba
-\item Denegar acceso a red al comenzar
-\item Permitir acceso a red al finalizar
-\item ComprobaciÃ³n de integridad de los archivos transmitidos
-\item Crear y guardar logs en el computador profesor
-\item Alumno - Conectarse a profesor
-\item Alumno - Enviar resultado
-
-\end{enumerate}
