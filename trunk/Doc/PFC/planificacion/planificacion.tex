@@ -12,7 +12,9 @@
 \label{chap:planificacion}
 
 
-El presente cap\'itulo describe \todo{a completar}
+El presente cap\'itulo describe en líneas generales el ámbito funcional del proyecto, para delimitar su alcance, la metodología a usar durante el desarrollo del sistema y los requisitos de alto nivel del mismo, extraídos del ámbito funcional descrito.
+
+\todo{a completar}
 
 \chaptertoc
 
@@ -52,7 +54,7 @@ No obstante, el tener los diversos computadores interconectados mediante una red
 %              mejor darle nombre
 %==========================================================================%
 
-Por tanto, el acceso de los computadores a la red local (e internet), se deberá controlar desde un computador distinguido, al que llamaremos \emph{Wathcman},
+Por tanto, el acceso de los computadores a la red local (e internet), se deberá controlar desde un computador distinguido, al que llamaremos \emph{Watchman},
 que será normalmente el computador asignado al docente. Dicho computador será el encargado de conceder y denegar el acceso a la red al resto de computadores conectados a la red local.
 \newline
 
@@ -78,8 +80,8 @@ Por tanto, la secuencia de realización de una prueba evaluable sería tal como 
 	\item A continuación, una vez que un alumno comienza la prueba, se le deniega el acceso a la red al computador que esté utilizando. %El inicio de la prueba lo puede señalar tanto el alumno individualmente desde su propio computador como el profesor desde el computador que actué como \emph{Watchman} de forma simultánea para todos los alumnos.
 
 %==============================================================================%
-% NOTA(Manuel): Yo entendía que era el profesor el único que indicaba el inicio 
-%               de la prueba, de modo que empiecen todos los alumnos a la vez.  
+% NOTA(Manuel): Yo entendía que era el profesor el único que indicaba el inicio
+%               de la prueba, de modo que empiecen todos los alumnos a la vez.
 %==============================================================================%
 
 
@@ -204,19 +206,19 @@ En concreto, se han identificado los siguientes requisitos de alto nivel para nu
 
 \begin{tabular}{|c|l|}
     \hline
-    \textbf{Identificador} & \textbf{Descripción} 
+    \textbf{Identificador} & \textbf{Descripción}
     \\ \hline
-  
+
     R01 & Un computador de la red debe poder ser designado como \emph{Watchman}.
     \\ \hline
-    
+
     R02 & Todos los computadores que no sean \emph{Watchman} serán computadores
     normales, y podrán ser utilizados para la realización de las pruebas evaluables.
     \\ \hline
-    
+
     R03 & El profesor debe ser capaz desde el \emph{Watchman} de indicar el inicio de la prueba.
     \\ \hline
-    
+
     R04 & El profesor debe ser capaz desde el \emph{Watchman} de indicar el fin de la prueba.
     \\ \hline
 

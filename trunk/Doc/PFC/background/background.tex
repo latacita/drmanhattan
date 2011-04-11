@@ -1,7 +1,8 @@
 ﻿%==================================================================%
 % Author : Pando Muñoz, Manuel                                     %
 %          Sánchez Barreiro, Pablo                                 %
-% Version: 1.0, 02/03/2011                                         %                   %                                                                  %
+% Version: 1.0, 02/03/2011                                         %
+%                                                                  %
 % Memoria del Proyecto Fin de Carrera                              %
 % Archivo raíz para el capítulo de antecedentes                    %
 %==================================================================%
@@ -15,7 +16,10 @@
 %               adecuada                                           %
 %==================================================================%
 
-El presente cap\'itulo describe brevemente las tecnolog\'ias sobre las que se fundamenta el presente proyecto. M\'as concretamente, se explica el funcionamiento de ...\newline
+El siguiente cap\'itulo describe brevemente las tecnolog\'ias sobre las que se fundamenta el presente proyecto. M\'as concretamente, se explica el funcionamiento de las redes locales, del framework Netfilter para el filtrado de paquetes, y de los demonios en los sistemas Linux, tres aspectos fuertemente relacionados con el proyecto. \newline
+
+La aplicación a desarrollar está pensado que se utilice en los laboratorios de la Facultad de Ciencias de la Universidad de Cantabria, en estos laboratorios los computadores están conectado mediante una \emph{red local} y utilizan sistemas Linux. Para gestionar los permisos de acceso a la red se va a utilizar un \emph{demonio} que interactúe con \emph{Netfilter} por medio de iptables.
+
 
 \chaptertoc
 
@@ -24,7 +28,7 @@ El presente cap\'itulo describe brevemente las tecnolog\'ias sobre las que se fu
 %============================================================================%
 % NOTA(Pablo): Poner un párrafo de como se ha llegado hasta aquí             %
 %============================================================================%
-Una Red local o LAN es un conjunto de computadoras conectadas entre sí en un \'area relativamente peque\~na.
+Una Red local o LAN es un conjunto de computadoras conectadas entre sí en un \'area relativamente peque\~na, como los laboratorios de la Facultad.
 
 %============================================================================%
 % NOTA(Pablo): Poner ejemplo de área relativamente pequeña y explicar cómo   %
@@ -36,15 +40,15 @@ Cada uno de estos equipos interconectados en la red se conoce como nodo. Estos n
 %============================================================================%
 % NOTA(Pablo): Esto queda suelto                                             %
 %============================================================================%
-El funcionamiento de la red está estandarizado siendo el protocolo TCP/IP el m\'as extendido.
+El funcionamiento de la red está estandarizado siendo el protocolo TCP/IP el más extendido.
 
 %============================================================================%
 % NOTA(Pablo): Esto suena a escribir por escribir, así que mejor lo quitamos %
 %============================================================================%
-% Entre las ventajas de las redes locales cabe destacar el ahorro en hardware, 
+% Entre las ventajas de las redes locales cabe destacar el ahorro en hardware,
 % si se desea que todos los equipos puedan imprimir no es necesario disponer de % una impresora para cada equipo, sirve con una conectada a la red, y del mismo % modo, el ahorro en la factura de internet, puesto que con una sola conexi\'on % se puede dar acceso a todos los equipos de la red.
 %
-% Otra ventaja, probablemente la m\'as importante desde el punto de vista 
+% Otra ventaja, probablemente la m\'as importante desde el punto de vista
 % t\'ecnico es que al estar estandarizados como han de comunicarse los nodos en % la red permite la conexi\'on de equipos heterog\'eneos.
 %============================================================================%
 
@@ -56,16 +60,16 @@ El funcionamiento de la red está estandarizado siendo el protocolo TCP/IP el m\
 
 \section{Daemon}
 
-% NOTA(Pablo): No se suele decir la palabra "informática", ya que está 
-%              demasiado sobrecargada y no se sabe si son redes, 
+% NOTA(Pablo): No se suele decir la palabra "informática", ya que está
+%              demasiado sobrecargada y no se sabe si son redes,
 %              programación, inteligencia artificial o simplemente saber
 %              manejar el Word
-% En inform\'atica 
+% En inform\'atica
 
 Un \emph{demonio} (del inglés, \emph{daemon}) es un tipo de proceso que posee la siguientes características:
 
 \begin{enumerate}
-	\item Se ejecuta en segundo plano; 
+	\item Se ejecuta en segundo plano;
 	\item Generalmente se inicia en tiempo de arranque;
 	\item No usa los sistemas de entrada/salida est\'andar;
 	\item Mantienen la información que necesitan en ficheros especiales bien identificados.
@@ -75,9 +79,9 @@ Un \emph{demonio} (del inglés, \emph{daemon}) es un tipo de proceso que posee l
 % NOTA(Pablo): Esta información es demasiado técnica y poco interesante.  %
 %              Mejor la borramos                                          %
 %=========================================================================%
-% En los sistemas Windows se conocen como servicios ya que son usados para, 
+% En los sistemas Windows se conocen como servicios ya que son usados para,
 % precisamente, proporcionar un servicio al usuario.
-% En los sistemas linux, cada daemon suele tener un script en la carpeta 
+% En los sistemas linux, cada daemon suele tener un script en la carpeta
 % /etc/init.d/ que permite iniciarlo, pararlo o consultar su estado.
 %
 % El nombre del ejecutable suele acabar en "d".
@@ -93,15 +97,15 @@ Normalmente est\'an cargados en memoria esperando una se\~nal para ser ejecutado
 %              Mejor la borramos                                          %
 %=========================================================================%
 %
-% Adem\'as suelen ser concurrentes, es decir, cuando se va a atender una 
-% petici\'on, el daemon crea un hilo especifico para ejecutar las \'ordenes de 
-% esa petici\'on concreta, de modo que el hilo principal puede seguir a la 
+% Adem\'as suelen ser concurrentes, es decir, cuando se va a atender una
+% petici\'on, el daemon crea un hilo especifico para ejecutar las \'ordenes de
+% esa petici\'on concreta, de modo que el hilo principal puede seguir a la
 % espera de nuevas peticiones.\newline
 %
 %=========================================================================%
 
 %=========================================================================%
-% NOTA(Pablo): Faltaría poner un ejemplo de demonio y dejar clara su      % 
+% NOTA(Pablo): Faltaría poner un ejemplo de demonio y dejar clara su      %
 %              utilidad, sin entrar en detalles técnicos                  %
 %              Habría que poner también la utilidad de los demonios para  %
 %              el proyecto en cuestión                                    %
@@ -112,7 +116,7 @@ Normalmente est\'an cargados en memoria esperando una se\~nal para ser ejecutado
 %              representan las ip tables                                  %
 %=========================================================================%
 
-\section{XXXXX : Iptables}
+\section{Netfilter : Iptables}
 
 %=========================================================================%
 % NOTA(Pablo): Esto sin ningún tipo de intoducción, así a bocajarro,      %
@@ -124,22 +128,22 @@ Netfilter es un framework que permite filtrar de paquetes, traducci\'on de direc
 %=========================================================================%
 % NOTA(Pablo): Demasiado técnico y poco interesante, lo borramos          %
 %=========================================================================%
-% Iptables es una aplicaci\'on de l\'inea de comandos, que permite a un 
-% usuario con privilegios de administrador, configurar un conjunto de 
+% Iptables es una aplicaci\'on de l\'inea de comandos, que permite a un
+% usuario con privilegios de administrador, configurar un conjunto de
 % reglas para el filtrado de paquetes.
-% 
-%  Tambi\'en es parte del mismo proyecto que Netfilter, por lo que 
-% generalmente se suele hablar solamente de iptables, puesto que es el 
-% programa con el que interact\'ua directamente el usuario, para referirse 
+%
+%  Tambi\'en es parte del mismo proyecto que Netfilter, por lo que
+% generalmente se suele hablar solamente de iptables, puesto que es el
+% programa con el que interact\'ua directamente el usuario, para referirse
 % al d\'uo netfilter/iptables.
-% 
+%
 
 Ejemplo de uso de iptables
 \begin{center}
 \# iptables -A INPUT -s 195.65.34.234 -j ACCEPT\\
 \end{center}
 
-El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo es aceptar todos los paquetes entrantes provenientes del host indicado\footnote{en vez de la IP podemos poner su FQDN (\emph{Fully Qualified Domain Name) sin lo desearamos}. Del mismo modo, si lo que queremos es no aceptar las peticiones se cambiar\'ia ACCEPT por DROP y si nos queremos referir a los paquetes salientes OUTPUT por INPUT.
+El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo es aceptar todos los paquetes entrantes provenientes del host indicado\footnote{en vez de la IP podemos poner su FQDN (\emph{Fully Qualified Domain Name) sin lo desearamos}. Del mismo modo, si lo que queremos es no aceptar las peticiones se cambiar\'ia ACCEPT por DROP y si nos queremos referir a los paquetes salientes OUTPUT por INPUT.}
 %============================================================================%
 % NOTA(Pablo): Por defecto ¿qué pasa cuando un paquete                       %
 %              proviniente de un host llega y no se ha tocado iptables?      %
