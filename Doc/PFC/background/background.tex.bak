@@ -1,60 +1,148 @@
-%==================================================================%
-% Author : Pando Muï¿½oz, Manuel                                     %
-%          Sï¿½nchez Barreiro, Pablo                                 %
+﻿%==================================================================%
+% Author : Pando Muñoz, Manuel                                     %
+%          Sánchez Barreiro, Pablo                                 %
 % Version: 1.0, 02/03/2011                                         %                   %                                                                  %
 % Memoria del Proyecto Fin de Carrera                              %
-% Archivo raï¿½z para el capï¿½tulo de antecedentes                    %
+% Archivo raíz para el capítulo de antecedentes                    %
 %==================================================================%
 
 
 \chapterheader{Antecedentes}{Antecedentes}
 \label{chap:introduction}
 
+%==================================================================%
+% TODO(Pablo) : Completa este párrafo introductorio de manera      %
+%               adecuada                                           %
+%==================================================================%
+
 El presente cap\'itulo describe brevemente las tecnolog\'ias sobre las que se fundamenta el presente proyecto. M\'as concretamente, se explica el funcionamiento de ...\newline
 
-\begin{description}
+\chaptertoc
 
-\item[Daemon:]
+\section{Red local}
 
-En inform\'atica demonio o daemon es un tipo de proceso que se ejecuta en segundo plano, generalmente iniciado en tiempo de arranque, sin usar los sistema de entrada/salida est\'andar, escriben lo que deseen mostrar en ficheros especiales. En los sistemas Windows se conocen como servicios ya que son usados para, precisamente, proporcionar un servicio al usuario.
+%============================================================================%
+% NOTA(Pablo): Poner un párrafo de como se ha llegado hasta aquí             %
+%============================================================================%
+Una Red local o LAN es un conjunto de computadoras conectadas entre sí en un \'area relativamente peque\~na.
 
-En los sistemas linux, cada daemon suele tener un script en la carpeta /etc/init.d/ que permite iniciarlo, pararlo o consultar su estado.
+%============================================================================%
+% NOTA(Pablo): Poner ejemplo de área relativamente pequeña y explicar cómo   %
+%              y en que se diferencian las LANs de las WANs.                 %
+%============================================================================%
 
-El nombre del ejecutable suele acabar en "d".
+Cada uno de estos equipos interconectados en la red se conoce como nodo. Estos nodos son capaces de enviar, recibir y procesar comandos con el fin de transportar datos, así como compartir informaci\'on y recursos a través de la red.
+
+%============================================================================%
+% NOTA(Pablo): Esto queda suelto                                             %
+%============================================================================%
+El funcionamiento de la red está estandarizado siendo el protocolo TCP/IP el m\'as extendido.
+
+%============================================================================%
+% NOTA(Pablo): Esto suena a escribir por escribir, así que mejor lo quitamos %
+%============================================================================%
+% Entre las ventajas de las redes locales cabe destacar el ahorro en hardware,
+% si se desea que todos los equipos puedan imprimir no es necesario disponer de % una impresora para cada equipo, sirve con una conectada a la red, y del mismo % modo, el ahorro en la factura de internet, puesto que con una sola conexi\'on % se puede dar acceso a todos los equipos de la red.
+%
+% Otra ventaja, probablemente la m\'as importante desde el punto de vista
+% t\'ecnico es que al estar estandarizados como han de comunicarse los nodos en % la red permite la conexi\'on de equipos heterog\'eneos.
+%============================================================================%
+
+%==================================================================%
+% TODO(Pablo) : Esto así a pelo queda muy duro, quizás haya que    %
+%               explicar antes cómo es la arquitectura global de   %
+%               la aplicación.                                     %
+%==================================================================%
+
+\section{Daemon}
+
+% NOTA(Pablo): No se suele decir la palabra "informática", ya que está
+%              demasiado sobrecargada y no se sabe si son redes,
+%              programación, inteligencia artificial o simplemente saber
+%              manejar el Word
+% En inform\'atica
+
+Un \emph{demonio} (del inglés, \emph{daemon}) es un tipo de proceso que posee la siguientes características:
+
+\begin{enumerate}
+	\item Se ejecuta en segundo plano;
+	\item Generalmente se inicia en tiempo de arranque;
+	\item No usa los sistemas de entrada/salida est\'andar;
+	\item Mantienen la información que necesitan en ficheros especiales bien identificados.
+\end{enumerate}
+
+%=========================================================================%
+% NOTA(Pablo): Esta información es demasiado técnica y poco interesante.  %
+%              Mejor la borramos                                          %
+%=========================================================================%
+% En los sistemas Windows se conocen como servicios ya que son usados para,
+% precisamente, proporcionar un servicio al usuario.
+% En los sistemas linux, cada daemon suele tener un script en la carpeta
+% /etc/init.d/ que permite iniciarlo, pararlo o consultar su estado.
+%
+% El nombre del ejecutable suele acabar en "d".
+%
+%=========================================================================%
 
 Normalmente est\'an cargados en memoria esperando una se\~nal para ser ejecutados, por lo que su gasto de recursos no suele ser significativo.
-Adem\'as suelen ser concurrentes, es decir, cuando se va a atender una petici\'on, el daemon crea un hilo especifico para ejecutar las \'ordenes de esa petici\'on concreta, de modo que el hilo principal puede seguir a la espera de nuevas peticiones.\newline
 
+% NOTA(Pablo): Pero consumen memoria, ¿no?
 
-\item[Iptables:]
+%=========================================================================%
+% NOTA(Pablo): Esta información es demasiado técnica y poco interesante.  %
+%              Mejor la borramos                                          %
+%=========================================================================%
+%
+% Adem\'as suelen ser concurrentes, es decir, cuando se va a atender una
+% petici\'on, el daemon crea un hilo especifico para ejecutar las \'ordenes de
+% esa petici\'on concreta, de modo que el hilo principal puede seguir a la
+% espera de nuevas peticiones.\newline
+%
+%=========================================================================%
 
-Netfilter es un framework que permite filtrar de paquetes, traducci\'on de direcciones y puertos de red y varias funcionalidades mas para el manejo de paquetes. Es parte del n\'ucleo de linux desde la versi\'on 2.4 del mismo, sustituyendo a ipchains, bastante limitado en comparaci\'on con Netfilter.
+%=========================================================================%
+% NOTA(Pablo): Faltaría poner un ejemplo de demonio y dejar clara su      %
+%              utilidad, sin entrar en detalles técnicos                  %
+%              Habría que poner también la utilidad de los demonios para  %
+%              el proyecto en cuestión                                    %
+%=========================================================================%
 
-Iptables es una aplicaci\'on de l\'inea de comandos, que permite a un usuario con privilegios de administrador, configurar un conjunto de reglas para el filtrado de paquetes.
+%=========================================================================%
+% NOTA(Pablo): Titular la sección con el nombre del concepto que          %
+%              representan las ip tables                                  %
+%=========================================================================%
 
-Tambi\'en es parte del mismo proyecto que Netfilter, por lo que generalmente se suele hablar solamente de iptables, puesto que es el programa con el que interact\'ua directamente el usuario, para referirse al d\'uo netfilter/iptables.
+\section{XXXXX : Iptables}
+
+%=========================================================================%
+% NOTA(Pablo): Esto sin ningún tipo de intoducción, así a bocajarro,      %
+%              queda un poco duro                                         %
+%=========================================================================%
+
+Netfilter es un framework que permite filtrar de paquetes, traducci\'on de direcciones y puertos de red y varias funcionalidades m\'as para el manejo de paquetes. Es parte del n\'ucleo de linux desde la versi\'on 2.4 del mismo, sustituyendo a ipchains, bastante limitado en comparaci\'on con Netfilter.
+
+%=========================================================================%
+% NOTA(Pablo): Demasiado técnico y poco interesante, lo borramos          %
+%=========================================================================%
+% Iptables es una aplicaci\'on de l\'inea de comandos, que permite a un
+% usuario con privilegios de administrador, configurar un conjunto de
+% reglas para el filtrado de paquetes.
+%
+%  Tambi\'en es parte del mismo proyecto que Netfilter, por lo que
+% generalmente se suele hablar solamente de iptables, puesto que es el
+% programa con el que interact\'ua directamente el usuario, para referirse
+% al d\'uo netfilter/iptables.
+%
 
 Ejemplo de uso de iptables
 \begin{center}
 \# iptables -A INPUT -s 195.65.34.234 -j ACCEPT\\
 \end{center}
-El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo es aceptar todos los paquetes entrantes provenientes del host indicado, si lo deseamos, en vez de la IP podemos poner su FQDN sin problemas. Del mismo modo, si lo que queremos es no aceptar las peticiones se cambiar\'ia ACCEPT por DROP y si nos queremos referir a los paquetes salientes OUTPUT por INPUT.\newline
 
-
-\item[Red local:]
-
-Una Red local o LAN es un conjunto de equipos inform\'aticos conectados entre si en un \'area relativamente peque\~na. 
-
-Cada uno de estos equipos interconectados en la red se conoce como nodo. Estos nodos son capaces de enviar, recibir y procesar comandos con el fin de transportar datos para de este modo poder compartir informaci\'on y recursos en la red.
-
-El funcionamiento de la red est\'a estandarizado siendo el protocolo TCP/IP el m\'as extendido.
-
-Entre las ventajas de las redes locales cabe destacar el ahorro en hardware, si se desea que todos los equipos puedan imprimir no es necesario disponer de una impresora para cada equipo, sirve con una conectada a la red, y del mismo modo, el ahorro en la factura de internet, puesto que con una sola conexi\'on se puede dar acceso a todos los equipos de la red.
-
-Otra ventaja, probablemente la m\'as importante desde el punto de vista t\'ecnico es que al estar estandarizados como han de comunicarse los nodos en la red permite la conexi\'on de equipos heterog\'eneos.\newline
-\end{description}
-
-\chaptertoc
-
-\todo{Pon aqu\'i las secciones que te hagan falta para que un no experto en el tema pueda entender como est\'a hecho tu proyecto}
+El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo es aceptar todos los paquetes entrantes provenientes del host indicado\footnote{en vez de la IP podemos poner su FQDN (\emph{Fully Qualified Domain Name) sin lo desearamos}. Del mismo modo, si lo que queremos es no aceptar las peticiones se cambiar\'ia ACCEPT por DROP y si nos queremos referir a los paquetes salientes OUTPUT por INPUT.}
+%============================================================================%
+% NOTA(Pablo): Por defecto ¿qué pasa cuando un paquete                       %
+%              proviniente de un host llega y no se ha tocado iptables?      %
+%              ¿Se rechaza o se acepta?                                      %
+%============================================================================%
 

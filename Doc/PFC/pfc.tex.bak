@@ -19,7 +19,7 @@
 \usepackage{array}
 \usepackage{url}
 \usepackage{amsfonts}
-\usepackage{pitfont}
+\usepackage{pifont}
 
 %\usepackage[spanish,activeacute]{babel}
 \usepackage[spanish]{babel}
@@ -96,7 +96,7 @@ Faculty of Sciences}
 \input{planificacion/planificacion.tex}
 
 % Cap\'itulo 2: Resumen del Estado del Arte
-%\input{background/background.tex}
+\input{background/background.tex}
 
 % Cap\'itulo 6: Definici\'on Arquitect\'onica y Dise\~no Software
 
