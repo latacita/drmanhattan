@@ -1,7 +1,8 @@
 %==================================================================%
 % Author : Pando Mu\~noz, Manuel                                     %
 %          S\'anchez Barreiro, Pablo                                 %
-% Version: 1.0, 02/03/2011                                         %                   %                                                                  %
+% Version: 1.0, 02/03/2011                                         %                   %
+%
 % Memoria del Proyecto Fin de Carrera                              %
 %==================================================================%
 
@@ -10,21 +11,30 @@
 %=====================================================================%
 %                       My imported packages                          %
 %=====================================================================%
-\usepackage[latin1]{inputenc}
+
+%%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+
 \usepackage{longtable}
 \usepackage{array}
 \usepackage{url}
 \usepackage{amsfonts}
-\usepackage[spanish,activeacute]{babel}
+\usepackage{pitfont}
+
+%\usepackage[spanish,activeacute]{babel}
+\usepackage[spanish]{babel}
 
 
-
-% Esto se aÃ±ade porque a alg\'un gracioso le apetec\'ia que la fuente
+% Esto se añade porque a alg\'un gracioso le apetec\'ia que la fuente
 % de la portada fuese Arial
 \usepackage[T1]{fontenc}
 %\usepackage[scaled]{uarial}
 
+\begin{small}
+\begin{normalsize}
 
+\end{normalsize}
+\end{small}
 % File with main configuration
 \input{config/pfc_options.tex}
 % File with some names
@@ -35,9 +45,11 @@
 %=====================================================================%
 \newcommand{\myname}{Manuel Pando Mu\~noz}  % name of author
 \newcommand{\myboss}{Pablo S\'anchez Barreiro} % name of supervisor
-\newcommand{\thesistitle}{Desarrollo de un Sistema de Control de Accesos a Red para los Laboratorios de la Facultad de Ciencias}
+\newcommand{\thesistitle}{Desarrollo de un Sistema de Control de Accesos a Red para los Laboratorios de la Facultad de
+Ciencias}
 
-\newcommand{\englishtitle}{Development of a Network Access Control Application for the Computer Classrooms of the Faculty of Sciences}
+\newcommand{\englishtitle}{Development of a Network Access Control Application for the Computer Classrooms of the
+Faculty of Sciences}
 												  % work title
 \newcommand{\worktype}{Proyecto Fin de Carrera}   % work type
 \newcommand{\logo}{images/uc.eps}            % logo file (e.g. for the cover)
@@ -71,9 +83,9 @@
 %\input{introduction/preface-lff.tex}   % preface
 
 % Toc
-%\input{config/toc.tex}
+\input{config/toc.tex}
 
-%\input{Config/headers.tex}
+\input{Config/headers.tex}
 
 \input{config/chapters.tex}
 
@@ -81,16 +93,10 @@
 %\input{introduction/introduction.tex} % Chapter 1
 
 % Cap\'itulo 3: Descripci\'on General del Proceso
-\input{pro}
+\input{planificacion/planificacion.tex}
 
 % Cap\'itulo 2: Resumen del Estado del Arte
-% \input{background/background.tex}
-
-
-
-% Cap\'itulo 4: Definici\'on y Planificaci\'on del Proyecto
-
-% Cap\'itulo 5: Ingenier\'ia de Requisitos
+%\input{background/background.tex}
 
 % Cap\'itulo 6: Definici\'on Arquitect\'onica y Dise\~no Software
 
