@@ -5,5 +5,5 @@
 \contentsline {section}{\numberline {1.3}Requisitos de Alto Nivel del Sistema}{5}
 \contentsline {chapter}{\numberline {2}Antecedentes}{7}
 \contentsline {section}{\numberline {2.1}Red local}{7}
-\contentsline {section}{\numberline {2.2}Daemon}{8}
-\contentsline {section}{\numberline {2.3}Netfilter : Iptables}{8}
+\contentsline {section}{\numberline {2.2}Demonio}{8}
+\contentsline {section}{\numberline {2.3}Cortafuegos : Netfilter}{8}
