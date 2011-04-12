@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;cliente&apos; to &apos;alumno&apos;&#x0D;&#x0A;- Original project: &apos;PFC&apos;&#x0D;&#x0A;- Original element: &apos;PFC/src/cliente&apos;&#x0D;&#x0A;- Renamed element: &apos;PFC/src/alumno&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;cliente&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;cliente" name="alumno" qualified="false" references="true" stamp="1302606660539" textual="false" version="1.0"/>
+</session>

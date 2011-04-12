@@ -1,7 +1,8 @@
 ﻿%==================================================================%
 % Author : Pando Muñoz, Manuel                                     %
 %          Sánchez Barreiro, Pablo                                 %
-% Version: 1.0, 02/03/2011                                         %                   %                                                                  %
+% Version: 1.0, 02/03/2011                                         %
+%                                                                  %
 % Memoria del Proyecto Fin de Carrera                              %
 % Archivo raíz para el capítulo de antecedentes                    %
 %==================================================================%
@@ -15,7 +16,10 @@
 %               adecuada                                           %
 %==================================================================%
 
-El presente cap\'itulo describe brevemente las tecnolog\'ias sobre las que se fundamenta el presente proyecto. M\'as concretamente, se explica el funcionamiento de ...\newline
+El siguiente cap\'itulo describe brevemente las tecnolog\'ias sobre las que se fundamenta el presente proyecto. M\'as concretamente, se explica el funcionamiento de las redes locales, del framework Netfilter para el filtrado de paquetes, y de los demonios en los sistemas Linux, tres aspectos fuertemente relacionados con el proyecto. \newline
+
+La aplicación a desarrollar está pensado que se utilice en los laboratorios de la Facultad de Ciencias de la Universidad de Cantabria, en estos laboratorios los computadores están conectado mediante una \emph{red local} y utilizan sistemas Linux. Para gestionar los permisos de acceso a la red se va a utilizar un \emph{demonio} que interactúe con \emph{Netfilter} por medio de iptables.
+
 
 \chaptertoc
 
@@ -24,7 +28,7 @@ El presente cap\'itulo describe brevemente las tecnolog\'ias sobre las que se fu
 %============================================================================%
 % NOTA(Pablo): Poner un párrafo de como se ha llegado hasta aquí             %
 %============================================================================%
-Una Red local o LAN es un conjunto de computadoras conectadas entre sí en un \'area relativamente peque\~na.
+Una Red local o LAN es un conjunto de computadoras conectadas entre sí en un \'area relativamente peque\~na, como los laboratorios de la Facultad.
 
 %============================================================================%
 % NOTA(Pablo): Poner ejemplo de área relativamente pequeña y explicar cómo   %
@@ -36,7 +40,7 @@ Cada uno de estos equipos interconectados en la red se conoce como nodo. Estos n
 %============================================================================%
 % NOTA(Pablo): Esto queda suelto                                             %
 %============================================================================%
-El funcionamiento de la red está estandarizado siendo el protocolo TCP/IP el m\'as extendido.
+El funcionamiento de la red está estandarizado siendo el protocolo TCP/IP el más extendido.
 
 %============================================================================%
 % NOTA(Pablo): Esto suena a escribir por escribir, así que mejor lo quitamos %
@@ -107,12 +111,15 @@ Normalmente est\'an cargados en memoria esperando una se\~nal para ser ejecutado
 %              el proyecto en cuestión                                    %
 %=========================================================================%
 
+Un ejemplo claro de demonio es \emph{httpd}, que se ejecuta en los servidores web. El nombre viene de \textbf{HTTP D}aemon y se utiliza para aceptar peticiones, una vez que las acepta, otros procesos se encargan de atenderlas.
+
+
 %=========================================================================%
 % NOTA(Pablo): Titular la sección con el nombre del concepto que          %
 %              representan las ip tables                                  %
 %=========================================================================%
 
-\section{XXXXX : Iptables}
+\section{Cortafuegos : Netfilter}
 
 %=========================================================================%
 % NOTA(Pablo): Esto sin ningún tipo de intoducción, así a bocajarro,      %

@@ -28,7 +28,7 @@ La aplicación a desarrollar está pensado que se utilice en los laboratorios de
 %============================================================================%
 % NOTA(Pablo): Poner un párrafo de como se ha llegado hasta aquí             %
 %============================================================================%
-Una Red local o LAN es un conjunto de computadoras conectadas entre sí en un \'area relativamente peque\~na, como los laboratorios de la Facultad.
+Una \emph{Red local} o LAN, siglas en inglés de Local Area Network, es un conjunto de computadoras conectadas entre sí en un \'area relativamente peque\~na, como los laboratorios de la Facultad.
 
 %============================================================================%
 % NOTA(Pablo): Poner ejemplo de área relativamente pequeña y explicar cómo   %
@@ -58,7 +58,7 @@ El funcionamiento de la red está estandarizado siendo el protocolo TCP/IP el m�
 %               la aplicación.                                     %
 %==================================================================%
 
-\section{Daemon}
+\section{Demonio}
 
 % NOTA(Pablo): No se suele decir la palabra "informática", ya que está
 %              demasiado sobrecargada y no se sabe si son redes,
@@ -88,7 +88,7 @@ Un \emph{demonio} (del inglés, \emph{daemon}) es un tipo de proceso que posee l
 %
 %=========================================================================%
 
-Normalmente est\'an cargados en memoria esperando una se\~nal para ser ejecutados, por lo que su gasto de recursos no suele ser significativo.
+Normalmente est\'an cargados en memoria esperando una señal para ser ejecutados, por lo que su gasto de recursos no suele ser significativo.
 
 % NOTA(Pablo): Pero consumen memoria, ¿no?
 
@@ -111,12 +111,17 @@ Normalmente est\'an cargados en memoria esperando una se\~nal para ser ejecutado
 %              el proyecto en cuestión                                    %
 %=========================================================================%
 
+Un ejemplo claro de demonio es \emph{httpd}, que se ejecuta en los servidores web. El nombre viene de \emph{HTTP D}aemon y es utilizado para aceptar peticiones, una vez que las acepta, crea otros procesos se encargan de atenderlas.
+\newline
+
+En el proyecto se implementa un demonio para interactuar con Netfilter, descrito en la siguiente sección.
+
 %=========================================================================%
 % NOTA(Pablo): Titular la sección con el nombre del concepto que          %
 %              representan las ip tables                                  %
 %=========================================================================%
 
-\section{Netfilter : Iptables}
+\section{Cortafuegos : Netfilter}
 
 %=========================================================================%
 % NOTA(Pablo): Esto sin ningún tipo de intoducción, así a bocajarro,      %
@@ -124,7 +129,7 @@ Normalmente est\'an cargados en memoria esperando una se\~nal para ser ejecutado
 %=========================================================================%
 
 Netfilter es un framework que permite filtrar de paquetes, traducci\'on de direcciones y puertos de red y varias funcionalidades m\'as para el manejo de paquetes. Es parte del n\'ucleo de linux desde la versi\'on 2.4 del mismo, sustituyendo a ipchains, bastante limitado en comparaci\'on con Netfilter.
-
+\newline 
 %=========================================================================%
 % NOTA(Pablo): Demasiado técnico y poco interesante, lo borramos          %
 %=========================================================================%
@@ -138,15 +143,20 @@ Netfilter es un framework que permite filtrar de paquetes, traducci\'on de direc
 % al d\'uo netfilter/iptables.
 %
 
-Ejemplo de uso de iptables
+
+Para interactuar con Netfilter una de las aplicaciones más usadas es \emph{iptables}, siendo necesarios permisos de administrador para ello.
+
+Ejemplo de uso de iptables:
+
 \begin{center}
 \# iptables -A INPUT -s 195.65.34.234 -j ACCEPT\\
 \end{center}
 
-El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo es aceptar todos los paquetes entrantes provenientes del host indicado\footnote{en vez de la IP podemos poner su FQDN (\emph{Fully Qualified Domain Name) sin lo desearamos}. Del mismo modo, si lo que queremos es no aceptar las peticiones se cambiar\'ia ACCEPT por DROP y si nos queremos referir a los paquetes salientes OUTPUT por INPUT.}
+
+El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo es aceptar todos los paquetes entrantes provenientes del host indicado\footnote{en vez de la IP podemos poner su FQDN (\emph{Fully Qualified Domain Name)} si lo deseáramos}. Del mismo modo, si lo que queremos es no aceptar las peticiones se cambiar\'ia ACCEPT por DROP y si nos queremos referir a los paquetes salientes OUTPUT por INPUT.
 %============================================================================%
 % NOTA(Pablo): Por defecto ¿qué pasa cuando un paquete                       %
 %              proviniente de un host llega y no se ha tocado iptables?      %
 %              ¿Se rechaza o se acepta?                                      %
 %============================================================================%
-
+Si tenemos iptables con la configuración por defecto, se aceptan todos los paquetes entrantes y salientes, no hay ninguna restricción.
