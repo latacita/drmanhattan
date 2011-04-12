@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
 
+
 /**
  * 
  * Clase que crea la GUI del alumno.
