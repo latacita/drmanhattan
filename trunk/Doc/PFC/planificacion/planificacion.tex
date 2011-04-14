@@ -97,6 +97,9 @@ Por tanto, la secuencia de realización de una prueba evaluable sería tal como 
 Además, se guardarán registros de los eventos ocurridos en cada prueba, con el objetivo de tener información que permita auditar el transcurso de la misma. Dicho registro debe mantener constancia de eventos tales como hora de inicio de la prueba, hora de entrega de cada ejercicio, número de ficheros que se entregan, etc.
 \newline
 
+Para comodidad del alumno, en las pruebas con hora de finalización predeterminada se mostrará en la interfaz de la aplicación los minutos restantes hasta el final.
+\newline
+
 %==========================================================================%
 % NOTA(Pablo): Observa el párrafo de enlace
 %==========================================================================%
@@ -140,7 +143,7 @@ Cada una de estas fases, como es lógico, puede tener más de una iteración, en
 
 Al finalizar el proceso obtenemos tanto el código de la aplicación, como modelos y documentación de la misma que se van creando a lo largo de las iteraciones.
 \newline
-%añadir imágenes del ciclo de vida
+\todo{añadir imágenes del ciclo de vida}
 
 
 %Porque se ha escogido
@@ -233,17 +236,43 @@ En concreto, se han identificado los siguientes requisitos de alto nivel para nu
 
     R08 & El alumno desde su computador debe ser capaz de enviar sus resultados al profesor.
     \\ \hline
-
-    R09 & La aplicación del alumno ha de ser capaz de denegar el acceso a la red al empezar la prueba.
+    
+    R09 & El alumno desde su computador debe ser capaz de indicar que da por finalizada la prueba.
+    \\ \hline
+    
+    R10 & El alumno desde su computador debe tener la posibilidad de ver el tiempo restante el pruebas de duración prefijada.
     \\ \hline
 
-    R10 & La aplicación del alumno ha de ser capaz de permitir el acceso a la red al finalizar la prueba.
+    R11 & La aplicación del alumno ha de ser capaz de denegar el acceso a la red al empezar la prueba.
     \\ \hline
 
-    R11 & La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
+    R12 & La aplicación del alumno ha de ser capaz de permitir el acceso a la red al finalizar la prueba.
     \\ \hline
 
-    R12 & La aplicación del profesor ha de ser capaz de guardar registros de actividad.
+    R13 & La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
+    \\ \hline
+
+    R14 & La aplicación del profesor ha de ser capaz de guardar registros de actividad.
     \\ \hline
 
 \end{tabular} 
+
+
+%Iteraciones previstas
+
+%Iteración 1:
+%R07 - En la primera iteración la aplicación del alumno se podrá conectar al watchman para esperar el inicio de la prueba, envió de ficheros etc...
+
+%Iteración 2:
+%R03, R05, R06, R10, R11 - En la segunda iteración el profesor puede establecer una hora límite, indicar el inicio de la prueba y enviar el fichero de enunciado. la aplicación del alumno es capaz de denegar el acceso a la red cuando se inicia la prueba y en caso de que la duración este prefijada, consultar el tiempo restante
+
+%Iteración 3:
+%R04, R08, R09, R12 - En la tercera iteración se permite al profesor finalizar la prueba de modo general. Del mismo modo, cada alumno puede finalizar la prueba por su cuenta y enviar su archivo de resultados al computador del profesor. La aplicación del alumno, cuando este finaliza la prueba, habilita el acceso a la red.
+
+
+%Los requisitos R01 y R02 están implementados en arquitectura del sistema, no son funcionalidades.
+
+%R14: Cuando en la aplicación ocurre algo de lo que se deseen guardar logs se implementará con independencia de la iteración en la que nos encontremos.
+
+%R13: Se implementa tanto en el caso de que el profesor envíe el enunciado, como cuando reciba los resultados.
+

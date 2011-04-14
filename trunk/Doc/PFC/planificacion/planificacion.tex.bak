@@ -227,20 +227,30 @@ En concreto, se han identificado los siguientes requisitos de alto nivel para nu
 
     R06 & El profesor debe ser capaz desde el \emph{Watchman} de enviar el fichero de enunciado al resto de computadores.
     \\ \hline
-    
-    R07 & El alumno desde su computador debe ser capaz de enviar sus resultados al profesor.
+
+    R07 & El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}.
     \\ \hline
-    
-    R08 & La aplicación del alumno ha de ser capaz de denegar el acceso a la red al empezar la prueba.
+
+    R08 & El alumno desde su computador debe ser capaz de enviar sus resultados al profesor.
     \\ \hline
-    
-    R09 & La aplicación del alumno ha de ser capaz de permitir el acceso a la red al finalizar la prueba.
+
+    R09 & La aplicación del alumno ha de ser capaz de denegar el acceso a la red al empezar la prueba.
     \\ \hline
-    
-    R10 & La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
+
+    R10 & La aplicación del alumno ha de ser capaz de permitir el acceso a la red al finalizar la prueba.
     \\ \hline
-    
-    R11 & La aplicación del profesor ha de ser capaz de guardar registros de actividad.
+
+    R11 & La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
     \\ \hline
-    
-\end{tabular}
+
+    R12 & La aplicación del profesor ha de ser capaz de guardar registros de actividad.
+    \\ \hline
+
+\end{tabular} 
+
+
+%Iteraciones previstas
+
+
+
+
