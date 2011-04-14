@@ -54,7 +54,7 @@ No obstante, el tener los diversos computadores interconectados mediante una red
 %              mejor darle nombre
 %==========================================================================%
 
-Por tanto, el acceso de los computadores a la red local (e internet), se deberá controlar desde un computador distinguido, al que llamaremos \emph{Wathcman},
+Por tanto, el acceso de los computadores a la red local (e internet), se deberá controlar desde un computador distinguido, al que llamaremos \emph{Watchman},
 que será normalmente el computador asignado al docente. Dicho computador será el encargado de conceder y denegar el acceso a la red al resto de computadores conectados a la red local.
 \newline
 
