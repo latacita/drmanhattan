@@ -1,0 +1,84 @@
+package profesor;
+
+import java.io.DataOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.LinkedList;
+import java.util.List;
+
+import comun.Global;
+
+/**
+ * 
+ * Clase encargada de aceptar nuevos alumnos.
+ * 
+ * @author Manuel Pando Muñoz
+ *
+ */
+public class HiloAceptadorAlumnos extends Thread{
+
+	//para aceptar conexiones
+	private ServerSocket sSocket;
+
+	//con valor true se dejan de aceptar alumnos nuevos
+	private boolean desconectar;
+
+
+	List<Socket> listaAlumnos;
+
+	/**
+	 * Constructor
+	 */
+	public HiloAceptadorAlumnos(){
+		try{
+			//Inicializa las variables
+			desconectar = false;
+			sSocket = new ServerSocket(Global.PUERTOPROFESOR);
+
+			listaAlumnos = new LinkedList<Socket>();
+
+			this.start();
+		}catch(Exception e){
+			//TODO tratamiento de errores
+			e.printStackTrace();
+		}
+	}
+
+
+	public void run(){
+		try{			
+			while(!desconectar){
+				System.out.println("Desde el thread del servidor, espero cliente");
+				Socket socket;
+
+				//esperar a nueva conexion
+				socket = sSocket.accept();
+
+				listaAlumnos.add(socket);
+				/*
+				 * TODO
+				 * Utilizar el socket creado, crear un hilo para la interaccion
+				 * 
+				 * Comprobar si desconectamos
+				 *  
+				 */				
+			}
+		}catch(Exception e){
+			//TODO tratamiento de errores
+			e.printStackTrace();
+		}
+	}
+
+	public void mensaje(){
+		try{
+			for(int i=0; i<listaAlumnos.size(); i++){
+				DataOutputStream dos = new DataOutputStream(listaAlumnos.get(i).getOutputStream());  
+			}
+
+			System.out.println("Desde el thread del servidor, mando un mensaje en metodo externo");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+}

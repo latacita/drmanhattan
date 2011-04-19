@@ -1,0 +1,17 @@
+package alumno;
+
+import java.net.Socket;
+
+/**
+ * 
+ * Clase que representa la actividad a realizar por la aplicación del alumno.
+ * 
+ * @author Manuel Pando Muñoz
+ *
+ */
+public class TareaAlumno extends Thread{
+
+	Socket socketAlumno;
+	
+	
+}
