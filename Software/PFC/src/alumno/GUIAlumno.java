@@ -25,7 +25,7 @@ public class GUIAlumno{
 	private JTextField tfNombre;
 	private JTextField tfApellido;
 	private JTextField tfDirEnunciado;
-	private JTextField textField;
+	private JTextField tfIPProfesor;
 	
 	private JLabel lblIpProfesor;
 	private JLabel lblApellido;
@@ -73,7 +73,7 @@ public class GUIAlumno{
 		frmDrmanhattan.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDrmanhattan.getContentPane().setLayout(null);
 		
-		btnConectar = new JButton("Conectar");
+		btnConectar = new JButton("Conectar");		
 		btnConectar.setBounds(10, 212, 89, 23);
 		frmDrmanhattan.getContentPane().add(btnConectar);
 		
@@ -115,12 +115,12 @@ public class GUIAlumno{
 		lblIpProfesor.setBounds(10, 164, 78, 23);
 		frmDrmanhattan.getContentPane().add(lblIpProfesor);
 		
-		textField = new JTextField();
-		textField.setHorizontalAlignment(SwingConstants.LEFT);
-		textField.setText("127.0.0.1");
-		textField.setBounds(144, 164, 89, 22);
-		frmDrmanhattan.getContentPane().add(textField);
-		textField.setColumns(10);
+		tfIPProfesor = new JTextField();
+		tfIPProfesor.setHorizontalAlignment(SwingConstants.LEFT);
+		tfIPProfesor.setText("127.0.0.1");
+		tfIPProfesor.setBounds(144, 164, 89, 22);
+		frmDrmanhattan.getContentPane().add(tfIPProfesor);
+		tfIPProfesor.setColumns(10);
 		
 		lblTiempoRestante = new JLabel("Tiempo restante:");
 		lblTiempoRestante.setBounds(10, 11, 124, 23);
@@ -149,7 +149,18 @@ public class GUIAlumno{
 			}
 		});
 		
+		/**
+		 * Manejador del evento de pulsar el boton conectar.
+		 */
+		btnConectar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {				
+				String ipProfesor = tfIPProfesor.getText();				
+				new TareaAlumno(ipProfesor);				
+			}
+		});
+		
 	}
+	
 	
 	
 	/**

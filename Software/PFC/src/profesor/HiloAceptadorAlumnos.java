@@ -1,7 +1,11 @@
 package profesor;
 
+import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.LinkedList;
+import java.util.List;
+
 import comun.Global;
 
 /**
@@ -19,6 +23,7 @@ public class HiloAceptadorAlumnos extends Thread{
 	//con valor true se dejan de aceptar alumnos nuevos
 	private boolean desconectar;
 
+
 	/**
 	 * Constructor
 	 */
@@ -27,6 +32,7 @@ public class HiloAceptadorAlumnos extends Thread{
 			//Inicializa las variables
 			desconectar = false;
 			sSocket = new ServerSocket(Global.PUERTOPROFESOR);
+
 			this.start();
 		}catch(Exception e){
 			//TODO tratamiento de errores
@@ -38,6 +44,7 @@ public class HiloAceptadorAlumnos extends Thread{
 	public void run(){
 		try{			
 			while(!desconectar){
+				System.out.println("Desde el thread del servidor, espero cliente");
 				Socket socket;
 
 				//esperar a nueva conexion
@@ -56,5 +63,5 @@ public class HiloAceptadorAlumnos extends Thread{
 			e.printStackTrace();
 		}
 	}
-	
+
 }
