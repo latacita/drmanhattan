@@ -50,7 +50,7 @@ public class GUIProfesor {
 	private JScrollPane scrollPane;
 	private JTextArea taLog;
 
-	private Component chckbxEnviarEnunciado;
+	private JButton btnEnviarFichero;
 	
 
 
@@ -120,10 +120,6 @@ public class GUIProfesor {
 		frmDrmanhattan.getContentPane().add(tfHoraLimite);
 		tfHoraLimite.setColumns(10);
 		
-		chckbxEnviarEnunciado = new JCheckBox("Enviar enunciado");
-		chckbxEnviarEnunciado.setBounds(194, 150, 150, 23);
-		frmDrmanhattan.getContentPane().add(chckbxEnviarEnunciado);
-		
 		panelLog = new JPanel();
 		panelLog.setBorder(new TitledBorder(null, "Eventos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLog.setBounds(10, 239, 584, 292);
@@ -139,12 +135,16 @@ public class GUIProfesor {
 		taLog.setText("Aqu\u00ED van cosas como alumno tal se conecta, acaba, se reciben resultados...");
 		scrollPane.setViewportView(taLog);
 		
+		btnEnviarFichero = new JButton("Enviar fichero");		
+		btnEnviarFichero.setBounds(335, 150, 123, 23);
+		frmDrmanhattan.getContentPane().add(btnEnviarFichero);
+		
 		aceptaAlumnos = new HiloAceptadorAlumnos();
 		
 		//Manejadores de eventos
 		
 		/**
-		 * Manejador de pulsar el boton para saleccionar la carpeta destino.
+		 * Manejador el evento de pulsar boton para saleccionar la carpeta destino.
 		 * Crea un dialogo que permite navegar por el sistema de ficheros y escoger un directorio destino.
 		 */
 		btnExplorarDirResultados.addActionListener(new ActionListener() {
@@ -156,6 +156,28 @@ public class GUIProfesor {
 					File dirO = chooser.getSelectedFile();
 					tfDirectorioResultados.setText(dirO.getAbsolutePath());
 				}
+			}
+		});
+		
+		
+		/**
+		 * Manejador del evento de pulsar el boton de enviar fichero
+		 */
+		btnEnviarFichero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				//Abrir dialogo para escoger el fichero a enviar
+				
+				JFileChooser chooser = new JFileChooser();
+				chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				int returnVal = chooser.showOpenDialog(chooser);
+				
+				if (returnVal == JFileChooser.APPROVE_OPTION){
+					File archivoEnviar = chooser.getSelectedFile();
+				}
+				
+				//TODO enviarle
+
 			}
 		});
 
