@@ -176,7 +176,10 @@ public class GUIProfesor {
 					File archivoEnviar = chooser.getSelectedFile();
 				}
 				
+				aceptaAlumnos.envioFichero();
 				//TODO enviarle
+				
+				//TODO deshabilitar una vez enviado?
 
 			}
 		});

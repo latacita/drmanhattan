@@ -18,7 +18,4 @@ public class ComienzoExamen implements Serializable{
 	//En caso de haber limite prefijado, cuantos minutos durara
 	public int minutosExamen;
 	
-	//True indica a los alumnos que han de recibir un fichero de enunciado de examen
-	public boolean hayEnunciado;	
-	
 }

@@ -46,6 +46,8 @@ public class TareaAlumno extends Thread{
 			//recibir opcion del profesor
 			int recibido = dis.readInt();
 			
+			System.out.println("Alumno recibe: " + recibido);
+			
 			//mientras no se acabe el examen
 			while(recibido != comun.Global.FINEXAMEN){
 				
@@ -60,6 +62,8 @@ public class TareaAlumno extends Thread{
 				default:
 					break;
 				}
+				recibido = dis.readInt();
+				System.out.println("Alumno recibe: " + recibido);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
