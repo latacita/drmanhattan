@@ -76,6 +76,8 @@ public class HiloAceptadorAlumnos extends Thread{
 
 	public void envioFichero(){
 		try{
+			
+			System.out.print("p: 0");
 			/*Iterator<Socket> iterador = listaSocket.listIterator();
 
 			//recorrer cada soket de alumnos
@@ -108,7 +110,12 @@ public class HiloAceptadorAlumnos extends Thread{
 
 				//si la conexion sigue abierta
 				if(!s.isClosed()){
+					System.out.println("p: 1");
 					//enviar todo el fichero
+					
+					//indicarle al alumno que vamos a enviar el fichero
+					DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+					dos.writeInt(comun.Global.ENVIOFICHERO);
 
 					//obtener el canal de salida
 					ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
@@ -116,6 +123,7 @@ public class HiloAceptadorAlumnos extends Thread{
 					//variable auxiliar para marcar cuando se envía el último mensaje
 					boolean enviadoUltimo = false;
 
+					System.out.println("p: 2");
 					//abrir el fichero
 					FileInputStream fis = new FileInputStream(fichero);
 
@@ -129,6 +137,7 @@ public class HiloAceptadorAlumnos extends Thread{
 					//mientras se lean datos del fichero
 					while (leidos > -1){						
 
+						System.out.println("p: 3");
 						//el número de bytes leidos
 						bloque.datosUtiles = leidos;
 
@@ -140,7 +149,7 @@ public class HiloAceptadorAlumnos extends Thread{
 						}else{
 							bloque.ultimoBloque = false;
 						}
-
+						System.out.println("p: 4");
 						//enviar por el socket  
 						oos.writeObject(bloque);
 
@@ -148,13 +157,14 @@ public class HiloAceptadorAlumnos extends Thread{
 						if (bloque.ultimoBloque){
 							break; //TODO intentar quitar este break
 						}
-
+						System.out.println("p: 5");
 						//se crea un nuevo bloque
 						bloque = new BloquesFichero();
 						bloque.nombreFichero = fichero;
 
 						//y se leen sus bytes
 						leidos = fis.read(bloque.bloque);
+						System.out.println("p: 6");
 					}
 
 					//si el fichero tenia un tamaño multiplo del numero de bytes que se leen cada vez, el ultimo mensaje 
@@ -164,8 +174,8 @@ public class HiloAceptadorAlumnos extends Thread{
 						bloque.datosUtiles = 0;
 						oos.writeObject(bloque);
 					}
-
-					//en este punto el ficheor esta enviado al alumno
+					System.out.println("p: 7");
+					//en este punto el fichero esta enviado al alumno
 
 				}//if(!s.isClosed())
 
