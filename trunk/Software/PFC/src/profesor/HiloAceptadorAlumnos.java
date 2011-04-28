@@ -1,6 +1,7 @@
 package profesor;
 
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -74,10 +75,10 @@ public class HiloAceptadorAlumnos extends Thread{
 		}
 	}
 
-	public void envioFichero(){
+	public void envioFichero(File ficheroEnviar){
 		try{
 			
-			System.out.print("p: 0");
+			System.out.println("p: 0");
 			/*Iterator<Socket> iterador = listaSocket.listIterator();
 
 			//recorrer cada soket de alumnos
@@ -105,7 +106,11 @@ public class HiloAceptadorAlumnos extends Thread{
 
 			//recorrer cada soket de alumnos
 			while(iterador.hasNext()){
-
+				
+				System.out.println("##############################################################################");
+				System.out.println("############################## SIGUIENTE SOCKET ##############################");
+				System.out.println("##############################################################################");
+				
 				Socket s = iterador.next();				
 
 				//si la conexion sigue abierta
@@ -128,7 +133,7 @@ public class HiloAceptadorAlumnos extends Thread{
 					FileInputStream fis = new FileInputStream(fichero);
 
 					// Se instancia y rellena un mensaje de envio de fichero
-					BloquesFichero bloque = new BloquesFichero();
+					BloquesFichero bloque = new BloquesFichero();					
 					bloque.nombreFichero = fichero;
 
 					//leer los bytes a enviar
