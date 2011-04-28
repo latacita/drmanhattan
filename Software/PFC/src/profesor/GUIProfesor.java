@@ -174,10 +174,8 @@ public class GUIProfesor {
 				
 				if (returnVal == JFileChooser.APPROVE_OPTION){
 					File archivoEnviar = chooser.getSelectedFile();
+					aceptaAlumnos.envioFichero(archivoEnviar);
 				}
-				
-				aceptaAlumnos.envioFichero();
-				//TODO enviarle
 				
 				//TODO deshabilitar una vez enviado?
 

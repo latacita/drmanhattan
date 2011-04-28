@@ -2,6 +2,7 @@ package alumno;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -20,15 +21,18 @@ import comun.BloquesFichero;
 public class TareaAlumno extends Thread{
 
 	Socket socketAlumno;
+	String dirEnunciado;
 
 	/**
 	 * Constructor
 	 * @param ip  direcion del computador del profesor
+	 * @param directorioEnunciado directorio donde guardar los ficheros enviados por el profesor
 	 */
-	public TareaAlumno(String ip){		
+	public TareaAlumno(String ip, String directorioEnunciado){		
 		try {
 			//creacion del socket e inicio del hilo de ejecucion
 			socketAlumno = new Socket(ip, comun.Global.PUERTOPROFESOR);
+			dirEnunciado = directorioEnunciado;
 			this.start();			
 
 		} catch (UnknownHostException e) {
@@ -64,9 +68,39 @@ public class TareaAlumno extends Thread{
 					//TODO recibir fichero
 
 					ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());
-
-					FileOutputStream fos = new FileOutputStream("C:\\copia.pdf"); //provisional
-
+										
+					File archivo = new File ("C:\\cococo.txt");
+					archivo.createNewFile();
+					
+					if(archivo.exists()){
+						archivo.delete();
+						System.out.println("borrado");
+					}else{
+						System.out.println("no existia");
+					}
+					
+										
+					//crear el flujo de salida para guardar el fichero
+					//como inicialmente no se conoce ni el nombre ni la extension
+					//se deja general, al finalizar el envio, se cambia
+					
+					File enunciado;
+					FileOutputStream fos;
+					
+					if(dirEnunciado.charAt(dirEnunciado.length()-1) == File.separatorChar){
+						enunciado = new File(dirEnunciado+"temporal");
+					}else{
+						enunciado = new File(dirEnunciado+File.separator+"temporal");
+						
+					}
+					System.out.println("Fichero enunciado: "+enunciado.getAbsolutePath());
+					//si el fichero no existia fisicamente, crearlo para poder volcar los datos
+					if(!enunciado.exists()){
+						enunciado.createNewFile();
+					}
+					fos = new FileOutputStream(enunciado);
+					
+					
 					BloquesFichero bloque;
 
 					System.out.println("a: 1");
@@ -78,8 +112,8 @@ public class TareaAlumno extends Thread{
 						//que ha de ser lo que se esta esperando
 						if (mensajeAux instanceof BloquesFichero){
 							bloque = (BloquesFichero) mensajeAux;
-							// Se escribe en pantalla y en el fichero
-							System.out.print(new String(bloque.bloque, 0, bloque.datosUtiles));
+							// Se escribe en el fichero
+							//System.out.print(new String(bloque.bloque, 0, bloque.datosUtiles));
 							fos.write(bloque.bloque, 0, bloque.datosUtiles);
 						}else{
 							//TODO tratar error, el mensaje no es del tipo esperado
@@ -88,7 +122,9 @@ public class TareaAlumno extends Thread{
 						}
 						System.out.println("a: 2");
 					} while (!bloque.ultimoBloque);
-
+					
+					//TODO rename al fichero
+					
 					fos.close();
 					break;					
 
@@ -106,7 +142,6 @@ public class TareaAlumno extends Thread{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 
 	}	
 

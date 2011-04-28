@@ -154,8 +154,9 @@ public class GUIAlumno{
 		 */
 		btnConectar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {				
-				String ipProfesor = tfIPProfesor.getText();				
-				new TareaAlumno(ipProfesor);				
+				String ipProfesor = tfIPProfesor.getText();
+				String dirEnum = tfDirEnunciado.getText();
+				new TareaAlumno(ipProfesor, dirEnum);
 			}
 		});
 		
