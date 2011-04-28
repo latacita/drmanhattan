@@ -79,29 +79,12 @@ public class HiloAceptadorAlumnos extends Thread{
 		try{
 			
 			System.out.println("p: 0");
-			/*Iterator<Socket> iterador = listaSocket.listIterator();
-
-			//recorrer cada soket de alumnos
-			while(iterador.hasNext()){
-
-				Socket s = iterador.next();
-
-				//si la conexion sigue abierta
-				if(!s.isClosed()){
-
-					DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-
-				}			
-			}*/
-
+			
 			/*
 			 * Se envia un fichero a todos los alumnos conectados.
 			 * Recorre la lista de sockets y envia secuencialmente partes del fichero.
 			 * 
 			 */
-
-			String fichero = "C:\\IntercontinentalExchange.pdf"; //provisional
-
 			Iterator<Socket> iterador = listaSocket.listIterator();
 
 			//recorrer cada soket de alumnos
@@ -129,12 +112,14 @@ public class HiloAceptadorAlumnos extends Thread{
 					boolean enviadoUltimo = false;
 
 					System.out.println("p: 2");
+					
 					//abrir el fichero
-					FileInputStream fis = new FileInputStream(fichero);
+					FileInputStream fis = new FileInputStream(ficheroEnviar);
 
-					// Se instancia y rellena un mensaje de envio de fichero
-					BloquesFichero bloque = new BloquesFichero();					
-					bloque.nombreFichero = fichero;
+					//se instancia y rellena un mensaje de envio de fichero
+					BloquesFichero bloque = new BloquesFichero();
+					
+					bloque.nombreFichero = ficheroEnviar.getName();
 
 					//leer los bytes a enviar
 					int leidos = fis.read(bloque.bloque);
@@ -165,7 +150,7 @@ public class HiloAceptadorAlumnos extends Thread{
 						System.out.println("p: 5");
 						//se crea un nuevo bloque
 						bloque = new BloquesFichero();
-						bloque.nombreFichero = fichero;
+						bloque.nombreFichero = ficheroEnviar.getName();
 
 						//y se leen sus bytes
 						leidos = fis.read(bloque.bloque);
