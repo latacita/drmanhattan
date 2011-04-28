@@ -67,19 +67,8 @@ public class TareaAlumno extends Thread{
 					System.out.println("a: 0");
 					//TODO recibir fichero
 
-					ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());
-										
-					File archivo = new File ("C:\\cococo.txt");
-					archivo.createNewFile();
-					
-					if(archivo.exists()){
-						archivo.delete();
-						System.out.println("borrado");
-					}else{
-						System.out.println("no existia");
-					}
-					
-										
+					ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());										
+
 					//crear el flujo de salida para guardar el fichero
 					//como inicialmente no se conoce ni el nombre ni la extension
 					//se deja general, al finalizar el envio, se cambia
