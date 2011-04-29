@@ -9,6 +9,9 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
 
 
 /**
@@ -78,11 +81,11 @@ public class GUIAlumno{
 		frmDrmanhattan.getContentPane().add(btnConectar);
 		
 		lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(10, 62, 52, 23);
+		lblNombre.setBounds(10, 62, 78, 23);
 		frmDrmanhattan.getContentPane().add(lblNombre);
 		
 		lblApellido = new JLabel("Apellidos:");
-		lblApellido.setBounds(10, 96, 52, 23);
+		lblApellido.setBounds(10, 96, 78, 23);
 		frmDrmanhattan.getContentPane().add(lblApellido);
 		
 		tfNombre = new JTextField();
