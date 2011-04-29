@@ -48,6 +48,7 @@ public class TareaAlumno extends Thread{
 	public void run(){
 
 		try {
+			//flujos de transmision
 			DataInputStream dis = new DataInputStream(socketAlumno.getInputStream());
 			DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());  
 
@@ -55,17 +56,13 @@ public class TareaAlumno extends Thread{
 			//recibir opcion del profesor
 			int recibido = dis.readInt();
 
-			System.out.println("Alumno recibe: " + recibido);
-
 			//mientras no se acabe el examen
 			while(recibido != comun.Global.FINEXAMEN){
 
 				switch (recibido) {
+				
 				//opcion de recibir un fichero
 				case comun.Global.ENVIOFICHERO:
-
-					System.out.println("a: 0");
-					//TODO recibir fichero
 
 					ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());										
 
@@ -82,17 +79,15 @@ public class TareaAlumno extends Thread{
 						enunciado = new File(dirEnunciado+File.separator+"temporal");
 						
 					}
-					System.out.println("Fichero enunciado: "+enunciado.getAbsolutePath());
+					
 					//si el fichero no existia fisicamente, crearlo para poder volcar los datos
 					if(!enunciado.exists()){
 						enunciado.createNewFile();
 					}
-					fos = new FileOutputStream(enunciado);
+					fos = new FileOutputStream(enunciado);					
 					
-					
-					BloquesFichero bloque;
+					BloquesFichero bloque = new BloquesFichero();
 
-					System.out.println("a: 1");
 					do
 					{
 						//leer el bloque recibido
@@ -101,18 +96,30 @@ public class TareaAlumno extends Thread{
 						//que ha de ser lo que se esta esperando
 						if (mensajeAux instanceof BloquesFichero){
 							bloque = (BloquesFichero) mensajeAux;
-							// Se escribe en el fichero
-							//System.out.print(new String(bloque.bloque, 0, bloque.datosUtiles));
+							//se escribe en el fichero
 							fos.write(bloque.bloque, 0, bloque.datosUtiles);
 						}else{
 							//TODO tratar error, el mensaje no es del tipo esperado
 							break;
 
 						}
-						System.out.println("a: 2");
+
 					} while (!bloque.ultimoBloque);
 					
-					//TODO rename al fichero
+					
+					//TODO revisar el renameTo(), no funciona bien
+					//renombrar el fichero con el nombre y la extension del recibido
+					File definitivo;
+					if(dirEnunciado.charAt(dirEnunciado.length()-1) == File.separatorChar){
+						definitivo = new File(dirEnunciado + bloque.nombreFichero);
+					}else{
+						definitivo = new File(dirEnunciado + File.separator + bloque.nombreFichero);
+					}
+					
+					definitivo.createNewFile();
+					
+					boolean res = enunciado.renameTo(definitivo);
+					System.out.println("rename: " + res);					
 					
 					fos.close();
 					break;					
@@ -121,7 +128,6 @@ public class TareaAlumno extends Thread{
 					break;
 				}
 				recibido = dis.readInt();
-				System.out.println("Alumno recibe: " + recibido);
 			}
 			
 		} catch (IOException e) {
