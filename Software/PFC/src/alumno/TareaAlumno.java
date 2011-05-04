@@ -20,8 +20,8 @@ import comun.BloquesFichero;
  */
 public class TareaAlumno extends Thread{
 
-	Socket socketAlumno;
-	String dirEnunciado;
+	private Socket socketAlumno;
+	private String dirEnunciado;
 
 	/**
 	 * Constructor
