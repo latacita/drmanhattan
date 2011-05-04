@@ -75,6 +75,10 @@ public class HiloAceptadorAlumnos extends Thread{
 		}
 	}
 
+	/**
+	 * Enviar un fichero a todos los alumnos conectados
+	 * @param ficheroEnviar ruta del fichero a enviar
+	 */
 	public void envioFichero(File ficheroEnviar){
 		try{			
 			

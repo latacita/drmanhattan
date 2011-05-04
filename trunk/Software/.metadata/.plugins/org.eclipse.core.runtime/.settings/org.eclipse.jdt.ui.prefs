@@ -1,4 +1,4 @@
-#Tue Apr 19 19:02:28 CEST 2011
+#Thu Apr 28 23:35:30 CEST 2011
 content_assist_proposals_foreground=0,0,0
 spelling_locale_initialized=true
 org.eclipse.jdt.ui.text.templates_migrated=true
@@ -16,4 +16,5 @@ content_assist_proposals_background=255,255,255
 content_assist_number_of_computers=13
 useQuickDiffPrefPage=true
 org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="java.net.Socket"><rhs name\="java.net.Socket"/></lhs><lhs name\="java.util.Collection"><rhs name\="java.util.LinkedList"/></lhs><lhs name\="java.lang.Iterable"><rhs name\="java.util.LinkedList"/></lhs><lhs name\="java.util.List"><rhs name\="java.util.LinkedList"/></lhs><lhs name\="comun.BloquesFichero"><rhs name\="comun.BloquesFichero"/></lhs><lhs name\="java.io.OutputStream"><rhs name\="java.io.FileOutputStream"/></lhs><lhs name\="java.io.Closeable"><rhs name\="java.io.FileOutputStream"/><rhs name\="java.io.FileInputStream"/></lhs><lhs name\="java.io.Flushable"><rhs name\="java.io.FileOutputStream"/></lhs><lhs name\="java.io.FileOutputStream"><rhs name\="java.io.FileOutputStream"/></lhs><lhs name\="java.io.InputStream"><rhs name\="java.io.FileInputStream"/></lhs><lhs name\="java.io.FileInputStream"><rhs name\="java.io.FileInputStream"/></lhs></history>
 org.eclipse.jdt.ui.text.code_templates_migrated=true

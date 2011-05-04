@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="19" version="2.0">
+<workbench progressCount="28" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="200" y="200">
 <fastViewData fastViewLocation="1024"/>
@@ -23,7 +23,7 @@
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="190" y="22"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="com.instantiations.designer.core.guiEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
@@ -34,23 +34,47 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="2"/>
+<part id="3"/>
+<part id="1"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor activePart="true" focus="true" id="com.instantiations.designer.core.guiEditor" name="GUIAlumno.java" partName="GUIAlumno.java" path="C:/Users/Manuel/Desktop/pfc/SVN/trunk/Software/PFC/src/alumno/GUIAlumno.java" title="GUIAlumno.java" tooltip="PFC/src/alumno/GUIAlumno.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PFC/src/alumno/GUIAlumno.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="305" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="525" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TareaAlumno.java" partName="TareaAlumno.java" path="C:/Users/Manuel/Desktop/pfc/SVN/trunk/Software/PFC/src/alumno/TareaAlumno.java" title="TareaAlumno.java" tooltip="PFC/src/alumno/TareaAlumno.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PFC/src/alumno/TareaAlumno.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="522" selectionTopPixel="1462"/>
+</editor>
+<editor id="com.instantiations.designer.core.guiEditor" name="GUIProfesor.java" partName="GUIProfesor.java" path="C:/Users/Manuel/Desktop/pfc/SVN/trunk/Software/PFC/src/profesor/GUIProfesor.java" title="GUIProfesor.java" tooltip="PFC/src/profesor/GUIProfesor.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PFC/src/profesor/GUIProfesor.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="21" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HiloAceptadorAlumnos.java" partName="HiloAceptadorAlumnos.java" path="C:/Users/Manuel/Desktop/pfc/SVN/trunk/Software/PFC/src/profesor/HiloAceptadorAlumnos.java" title="HiloAceptadorAlumnos.java" tooltip="PFC/src/profesor/HiloAceptadorAlumnos.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PFC/src/profesor/HiloAceptadorAlumnos.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1015" selectionTopPixel="663"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BloquesFichero.java" partName="BloquesFichero.java" path="C:/Users/Manuel/Desktop/pfc/SVN/trunk/Software/PFC/src/comun/BloquesFichero.java" title="BloquesFichero.java" tooltip="PFC/src/comun/BloquesFichero.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/PFC/src/comun/BloquesFichero.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
-<view id="org.eclipse.mylyn.tasks.ui.views.repositories" partName="Task Repositories">
-<viewState/>
-</view>
 <view id="org.eclipse.team.ui.GenericHistoryView" partName="History">
 <viewState/>
 </view>
 <view id="org.eclipse.team.sync.views.SynchronizeView" partName="Synchronize">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks"/>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
+<view id="org.eclipse.mylyn.tasks.ui.views.repositories" partName="Task Repositories">
 <viewState/>
 </view>
 <view id="org.tigris.subversion.subclipse.ui.annotations.AnnotateView" partName="SVN Annotate">
@@ -58,16 +82,18 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Warnings (3 items)"/>
+<expanded>&#x0A;<category IMemento.internal.id="Warnings"/>
 </expanded>
-<columnWidths org.eclipse.ui.ide.locationField="64" org.eclipse.ui.ide.markerType="94" org.eclipse.ui.ide.pathField="124" org.eclipse.ui.ide.resourceField="94" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
+<columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.PackageExplorer" partName="Package Explorer">
 <viewState group_libraries="1" layout="2" linkWithEditor="0" rootMode="1" workingSetName="Aggregate for window 1302109282421">
@@ -100,9 +126,7 @@
 </view>
 <view id="org.eclipse.mylyn.tasks.ui.views.tasks" partName="Task List">
 <viewState linkWithEditor="true" presentation="org.eclipse.mylyn.tasks.ui.categorized">
-<sorter groupBy="CATEGORY_QUERY">
-<sorter>
-<sort0 sortDirection="1" sortKey="PRIORITY"/>
+<sorter groupBy="CATEGORY_QUERY">&#x0A;<sorter>&#x0A;<sort0 sortDirection="1" sortKey="PRIORITY"/>
 <sort1 sortDirection="1" sortKey="RANK"/>
 <sort2 sortDirection="1" sortKey="DATE_CREATED"/>
 <sort3 sortDirection="1" sortKey="NONE"/>
@@ -115,18 +139,14 @@
 <filteredTreeFindHistory/>
 </viewState>
 </view>
-<view id="org.eclipse.ui.views.TaskList" partName="Tasks"/>
 <view id="org.tigris.subversion.subclipse.ui.repository.RepositoriesView" partName="SVN Repositories">
-<viewState/>
-</view>
-<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
 <view id="org.eclipse.jdt.ui.SourceView" partName="Declaration"/>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
-<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<perspectives activePart="com.instantiations.designer.core.guiEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspective editorAreaTrimState="1" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
 <alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
 <alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
@@ -183,27 +203,43 @@
 <perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
 <hide_toolbar_item_id id="org.eclipse.jdt.ui.actions.OpenProjectWizard"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<view id="org.eclipse.jdt.ui.PackageExplorer"/>
-<view id="org.eclipse.ui.views.ProblemView"/>
-<view id="org.eclipse.jdt.ui.JavadocView"/>
-<view id="org.eclipse.jdt.ui.SourceView"/>
-<view id="org.eclipse.ui.views.ContentOutline"/>
-<view id="org.eclipse.mylyn.tasks.ui.views.tasks"/>
-<fastViewBars/>
+<fastViewBars>
+<fastViewBar fastViewLocation="1024" id="bottom" orientation="256" selectedTabId="org.eclipse.ui.console.ConsoleView" style="1">
+<fastViews>
+<view id="org.eclipse.ui.views.ProblemView" ratio="0.3"/>
+<view id="org.eclipse.jdt.ui.JavadocView" ratio="0.3"/>
+<view id="org.eclipse.jdt.ui.SourceView" ratio="0.3"/>
+<view id="org.eclipse.ui.console.ConsoleView" ratio="0.29920363"/>
+</fastViews>
+</fastViewBar>
+<fastViewBar fastViewLocation="16384" id="left" orientation="512" selectedTabId="org.eclipse.jdt.ui.PackageExplorer" style="1">
+<fastViews>
+<view id="org.eclipse.jdt.ui.PackageExplorer" ratio="0.2996716"/>
+</fastViews>
+</fastViewBar>
+<fastViewBar fastViewLocation="131072" id="right" orientation="512" selectedTabId="org.eclipse.ui.views.ContentOutline" style="1">
+<fastViews>
+<view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+<fastViewBar fastViewLocation="131072" id="org.eclipse.ui.internal.ViewStack@53f7681c" orientation="512" selectedTabId="org.eclipse.mylyn.tasks.ui.views.tasks" style="1">
+<fastViews>
+<view id="org.eclipse.mylyn.tasks.ui.views.tasks" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+</fastViewBars>
 <layout>
 <mainWindow>
 <info folder="true" part="left">
-<folder activePageID="org.eclipse.jdt.ui.PackageExplorer" appearance="2" expanded="2">
-<page content="org.eclipse.jdt.ui.PackageExplorer" label="Package Explorer"/>
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.jdt.ui.PackageExplorer" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.ui.TypeHierarchy" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
 <page content="org.eclipse.ui.navigator.ProjectExplorer" label="LabelNotFound"/>
 <page content="com.instantiations.designer.core.StructureView" label="LabelNotFound"/>
 <page content="com.instantiations.designer.core.PaletteView" label="LabelNotFound"/>
 <page content="org.eclipse.jdt.junit.ResultView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@d9c6cbc" ratio="0.75" ratioLeft="750" ratioRight="250" relationship="2" relative="left">
@@ -214,39 +250,31 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.33490938" ratioLeft="425" ratioRight="844" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.20094563" ratioLeft="255" ratioRight="1014" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.7496136" ratioLeft="485" ratioRight="162" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ProblemView" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
-<page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
-<page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ProblemView" label="LabelNotFound"/>
+<page content="org.eclipse.jdt.ui.JavadocView" label="LabelNotFound"/>
+<page content="org.eclipse.jdt.ui.SourceView" label="LabelNotFound"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-<part id="1"/>
-<part id="2"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@53f7681c" ratio="0.7493333" ratioLeft="562" ratioRight="188" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.mylyn.tasks.ui.views.tasks" appearance="2" expanded="2">
-<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="Task List"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.mylyn.tasks.ui.views.tasks" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 <info folder="true" part="right" ratio="0.49896908" ratioLeft="242" ratioRight="243" relationship="4" relative="org.eclipse.ui.internal.ViewStack@53f7681c">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
 <page content="org.eclipse.ui.texteditor.TemplatesView" label="LabelNotFound"/>
 <page content="org.eclipse.ant.ui.views.AntView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </mainWindow>
@@ -285,39 +313,26 @@
 <view id="org.eclipse.mylyn.tasks.ui.views.repositories"/>
 <view id="org.eclipse.team.ui.GenericHistoryView"/>
 <fastViewBars/>
-<layout>
-<mainWindow>
-<info folder="true" part="top">
-<folder activePageID="org.tigris.subversion.subclipse.ui.repository.RepositoriesView" appearance="2" expanded="2">
-<page content="org.tigris.subversion.subclipse.ui.repository.RepositoriesView" label="SVN Repositories"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="top">&#x0A;<folder activePageID="org.tigris.subversion.subclipse.ui.repository.RepositoriesView" appearance="2" expanded="2">&#x0A;<page content="org.tigris.subversion.subclipse.ui.repository.RepositoriesView" label="SVN Repositories"/>
 <page content="org.tigris.subversion.subclipse.ui.annotations.AnnotateView" label="SVN Annotate"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="750" ratioRight="250" relationship="2" relative="top">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="750" ratioRight="250" relationship="2" relative="top">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.4" ratioLeft="400" ratioRight="600" relationship="2" relative="top"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@331d9662" ratio="0.74971557" ratioLeft="659" ratioRight="220" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.team.ui.GenericHistoryView" appearance="2" expanded="2">
-<page content="org.eclipse.team.ui.GenericHistoryView" label="History"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@331d9662" ratio="0.74971557" ratioLeft="659" ratioRight="220" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.team.ui.GenericHistoryView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.team.ui.GenericHistoryView" label="History"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1f6e7469" ratio="0.69860893" ratioLeft="452" ratioRight="195" relationship="4" relative="top">
-<folder activePageID="org.eclipse.mylyn.tasks.ui.views.repositories" appearance="2" expanded="2">
-<page content="org.eclipse.mylyn.tasks.ui.views.repositories" label="Task Repositories"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1f6e7469" ratio="0.69860893" ratioLeft="452" ratioRight="195" relationship="4" relative="top">&#x0A;<folder activePageID="org.eclipse.mylyn.tasks.ui.views.repositories" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.mylyn.tasks.ui.views.repositories" label="Task Repositories"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
@@ -359,44 +374,31 @@
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.mylyn.tasks.ui.views.repositories"/>
 <fastViewBars/>
-<layout>
-<mainWindow>
-<info folder="true" part="top">
-<folder activePageID="org.eclipse.team.sync.views.SynchronizeView" appearance="2" expanded="2">
-<page content="org.eclipse.team.sync.views.SynchronizeView" label="Synchronize"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="top">&#x0A;<folder activePageID="org.eclipse.team.sync.views.SynchronizeView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.team.sync.views.SynchronizeView" label="Synchronize"/>
 <page content="org.eclipse.team.ccvs.ui.RepositoriesView" label="LabelNotFound"/>
 <page content="org.tigris.subversion.subclipse.ui.repository.RepositoriesView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="954" ratioRight="318" relationship="2" relative="top">
-<folder appearance="2" expanded="2">
-<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="954" ratioRight="318" relationship="2" relative="top">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.44968554" ratioLeft="572" ratioRight="700" relationship="2" relative="top"/>
-<info folder="true" part="top2" ratio="0.79977244" ratioLeft="703" ratioRight="176" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.team.ui.GenericHistoryView" appearance="2" expanded="2">
-<page content="org.eclipse.team.ui.GenericHistoryView" label="History"/>
+<info folder="true" part="top2" ratio="0.79977244" ratioLeft="703" ratioRight="176" relationship="4" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.team.ui.GenericHistoryView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.team.ui.GenericHistoryView" label="History"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.tigris.subversion.subclipse.ui.history.HistoryView" label="LabelNotFound"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 <part id="1"/>
 <part id="2"/>
 </presentation>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@3f723c10" ratio="0.6996587" ratioLeft="615" ratioRight="264" relationship="4" relative="top">
-<folder activePageID="org.eclipse.mylyn.tasks.ui.views.repositories" appearance="2" expanded="2">
-<page content="org.eclipse.mylyn.tasks.ui.views.repositories" label="Task Repositories"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@3f723c10" ratio="0.6996587" ratioLeft="615" ratioRight="264" relationship="4" relative="top">&#x0A;<folder activePageID="org.eclipse.mylyn.tasks.ui.views.repositories" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.mylyn.tasks.ui.views.repositories" label="Task Repositories"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
 </presentation>
 </folder>
 </info>
@@ -407,66 +409,163 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PFC/src/comun/BloquesFichero.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PFC/src/comun/ComienzoExamen.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PFC/src/comun/FinExamen.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PFC/src/comun/Global.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PFC/src/alumno/TareaAlumno.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.instantiations.designer.core.guiEditor" path="/PFC/src/alumno/GUIAlumno.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PFC/src/alumno/LanzadorAlumno.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.instantiations.designer.core.guiEditor" path="/PFC/src/profesor/GUIProfesor.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PFC/src/profesor/HiloAceptadorAlumnos.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PFC/src/profesor/LanzadorProfesor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PFC/src/comun/BloquesFichero.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/PFC/src/alumno/TareaAlumno.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.instantiations.designer.core.guiEditor" path="/PFC/src/profesor/GUIProfesor.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.instantiations.designer.core.guiEditor" path="/PFC/src/alumno/GUIAlumno.java"/>
 </editors>
-<item historyLabel="BloquesFichero.java" index="0">
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="1938" y="0"/>
+</item>
+<item historyLabel="GUIAlumno.java" index="1">
+<position info="not_deleted" x="4808" y="0"/>
+</item>
+<item historyLabel="TareaAlumno.java" index="0">
+<position info="not_deleted" x="3829" y="0"/>
+</item>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="1938" y="0"/>
+</item>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="4086" y="0"/>
+</item>
+<item historyLabel="TareaAlumno.java" index="0">
+<position info="not_deleted" x="1368" y="0"/>
+</item>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="2370" y="0"/>
+</item>
+<item historyLabel="TareaAlumno.java" index="0">
+<position info="not_deleted" x="1368" y="0"/>
+</item>
+<item historyLabel="TareaAlumno.java" index="0">
+<position info="not_deleted" x="2630" y="0"/>
+</item>
+<item historyLabel="TareaAlumno.java" index="0">
+<position info="not_deleted" x="2571" y="0"/>
+</item>
+<item historyLabel="GUIAlumno.java" index="1">
+<position info="not_deleted" x="4808" y="0"/>
+</item>
+<item historyLabel="GUIAlumno.java" index="1">
+<position info="not_deleted" x="1988" y="0"/>
+</item>
+<item historyLabel="GUIAlumno.java" index="1">
+<position info="not_deleted" x="1853" y="0"/>
+</item>
+<item historyLabel="BloquesFichero.java" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="ComienzoExamen.java" index="1">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="TareaAlumno.java" index="0">
+<position info="not_deleted" x="3822" y="0"/>
 </item>
-<item historyLabel="FinExamen.java" index="2">
-<position info="not_deleted" x="121" y="0"/>
+<item historyLabel="GUIAlumno.java" index="1">
+<position info="not_deleted" x="1853" y="0"/>
 </item>
-<item historyLabel="Global.java" index="3">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="GUIAlumno.java" index="1">
+<position info="not_deleted" x="1711" y="0"/>
 </item>
-<item historyLabel="FinExamen.java" index="2">
-<position info="not_deleted" x="121" y="0"/>
+<item historyLabel="GUIAlumno.java" index="1">
+<position info="not_deleted" x="4688" y="0"/>
 </item>
-<item historyLabel="ComienzoExamen.java" index="1">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="TareaAlumno.java" index="0">
+<position info="not_deleted" x="3822" y="0"/>
 </item>
-<item historyLabel="BloquesFichero.java" index="0">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="2370" y="0"/>
 </item>
-<item historyLabel="GUIAlumno.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="TareaAlumno.java" index="4">
+<position/>
 </item>
-<item historyLabel="LanzadorAlumno.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="GUIProfesor.java" index="5">
+<position info="not_deleted" x="5696" y="0"/>
 </item>
-<item historyLabel="GUIAlumno.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="GUIAlumno.java" index="6">
+<position info="not_deleted" x="4885" y="0"/>
 </item>
-<item historyLabel="LanzadorAlumno.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="TareaAlumno.java" index="4">
+<position info="not_deleted" x="898" y="0"/>
 </item>
-<item historyLabel="GUIAlumno.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="4185" y="0"/>
 </item>
-<item historyLabel="GUIProfesor.java" index="6">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="TareaAlumno.java" index="4">
+<position info="not_deleted" x="3639" y="29"/>
 </item>
-<item historyLabel="HiloAceptadorAlumnos.java" index="7">
-<position info="not_deleted" x="977" y="0"/>
+<item historyLabel="TareaAlumno.java" index="4">
+<position/>
 </item>
-<item historyLabel="GUIProfesor.java" index="6">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="TareaAlumno.java" index="4">
+<position info="not_deleted" x="3639" y="29"/>
 </item>
-<item historyLabel="LanzadorProfesor.java" index="8">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="4173" y="0"/>
 </item>
-<item active="true" historyLabel="GUIAlumno.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="GUIProfesor.java" index="5">
+<position info="not_deleted" x="5696" y="0"/>
+</item>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="4173" y="0"/>
+</item>
+<item historyLabel="TareaAlumno.java" index="4">
+<position info="not_deleted" x="3552" y="0"/>
+</item>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="4173" y="0"/>
+</item>
+<item historyLabel="TareaAlumno.java" index="4">
+<position info="not_deleted" x="3547" y="0"/>
+</item>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="4166" y="0"/>
+</item>
+<item historyLabel="TareaAlumno.java" index="4">
+<position info="not_deleted" x="3583" y="0"/>
+</item>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="3467" y="0"/>
+</item>
+<item historyLabel="GUIAlumno.java" index="6">
+<position info="not_deleted" x="5949" y="62"/>
+</item>
+<item historyLabel="GUIProfesor.java" index="5">
+<position info="not_deleted" x="1073" y="13"/>
+</item>
+<item historyLabel="TareaAlumno.java" index="4">
+<position info="not_deleted" x="1147" y="0"/>
+</item>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="395" y="0"/>
+</item>
+<item historyLabel="TareaAlumno.java" index="4">
+<position info="not_deleted" x="522" y="0"/>
+</item>
+<item historyLabel="GUIProfesor.java" index="5">
+<position info="not_deleted" x="1073" y="13"/>
+</item>
+<item historyLabel="TareaAlumno.java" index="4">
+<position info="not_deleted" x="522" y="0"/>
+</item>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="1015" y="0"/>
+</item>
+<item historyLabel="TareaAlumno.java" index="4">
+<position info="not_deleted" x="522" y="0"/>
+</item>
+<item historyLabel="HiloAceptadorAlumnos.java" index="2">
+<position info="not_deleted" x="1015" y="0"/>
+</item>
+<item historyLabel="GUIAlumno.java" index="6">
+<position info="not_deleted" x="301" y="0"/>
+</item>
+<item historyLabel="GUIProfesor.java" index="5">
+<position info="not_deleted" x="21" y="0"/>
+</item>
+<item active="true" historyLabel="GUIAlumno.java" index="6">
+<position info="not_deleted" x="301" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -474,6 +573,13 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="left"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="right"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@53f7681c"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -481,15 +587,19 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.instantiations.designer.core.guiEditor" name="GUIAlumno.java" tooltip="PFC/src/alumno/GUIAlumno.java">
-<persistable path="/PFC/src/alumno/GUIAlumno.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BloquesFichero.java" tooltip="PFC/src/comun/BloquesFichero.java">
+<persistable path="/PFC/src/comun/BloquesFichero.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LanzadorProfesor.java" tooltip="PFC/src/profesor/LanzadorProfesor.java">
-<persistable path="/PFC/src/profesor/LanzadorProfesor.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Global.java" tooltip="PFC/src/comun/Global.java">
+<persistable path="/PFC/src/comun/Global.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ComienzoExamen.java" tooltip="PFC/src/comun/ComienzoExamen.java">
+<persistable path="/PFC/src/comun/ComienzoExamen.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HiloAceptadorAlumnos.java" tooltip="PFC/src/profesor/HiloAceptadorAlumnos.java">
 <persistable path="/PFC/src/profesor/HiloAceptadorAlumnos.java"/>
@@ -497,20 +607,20 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.instantiations.designer.core.guiEditor" name="GUIProfesor.java" tooltip="PFC/src/profesor/GUIProfesor.java">
 <persistable path="/PFC/src/profesor/GUIProfesor.java"/>
 </file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TareaAlumno.java" tooltip="PFC/src/alumno/TareaAlumno.java">
+<persistable path="/PFC/src/alumno/TareaAlumno.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.instantiations.designer.core.guiEditor" name="GUIAlumno.java" tooltip="PFC/src/alumno/GUIAlumno.java">
+<persistable path="/PFC/src/alumno/GUIAlumno.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LanzadorAlumno.java" tooltip="PFC/src/alumno/LanzadorAlumno.java">
 <persistable path="/PFC/src/alumno/LanzadorAlumno.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Global.java" tooltip="PFC/src/comun/Global.java">
-<persistable path="/PFC/src/comun/Global.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LanzadorProfesor.java" tooltip="PFC/src/profesor/LanzadorProfesor.java">
+<persistable path="/PFC/src/profesor/LanzadorProfesor.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FinExamen.java" tooltip="PFC/src/comun/FinExamen.java">
 <persistable path="/PFC/src/comun/FinExamen.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ComienzoExamen.java" tooltip="PFC/src/comun/ComienzoExamen.java">
-<persistable path="/PFC/src/comun/ComienzoExamen.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="BloquesFichero.java" tooltip="PFC/src/comun/BloquesFichero.java">
-<persistable path="/PFC/src/comun/BloquesFichero.java"/>
 </file>
 </mruList>
 </workbench>
