@@ -3,6 +3,7 @@ package profesor;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import comun.BloquesFichero;
+import comun.DatosAlumno;
 import comun.Global;
 
 /**
@@ -58,7 +60,11 @@ public class HiloAceptadorAlumnos extends Thread{
 
 				//esperar a nueva conexion
 				socket = sSocket.accept();
-
+				ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+				Object temp = ois.readObject();				
+				DatosAlumno da = (DatosAlumno) temp;				
+				System.out.println("Alumno: "+da.nombre+" "+da.apellidos+" conectado");
+				
 				listaSocket.add(socket);
 
 				/*
