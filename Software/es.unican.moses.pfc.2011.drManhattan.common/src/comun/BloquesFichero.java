@@ -24,4 +24,6 @@ public class BloquesFichero implements Serializable {
 	//True indica que no se han de recibir mas, el fichero esta transmitido totalmente
 	public boolean ultimoBloque;
 	
+	//MD5 del fichero
+	public String md5;
 }
