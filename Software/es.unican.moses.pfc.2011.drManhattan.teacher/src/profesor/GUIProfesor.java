@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.util.Date;
 
 /**
  * 
@@ -25,31 +26,31 @@ import java.io.File;
 public class GUIProfesor {
 
 	private JFrame frmDrmanhattan;
-	
+
 	private JTextField tfNombreAsignatura;
 	private JTextField tfDirectorioResultados;
 	private JTextField tfHoraLimite;
-	
+
 	private JLabel lblNombreAsignatura;
 	private JLabel lblRecibirResultadosEn;
 	private JLabel lblHoraLimiteExamen;
-	
+
 	private JButton btnComienzoExamen;
 	private JButton btnFinExamen;	
 	private JButton btnExplorarDirResultados;
-	
+
 	private boolean hayEnunciado;
 	private String ficheroEnunciado;
 	private String asignatura;
 	private int minutosExamen;
-	
+
 	private HiloAceptadorAlumnos aceptaAlumnos;
 	private JPanel panelLog;
 	private JScrollPane scrollPane;
 	private JTextArea taLog;
 
 	private JButton btnEnviarFichero;
-	
+
 
 
 	/**
@@ -69,7 +70,7 @@ public class GUIProfesor {
 
 		frmDrmanhattan = new JFrame();
 		frmDrmanhattan.setResizable(false);
-		frmDrmanhattan.setTitle("drManhattan");
+		frmDrmanhattan.setTitle("drManhattan - Profesor");
 		frmDrmanhattan.setBounds(100, 100, 620, 598);
 		frmDrmanhattan.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDrmanhattan.getContentPane().setLayout(null);
@@ -117,30 +118,30 @@ public class GUIProfesor {
 		tfHoraLimite.setBounds(196, 105, 59, 20);
 		frmDrmanhattan.getContentPane().add(tfHoraLimite);
 		tfHoraLimite.setColumns(10);
-		
+
 		panelLog = new JPanel();
 		panelLog.setBorder(new TitledBorder(null, "Eventos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLog.setBounds(10, 239, 584, 292);
 		frmDrmanhattan.getContentPane().add(panelLog);
 		panelLog.setLayout(null);
-		
+
 		scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 23, 564, 258);
 		panelLog.add(scrollPane);
-		
+
 		taLog = new JTextArea();
 		taLog.setEditable(false);
 		taLog.setText("Aqu\u00ED van cosas como alumno tal se conecta, acaba, se reciben resultados...");
 		scrollPane.setViewportView(taLog);
-		
+
 		btnEnviarFichero = new JButton("Enviar fichero");		
 		btnEnviarFichero.setBounds(335, 150, 123, 23);
 		frmDrmanhattan.getContentPane().add(btnEnviarFichero);
-		
+
 		aceptaAlumnos = new HiloAceptadorAlumnos();
-		
+
 		//Manejadores de eventos
-		
+
 		/**
 		 * Manejador el evento de pulsar boton para saleccionar la carpeta destino.
 		 * Crea un dialogo que permite navegar por el sistema de ficheros y escoger un directorio destino.
@@ -156,30 +157,72 @@ public class GUIProfesor {
 				}
 			}
 		});
-		
-		
+
+
 		/**
 		 * Manejador del evento de pulsar el boton de enviar fichero
 		 */
 		btnEnviarFichero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				//Abrir dialogo para escoger el fichero a enviar
-				
+
 				JFileChooser chooser = new JFileChooser();
 				chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 				int returnVal = chooser.showOpenDialog(chooser);
-				
+
 				if (returnVal == JFileChooser.APPROVE_OPTION){
 					File archivoEnviar = chooser.getSelectedFile();
 					aceptaAlumnos.envioFichero(archivoEnviar);
 				}
-				
+
 				//TODO deshabilitar una vez enviado?
 
 			}
 		});
 
+		/**
+		 * Manejador del evento de pulsar el boton de comenzar la prueba
+		 */
+		btnComienzoExamen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				boolean temporizar = false;
+				int minutos = 0;
+				try{
+					Date ahora = new Date(System.currentTimeMillis());
+
+					String textoHora = tfHoraLimite.getText().trim();
+					String hora = textoHora.substring(0, textoHora.indexOf(':')).trim();
+					String minuto = textoHora.substring(textoHora.indexOf(':')+1).trim();
+
+					int hor = Integer.parseInt(hora)-ahora.getHours();
+					int min = (Integer.parseInt(minuto)-ahora.getMinutes());
+					if(min<0){
+						min+=60;
+					}
+					if(ahora.getMinutes() >= Integer.parseInt(minuto)){
+						hor--;
+					}
+					minutos = hor*60 + min;
+
+					if(minutos > 0){
+						temporizar = true;
+					}
+
+				}catch (NumberFormatException e) {
+					//TODO error en el parsing
+					e.printStackTrace();
+				}
+
+				//TODO mejorar el modo de calcular los minutos
+
+				aceptaAlumnos.inicioPrueba(temporizar, minutos);
+
+
+			}
+		});
+
+
 	}
 }
-		

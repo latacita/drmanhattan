@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import comun.BloquesFichero;
+import comun.ComienzoExamen;
 import comun.DatosAlumno;
 import comun.Global;
 
@@ -64,7 +65,7 @@ public class HiloAceptadorAlumnos extends Thread{
 				Object temp = ois.readObject();				
 				DatosAlumno da = (DatosAlumno) temp;				
 				System.out.println("Alumno: "+da.nombre+" "+da.apellidos+" conectado");
-				
+
 				listaSocket.add(socket);
 
 				/*
@@ -87,7 +88,7 @@ public class HiloAceptadorAlumnos extends Thread{
 	 */
 	public void envioFichero(File ficheroEnviar){
 		try{			
-			
+
 			/*
 			 * Se envia un fichero a todos los alumnos conectados.
 			 * Recorre la lista de sockets y envia secuencialmente partes del fichero.
@@ -97,13 +98,13 @@ public class HiloAceptadorAlumnos extends Thread{
 
 			//recorrer cada soket de alumnos
 			while(iterador.hasNext()){
-				
+
 				Socket s = iterador.next();				
 
 				//si la conexion sigue abierta
 				if(!s.isClosed()){
 					//enviar todo el fichero
-					
+
 					//indicarle al alumno que vamos a enviar el fichero
 					DataOutputStream dos = new DataOutputStream(s.getOutputStream());
 					dos.writeInt(comun.Global.ENVIOFICHERO);
@@ -113,13 +114,13 @@ public class HiloAceptadorAlumnos extends Thread{
 
 					//variable auxiliar para marcar cuando se envía el último mensaje
 					boolean enviadoUltimo = false;
-					
+
 					//abrir el fichero
 					FileInputStream fis = new FileInputStream(ficheroEnviar);
 
 					//se instancia y rellena un mensaje de envio de fichero
 					BloquesFichero bloque = new BloquesFichero();
-					
+
 					bloque.nombreFichero = ficheroEnviar.getName();
 
 					//leer los bytes a enviar
@@ -167,6 +168,44 @@ public class HiloAceptadorAlumnos extends Thread{
 				}//if(!s.isClosed())
 
 			}//while(iterador.hasNext())
+		}catch(Exception e){
+			//TODO tratar errores
+		}
+	}
+
+	/**
+	 * Enviar a los alumnos conectados la notificacion de que comienza la prueba
+	 */
+	public void inicioPrueba(boolean temporizar, int minutos){
+		try{
+			
+			/*
+			 * Recorre la lista de sockets y envia secuencialmente la notificacion de que se inicia la prueba
+			 */
+			Iterator<Socket> iterador = listaSocket.listIterator();
+
+			//recorrer cada soket de alumnos
+			while(iterador.hasNext()){
+
+				Socket s = iterador.next();				
+
+				//si la conexion sigue abierta
+				if(!s.isClosed()){
+					//notificar
+					DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+					dos.writeInt(comun.Global.COMIENZOEXAMEN);
+					//TODO crear hilo para esperar fin prueba
+					
+					ComienzoExamen ce = new ComienzoExamen();
+					ce.examenTemporizado = temporizar;
+					ce.minutosExamen = minutos;
+					
+					ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
+					oos.writeObject(ce);
+					
+				}
+			}
+			
 		}catch(Exception e){
 			//TODO tratar errores
 		}
