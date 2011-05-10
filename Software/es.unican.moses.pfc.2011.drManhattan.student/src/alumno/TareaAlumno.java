@@ -3,12 +3,16 @@ package alumno;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.math.BigInteger;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.swing.JLabel;
 
@@ -47,7 +51,7 @@ public class TareaAlumno extends Thread{
 			this.ct = ct;
 			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
 			oos.writeObject(da);			
-			
+
 			estado.setText("Conectado");
 			// TODO deshabilitar boton de conectar?
 			this.start();			
@@ -70,8 +74,8 @@ public class TareaAlumno extends Thread{
 			//DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());  
 			//ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());
 			//ObjectInputStream ois;
-			
-			
+
+
 			//recibir opcion del profesor
 			int recibido = dis.readInt();
 
@@ -79,35 +83,34 @@ public class TareaAlumno extends Thread{
 			while(recibido != comun.Global.FINEXAMEN){
 
 				switch (recibido) {
-				
+
 				//opcion de recibir un fichero
 				case comun.Global.ENVIOFICHERO:
 					String estadoAnterior =  estado.getText().trim();
 					estado.setText("Recibiendo fichero");
-															
-					ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());
-					//ois = new ObjectInputStream(socketAlumno.getInputStream());
-					
+
+					ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());					
+
 					//crear el flujo de salida para guardar el fichero
 					//como inicialmente no se conoce ni el nombre ni la extension
 					//se deja general, al finalizar el envio, se cambia
-					
+
 					File enunciado;
 					FileOutputStream fos;
-					
+
 					if(dirEnunciado.charAt(dirEnunciado.length()-1) == File.separatorChar){
 						enunciado = new File(dirEnunciado+"temporal");
 					}else{
 						enunciado = new File(dirEnunciado+File.separator+"temporal");
-						
+
 					}
-					
+
 					//si el fichero no existia fisicamente, crearlo para poder volcar los datos
 					if(!enunciado.exists()){
 						enunciado.createNewFile();
 					}
 					fos = new FileOutputStream(enunciado);					
-					
+
 					BloquesFichero bloque = new BloquesFichero();
 
 					do
@@ -126,9 +129,35 @@ public class TareaAlumno extends Thread{
 						}
 
 					} while (!bloque.ultimoBloque);
-					
-					
+
+					//comprobacion de integridad
+					MessageDigest digest = MessageDigest.getInstance("MD5");
+					FileInputStream is = new FileInputStream(enunciado);				
+					byte[] buffer = new byte[4096];
+					int read = 0;
+
+					while( (read = is.read(buffer)) > 0) {
+						digest.update(buffer, 0, read);
+					}		
+					byte[] md5sum = digest.digest();
+					BigInteger bigInt = new BigInteger(1, md5sum);
+					String md5 = bigInt.toString(16);
+
+					//si no coinciden los md5
+					if(!md5.trim().equals(bloque.md5.trim())){
+						System.out.println("Fichero recibido erroneo");
+						//pedir reenvio
+						DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
+						dos.writeBoolean(false);
+					}else{
+						System.out.println("Fichero recibido correcto");
+						DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
+						dos.writeBoolean(true);
+					}					
+					//fin comprobacion integridad
+
 					//TODO revisar el renameTo(), no funciona bien
+					//Nota: parece que el problema con renameTo es de windows, en Ubuntu funciona 
 					//renombrar el fichero con el nombre y la extension del recibido
 					File definitivo;
 					if(dirEnunciado.charAt(dirEnunciado.length()-1) == File.separatorChar){
@@ -136,43 +165,46 @@ public class TareaAlumno extends Thread{
 					}else{
 						definitivo = new File(dirEnunciado + File.separator + bloque.nombreFichero);
 					}
-					
+
 					definitivo.createNewFile();
-					
+
 					boolean res = enunciado.renameTo(definitivo);
 					System.out.println("rename: " + res);
-					
+
 					fos.close();
 					estado.setText(estadoAnterior);
-					
+
 					break;
-					
+
 				case comun.Global.COMIENZOEXAMEN:
-					
+
 					//ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());
-					
+
 					ois = new ObjectInputStream(socketAlumno.getInputStream());
 					Object temp = ois.readObject();
-					
+
 					ComienzoExamen ce = (ComienzoExamen) temp;
-					
+
 					if(ce.examenTemporizado){
 						ct.setMinutos(ce.minutosExamen);
 						ct.run();
 					}					
 					estado.setText("Realizando prueba");
 					break;
-					
+
 				default:
 					break;
 				}
 				recibido = dis.readInt();
 			}
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
