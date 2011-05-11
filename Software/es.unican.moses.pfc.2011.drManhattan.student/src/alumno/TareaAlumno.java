@@ -36,11 +36,15 @@ public class TareaAlumno extends Thread{
 	private JLabel estado;
 	private CuentaTiempo ct;
 
+
+
 	/**
-	 * Constructor
-	 * @param ip  direcion del computador del profesor
+	 * 
+	 * @param ip direcion del computador del profesor
 	 * @param directorioEnunciado directorio donde guardar los ficheros enviados por el profesor
-	 * @param ct 
+	 * @param estado Etiqueta para notificar el estado de la aplicacion
+	 * @param da datos del alumno
+	 * @param ct variable usada para notificar el tiempo restante en la prueba
 	 */
 	public TareaAlumno(String ip, String directorioEnunciado, JLabel estado, DatosAlumno da, CuentaTiempo ct){		
 		try {
@@ -71,10 +75,6 @@ public class TareaAlumno extends Thread{
 		try {			
 			//flujos de transmision
 			DataInputStream dis = new DataInputStream(socketAlumno.getInputStream());
-			//DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());  
-			//ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());
-			//ObjectInputStream ois;
-
 
 			//recibir opcion del profesor
 			int recibido = dis.readInt();
@@ -138,19 +138,18 @@ public class TareaAlumno extends Thread{
 
 					while( (read = is.read(buffer)) > 0) {
 						digest.update(buffer, 0, read);
-					}		
+					}
+					is.close();
 					byte[] md5sum = digest.digest();
 					BigInteger bigInt = new BigInteger(1, md5sum);
 					String md5 = bigInt.toString(16);
 
 					//si no coinciden los md5
 					if(!md5.trim().equals(bloque.md5.trim())){
-						System.out.println("Fichero recibido erroneo");
 						//pedir reenvio
 						DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
 						dos.writeBoolean(false);
 					}else{
-						System.out.println("Fichero recibido correcto");
 						DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
 						dos.writeBoolean(true);
 					}					
@@ -178,17 +177,13 @@ public class TareaAlumno extends Thread{
 
 				case comun.Global.COMIENZOEXAMEN:
 
-					//ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());
-
 					ois = new ObjectInputStream(socketAlumno.getInputStream());
 					Object temp = ois.readObject();
 
 					ComienzoExamen ce = (ComienzoExamen) temp;
-
 					if(ce.examenTemporizado){
 						ct.setMinutos(ce.minutosExamen);
-						ct.run();
-					}					
+					}
 					estado.setText("Realizando prueba");
 					break;
 
