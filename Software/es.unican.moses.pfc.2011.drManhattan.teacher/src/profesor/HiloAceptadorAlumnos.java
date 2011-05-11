@@ -103,7 +103,8 @@ public class HiloAceptadorAlumnos extends Thread{
 
 			while( (read = is.read(buffer)) > 0) {
 				digest.update(buffer, 0, read);
-			}		
+			}
+			is.close();
 			byte[] md5sum = digest.digest();
 			BigInteger bigInt = new BigInteger(1, md5sum);
 			String md5 = bigInt.toString(16);
