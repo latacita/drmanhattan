@@ -27,7 +27,7 @@ import comun.Global;
  * 
  * Clase que representa la actividad a realizar por la aplicacion del alumno.
  * 
- * @author Manuel Pando Muñoz
+ * @author Manuel Pando
  *
  */
 public class TareaAlumno extends Thread{
@@ -58,7 +58,6 @@ public class TareaAlumno extends Thread{
 			oos.writeObject(da);			
 
 			estado.setText("Conectado");
-			// TODO deshabilitar boton de conectar?
 			this.start();			
 
 		} catch (UnknownHostException e) {
@@ -103,7 +102,6 @@ public class TareaAlumno extends Thread{
 						enunciado = new File(dirEnunciado+"temporal");
 					}else{
 						enunciado = new File(dirEnunciado+File.separator+"temporal");
-
 					}
 
 					//si el fichero no existia fisicamente, crearlo para poder volcar los datos
@@ -189,6 +187,7 @@ public class TareaAlumno extends Thread{
 					/* Eliminar acceso red */
 					
 					//crear el socket con el proceso daemon
+					//esta en el mismo equipo
 					Socket socketDaemon = new Socket("127.0.0.1", comun.Global.PUERTODAEMON);
 					DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
 					//opcion de denegar el acceso a la red

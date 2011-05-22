@@ -18,7 +18,7 @@ import java.io.File;
  * 
  * Clase que crea la GUI del alumno.
  * 
- * @author Manuel Pando Muñoz
+ * @author Manuel Pando
  *
  */
 public class GUIAlumno{
@@ -150,7 +150,7 @@ public class GUIAlumno{
 		//Manejadores de eventos
 
 		/**
-		 * Manejador de pulsar el boton para saleccionar la carpeta destino.
+		 * Manejador de pulsar el boton para seleccionar la carpeta destino.
 		 * Crea un dialogo que permite navegar por el sistema de ficheros y escoger un directorio destino donde se guardara el enunciado
 		 */
 		btnExplorar.addActionListener(new ActionListener() {
@@ -196,7 +196,7 @@ public class GUIAlumno{
 	 * Actualiza cada segundo un componente label de la GUI.
 	 * Se ejecuta en un thread aparte para no bloquear la interfaz.
 	 * 
-	 * @author Manuel Pando Mu�oz
+	 * @author Manuel Pando
 	 *
 	 */
 	public class CuentaTiempo implements Runnable {
