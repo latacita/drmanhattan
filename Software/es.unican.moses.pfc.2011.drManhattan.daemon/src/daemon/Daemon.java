@@ -52,7 +52,7 @@ public class Daemon {
 	 * 
 	 * Clase privada que representa la tarea a realizar por el daemon cuando se ha establecido una conexion.
 	 * 
-	 * @author Manuel Pando Muñoz
+	 * @author Manuel Pando
 	 *
 	 */
 	private class ProcesoDaemon extends Thread{
@@ -104,13 +104,13 @@ public class Daemon {
 						/*
 						 * Para denegar el acceso se cambia la politica de los paquetes salientes del PC de modo
 						 * que cualquier paquete dirigido a cualquier direccion es descartado.
-						 * Con esto se consigue que no se puedan hacer peticiones a otros equipos, pero sí recibir
+						 * Con esto se consigue que no se puedan hacer peticiones a otros equipos, pero si recibir
 						 * los datos del computador del profesor.
 						 */
 						
 						//ejecutar comando IPtables para denegar la red
 						comando = "iptables -P OUTPUT DROP";
-						Runtime.getRuntime ().exec (comando);						
+						Runtime.getRuntime().exec(comando);						
 						break;
 					
 					//dar acceso a toda la red
@@ -118,7 +118,7 @@ public class Daemon {
 						
 						//cambiar la politica
 						comando = "iptables -P OUTPUT ACCEPT";
-						Runtime.getRuntime ().exec (comando);						
+						Runtime.getRuntime().exec(comando);						
 						break;						
 						
 					default:
