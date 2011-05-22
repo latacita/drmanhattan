@@ -25,7 +25,7 @@ import java.util.Date;
  * 
  * Clase que crea la GUI del profesor.
  * 
- * @author Manuel Pando Muñoz
+ * @author Manuel Pando MuÃ±oz
  *
  */
 public class GUIProfesor {
@@ -86,6 +86,7 @@ public class GUIProfesor {
 		frmDrmanhattan.getContentPane().add(btnComienzoExamen);
 
 		btnFinExamen = new JButton("Fin de examen");		
+		btnFinExamen.setEnabled(false);
 		btnFinExamen.setBounds(10, 199, 178, 23);
 		frmDrmanhattan.getContentPane().add(btnFinExamen);
 
@@ -221,10 +222,18 @@ public class GUIProfesor {
 				}
 
 				//TODO mejorar el modo de calcular los minutos
-
+				
+				btnEnviarFichero.setEnabled(false);
+				btnExplorarDirResultados.setEnabled(false);
+				btnFinExamen.setEnabled(true);
+				btnComienzoExamen.setEnabled(false);
+				tfDirectorioResultados.setEnabled(false);
+				tfHoraLimite.setEnabled(false);
+				tfNombreAsignatura.setEnabled(false);
+				
+				
 				aceptaAlumnos.inicioPrueba(temporizar, minutos);
-
-
+				
 			}
 		});
 
