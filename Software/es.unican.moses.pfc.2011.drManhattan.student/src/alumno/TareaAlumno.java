@@ -21,12 +21,13 @@ import alumno.GUIAlumno.CuentaTiempo;
 import comun.BloquesFichero;
 import comun.ComienzoExamen;
 import comun.DatosAlumno;
+import comun.Global;
 
 /**
  * 
- * Clase que representa la actividad a realizar por la aplicación del alumno.
+ * Clase que representa la actividad a realizar por la aplicacion del alumno.
  * 
- * @author Manuel Pando Muñoz
+ * @author Manuel Pando MuÃ±oz
  *
  */
 public class TareaAlumno extends Thread{
@@ -184,9 +185,18 @@ public class TareaAlumno extends Thread{
 					if(ce.examenTemporizado){
 						ct.setMinutos(ce.minutosExamen);
 					}
-					estado.setText("Realizando prueba");
-					break;
+					
+					/* Eliminar acceso red */
+					
+					//crear el socket con el proceso daemon
+					Socket socketDaemon = new Socket("127.0.0.1", comun.Global.PUERTODAEMON);
+					DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
+					//opcion de denegar el acceso a la red
+					dosd.writeInt(Global.NORED);
 
+					estado.setText("Realizando prueba");
+					break;					
+					
 				default:
 					break;
 				}

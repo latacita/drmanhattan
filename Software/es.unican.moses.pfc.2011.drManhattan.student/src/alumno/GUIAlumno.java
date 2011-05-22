@@ -18,7 +18,7 @@ import java.io.File;
  * 
  * Clase que crea la GUI del alumno.
  * 
- * @author Manuel Pando Muñoz
+ * @author Manuel Pando MuÃ±oz
  *
  */
 public class GUIAlumno{
@@ -176,7 +176,15 @@ public class GUIAlumno{
 				da.nombre = tfNombre.getText();
 				da.apellidos = tfApellido.getText();
 				new TareaAlumno(ipProfesor, dirEnum, lblEstado, da, ct);
-				//TODO deshabilitar nombre, apellidos, directorio, etc?
+				
+				//TODO si hubiese algun problema habria que volverlos a habilitar
+				
+				btnConectar.setEnabled(false);
+				btnExplorar.setEnabled(false);
+				tfNombre.setEnabled(false);
+				tfDirEnunciado.setEnabled(false);
+				tfApellido.setEnabled(false);
+				tfIPProfesor.setEnabled(false);
 			}
 		});
 
@@ -184,11 +192,11 @@ public class GUIAlumno{
 
 
 	/**
-	 * Clase para mantener una cuenta atras hasta la finalización de la prueba para que el alumno pueda consultarlo.
+	 * Clase para mantener una cuenta atras hasta la finalizaciï¿½n de la prueba para que el alumno pueda consultarlo.
 	 * Actualiza cada segundo un componente label de la GUI.
 	 * Se ejecuta en un thread aparte para no bloquear la interfaz.
 	 * 
-	 * @author Manuel Pando Muñoz
+	 * @author Manuel Pando Muï¿½oz
 	 *
 	 */
 	public class CuentaTiempo implements Runnable {
