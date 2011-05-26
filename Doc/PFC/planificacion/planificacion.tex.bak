@@ -98,7 +98,17 @@ Además, se guardarán registros de los eventos ocurridos en cada prueba, con el
 \newline
 
 Para comodidad del alumno, en las pruebas con hora de finalización predeterminada se mostrará en la interfaz de la aplicación los minutos restantes hasta el final.
-\newline
+%\newline
+
+Con esta descripción tenemos los siguientes casos de uso del sistema en la figura \ref{fig:planificacion:casosUso}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=10cm]{planificacion/casosUsoSistema}
+    \caption{Diagrama de casos de uso del sistema}
+    \label{fig:planificacion:casosUso}
+\end{figure}
 
 %==========================================================================%
 % NOTA(Pablo): Observa el párrafo de enlace
@@ -128,13 +138,13 @@ El proceso se divide en cuatro partes fundamentales:
 
 \begin{enumerate}
 
-    \item \textbf{Iniciación:} en esta fase se describe el ámbito funcional del sistema, los requisitos de alto nivel y se identifican posibles riesgos. Hay que comprender el sistema y sus límites.
+	\item \textbf{Iniciación:} en esta fase se describe el ámbito funcional del sistema, los requisitos de alto nivel y se identifican posibles riesgos. Hay que comprender el sistema y sus límites.
 
-    \item \textbf{Elaboración:} el objetivo principal de esta fase es el de crear la arquitectura básica, para tener una visión de cómo será el sistema completo y además, proponer soluciones a los riesgos identificados.
+	\item \textbf{Elaboración:} el objetivo principal de esta fase es el de crear la arquitectura básica, para tener una visión de cómo será el sistema completo y además, proponer soluciones a los riesgos identificados.
 
-    \item \textbf{Construcción:} cómo su nombre indica, esta es la fase dónde se construye y prueba la aplicación. Se realiza un pequeño proceso en cascada en cada iteración de esta fase.
+	\item \textbf{Construcción:} cómo su nombre indica, esta es la fase dónde se construye y prueba la aplicación. Se realiza un pequeño proceso en cascada en cada iteración de esta fase.
 
-    \item \textbf{Transición:} se despliega el sistema y finaliza el proceso.
+	\item \textbf{Transición:} se despliega el sistema y finaliza el proceso.
 
 \end{enumerate}
 
@@ -152,13 +162,13 @@ Las principales razones por las que se ha escogido este tipo de proceso y no otr
 
 \begin{itemize}
 
-    \item[\ding{70}] Poca incertidumbre a la hora de diseñar y planificar, ya que al realizarse en cada iteración y no del sistema completo, se tiene mayor comprensión de los riesgos y de las tareas a realizar.
+	\item[\ding{70}] Poca incertidumbre a la hora de diseñar y planificar, ya que al realizarse en cada iteración y no del sistema completo, se tiene mayor comprensión de los riesgos y de las tareas a realizar.
 
-    \item[\ding{70}] Se adapta bien a cambios de requisitos.
+	\item[\ding{70}] Se adapta bien a cambios de requisitos.
 
-    \item[\ding{70}] Si se priorizan los requisitos para implementarlos en las primeras iteraciones de la construcción, se obtiene una aplicación con funcionalidades clave en la que el cliente puede decidir si está o no correcto.
+	\item[\ding{70}] Si se priorizan los requisitos para implementarlos en las primeras iteraciones de la construcción, se obtiene una aplicación con funcionalidades clave en la que el cliente puede decidir si está o no correcto.
 
-    \item[\ding{70}] Al trabajar con un subconjunto de requisitos en cada iteración la complejidad se reduce, lo que facilita que se reduzca también el número de errores producidos.
+	\item[\ding{70}] Al trabajar con un subconjunto de requisitos en cada iteración la complejidad se reduce, lo que facilita que se reduzca también el número de errores producidos.
 
 \end{itemize}
 
@@ -207,72 +217,129 @@ En concreto, se han identificado los siguientes requisitos de alto nivel para nu
 
 \todo {arreglar la tabla}
 
+\begin{table}
 \begin{tabular}{|c|l|}
-    \hline
-    \textbf{Identificador} & \textbf{Descripción}
-    \\ \hline
+	\hline
+	\textbf{Identificador} & \textbf{Descripción}
+	\\ \hline
 
-    R01 & Un computador de la red debe poder ser designado como \emph{Watchman}.
-    \\ \hline
+	R01 & Un computador de la red debe poder ser designado como \emph{Watchman}.
+	\\ \hline
 
-    R02 & Todos los computadores que no sean \emph{Watchman} serán computadores
-    normales, y podrán ser utilizados para la realización de las pruebas evaluables.
-    \\ \hline
+	R02 & \multicolumn{2}{c}{Todos los computadores que no sean \emph{Watchman} serán computadores
+	normales, y podrán ser utilizados para la realización de las pruebas evaluables.}
+	\\ \hline
 
-    R03 & El profesor debe ser capaz desde el \emph{Watchman} de indicar el inicio de la prueba.
-    \\ \hline
+	R03 & El profesor debe ser capaz desde el \emph{Watchman} de indicar el inicio de la prueba.
+	\\ \hline
 
-    R04 & El profesor debe ser capaz desde el \emph{Watchman} de indicar el fin de la prueba.
-    \\ \hline
+	R04 & El profesor debe ser capaz desde el \emph{Watchman} de indicar el fin de la prueba.
+	\\ \hline
 
-    R05 & El profesor ha de ser capaz desde el \emph{Watchman} de establecer una hora límite para la duración de la prueba.
-    \\ \hline
+	R05 & El profesor ha de ser capaz desde el \emph{Watchman} de establecer una hora límite para la duración de la prueba.
+	\\ \hline
 
-    R06 & El profesor debe ser capaz desde el \emph{Watchman} de enviar el fichero de enunciado al resto de computadores.
-    \\ \hline
+	R06 & El profesor debe ser capaz desde el \emph{Watchman} de enviar el fichero de enunciado al resto de computadores.
+	\\ \hline
 
-    R07 & El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}.
-    \\ \hline
+	R07 & El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}.
+	\\ \hline
 
-    R08 & El alumno desde su computador debe ser capaz de enviar sus resultados al profesor.
-    \\ \hline
-    
-    R09 & El alumno desde su computador debe ser capaz de indicar que da por finalizada la prueba.
-    \\ \hline
-    
-    R10 & El alumno desde su computador debe tener la posibilidad de ver el tiempo restante el pruebas de duración prefijada.
-    \\ \hline
+	R08 & El alumno desde su computador debe ser capaz de enviar sus resultados al profesor.
+	\\ \hline
 
-    R11 & La aplicación del alumno ha de ser capaz de denegar el acceso a la red al empezar la prueba.
-    \\ \hline
+	R09 & El alumno desde su computador debe ser capaz de indicar que da por finalizada la prueba.
+	\\ \hline
 
-    R12 & La aplicación del alumno ha de ser capaz de permitir el acceso a la red al finalizar la prueba.
-    \\ \hline
+	R10 & El alumno desde su computador debe tener la posibilidad de ver el tiempo restante el pruebas de duración prefijada.
+	\\ \hline
 
-    R13 & La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
-    \\ \hline
+	R11 & La aplicación del alumno ha de ser capaz de denegar el acceso a la red al empezar la prueba.
+	\\ \hline
 
-    R14 & La aplicación del profesor ha de ser capaz de guardar registros de actividad.
-    \\ \hline
+	R12 & La aplicación del alumno ha de ser capaz de permitir el acceso a la red al finalizar la prueba.
+	\\ \hline
 
-\end{tabular} 
+	R13 & La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
+	\\ \hline
+
+	R14 & La aplicación del profesor ha de ser capaz de guardar registros de actividad.
+	\\ \hline
+
+\end{tabular}
+\label{tabla:requisitos}
+\caption{Requisitos del sistema}
+\end{table}
+
+\section{Iteraciones}
+
+En esta sección se describen las iteraciones previstas para el desarrollo de la aplicación.
+
+\begin{itemize}
+    \item {\bfseries Iteración 1: Crear un sistema distribuido.}
+    \begin{itemize}
+        \item Requisitos implementados: R06, R07
+        \item Descripción: En la primera iteración la aplicación del alumno se podrá conectar al watchman para esperar el inicio de la prueba, envío de ficheros etc... y el profesor es capaz de enviar el enunciado.
+    \end{itemize}
+
+    \item {\bfseries Iteración 2: Denegar acceso a red una vez comenzado el examen.}
+    \begin{itemize}
+        \item Requisitos implementados: R03, R05, R10, R11
+        \item Descripción: En la segunda iteración el profesor puede establecer una hora límite e indicar el inicio de la prueba. La aplicación del alumno es capaz de denegar el acceso a la red cuando se inicia la prueba y en caso de que la duración este prefijada, consultar el tiempo restante
+    \end{itemize}
+
+
+    \item {\bfseries Iteración 3: Habilitar red y enviar resultados}
+    \begin{itemize}
+        \item Requisitos implementados: R04, R08, R09, R12
+        \item Descripción: En la tercera iteración se permite al profesor finalizar la prueba de modo general. Del mismo modo, cada alumno puede finalizar la prueba por su cuenta y enviar su archivo de resultados al computador del profesor. La aplicación del alumno, cuando este finaliza la prueba, habilita el acceso a la red.
+    \end{itemize}
+
+
+    \item {\bfseries Iteración 4: Comprobación de integridad}
+    \begin{itemize}
+        \item Requisitos implementados: R13
+        \item Descripción: En la cuarta iteración se implementa el sistema de comprobación de integridad de los ficheros transmitidos por red para garantizar la correcta recepción de los mismos.
+    \end{itemize}
+
+    \item {\bfseries Iteración 5: Sistema de logs}
+    \begin{itemize}
+        \item Requisitos implementados: R14
+        \item Descripción: Definir los mensajes necesarios para cuando en la aplicación ocurre algo que se desee guardar.
+    \end{itemize}
+\end{itemize}
+
+
+En cuanto a los requisitos R01 y R02 están implementados en arquitectura del sistema, no son funcionalidades.
+\newline
+
+En este capítulo se ha descrito el ámbito funcional del sistema y la metodología a utilizar para desarrollarlo. De acuerdo a este plan de desarrollo, se han obtenido los requisitos y planteado una serie de iteraciones a seguir para la construcción de la aplicación.
+\newline
+
+
+% Los requisitos R01 y R02 están implementados en arquitectura del sistema, no son
+% funcionalidades.
 
 
 %Iteraciones previstas
 
-%Iteración 1:
-%R07 - En la primera iteración la aplicación del alumno se podrá conectar al watchman para esperar el inicio de la prueba, envió de ficheros etc...
+% Iteración 1: Crear un minisistema distribuido
+%R06, R07 - En la primera iteración la aplicación del alumno se podrá conectar al watchman para esperar el inicio de la prueba, envío de ficheros etc... y el profesor es capaz de enviar el enunciado.
 
-%Iteración 2:
-%R03, R05, R06, R10, R11 - En la segunda iteración el profesor puede establecer una hora límite, indicar el inicio de la prueba y enviar el fichero de enunciado. la aplicación del alumno es capaz de denegar el acceso a la red cuando se inicia la prueba y en caso de que la duración este prefijada, consultar el tiempo restante
+% Iteración 2: Denegar acceso a red una vez comenzado el examen
+%R03, R05, R10, R11 - En la segunda iteración el profesor puede establecer una hora límite e indicar el inicio de la prueba. La aplicación del alumno es capaz de denegar el acceso a la red cuando se inicia la prueba y en caso de que la duración este prefijada, consultar el tiempo restante
 
-%Iteración 3:
+
+%Iteración 3: Habilitar red y enviar resultados
 %R04, R08, R09, R12 - En la tercera iteración se permite al profesor finalizar la prueba de modo general. Del mismo modo, cada alumno puede finalizar la prueba por su cuenta y enviar su archivo de resultados al computador del profesor. La aplicación del alumno, cuando este finaliza la prueba, habilita el acceso a la red.
 
+% Los requisitos R01 y R02 están implementados en arquitectura del sistema, no son
+% funcionalidades.
 
-%Los requisitos R01 y R02 están implementados en arquitectura del sistema, no son funcionalidades.
+% Iteración 4:
+% R13: Se implementa tanto en el caso de que el profesor envíe el enunciado, como cuando reciba % los resultados.
 
-%R14: Cuando en la aplicación ocurre algo de lo que se deseen guardar logs se implementará con independencia de la iteración en la que nos encontremos.
+% Iteración 5:
+% R14: Cuando en la aplicación ocurre algo de lo que se deseen guardar logs se implementará con % independencia de la iteración en la que nos encontremos.
 
-%R13: Se implementa tanto en el caso de que el profesor envíe el enunciado, como cuando reciba los resultados.
 

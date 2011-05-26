@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  4 MAY 2011 16:52
+This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  26 MAY 2011 19:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -300,6 +300,31 @@ LaTeX Font Info:    Try loading font information for U+psy on input line 64.
 (c:/texlive/2010/texmf-dist/tex/latex/psnfss/upsy.fd
 File: upsy.fd 2001/06/04 font definitions for U/psy.
 ))
+(c:/texlive/2010/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2010/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(c:/texlive/2010/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(c:/texlive/2010/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(c:/texlive/2010/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+(c:/texlive/2010/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/01/28 v0.05d Graphics/color for pdfTeX
+\Gread@gobject=\count93
+))
+\Gin@req@height=\dimen106
+\Gin@req@width=\dimen107
+)
 (c:/texlive/2010/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2008/07/06 v3.8l The Babel package
 
@@ -308,12 +333,12 @@ Language: spanish.ldf 2009/01/02 v5.0h Spanish support from the babel system
 
 (c:/texlive/2010/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2008/07/06 v3.8l Babel common definitions
-\babel@savecnt=\count93
-\U@D=\dimen106
+\babel@savecnt=\count94
+\U@D=\dimen108
 )
-\es@datefmt=\count94
-\es@quottoks=\toks19
-\es@quotdepth=\count95
+\es@datefmt=\count95
+\es@quottoks=\toks20
+\es@quotdepth=\count96
 Package babel Info: Making " an active character on input line 492.
 Package babel Info: Making . an active character on input line 585.
 Package babel Info: Making < an active character on input line 630.
@@ -345,35 +370,10 @@ Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
-
-(c:/texlive/2010/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/01/28 v0.05d Graphics/color for pdfTeX
-\Gread@gobject=\count96
-))
+)
 (c:/texlive/2010/texmf-dist/tex/latex/rotating/rotating.sty
 Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
 
-(c:/texlive/2010/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-
-(c:/texlive/2010/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks20
-)
-(c:/texlive/2010/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-
-(c:/texlive/2010/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-)
-(c:/texlive/2010/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
-)
-Package graphics Info: Driver file: pdftex.def on input line 91.
-)
-\Gin@req@height=\dimen107
-\Gin@req@width=\dimen108
-)
 (c:/texlive/2010/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
@@ -469,18 +469,18 @@ TextBlockOrigin set to 0pt x 0pt
 )) (./config/rename.tex) (./pfc.aux)
 \openout1 = `pfc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 66.
-LaTeX Font Info:    ... okay on input line 66.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
 
 (c:/texlive/2010/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -525,4 +525,275 @@ Package: kvoptions 2010/02/22 v3.7 Keyval support for LaTeX options (HO)
 Package: kvsetkeys 2010/03/01 v1.9 Key value parser (HO)
 
 (c:/texlive/2010/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2010/01/28 v1.3 Prefix for
+Package: etexcmds 2010/01/28 v1.3 Prefix for e-TeX command names (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 436.
+
+(c:/texlive/2010/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package minitoc(hints) Info: I0049
+(minitoc(hints))             ==> You requested the hints option. 
+(minitoc(hints))             Some hints are eventually given below.
+
+ABD: EveryShipout initializing macros (./config/toc.tex
+Package minitoc Info: I0024
+(minitoc)             PREPARING MINITOCS FROM pfc.toc on input line 2.
+Package minitoc Info: I0033
+(minitoc)             Writing pfc.mtc1.
+\openout3 = `pfc.mtc1'.
+
+Package minitoc Info: I0033
+(minitoc)             Writing pfc.mtc2.
+\openout3 = `pfc.mtc2'.
+
+Package minitoc Info: I0033
+(minitoc)             Writing pfc.mtc3.
+\openout3 = `pfc.mtc3'.
+
+ (./pfc.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+
+(c:/texlive/2010/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+
+(c:/texlive/2010/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+))
+\tf@toc=\write4
+\openout4 = `pfc.toc'.
+
+ [1
+
+
+{c:/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
+
+] (./pfc.lof)
+\tf@lof=\write5
+\openout5 = `pfc.lof'.
+
+ [3] [4
+
+] (./pfc.lot)
+\tf@lot=\write6
+\openout6 = `pfc.lot'.
+
+[5] [6
+
+]) (./Config/headers.tex) (./config/chapters.tex)
+(./planificacion/planificacion.tex
+Cap\'{\i }tulo 1.
+\openout3 = `pfc.mtc'.
+
+\openout3 = `pfc.mtc'.
+
+(./pfc.mtc1)
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 34--46
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--49
+
+ []
+
+[1
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 57--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--69
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 97--99
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--119
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 124--126
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--143
+
+ []
+
+[4] <planificacion/casosUsoSistema.png, id=45, 602.25pt x 395.22656pt>
+File: planificacion/casosUsoSistema.png Graphic file (type png)
+
+<use planificacion/casosUsoSistema.png>
+Underfull \hbox (badness 10000) in paragraph at lines 182--212
+
+ []
+
+[5 <./planificacion/casosUsoSistema.png (PNG copy)>]
+Overfull \hbox (440.4673pt too wide) in paragraph at lines 218--268
+[][]
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 278.
+
+(c:/texlive/2010/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 278.
+ [6]
+Underfull \hbox (badness 10000) in paragraph at lines 310--312
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 313--315
+
+ []
+
+) (./background/background.tex [7] [8
+
+]
+Cap\'{\i }tulo 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+
+ []
+
+\openout3 = `pfc.mtc'.
+
+\openout3 = `pfc.mtc'.
+
+(./pfc.mtc2)
+Overfull \hbox (4.86417pt too wide) in paragraph at lines 43--44
+[]\T1/cmr/m/n/10.95 El fun-cio-na-mien-to de la red es-tá es-tan-da-ri-za-do si
+en-do el pro-to-co-lo TCP/IP
+ []
+
+[9
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 114--116
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--145
+
+ []
+
+) (./arquitectura/arquitectura.tex [10]
+Cap\'{\i }tulo 3.
+\openout3 = `pfc.mtc'.
+
+\openout3 = `pfc.mtc'.
+
+(./pfc.mtc3)
+<arquitectura/despliegueSistema.png, id=70, 402.00188pt x 417.05812pt>
+File: arquitectura/despliegueSistema.png Graphic file (type png)
+
+<use arquitectura/despliegueSistema.png>
+Overfull \hbox (42.00089pt too wide) in paragraph at lines 24--25
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--29
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--41
+
+ []
+
+<arquitectura/actividadSistema.png, id=71, 691.83469pt x 935.74594pt>
+File: arquitectura/actividadSistema.png Graphic file (type png)
+
+<use arquitectura/actividadSistema.png>
+<arquitectura/estadosAlumno.png, id=72, 484.05844pt x 641.39626pt>
+File: arquitectura/estadosAlumno.png Graphic file (type png)
+
+<use arquitectura/estadosAlumno.png> [11
+
+
+]
+Underfull \vbox (badness 3919) has occurred while \output is active []
+
+ [12 <./arquitectura/despliegueSistema.png (PNG copy)>] [13 <./arquitectura/act
+ividadSistema.png (PNG copy)>] [14 <./arquitectura/estadosAlumno.png (PNG copy)
+>])
+Package minitoc Info: I0009
+(minitoc)             Listing minitoc auxiliary files. 
+(minitoc)             Creating the pfc.maf file.
+\openout3 = `pfc.maf'.
+
+Package minitoc(hints) Info: I0019
+(minitoc(hints))             No hints have been written 
+(minitoc(hints))             in the pfc.log file..
+ [15]
+(./pfc.aux) ) 
+Here is how much of TeX's memory you used:
+ 4815 strings out of 493763
+ 62515 string characters out of 3148267
+ 142270 words of memory out of 3000000
+ 7746 multiletter control sequences out of 15000+200000
+ 26827 words of font info for 67 fonts, out of 3000000 for 9000
+ 716 hyphenation exceptions out of 8191
+ 38i,12n,43p,1247b,474s stack positions out of 5000i,500n,10000p,200000b,50000s
+{c:/texlive/2010/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.e
+nc}<c:/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/te
+xlive/2010/texmf-dist/fonts/type1/public/cm-super/sfbl1095.pfb><c:/texlive/2010
+/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2010/texmf-dis
+t/fonts/type1/public/cm-super/sfbx1095.pfb><c:/texlive/2010/texmf-dist/fonts/ty
+pe1/public/cm-super/sfbx1200.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public
+/cm-super/sfbx1440.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/
+sfbx2074.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfbx2488.p
+fb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/tex
+live/2010/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2010/
+texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2010/texmf-dist
+/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2010/texmf-dist/fonts/typ
+e1/public/cm-super/sfsl1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/
+cm-super/sfti0900.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/s
+fti1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on pfc.pdf (21 pages, 446863 bytes).
+PDF statistics:
+ 141 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -98,7 +98,7 @@ Además, se guardarán registros de los eventos ocurridos en cada prueba, con el
 \newline
 
 Para comodidad del alumno, en las pruebas con hora de finalización predeterminada se mostrará en la interfaz de la aplicación los minutos restantes hasta el final.
-\newline
+
 
 %==========================================================================%
 % NOTA(Pablo): Observa el párrafo de enlace
@@ -162,7 +162,14 @@ Las principales razones por las que se ha escogido este tipo de proceso y no otr
 
 \end{itemize}
 
-De la primera fase, \emph{iniciación}, la descripción funcional detallando el alcance del sistema está descrita en la sección \ref{sec:planificacion:descFuncional}, en la siguiente se describen los requisitos de alto nivel extraídos.
+De la primera fase, \emph{iniciación}, la descripción funcional detallando el alcance del sistema está descrita en la sección \ref{sec:planificacion:descFuncional}, a continuación se muestra un diagrama de casos de uso, basado en esa descripción y en la siguiente sección se describen los requisitos de alto nivel extraídos.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=10cm]{planificacion/casosUsoSistema}
+    \caption{Diagrama de casos de uso del sistema}
+    \label{fig:planificacion:casosUso}
+\end{figure}
 
 
 
@@ -257,7 +264,58 @@ En concreto, se han identificado los siguientes requisitos de alto nivel para nu
 	\\ \hline
 
 \end{tabular}
+\label{tabla:requisitos}
+\caption{Requisitos del sistema}
 \end{table}
+
+\section{Iteraciones}
+
+En esta sección se describen las iteraciones previstas para el desarrollo de la aplicación.
+
+\begin{itemize}
+    \item {\bfseries Iteración 1: Crear un sistema distribuido.}
+    \begin{itemize}
+        \item Requisitos implementados: R06, R07
+        \item Descripción: En la primera iteración la aplicación del alumno se podrá conectar al watchman para esperar el inicio de la prueba, envío de ficheros etc... y el profesor es capaz de enviar el enunciado.
+    \end{itemize}
+
+    \item {\bfseries Iteración 2: Denegar acceso a red una vez comenzado el examen.}
+    \begin{itemize}
+        \item Requisitos implementados: R03, R05, R10, R11
+        \item Descripción: En la segunda iteración el profesor puede establecer una hora límite e indicar el inicio de la prueba. La aplicación del alumno es capaz de denegar el acceso a la red cuando se inicia la prueba y en caso de que la duración este prefijada, consultar el tiempo restante
+    \end{itemize}
+
+
+    \item {\bfseries Iteración 3: Habilitar red y enviar resultados}
+    \begin{itemize}
+        \item Requisitos implementados: R04, R08, R09, R12
+        \item Descripción: En la tercera iteración se permite al profesor finalizar la prueba de modo general. Del mismo modo, cada alumno puede finalizar la prueba por su cuenta y enviar su archivo de resultados al computador del profesor. La aplicación del alumno, cuando este finaliza la prueba, habilita el acceso a la red.
+    \end{itemize}
+
+
+    \item {\bfseries Iteración 4: Comprobación de integridad}
+    \begin{itemize}
+        \item Requisitos implementados: R13
+        \item Descripción: En la cuarta iteración se implementa el sistema de comprobación de integridad de los ficheros transmitidos por red para garantizar la correcta recepción de los mismos.
+    \end{itemize}
+
+    \item {\bfseries Iteración 5: Sistema de logs}
+    \begin{itemize}
+        \item Requisitos implementados: R14
+        \item Descripción: Definir los mensajes necesarios para cuando en la aplicación ocurre algo que se desee guardar.
+    \end{itemize}
+\end{itemize}
+
+
+En cuanto a los requisitos R01 y R02 están implementados en arquitectura del sistema, no son funcionalidades.
+\newline
+
+En este capítulo se ha descrito el ámbito funcional del sistema y la metodología a utilizar para desarrollarlo. De acuerdo a este plan de desarrollo, se han obtenido los requisitos y planteado una serie de iteraciones a seguir para la construcción de la aplicación.
+\newline
+
+
+% Los requisitos R01 y R02 están implementados en arquitectura del sistema, no son
+% funcionalidades.
 
 
 %Iteraciones previstas
@@ -272,7 +330,7 @@ En concreto, se han identificado los siguientes requisitos de alto nivel para nu
 %Iteración 3: Habilitar red y enviar resultados
 %R04, R08, R09, R12 - En la tercera iteración se permite al profesor finalizar la prueba de modo general. Del mismo modo, cada alumno puede finalizar la prueba por su cuenta y enviar su archivo de resultados al computador del profesor. La aplicación del alumno, cuando este finaliza la prueba, habilita el acceso a la red.
 
-% Los requisitos R01 y R02 están implementados en arquitectura del sistema, no son 
+% Los requisitos R01 y R02 están implementados en arquitectura del sistema, no son
 % funcionalidades.
 
 % Iteración 4:
