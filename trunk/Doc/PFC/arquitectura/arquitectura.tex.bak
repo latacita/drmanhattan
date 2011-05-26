@@ -1,0 +1,50 @@
+%==================================================================%
+% Author : Pando Muñoz, Manuel                                     %
+%          Sánchez Barreiro, Pablo                                 %
+% Version: 1.0, 30/03/2011                                         %
+%                                                                  %
+% Memoria del Proyecto Fin de Carrera                              %
+% Archivo raíz para el capítulo de la arquitectura del sistema     %
+%==================================================================%
+
+
+\chapterheader{Arquitectura y diseño}{Definición Arquitectónica y Diseño Software}
+\label{chap:arquitectura}
+
+El presente capítulo \todo{finalizar breve introducción}
+
+\chaptertoc
+
+\section{Arquitectura física del Sistema}
+\label{sec:arquitectura:arqFisica}
+
+En esta sección se describe la arquitectura física del sistema mediante un diagrama de despliegue.
+\begin{figure}
+    \centering
+    \includegraphics{arquitectura/despliegueSistema}
+    \caption{Diagrama de despliegue del sistema}
+    \label{fig:arquitectura:despliegue}
+\end{figure}
+\newline
+
+Cómo se puede puede observar, sólo se permite la existencia de una aplicación en el computador del profesor, a la que se conectan mediante TCP/IP un número indefinido de aplicaciones alumno, lógico, ya que en cada prueba suele haber varios los alumnos realizándola y uno el número de profesores.
+\newline
+
+Se ve también cómo la aplicación del alumno interactúa con un daemon del sistema que a su vez utiliza iptables para denegar o permitir el acceso a la red cuándo sea necesario.
+
+
+\section{Diseño Software}
+\label{sec:arquitectura:diseno}
+
+En está sección se muestra un diagrama de actividad que resume las posibles interacciones que tanto el alumno como el profesor realizan con sus respectivas aplicaciones durante el trascurso normal de una prueba.
+\newline
+
+\begin{figure}
+    \centering
+    \includegraphics{arquitectura/despliegueSistema}
+    \caption{Diagrama de despliegue del sistema}
+    \label{fig:arquitectura:despliegue}
+\end{figure}
+\newline
+
+Vemos que se siguen los pasos descritos en la sección \ref{sec:planificacion:descFuncional}

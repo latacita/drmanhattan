@@ -20,6 +20,7 @@
 \usepackage{url}
 \usepackage{amsfonts}
 \usepackage{pifont}
+\usepackage{graphicx}
 
 %\usepackage[spanish,activeacute]{babel}
 \usepackage[spanish]{babel}
@@ -66,9 +67,9 @@ Faculty of Sciences}
 \begin{document}
 
 % Cover page
-\input{cover/cover.tex}
+%\input{cover/cover.tex}
 
-% \input{cover/supervisorApproval.tex}
+%\input{cover/supervisorApproval.tex}
 
 %\input{cover/firstPage.tex}
 
@@ -82,7 +83,7 @@ Faculty of Sciences}
 %\input{introduction/preface-lff.tex}   % preface
 
 % Toc
-\input{config/toc.tex}
+%\input{config/toc.tex}
 
 \input{Config/headers.tex}
 
@@ -91,21 +92,35 @@ Faculty of Sciences}
 % Cap\'itulo 1: Introducci\'on
 %\input{introduction/introduction.tex} % Chapter 1
 
-% Cap\'itulo 3: Descripci\'on General del Proceso
+% Cap\'itulo 2: Descripci\'on General del Proceso
 \input{planificacion/planificacion.tex}
 
-% Cap\'itulo 2: Resumen del Estado del Arte
-\input{background/background.tex}
+% Cap\'itulo 3: Resumen del Estado del Arte
+%\input{background/background.tex}
 
-% Cap\'itulo 6: Definici\'on Arquitect\'onica y Dise\~no Software
+% Cap\'itulo 4: Definici\'on Arquitect\'onica y Dise\~no Software
+\input{arquitectura/arquitectura.tex}
 
-% Cap\'itulo 7: Construcci\'on e Implementaci\'on
+%% Describir la arquitectura física del sistema (despliegue)
 
-% Cap\'itulo 8: Pruebas
+%% Diagrama de secuencia general del sistema
 
-% Cap\'itulo 9: Despliegue y Aceptaci\'on
+%% Estados del ordenador del alumno
 
-% Cap\'itulo 10: Discusi\'on, Conclusiones y Trabajos Futuros
+%% Razonar porque el software es seguro
+
+% Capítulo 5: Ejemplo de una iteración
+%\input{iteracion/iteracion.tex}
+
+%% Describe la que más te guste
+
+% Cap\'itulo 6: Construcci\'on, Implementaci\'on, Pruebas y Despliegue
+
+%% Detalles de implementación
+
+% Cap\'itulo 8: Discusi\'on, Conclusiones y Trabajos Futuros
+
+%%
 
 % CONTENT: Appendices, if desired
 %\input{config/appendix.tex}
