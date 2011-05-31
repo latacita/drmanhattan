@@ -110,7 +110,9 @@ public class Daemon {
 						
 						//ejecutar comando IPtables para denegar la red
 						comando = "iptables -P OUTPUT DROP";
-						Runtime.getRuntime().exec(comando);						
+						Runtime.getRuntime().exec(comando);
+						comando = "iptables -A OUTPUT -s 127.0.0.1 -j ACCEPT";
+						Runtime.getRuntime().exec(comando);
 						break;
 					
 					//dar acceso a toda la red
@@ -118,7 +120,10 @@ public class Daemon {
 						
 						//cambiar la politica
 						comando = "iptables -P OUTPUT ACCEPT";
-						Runtime.getRuntime().exec(comando);						
+						Runtime.getRuntime().exec(comando);
+						
+						comando = "iptables -D OUTPUT -s 127.0.0.1 -j ACCEPT";
+						Runtime.getRuntime().exec(comando);
 						break;						
 						
 					default:
