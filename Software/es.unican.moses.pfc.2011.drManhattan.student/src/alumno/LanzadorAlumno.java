@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 
 /**
  * Clase que inicia la aplicacion en el alumno.
- * @author Manuel Pando Muñoz
+ * @author Manuel Pando
  *
  */
 public class LanzadorAlumno {
