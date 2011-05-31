@@ -33,9 +33,6 @@ public class HiloAceptadorAlumnos extends Thread{
 	//para aceptar conexiones
 	private ServerSocket sSocket;
 
-	//con valor true se dejan de aceptar alumnos nuevos
-	private boolean desconectar;
-
 
 	List<Socket> listaSocket;
 
@@ -45,9 +42,7 @@ public class HiloAceptadorAlumnos extends Thread{
 	public HiloAceptadorAlumnos(){
 		try{
 			//Inicializa las variables
-			desconectar = false;
 			sSocket = new ServerSocket(Global.PUERTOPROFESOR);
-
 			listaSocket = new LinkedList<Socket>();
 
 			this.start();
@@ -60,7 +55,7 @@ public class HiloAceptadorAlumnos extends Thread{
 
 	public void run(){
 		try{			
-			while(!desconectar){
+			while(!this.isInterrupted()){
 				System.out.println("Desde el thread del servidor, espero cliente");
 				Socket socket;
 
@@ -77,15 +72,47 @@ public class HiloAceptadorAlumnos extends Thread{
 				 * TODO
 				 * Utilizar el socket creado, crear un hilo para la interaccion, log con su nombre y tal
 				 * 
-				 * Comprobar si desconectamos
+				 * --------- Comprobar si desconectamos, no aceptar mas -------------------
 				 *  
 				 */				
 			}
+			System.out.println("Salgo del thread");
+			
+			
 		}catch(Exception e){
 			//TODO tratamiento de errores
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Evita que se acepten nuevas conexiones una vez comenzada la prueba
+	 */
+	public void desconectar(){
+		System.out.println("prof: desconectar");
+		this.interrupt();
+		/*
+		 * Con cada uno de los sockets creados a partir de las conexiones de los alumnos
+		 * crear un hilo de ejecucion para la finalizacion de la prueba
+		 */
+		
+		Iterator<Socket> iterador = listaSocket.listIterator();
+
+		//recorrer cada soket de alumnos
+		while(iterador.hasNext()){
+
+			Socket s = iterador.next();				
+
+			//si la conexion sigue abierta
+			if(!s.isClosed()){
+				new TareaProfesor(s);
+			}
+		}
+	}
+	
+	
+
+	
 
 	/**
 	 * Enviar un fichero a todos los alumnos conectados
@@ -246,7 +273,7 @@ public class HiloAceptadorAlumnos extends Thread{
 
 				}
 			}
-
+			desconectar();
 		}catch(Exception e){
 			//TODO tratar errores
 		}

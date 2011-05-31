@@ -233,6 +233,7 @@ public class GUIProfesor {
 				
 				
 				aceptaAlumnos.inicioPrueba(temporizar, minutos);
+				aceptaAlumnos.interrupt();
 				
 			}
 		});
