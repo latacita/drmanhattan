@@ -36,6 +36,7 @@ public class TareaAlumno extends Thread{
 	private String dirEnunciado;
 	private JLabel estado;
 	private CuentaTiempo ct;
+	private Socket socketDaemon;
 
 
 
@@ -54,11 +55,18 @@ public class TareaAlumno extends Thread{
 			dirEnunciado = directorioEnunciado;
 			this.estado = estado;
 			this.ct = ct;
-			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
-			oos.writeObject(da);			
+			
+			//ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());
+			//if(ois.readBoolean()){
+			
+				ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
+				oos.writeObject(da);			
 
-			estado.setText("Conectado");
-			this.start();			
+				estado.setText("Conectado");
+				this.start();
+		/*	}else{
+				estado.setText("Conexion no aceptada");
+			}*/
 
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
@@ -188,7 +196,7 @@ public class TareaAlumno extends Thread{
 					
 					//crear el socket con el proceso daemon
 					//esta en el mismo equipo
-					Socket socketDaemon = new Socket("127.0.0.1", comun.Global.PUERTODAEMON);
+					socketDaemon = new Socket("127.0.0.1", comun.Global.PUERTODAEMON);
 					DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
 					//opcion de denegar el acceso a la red
 					dosd.writeInt(Global.NORED);
@@ -213,6 +221,30 @@ public class TareaAlumno extends Thread{
 			e.printStackTrace();
 		}
 
-	}	
+	}
+	
+	
+	public void finalizar(){		
+		try {
+			System.out.println("alumno: finalizar");
+			this.interrupt();
+			//Socket socketDaemon = new Socket("127.0.0.1", comun.Global.PUERTODAEMON);
+			DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
+			System.out.println("alumno: canal salida daemon");
+			//opcion de denegar el acceso a la red
+			dosd.writeInt(Global.SIRED);
+			
+			System.out.println("alumno: permitir red");
+			
+			DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
+			System.out.println("alumno: canal salida prof");
+			dos.writeInt(Global.FINEXAMEN);
+			System.out.println("alumno: finalizar prueba");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 }
