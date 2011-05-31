@@ -4,7 +4,7 @@ package comun;
 *
 * Clase que con tiene constantes globales del programa
 * 
-* @author Manuel Pando Muñoz
+* @author Manuel Pando
 *
 */
 

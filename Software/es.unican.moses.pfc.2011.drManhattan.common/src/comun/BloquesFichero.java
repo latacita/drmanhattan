@@ -7,11 +7,13 @@ import java.io.Serializable;
 * Clase que representa el mensaje enviado tanto por el profesor como por los alumnos
 * conteniendo parte o totalidad de un fichero.
 * 
-* @author Manuel Pando Muñoz
+* @author Manuel Pando
 *
 */
 public class BloquesFichero implements Serializable {
-	
+
+	private static final long serialVersionUID = -8070432745902251384L;
+
 	//Nombre del fichero
 	public String nombreFichero;
 	
