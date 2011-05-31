@@ -25,7 +25,7 @@ import java.util.Date;
  * 
  * Clase que crea la GUI del profesor.
  * 
- * @author Manuel Pando Muñoz
+ * @author Manuel Pando
  *
  */
 public class GUIProfesor {

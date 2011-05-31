@@ -25,7 +25,7 @@ import comun.Global;
  * 
  * Clase encargada de aceptar nuevos alumnos.
  * 
- * @author Manuel Pando Muñoz
+ * @author Manuel Pando
  *
  */
 public class HiloAceptadorAlumnos extends Thread{
@@ -140,7 +140,7 @@ public class HiloAceptadorAlumnos extends Thread{
 						//obtener el canal de salida
 						ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
 
-						//variable auxiliar para marcar cuando se envía el último mensaje
+						//variable auxiliar para marcar cuando se envï¿½a el ï¿½ltimo mensaje
 						boolean enviadoUltimo = false;
 
 						//abrir el fichero
@@ -157,7 +157,7 @@ public class HiloAceptadorAlumnos extends Thread{
 						//mientras se lean datos del fichero
 						while (leidos > -1){						
 
-							//el número de bytes leidos
+							//el nï¿½mero de bytes leidos
 							bloque.datosUtiles = leidos;
 
 							//si se ha leido menos de lo posible, es porque se ha acabado
@@ -174,7 +174,7 @@ public class HiloAceptadorAlumnos extends Thread{
 							//enviar por el socket  
 							oos.writeObject(bloque);
 
-							//si es el último mensaje, salimos del bucle
+							//si es el ï¿½ltimo mensaje, salimos del bucle
 							if (bloque.ultimoBloque){
 								break; //TODO intentar quitar este break
 							}
@@ -187,7 +187,7 @@ public class HiloAceptadorAlumnos extends Thread{
 							leidos = fis.read(bloque.bloque);
 						}
 
-						//si el fichero tenia un tamaño multiplo del numero de bytes que se leen cada vez, el ultimo mensaje 
+						//si el fichero tenia un tamaï¿½o multiplo del numero de bytes que se leen cada vez, el ultimo mensaje 
 						//no estara marcado como ultimo, ya que la condicion leidos < bloque.bloque.length, no se cumple
 						if (!enviadoUltimo){
 							bloque.ultimoBloque = true;
