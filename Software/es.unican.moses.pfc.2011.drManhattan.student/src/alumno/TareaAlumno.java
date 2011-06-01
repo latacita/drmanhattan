@@ -37,6 +37,7 @@ public class TareaAlumno extends Thread{
 	private JLabel estado;
 	private CuentaTiempo ct;
 	private Socket socketDaemon;
+	private DatosAlumno datos;
 
 
 
@@ -55,6 +56,7 @@ public class TareaAlumno extends Thread{
 			dirEnunciado = directorioEnunciado;
 			this.estado = estado;
 			this.ct = ct;
+			datos = da;
 
 			//ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());
 			//if(ois.readBoolean()){
@@ -277,15 +279,16 @@ public class TareaAlumno extends Thread{
 
 			/* ####################################################################################### */
 
+			//obtener el canal de salida
+			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
+			oos.writeObject(datos);
+			
 			//variables utilizadas en caso de que haya que reenviar el fichero por problemas				
 			boolean enviar = true;
 			int contadorEnvios = 1;
 
 			//hasta 3 posibles envios
-			while(enviar && contadorEnvios<=3){
-
-				//obtener el canal de salida
-				ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
+			while(enviar && contadorEnvios<=3){				
 
 				//variable auxiliar para marcar cuando se envia el ultimo mensaje
 				boolean enviadoUltimo = false;
@@ -352,7 +355,8 @@ public class TareaAlumno extends Thread{
 
 			}//while(enviar && contadorEnvios<=3)
 
-
+			//finaliza el examen
+			dos.writeInt(Global.FINEXAMEN);
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

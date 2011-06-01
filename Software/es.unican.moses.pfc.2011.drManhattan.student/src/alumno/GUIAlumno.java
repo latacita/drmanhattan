@@ -40,11 +40,6 @@ public class GUIAlumno{
 	private JButton btnConectar;
 	private JButton btnExplorar;
 
-	private String nombre;
-	private String apellido;
-	private String dirEnunciado;
-	private String ipProfesor;
-
 	//variable para controlar la cuenta atras
 	private boolean finExamen = false;
 
@@ -71,11 +66,6 @@ public class GUIAlumno{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-
-		nombre = "";
-		apellido = "";
-		dirEnunciado = "";
-		ipProfesor = "";
 
 		//creacion y distribucion de componentes
 
