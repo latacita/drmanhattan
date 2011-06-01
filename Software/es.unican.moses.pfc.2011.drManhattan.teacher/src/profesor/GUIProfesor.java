@@ -14,12 +14,8 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+import java.util.StringTokenizer;
 
 /**
  * 
@@ -44,11 +40,6 @@ public class GUIProfesor {
 	private JButton btnFinExamen;	
 	private JButton btnExplorarDirResultados;
 
-	private boolean hayEnunciado;
-	private String ficheroEnunciado;
-	private String asignatura;
-	private int minutosExamen;
-
 	private HiloAceptadorAlumnos aceptaAlumnos;
 	private JPanel panelLog;
 	private JScrollPane scrollPane;
@@ -70,8 +61,6 @@ public class GUIProfesor {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-
-		asignatura = "";
 
 		frmDrmanhattan = new JFrame();
 		frmDrmanhattan.setResizable(false);
@@ -186,8 +175,6 @@ public class GUIProfesor {
 					aceptaAlumnos.envioFichero(archivoEnviar);
 				}
 
-				//TODO deshabilitar una vez enviado?
-
 			}
 		});
 
@@ -236,7 +223,23 @@ public class GUIProfesor {
 				tfNombreAsignatura.setEnabled(false);
 				
 				
-				aceptaAlumnos.inicioPrueba(temporizar, minutos, tfDirectorioResultados.getText().trim());
+				String asignatura = tfNombreAsignatura.getText().trim();
+				String asignaturaSinEspacios = "";
+				
+				StringTokenizer tokenizer = new StringTokenizer(asignatura);
+				while (tokenizer.hasMoreElements()){
+					asignaturaSinEspacios += tokenizer.nextElement();
+				}
+				
+				String dirResultados = tfDirectorioResultados.getText().trim();
+				
+				if(dirResultados.charAt(dirResultados.length()-1) == File.separatorChar){
+					dirResultados = dirResultados+asignaturaSinEspacios;
+				}else{
+					dirResultados = dirResultados+File.separator+asignaturaSinEspacios;
+				}
+				
+				aceptaAlumnos.inicioPrueba(temporizar, minutos, dirResultados.trim());
 				aceptaAlumnos.interrupt();
 				
 			}

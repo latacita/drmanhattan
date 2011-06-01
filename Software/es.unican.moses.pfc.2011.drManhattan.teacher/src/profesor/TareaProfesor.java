@@ -11,8 +11,10 @@ import java.io.ObjectInputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.StringTokenizer;
 
 import comun.BloquesFichero;
+import comun.DatosAlumno;
 import comun.Global;
 
 /**
@@ -27,7 +29,7 @@ import comun.Global;
 public class TareaProfesor extends Thread{
 
 	private Socket conexion;
-	private String dirResultados = "/home/manuel/Escritorio/FicherosProfesor";
+	private String dirResultados;
 
 	public TareaProfesor(Socket s, String dirResultados){
 		conexion = s;
@@ -52,28 +54,41 @@ public class TareaProfesor extends Thread{
 				
 				//caso: finalizar examen y enviar				
 				case Global.FINRESULTADOS:
+										
+					//el archivo de resultados se guarda en el directorio especificado/nombre de la asignatura/apellidosNombre
+					ObjectInputStream ois = new ObjectInputStream(conexion.getInputStream());
+					DatosAlumno datos = (DatosAlumno) ois.readObject();
+					String apellidosNombre = datos.apellidos.trim() + datos.nombre.trim();
+					String apellidosNombreSinEspacios = "";
 					
-					
-					ObjectInputStream ois = new ObjectInputStream(conexion.getInputStream());					
-
-					//crear el flujo de salida para guardar el fichero
-					//como inicialmente no se conoce ni el nombre ni la extension
-					//se deja general, al finalizar el envio, se cambia
-
-					File enunciado;
-					FileOutputStream fos;
-
-					if(dirResultados.charAt(dirResultados.length()-1) == File.separatorChar){
-						enunciado = new File(dirResultados+"temporal");
-					}else{
-						enunciado = new File(dirResultados+File.separator+"temporal");
+					StringTokenizer tokenizer = new StringTokenizer(apellidosNombre);
+					while (tokenizer.hasMoreElements()){
+						apellidosNombreSinEspacios += tokenizer.nextElement();
 					}
+					//crear el directorio
+					
+					if(dirResultados.charAt(dirResultados.length()-1) == File.separatorChar){
+						dirResultados = dirResultados+apellidosNombreSinEspacios+File.separator;
+					}else{
+						dirResultados = dirResultados+File.separator+apellidosNombreSinEspacios+File.separator;
+					}
+					
+					File directorio = new File(dirResultados);
+					directorio.mkdirs();
+
+
+					File resultados;
+					FileOutputStream fos;
+					
+					
+					resultados = new File(directorio.getAbsolutePath().trim()+"temporal");
+					
 
 					//si el fichero no existia fisicamente, crearlo para poder volcar los datos
-					if(!enunciado.exists()){
-						enunciado.createNewFile();
+					if(!resultados.exists()){
+						resultados.createNewFile();
 					}
-					fos = new FileOutputStream(enunciado);					
+					fos = new FileOutputStream(resultados);					
 
 					BloquesFichero bloque = new BloquesFichero();
 
@@ -96,7 +111,7 @@ public class TareaProfesor extends Thread{
 
 					//comprobacion de integridad
 					MessageDigest digest = MessageDigest.getInstance("MD5");
-					FileInputStream is = new FileInputStream(enunciado);				
+					FileInputStream is = new FileInputStream(resultados);				
 					byte[] buffer = new byte[4096];
 					int read = 0;
 
@@ -131,35 +146,19 @@ public class TareaProfesor extends Thread{
 
 					definitivo.createNewFile();
 
-					boolean res = enunciado.renameTo(definitivo);
-					System.out.println("rename: " + res);
-
+					boolean res = resultados.renameTo(definitivo);
+					
+					if(!res){
+						//error en el rename
+					}
+					
 					fos.close();
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
 					
 					break;
 										
 				default:
 					break;
-						
+
 
 				}
 				recibido = dis.readInt();
