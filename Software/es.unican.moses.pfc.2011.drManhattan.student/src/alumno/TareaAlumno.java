@@ -55,16 +55,16 @@ public class TareaAlumno extends Thread{
 			dirEnunciado = directorioEnunciado;
 			this.estado = estado;
 			this.ct = ct;
-			
+
 			//ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());
 			//if(ois.readBoolean()){
-			
-				ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
-				oos.writeObject(da);			
 
-				estado.setText("Conectado");
-				this.start();
-		/*	}else{
+			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
+			oos.writeObject(da);			
+
+			estado.setText("Conectado");
+			this.start();
+			/*	}else{
 				estado.setText("Conexion no aceptada");
 			}*/
 
@@ -191,9 +191,9 @@ public class TareaAlumno extends Thread{
 					if(ce.examenTemporizado){
 						ct.setMinutos(ce.minutosExamen);
 					}
-					
+
 					/* Eliminar acceso red */
-					
+
 					//crear el socket con el proceso daemon
 					//esta en el mismo equipo
 					socketDaemon = new Socket("127.0.0.1", comun.Global.PUERTODAEMON);
@@ -203,7 +203,7 @@ public class TareaAlumno extends Thread{
 
 					estado.setText("Realizando prueba");
 					break;					
-					
+
 				default:
 					break;
 				}
@@ -222,8 +222,8 @@ public class TareaAlumno extends Thread{
 		}
 
 	}
-	
-	
+
+
 	public void finalizar(){		
 		try {
 			System.out.println("alumno: finalizar");
@@ -231,11 +231,11 @@ public class TareaAlumno extends Thread{
 			//Socket socketDaemon = new Socket("127.0.0.1", comun.Global.PUERTODAEMON);
 			DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
 			System.out.println("alumno: canal salida daemon");
-			//opcion de denegar el acceso a la red
+			//opcion de permitir el acceso a la red
 			dosd.writeInt(Global.SIRED);
-			
+
 			System.out.println("alumno: permitir red");
-			
+
 			DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
 			System.out.println("alumno: canal salida prof");
 			dos.writeInt(Global.FINEXAMEN);
@@ -244,7 +244,122 @@ public class TareaAlumno extends Thread{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
+	public void enviarYFinalizar(File resultados){
+		try {
+			DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
+			System.out.println("alumno: canal salida daemon");
+			//opcion de permitir el acceso a la red para enviar el fichero
+			dosd.writeInt(Global.SIRED);
+
+
+			//primero se realiza el md5 al fichero, para no repetirlo cada vez
+
+			MessageDigest digest = MessageDigest.getInstance("MD5");
+			FileInputStream is = new FileInputStream(resultados);				
+			byte[] buffer = new byte[4096];
+			int read = 0;
+
+			while( (read = is.read(buffer)) > 0) {
+				digest.update(buffer, 0, read);
+			}
+			is.close();
+			byte[] md5sum = digest.digest();
+			BigInteger bigInt = new BigInteger(1, md5sum);
+			String md5 = bigInt.toString(16);
+			System.out.println("MD5: " + md5);
+
+
+			//Enviar el fichero
+			DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
+			dos.writeInt(Global.FINRESULTADOS);
+
+			/* ####################################################################################### */
+
+			//variables utilizadas en caso de que haya que reenviar el fichero por problemas				
+			boolean enviar = true;
+			int contadorEnvios = 1;
+
+			//hasta 3 posibles envios
+			while(enviar && contadorEnvios<=3){
+
+				//obtener el canal de salida
+				ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
+
+				//variable auxiliar para marcar cuando se envia el ultimo mensaje
+				boolean enviadoUltimo = false;
+
+				//abrir el fichero
+				FileInputStream fis = new FileInputStream(resultados);
+
+				//se instancia y rellena un mensaje de envio de fichero
+				BloquesFichero bloque = new BloquesFichero();
+
+				bloque.nombreFichero = resultados.getName();
+
+				//leer los bytes a enviar
+				int leidos = fis.read(bloque.bloque);
+
+				//mientras se lean datos del fichero
+				while (leidos > -1){						
+
+					//el numero de bytes leidos
+					bloque.datosUtiles = leidos;
+
+					//si se ha leido menos de lo posible, es porque se ha acabado
+					if (leidos < bloque.bloque.length){
+						//por tanto es el ultimo mensaje
+						bloque.ultimoBloque = true;
+						enviadoUltimo = true;
+					}else{
+						bloque.ultimoBloque = false;
+					}
+
+					bloque.md5 = md5;
+
+					//enviar por el socket  
+					oos.writeObject(bloque);
+
+					//si es el ultimo mensaje, salimos del bucle
+					if (bloque.ultimoBloque){
+						break; //TODO intentar quitar este break
+					}
+					//se crea un nuevo bloque
+					bloque = new BloquesFichero();
+					bloque.nombreFichero = resultados.getName();
+					bloque.md5 = md5;
+
+					//y se leen sus bytes
+					leidos = fis.read(bloque.bloque);
+				}
+
+				//si el fichero tenia un tamano multiplo del numero de bytes que se leen cada vez, el ultimo mensaje 
+				//no estara marcado como ultimo, ya que la condicion leidos < bloque.bloque.length, no se cumple
+				if (!enviadoUltimo){
+					bloque.ultimoBloque = true;
+					bloque.datosUtiles = 0;
+					oos.writeObject(bloque);
+				}
+
+				//leer boolean para comprobar la integridad del fichero
+				DataInputStream dis = new DataInputStream(socketAlumno.getInputStream());
+				boolean rec = dis.readBoolean(); //true si se ha mandado correctamente, false en caso contrario
+				enviar = !rec; //variable de control del bucle, true significa que hay que volver a intentar enviarlo
+				contadorEnvios++;	
+				//en este punto el fichero esta enviado al alumno o hay que vovler a intentarlo
+				fis.close();
+
+			}//while(enviar && contadorEnvios<=3)
+
+
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

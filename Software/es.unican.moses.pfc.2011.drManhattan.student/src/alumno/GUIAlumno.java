@@ -82,7 +82,7 @@ public class GUIAlumno{
 		frmDrmanhattan = new JFrame();
 		frmDrmanhattan.setTitle("drManhattan - Alumno");
 		frmDrmanhattan.setResizable(false);
-		frmDrmanhattan.setBounds(100, 100, 546, 338);
+		frmDrmanhattan.setBounds(100, 100, 583, 338);
 		frmDrmanhattan.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDrmanhattan.getContentPane().setLayout(null);
 
@@ -92,76 +92,78 @@ public class GUIAlumno{
 		frmDrmanhattan.getContentPane().add(btnConectar);
 
 		lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(10, 62, 78, 23);
+		lblNombre.setBounds(10, 62, 152, 23);
 		frmDrmanhattan.getContentPane().add(lblNombre);
 
 		lblApellido = new JLabel("Apellidos:");
-		lblApellido.setBounds(10, 96, 78, 23);
+		lblApellido.setBounds(10, 96, 152, 23);
 		frmDrmanhattan.getContentPane().add(lblApellido);
 
 		tfNombre = new JTextField();
 		tfNombre.setText("Nombre");
-		tfNombre.setBounds(152, 62, 126, 23);
+		tfNombre.setBounds(202, 59, 126, 23);
 		frmDrmanhattan.getContentPane().add(tfNombre);
 		tfNombre.setColumns(10);
 
 		tfApellido = new JTextField();
 		tfApellido.setText("Apellidos");
-		tfApellido.setBounds(152, 96, 212, 23);
+		tfApellido.setBounds(202, 93, 233, 23);
 		frmDrmanhattan.getContentPane().add(tfApellido);
 		tfApellido.setColumns(10);
 
 		lblDirectorioEnunciado = new JLabel("Directorio enunciado:");
-		lblDirectorioEnunciado.setBounds(10, 130, 134, 23);
+		lblDirectorioEnunciado.setBounds(10, 130, 174, 23);
 		frmDrmanhattan.getContentPane().add(lblDirectorioEnunciado);
 
 		tfDirEnunciado = new JTextField();
 		tfDirEnunciado.setText("/home/enunciado");
-		tfDirEnunciado.setBounds(152, 130, 212, 23);
+		tfDirEnunciado.setBounds(202, 127, 233, 23);
 		frmDrmanhattan.getContentPane().add(tfDirEnunciado);
 		tfDirEnunciado.setColumns(10);
 
 		btnExplorar = new JButton("Explorar");		
-		btnExplorar.setBounds(411, 130, 108, 23);
+		btnExplorar.setBounds(461, 127, 108, 23);
 		btnExplorar.setToolTipText("Navegar por el sistema de ficheros para seleccionar el directorio donde se recibira el enunciado");
 		frmDrmanhattan.getContentPane().add(btnExplorar);
 
 		btnFinalizar = new JButton("Finalizar");
+		btnFinalizar.setEnabled(false);
 		btnFinalizar.setBounds(64, 271, 117, 25);
 		btnFinalizar.setToolTipText("Finaliza la prueba sin enviar archivo de resultados");
 		frmDrmanhattan.getContentPane().add(btnFinalizar);
 		
-		btnEnviarResultados = new JButton("Enviar resultados y finalizar");
+		btnEnviarResultados = new JButton("Enviar resultados y finalizar");		
+		btnEnviarResultados.setEnabled(false);
 		btnEnviarResultados.setBounds(239, 271, 261, 25);
 		btnEnviarResultados.setToolTipText("Finaliza la prueba y permite enviar un unico archivo de resultados");
 		frmDrmanhattan.getContentPane().add(btnEnviarResultados);
 		
 		lblIpProfesor = new JLabel("IP Profesor:");
-		lblIpProfesor.setBounds(10, 164, 101, 23);
+		lblIpProfesor.setBounds(10, 164, 152, 23);
 		frmDrmanhattan.getContentPane().add(lblIpProfesor);
 
 		tfIPProfesor = new JTextField();
 		tfIPProfesor.setHorizontalAlignment(SwingConstants.LEFT);
 		tfIPProfesor.setText("127.0.0.1");
-		tfIPProfesor.setBounds(152, 164, 89, 22);
+		tfIPProfesor.setBounds(202, 161, 89, 22);
 		frmDrmanhattan.getContentPane().add(tfIPProfesor);
 		tfIPProfesor.setColumns(10);
 
 		lblTiempoRestante = new JLabel("Tiempo restante:");
-		lblTiempoRestante.setBounds(10, 11, 124, 23);
+		lblTiempoRestante.setBounds(10, 11, 152, 23);
 		frmDrmanhattan.getContentPane().add(lblTiempoRestante);
 
 		lblTiempo = new JLabel("Tiempo restante");
 		lblTiempo.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTiempo.setBounds(152, 15, 126, 19);
+		lblTiempo.setBounds(202, 12, 126, 19);
 		frmDrmanhattan.getContentPane().add(lblTiempo);
 
 		lblTextoEstado = new JLabel("Estado: ");
-		lblTextoEstado.setBounds(152, 212, 75, 23);
+		lblTextoEstado.setBounds(202, 212, 75, 23);
 		frmDrmanhattan.getContentPane().add(lblTextoEstado);
 
 		lblEstado = new JLabel("No conectado");
-		lblEstado.setBounds(239, 212, 261, 23);
+		lblEstado.setBounds(289, 212, 280, 23);
 		frmDrmanhattan.getContentPane().add(lblEstado);
 		
 
@@ -179,7 +181,7 @@ public class GUIAlumno{
 				if (returnVal == JFileChooser.APPROVE_OPTION){					
 					File dirO = chooser.getSelectedFile();
 					tfDirEnunciado.setText(dirO.getAbsolutePath());
-				}				
+				}
 			}
 		});
 
@@ -204,6 +206,8 @@ public class GUIAlumno{
 				tfDirEnunciado.setEnabled(false);
 				tfApellido.setEnabled(false);
 				tfIPProfesor.setEnabled(false);
+				btnFinalizar.setEnabled(true);
+				btnEnviarResultados.setEnabled(true);
 			}
 		});
 		
@@ -217,12 +221,29 @@ public class GUIAlumno{
 				
 			}
 		});
+		
+		
+		/**
+		 * Manejador del evento de pulsar el boton finaliza la prueba enviando un fichero de resultados
+		 */
+		btnEnviarResultados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser chooser = new JFileChooser();
+				chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+				int returnVal = chooser.showOpenDialog(chooser);
+				if (returnVal == JFileChooser.APPROVE_OPTION){
+					File resultados = chooser.getSelectedFile();
+					tarea.enviarYFinalizar(resultados);
+				}
+				//TODO caso de que cancelo
+			}
+		});
 
 	}
 
 
 	/**
-	 * Clase para mantener una cuenta atras hasta la finalizaci�n de la prueba para que el alumno pueda consultarlo.
+	 * Clase para mantener una cuenta atras hasta la finalizacion de la prueba para que el alumno pueda consultarlo.
 	 * Actualiza cada segundo un componente label de la GUI.
 	 * Se ejecuta en un thread aparte para no bloquear la interfaz.
 	 * 
