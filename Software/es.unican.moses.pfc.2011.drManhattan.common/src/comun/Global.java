@@ -23,5 +23,6 @@ public class Global {
 	public static final int NORED = 3;
 		
 	public static final int FINEXAMEN = 4;
+	public static final int FINRESULTADOS = 5;
 	
 }
