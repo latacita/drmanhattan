@@ -76,27 +76,29 @@ public class GUIProfesor {
 		frmDrmanhattan = new JFrame();
 		frmDrmanhattan.setResizable(false);
 		frmDrmanhattan.setTitle("drManhattan - Profesor");
-		frmDrmanhattan.setBounds(100, 100, 620, 598);
+		frmDrmanhattan.setBounds(100, 100, 664, 598);
 		frmDrmanhattan.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDrmanhattan.getContentPane().setLayout(null);
 
 
-		btnComienzoExamen = new JButton("ComienzoExamen");		
-		btnComienzoExamen.setBounds(10, 150, 178, 23);
+		btnComienzoExamen = new JButton("Comienzo de prueba");		
+		btnComienzoExamen.setToolTipText("Comienza la prueba, no se admiten nuevos alumnos");
+		btnComienzoExamen.setBounds(10, 150, 205, 23);
 		frmDrmanhattan.getContentPane().add(btnComienzoExamen);
 
-		btnFinExamen = new JButton("Fin de examen");		
+		btnFinExamen = new JButton("Fin de prueba");		
+		btnFinExamen.setToolTipText("Finaliza la prueba");
 		btnFinExamen.setEnabled(false);
-		btnFinExamen.setBounds(10, 199, 178, 23);
+		btnFinExamen.setBounds(10, 199, 205, 23);
 		frmDrmanhattan.getContentPane().add(btnFinExamen);
 
 		lblNombreAsignatura = new JLabel("Nombre de la asignatura:");
-		lblNombreAsignatura.setBounds(10, 36, 160, 23);
+		lblNombreAsignatura.setBounds(10, 36, 223, 23);
 		frmDrmanhattan.getContentPane().add(lblNombreAsignatura);
 
 		tfNombreAsignatura = new JTextField();		
 		tfNombreAsignatura.setText("PFC");
-		tfNombreAsignatura.setBounds(196, 36, 262, 23);
+		tfNombreAsignatura.setBounds(251, 36, 262, 23);
 		frmDrmanhattan.getContentPane().add(tfNombreAsignatura);
 		tfNombreAsignatura.setColumns(10);
 
@@ -106,28 +108,29 @@ public class GUIProfesor {
 
 		tfDirectorioResultados = new JTextField();
 		tfDirectorioResultados.setText("/home/resultados");
-		tfDirectorioResultados.setBounds(196, 70, 262, 23);
+		tfDirectorioResultados.setBounds(251, 70, 262, 23);
 		frmDrmanhattan.getContentPane().add(tfDirectorioResultados);
 		tfDirectorioResultados.setColumns(10);
 
 		btnExplorarDirResultados = new JButton("Explorar");		
-		btnExplorarDirResultados.setBounds(479, 70, 115, 23);
+		btnExplorarDirResultados.setToolTipText("Navegar por el sistema de ficheros para seleccionar el directorio donde se recibiran los resultados");
+		btnExplorarDirResultados.setBounds(534, 70, 115, 23);
 		frmDrmanhattan.getContentPane().add(btnExplorarDirResultados);
 
 		lblHoraLimiteExamen = new JLabel("Hora fin de examen (hh:mm):");
-		lblHoraLimiteExamen.setBounds(10, 104, 178, 23);
+		lblHoraLimiteExamen.setBounds(10, 104, 223, 23);
 		frmDrmanhattan.getContentPane().add(lblHoraLimiteExamen);
 
 		tfHoraLimite = new JTextField();
 		tfHoraLimite.setHorizontalAlignment(SwingConstants.CENTER);
 		tfHoraLimite.setText("10:25");
-		tfHoraLimite.setBounds(196, 105, 59, 20);
+		tfHoraLimite.setBounds(251, 105, 59, 20);
 		frmDrmanhattan.getContentPane().add(tfHoraLimite);
 		tfHoraLimite.setColumns(10);
 
 		panelLog = new JPanel();
 		panelLog.setBorder(new TitledBorder(null, "Eventos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelLog.setBounds(10, 239, 584, 292);
+		panelLog.setBounds(10, 239, 586, 292);
 		frmDrmanhattan.getContentPane().add(panelLog);
 		panelLog.setLayout(null);
 
@@ -141,7 +144,8 @@ public class GUIProfesor {
 		scrollPane.setViewportView(taLog);
 
 		btnEnviarFichero = new JButton("Enviar fichero");		
-		btnEnviarFichero.setBounds(335, 150, 123, 23);
+		btnEnviarFichero.setToolTipText("Envia un fichero a todos los alumnos conectados");
+		btnEnviarFichero.setBounds(308, 150, 150, 23);
 		frmDrmanhattan.getContentPane().add(btnEnviarFichero);
 
 		aceptaAlumnos = new HiloAceptadorAlumnos();
@@ -232,7 +236,7 @@ public class GUIProfesor {
 				tfNombreAsignatura.setEnabled(false);
 				
 				
-				aceptaAlumnos.inicioPrueba(temporizar, minutos);
+				aceptaAlumnos.inicioPrueba(temporizar, minutos, tfDirectorioResultados.getText().trim());
 				aceptaAlumnos.interrupt();
 				
 			}

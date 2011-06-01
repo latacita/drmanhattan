@@ -88,7 +88,7 @@ public class HiloAceptadorAlumnos extends Thread{
 	/**
 	 * Evita que se acepten nuevas conexiones una vez comenzada la prueba
 	 */
-	public void desconectar(){
+	public void desconectar(String dirResultados){
 		System.out.println("prof: desconectar");
 		this.interrupt();
 		/*
@@ -105,7 +105,7 @@ public class HiloAceptadorAlumnos extends Thread{
 
 			//si la conexion sigue abierta
 			if(!s.isClosed()){
-				new TareaProfesor(s);
+				new TareaProfesor(s, dirResultados);
 			}
 		}
 	}
@@ -229,8 +229,8 @@ public class HiloAceptadorAlumnos extends Thread{
 						contadorEnvios++;	
 						//en este punto el fichero esta enviado al alumno o hay que vovler a intentarlo
 						fis.close();
-					}//while(enviar && contadorEnvios<=3)
-				}//if(!s.isClosed())
+					}//if(!s.isClosed())
+				}//while(enviar && contadorEnvios<=3)
 
 			}//while(iterador.hasNext())
 		}catch(IOException e) {
@@ -244,7 +244,7 @@ public class HiloAceptadorAlumnos extends Thread{
 	/**
 	 * Enviar a los alumnos conectados la notificacion de que comienza la prueba
 	 */
-	public void inicioPrueba(boolean temporizar, int minutos){
+	public void inicioPrueba(boolean temporizar, int minutos, String dirResultados){
 		try{
 
 			/*
@@ -273,7 +273,7 @@ public class HiloAceptadorAlumnos extends Thread{
 
 				}
 			}
-			desconectar();
+			desconectar(dirResultados);
 		}catch(Exception e){
 			//TODO tratar errores
 		}
