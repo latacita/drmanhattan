@@ -262,30 +262,39 @@ public class GUIAlumno{
 				int segundos = Integer.parseInt(lblTiempo.getText().substring(lblTiempo.getText().indexOf(':')+1));
 
 				//si los segundos son 0 significa que hay que decrementar un minuto y poner los segundos a 59
+				
 				if(segundos==0){
-					minutos--;
-
-					//si ademas, los minutos tambien son 0, se ha llegado al fin de examen
+					System.out.println("Tiempo restante: " + minutos + ":"+segundos);
 					if(minutos == 0){
 						finExamen = true;
 						//TODO se ha acabado el tiempo de examen, hacer algo al respecto
+						System.out.println("se acaba el examen por tiempo");
+						tarea.finalizar();
 						break;
-					}					
+					}
+					minutos--;
+
+					//si ademas, los minutos tambien son 0, se ha llegado al fin de examen
+										
 					segundos = 59;
+
 					//sino simplemente se decrementa un segundo
 				}else{
+
 					segundos--;
 				}
 				//se muestra el nuevo tiempo
+
 				lblTiempo.setText(minutos+":"+segundos);
 				try {
+
 					long tiempoActualPasado = System.currentTimeMillis();
 					//esperamos un segundo menos el tiempo transcurrido para hacer los calculos
 					Thread.sleep(1000-(tiempoActualPasado-tiempoActual));
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-			}			
-		}		
-	}	
+			}
+		}
+	}
 }

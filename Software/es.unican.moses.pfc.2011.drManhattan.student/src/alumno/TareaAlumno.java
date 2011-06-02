@@ -66,6 +66,7 @@ public class TareaAlumno extends Thread{
 
 			estado.setText("Conectado");
 			this.start();
+			//TODO no aceptar la conexion
 			/*	}else{
 				estado.setText("Conexion no aceptada");
 			}*/
@@ -80,6 +81,10 @@ public class TareaAlumno extends Thread{
 	}
 
 
+	/**
+	 * Acciones durante la vida del thread.
+	 * Actua segun los mensajes recibidos.
+	 */
 	public void run(){
 
 		try {			
@@ -176,8 +181,7 @@ public class TareaAlumno extends Thread{
 
 					definitivo.createNewFile();
 
-					boolean res = enunciado.renameTo(definitivo);
-					System.out.println("rename: " + res);
+					enunciado.renameTo(definitivo);
 
 					fos.close();
 					estado.setText(estadoAnterior);
@@ -191,7 +195,9 @@ public class TareaAlumno extends Thread{
 
 					ComienzoExamen ce = (ComienzoExamen) temp;
 					if(ce.examenTemporizado){
+						System.out.println("antes de iniciar la cuenta atras");
 						ct.setMinutos(ce.minutosExamen);
+						System.out.println("despues de iniciar la cuenta atras");
 					}
 
 					/* Eliminar acceso red */
@@ -226,37 +232,38 @@ public class TareaAlumno extends Thread{
 	}
 
 
+	/**
+	 * Metodo para cuando se desea dar por finalizada una prueba sin enviar fichero de resultados.
+	 * Permite de nuevo el acceso a la red.
+	 */
 	public void finalizar(){		
 		try {
-			System.out.println("alumno: finalizar");
 			this.interrupt();
-			//Socket socketDaemon = new Socket("127.0.0.1", comun.Global.PUERTODAEMON);
 			DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
-			System.out.println("alumno: canal salida daemon");
 			//opcion de permitir el acceso a la red
 			dosd.writeInt(Global.SIRED);
-
-			System.out.println("alumno: permitir red");
-
 			DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
-			System.out.println("alumno: canal salida prof");
 			dos.writeInt(Global.FINEXAMEN);
-			System.out.println("alumno: finalizar prueba");
+			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
+			oos.writeObject(datos);
+			socketAlumno.close();
+			socketDaemon.close();
+			System.exit(0);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
+	/**
+	 * Metodo para cuando se desea dar por finalizada una prueba y enviar un fichero de resultados.
+	 * Permite de nuevo el acceso a la red.
+	 */
 	public void enviarYFinalizar(File resultados){
 		try {
 			DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
-			System.out.println("alumno: canal salida daemon");
 			//opcion de permitir el acceso a la red para enviar el fichero
 			dosd.writeInt(Global.SIRED);
-
-
-			//primero se realiza el md5 al fichero, para no repetirlo cada vez
 
 			MessageDigest digest = MessageDigest.getInstance("MD5");
 			FileInputStream is = new FileInputStream(resultados);				
@@ -270,14 +277,10 @@ public class TareaAlumno extends Thread{
 			byte[] md5sum = digest.digest();
 			BigInteger bigInt = new BigInteger(1, md5sum);
 			String md5 = bigInt.toString(16);
-			System.out.println("MD5: " + md5);
-
 
 			//Enviar el fichero
 			DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
 			dos.writeInt(Global.FINRESULTADOS);
-
-			/* ####################################################################################### */
 
 			//obtener el canal de salida
 			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
@@ -356,8 +359,10 @@ public class TareaAlumno extends Thread{
 			}//while(enviar && contadorEnvios<=3)
 
 			//finaliza el examen
-			dos.writeInt(Global.FINEXAMEN);
-
+			//dos.writeInt(Global.FINEXAMEN);
+			socketAlumno.close();
+			socketDaemon.close();
+			System.exit(0);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
