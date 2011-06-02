@@ -77,8 +77,6 @@ public class Daemon {
 				//comienza el thread
 				this.start();
 			}catch(IOException e){
-				e.printStackTrace();
-				//TODO log?
 			}
 		}
 
