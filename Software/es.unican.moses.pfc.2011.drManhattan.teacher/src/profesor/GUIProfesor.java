@@ -14,8 +14,12 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.StringTokenizer;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * 
@@ -47,6 +51,8 @@ public class GUIProfesor {
 
 	private JButton btnEnviarFichero;
 
+	private Logger logger;
+
 
 
 	/**
@@ -61,6 +67,27 @@ public class GUIProfesor {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+
+
+		logger = Logger.getLogger("PFC");
+
+
+		try {
+
+			FileHandler fh;
+			fh = new FileHandler("/home/manuel/Escritorio/drManhattan", true);
+			logger.addHandler(fh);
+			logger.setLevel(Level.ALL);
+			FormatoLog mh = new FormatoLog();
+			fh.setFormatter(mh);
+
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
 
 		frmDrmanhattan = new JFrame();
 		frmDrmanhattan.setResizable(false);
@@ -213,7 +240,7 @@ public class GUIProfesor {
 				}
 
 				//TODO mejorar el modo de calcular los minutos
-				
+
 				btnEnviarFichero.setEnabled(false);
 				btnExplorarDirResultados.setEnabled(false);
 				btnFinExamen.setEnabled(true);
@@ -221,27 +248,27 @@ public class GUIProfesor {
 				tfDirectorioResultados.setEnabled(false);
 				tfHoraLimite.setEnabled(false);
 				tfNombreAsignatura.setEnabled(false);
-				
-				
+
+
 				String asignatura = tfNombreAsignatura.getText().trim();
 				String asignaturaSinEspacios = "";
-				
+
 				StringTokenizer tokenizer = new StringTokenizer(asignatura);
 				while (tokenizer.hasMoreElements()){
 					asignaturaSinEspacios += tokenizer.nextElement();
 				}
-				
+
 				String dirResultados = tfDirectorioResultados.getText().trim();
-				
+
 				if(dirResultados.charAt(dirResultados.length()-1) == File.separatorChar){
 					dirResultados = dirResultados+asignaturaSinEspacios;
 				}else{
 					dirResultados = dirResultados+File.separator+asignaturaSinEspacios;
 				}
-				
+
 				aceptaAlumnos.inicioPrueba(temporizar, minutos, dirResultados.trim());
 				aceptaAlumnos.interrupt();
-				
+				logger.log(Level.INFO, "Comienza la prueba de la asignatura "+tfNombreAsignatura.getText().trim());
 			}
 		});
 

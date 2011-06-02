@@ -12,6 +12,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import comun.BloquesFichero;
 import comun.DatosAlumno;
@@ -45,10 +47,9 @@ public class TareaProfesor extends Thread{
 			DataInputStream dis = new DataInputStream(conexion.getInputStream());
 			int recibido;
 			recibido = dis.readInt();
-			System.out.println("prof: recibido: "+recibido);
 			//mientras no se acabe el examen
 			//TODO quizas anadir isInterrupt a la condicion, en caso de que no acabe el alumno
-			while(recibido != comun.Global.FINEXAMEN){
+			while((recibido != comun.Global.FINEXAMEN) || (recibido != comun.Global.FINRESULTADOS)){
 
 				switch (recibido) {
 				
@@ -153,9 +154,16 @@ public class TareaProfesor extends Thread{
 					}
 					
 					fos.close();
-					
+					Logger logger = Logger.getLogger("PFC");
+					logger.log(Level.INFO, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+"\nArchivo de resultados: "+definitivo.getAbsolutePath());
 					break;
-										
+							
+				case Global.FINEXAMEN:
+					ois = new ObjectInputStream(conexion.getInputStream());
+					datos = (DatosAlumno) ois.readObject();
+					logger = Logger.getLogger("PFC");
+					logger.log(Level.INFO, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+".\n Sin archivo de resultados");
+					break;
 				default:
 					break;
 
@@ -164,8 +172,7 @@ public class TareaProfesor extends Thread{
 				recibido = dis.readInt();
 			}
 			//acabar la conexion, el alumno acaba la prueba
-			System.out.println("Finalizado examen");
-			//TODO LOG
+			conexion.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

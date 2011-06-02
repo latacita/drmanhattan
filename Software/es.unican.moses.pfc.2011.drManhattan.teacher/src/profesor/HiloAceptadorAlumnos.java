@@ -15,6 +15,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import comun.BloquesFichero;
 import comun.ComienzoExamen;
@@ -63,8 +65,9 @@ public class HiloAceptadorAlumnos extends Thread{
 				socket = sSocket.accept();
 				ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 				Object temp = ois.readObject();				
-				DatosAlumno da = (DatosAlumno) temp;				
-				System.out.println("Alumno: "+da.nombre+" "+da.apellidos+" conectado");
+				DatosAlumno da = (DatosAlumno) temp;
+				Logger logger = Logger.getLogger("PFC");
+				logger.log(Level.INFO, "Alumno: "+da.nombre+" "+da.apellidos+" conectado");
 
 				listaSocket.add(socket);
 
@@ -233,6 +236,8 @@ public class HiloAceptadorAlumnos extends Thread{
 				}//while(enviar && contadorEnvios<=3)
 
 			}//while(iterador.hasNext())
+			Logger logger = Logger.getLogger("PFC");
+			logger.log(Level.INFO, "Fichero "+ficheroEnviar.getAbsolutePath()+" enviado a los alumnos conectados");
 		}catch(IOException e) {
 			//TODO error en el fichero
 		} catch (NoSuchAlgorithmException e) {
