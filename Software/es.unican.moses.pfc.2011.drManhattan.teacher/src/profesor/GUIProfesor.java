@@ -59,7 +59,7 @@ public class GUIProfesor {
 	 * Create the application.
 	 */
 	public GUIProfesor() {
-		initialize();
+		initialize();		
 		frmDrmanhattan.setVisible(true);
 	}
 
@@ -69,24 +69,7 @@ public class GUIProfesor {
 	private void initialize() {
 
 
-		logger = Logger.getLogger("PFC");
-
-
-		try {
-
-			FileHandler fh;
-			fh = new FileHandler("/home/manuel/Escritorio/drManhattan", true);
-			logger.addHandler(fh);
-			logger.setLevel(Level.ALL);
-			FormatoLog mh = new FormatoLog();
-			fh.setFormatter(mh);
-
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		
 
 
 		frmDrmanhattan = new JFrame();
@@ -156,7 +139,6 @@ public class GUIProfesor {
 
 		taLog = new JTextArea();
 		taLog.setEditable(false);
-		taLog.setText("Aqu\u00ED van cosas como alumno tal se conecta, acaba, se reciben resultados...");
 		scrollPane.setViewportView(taLog);
 
 		btnEnviarFichero = new JButton("Enviar fichero");		
@@ -166,6 +148,21 @@ public class GUIProfesor {
 
 		aceptaAlumnos = new HiloAceptadorAlumnos();
 
+		logger = Logger.getLogger("PFC");
+		try {
+			FileHandler fh;
+			fh = new FileHandler("/home/manuel/Escritorio/drManhattan", true);
+			logger.addHandler(fh);
+			logger.setLevel(Level.ALL);
+			FormatoLog mh = new FormatoLog(taLog);
+			fh.setFormatter(mh);
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
 		//Manejadores de eventos
 
 		/**
@@ -271,7 +268,18 @@ public class GUIProfesor {
 				logger.log(Level.INFO, "Comienza la prueba de la asignatura "+tfNombreAsignatura.getText().trim());
 			}
 		});
-
+		
+		/**
+		 * Manejador del evento de pulsar el boton para finalizar la prueba.
+		 */
+		btnFinExamen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				aceptaAlumnos.finPrueba();
+				logger.log(Level.INFO, "Finaliza la prueba a orden del profesor");
+				
+			}
+		});
 
 	}
 }

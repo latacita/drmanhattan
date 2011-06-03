@@ -5,6 +5,8 @@ import java.util.logging.Formatter;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 
+import javax.swing.JTextArea;
+
 /**
  *
  * Clase que contiene el formato de los registros de actividad generados por la aplicacion.
@@ -14,10 +16,17 @@ import java.util.logging.LogRecord;
  */
 class FormatoLog extends Formatter { 
 	
+	JTextArea taLog;
+	
+	public FormatoLog(JTextArea taLog) {
+		this.taLog = taLog;
+	}
+
 	/**
 	 * Formato de cada log
 	 */
-    public String format(LogRecord rec) {    	
+    public String format(LogRecord rec) {
+    	taLog.append(new Date().toString()+" "+formatMessage(rec)+"\n");
     	return new Date().toString()+" "+formatMessage(rec)+"\n";
     }
 

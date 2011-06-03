@@ -55,12 +55,13 @@ public class HiloAceptadorAlumnos extends Thread{
 	}
 
 
+	/**
+	 * Mientras este activo espera nuevas conexiones de alumnos
+	 */
 	public void run(){
 		try{			
 			while(!this.isInterrupted()){
-				System.out.println("Desde el thread del servidor, espero cliente");
 				Socket socket;
-
 				//esperar a nueva conexion
 				socket = sSocket.accept();
 				ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
@@ -78,9 +79,7 @@ public class HiloAceptadorAlumnos extends Thread{
 				 * --------- Comprobar si desconectamos, no aceptar mas -------------------
 				 *  
 				 */				
-			}
-			System.out.println("Salgo del thread");
-			
+			}			
 			
 		}catch(Exception e){
 			//TODO tratamiento de errores
@@ -112,7 +111,6 @@ public class HiloAceptadorAlumnos extends Thread{
 			}
 		}
 	}
-	
 	
 
 	
@@ -170,7 +168,7 @@ public class HiloAceptadorAlumnos extends Thread{
 						//obtener el canal de salida
 						ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
 
-						//variable auxiliar para marcar cuando se env�a el �ltimo mensaje
+						//variable auxiliar para marcar cuando se envia el ultimo mensaje
 						boolean enviadoUltimo = false;
 
 						//abrir el fichero
@@ -187,7 +185,7 @@ public class HiloAceptadorAlumnos extends Thread{
 						//mientras se lean datos del fichero
 						while (leidos > -1){						
 
-							//el n�mero de bytes leidos
+							//el numero de bytes leidos
 							bloque.datosUtiles = leidos;
 
 							//si se ha leido menos de lo posible, es porque se ha acabado
@@ -217,7 +215,7 @@ public class HiloAceptadorAlumnos extends Thread{
 							leidos = fis.read(bloque.bloque);
 						}
 
-						//si el fichero tenia un tama�o multiplo del numero de bytes que se leen cada vez, el ultimo mensaje 
+						//si el fichero tenia un tamano multiplo del numero de bytes que se leen cada vez, el ultimo mensaje 
 						//no estara marcado como ultimo, ya que la condicion leidos < bloque.bloque.length, no se cumple
 						if (!enviadoUltimo){
 							bloque.ultimoBloque = true;
@@ -267,7 +265,6 @@ public class HiloAceptadorAlumnos extends Thread{
 					//notificar
 					DataOutputStream dos = new DataOutputStream(s.getOutputStream());
 					dos.writeInt(comun.Global.COMIENZOEXAMEN);
-					//TODO crear hilo para esperar fin prueba
 
 					ComienzoExamen ce = new ComienzoExamen();
 					ce.examenTemporizado = temporizar;
@@ -279,6 +276,35 @@ public class HiloAceptadorAlumnos extends Thread{
 				}
 			}
 			desconectar(dirResultados);
+		}catch(Exception e){
+			//TODO tratar errores
+		}
+	}
+	
+	/**
+	 * Enviar a los alumnos conectados la notificacion de que la prueba acaba
+	 */
+	public void finPrueba(){
+		try{
+
+			/*
+			 * Recorre la lista de sockets y envia secuencialmente la notificacion de que finaliza la prueba
+			 */
+			Iterator<Socket> iterador = listaSocket.listIterator();
+
+			//recorrer cada soket de alumnos
+			while(iterador.hasNext()){
+
+				Socket s = iterador.next();				
+
+				//si la conexion sigue abierta
+				if(!s.isClosed()){
+					//notificar
+					DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+					dos.writeInt(comun.Global.FINEXAMEN);
+					//TODO crear hilo para esperar fin prueba
+				}
+			}
 		}catch(Exception e){
 			//TODO tratar errores
 		}
