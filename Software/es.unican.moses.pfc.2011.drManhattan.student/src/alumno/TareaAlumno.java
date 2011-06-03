@@ -217,6 +217,9 @@ public class TareaAlumno extends Thread{
 				}
 				recibido = dis.readInt();
 			}
+			//recibe FINEXAMEN del profesor
+			//devolver red y finalizar
+			finalizar(); //TODO quizas otro metodo
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
