@@ -58,18 +58,23 @@ public class TareaAlumno extends Thread{
 			this.ct = ct;
 			datos = da;
 
-			//ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());
-			//if(ois.readBoolean()){
+			DataInputStream dis = new DataInputStream(socketAlumno.getInputStream());
 
-			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
-			oos.writeObject(da);			
+			boolean aceptado = dis.readBoolean();
 
-			estado.setText("Conectado");
-			this.start();
-			//TODO no aceptar la conexion
-			/*	}else{
+			if(!aceptado){
+				
 				estado.setText("Conexion no aceptada");
-			}*/
+				socketAlumno.close();
+				
+			}else{
+
+				ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
+				oos.writeObject(da);			
+
+				estado.setText("Conectado");
+				this.start();
+			}
 
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
@@ -288,7 +293,7 @@ public class TareaAlumno extends Thread{
 			//obtener el canal de salida
 			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
 			oos.writeObject(datos);
-			
+
 			//variables utilizadas en caso de que haya que reenviar el fichero por problemas				
 			boolean enviar = true;
 			int contadorEnvios = 1;

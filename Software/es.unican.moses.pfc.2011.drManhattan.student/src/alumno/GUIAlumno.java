@@ -8,7 +8,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import comun.DatosAlumno;
-import comun.Mensaje;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
