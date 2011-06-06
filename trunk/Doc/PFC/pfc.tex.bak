@@ -67,20 +67,20 @@ Faculty of Sciences}
 \begin{document}
 
 % Cover page
-\input{cover/cover.tex}
+%\input{cover/cover.tex}
 
-\input{cover/supervisorApproval.tex}
+%\input{cover/supervisorApproval.tex}
 
-\input{cover/firstPage.tex}
+%\input{cover/firstPage.tex}
 
 % reset page numbering
 \input{config/begin.tex}
 
 % acknowledgement
-\input{cover/acknowledgements.tex} % acknowledgements
+%\input{cover/acknowledgements.tex} % acknowledgements
 
 % Preface
-\input{introduction/preface-lff.tex}   % preface
+%\input{introduction/preface-lff.tex}   % preface
 
 % Toc
 \input{config/toc.tex}
