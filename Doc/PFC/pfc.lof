@@ -1,7 +1,9 @@
 \select@language {spanish}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Descripci\IeC {\'o}n y Planificaci\IeC {\'o}n del Proyecto}{1}
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Diagrama de casos de uso del sistema}}{5}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Diferencia entre iteraci\IeC {\'o}n e incremento.}}{4}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Carga de trabajo en las diferentes fases.}}{6}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Diagrama de casos de uso del sistema}}{6}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Antecedentes}{9}
 \addvspace {10\p@ }
@@ -9,3 +11,6 @@
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de despliegue del sistema}}{12}
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de actividad del sistema}}{13}
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de estados de la aplicaci\IeC {\'o}n del alumno}}{14}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Descripci\IeC {\'o}n de una iteraci\IeC {\'o}n}{17}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Aspecto de la GUI del alumno con una prueba temporizada.}}{18}

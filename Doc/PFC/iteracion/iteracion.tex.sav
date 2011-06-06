@@ -1,0 +1,26 @@
+%==================================================================%
+% Author : Pando Muñoz, Manuel                                     %
+%          Sánchez Barreiro, Pablo                                 %
+% Version: 1.0, 02/03/2011                                         %
+%                                                                  %
+% Memoria del Proyecto Fin de Carrera                              %
+% Archivo raíz para el capítulo de iteración                       %
+%==================================================================% 
+
+\chapterheader{Antecedentes}{Antecedentes}
+\label{chap:iteracion}
+
+En el siguiente capítulo se describe lo realizado en la segunda iteración de construcción.
+Se parte de lo obtenido en las iteraciones previas, que es, la descripción del sistema, la arquitectura del mismo y los diagramas de secuencia y estados, todo esto expuestos a lo largo de los capítulos \ref{chap:planificacion} \ref{chap:arquitectura}.
+En cuanto al estado de la aplicación, en la primera iteración de construcción se ha desarrollado un sistema distribuido, en el que desde la aplicación del alumno se puede conectar con la aplicación del profesor y transmitir ficheros.
+El objetivo de esta iteración es que el profesor pueda establecer el inicio y de la prueba, poder prefijar una hora de finalización de la misma y que la aplicación del alumno sea capaz de denegar el acceso a la red mientras dure la prueba.
+
+%contar el desarrollo del daemon
+%contar como utilizo iptables
+%Secciones: Inicio de prueba, Examen temporizado, Denegar acceso red
+
+\section{Inicio de la prueba}
+\label{sec:iteracion:iniPrueba}
+
+En esta sección se comenta como se consigue que el profesor pueda notificar a los alumnos el inicio de la prueba.
+Cómo ya hemos comentado, partimos de la iteración anterior en la cual los alumnos eran capaces de conectar a la aplicación del profesor. Cada una de 
