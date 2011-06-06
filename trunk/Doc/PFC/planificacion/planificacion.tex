@@ -121,6 +121,15 @@ Se ha escogido el proceso de desarrollo \emph{iterativo e incremental} que suele
 La idea principal de este proceso se basa, como su nombre, en iteraciones e incrementos, que no son lo mismo.
 El software se construye mediante tareas repetitivas, \emph{iteraciones}, en las que se añaden nuevas funcionalidades progresivamente, \emph{incrementos}, para crear una versión del sistema que cumple más requisitos que la anterior. Se realizan tantas iteraciones sean necesarias hasta que todos los requisitos se hayan implementado y, por tanto, el sistema este finalizado.
 
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=10cm]{planificacion/iteracionIncremento}
+    \caption{Diferencia entre iteración e incremento.}
+    \label{fig:planificacion:iteracionIncremento}
+\end{figure}
+
 Es decir, una iteración es un mini-proyecto en el que se obtiene una versión de cada una de las piezas del sistema, sean código o no, y un incremento se puede medir como la diferencia entre una iteración y la anterior.
 \newline
 
@@ -138,12 +147,15 @@ El proceso se divide en cuatro partes fundamentales:
 
 \end{enumerate}
 
+
+
 Cada una de estas fases, como es lógico, puede tener más de una iteración, en función del tamaño del proyecto, con tareas propias de la etapa en que se esté, así por ejemplo, en la etapa de construcción, en cada iteración se escoge un grupo de requisitos de alto nivel, se refinan, y partiendo de la versión del sistema obtenida en la iteración anterior, se diseñan, implementan y prueban esos requisitos, creando la versión que se utilizará en la siguiente iteración.
 \newline
 
 Al finalizar el proceso obtenemos tanto el código de la aplicación, como modelos y documentación de la misma que se van creando a lo largo de las iteraciones.
 \newline
 \todo{añadir imágenes del ciclo de vida}
+
 
 
 %Porque se ha escogido
@@ -161,6 +173,15 @@ Las principales razones por las que se ha escogido este tipo de proceso y no otr
 	\item[\ding{70}] Al trabajar con un subconjunto de requisitos en cada iteración la complejidad se reduce, lo que facilita que se reduzca también el número de errores producidos.
 
 \end{itemize}
+
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[]{planificacion/trabajoFases}
+    \caption{Carga de trabajo en las diferentes fases.}
+    \label{fig:planificacion:trabajoFases}
+\end{figure}
+
 
 De la primera fase, \emph{iniciación}, la descripción funcional detallando el alcance del sistema está descrita en la sección \ref{sec:planificacion:descFuncional}, a continuación se muestra un diagrama de casos de uso, basado en esa descripción y en la siguiente sección se describen los requisitos de alto nivel extraídos.
 
