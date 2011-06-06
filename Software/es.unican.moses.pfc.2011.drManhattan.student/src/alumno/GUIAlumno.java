@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import comun.DatosAlumno;
+import comun.Mensaje;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -180,7 +181,8 @@ public class GUIAlumno{
 		 */
 		btnConectar.addActionListener(new ActionListener() {
 
-			public void actionPerformed(ActionEvent arg0) {				
+			public void actionPerformed(ActionEvent arg0) {
+				
 				String ipProfesor = tfIPProfesor.getText();
 				String dirEnum = tfDirEnunciado.getText();
 				DatosAlumno da = new DatosAlumno();
@@ -189,6 +191,7 @@ public class GUIAlumno{
 				tarea = new TareaAlumno(ipProfesor, dirEnum, lblEstado, da, ct);
 				
 				//TODO si hubiese algun problema habria que volverlos a habilitar
+				
 				
 				btnConectar.setEnabled(false);
 				btnExplorar.setEnabled(false);
