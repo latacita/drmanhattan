@@ -234,7 +234,7 @@ public class GUIProfesor {
 						temporizar = true;
 					}
 
-				}catch (NumberFormatException e) {
+				}catch (Exception e) {
 					new Mensaje("Error al introducir la hora limite");
 					return; //No se comienza la prueba con una hora incorrecta
 				}

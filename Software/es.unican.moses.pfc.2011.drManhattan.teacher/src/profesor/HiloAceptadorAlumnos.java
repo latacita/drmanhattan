@@ -64,6 +64,14 @@ public class HiloAceptadorAlumnos extends Thread{
 				Socket socket;
 				//esperar a nueva conexion
 				socket = sSocket.accept();
+				
+				DataOutputStream dos = new DataOutputStream(socket.getOutputStream());				
+				boolean aceptado = true;				
+				if(this.isInterrupted()){
+					aceptado = false;
+				}				
+				dos.writeBoolean(aceptado);
+				
 				ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 				Object temp = ois.readObject();				
 				DatosAlumno da = (DatosAlumno) temp;
@@ -91,7 +99,6 @@ public class HiloAceptadorAlumnos extends Thread{
 	 * Evita que se acepten nuevas conexiones una vez comenzada la prueba
 	 */
 	public void desconectar(String dirResultados){
-		System.out.println("prof: desconectar");
 		this.interrupt();
 		/*
 		 * Con cada uno de los sockets creados a partir de las conexiones de los alumnos

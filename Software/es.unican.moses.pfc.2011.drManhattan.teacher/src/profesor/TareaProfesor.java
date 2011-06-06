@@ -152,12 +152,12 @@ public class TareaProfesor extends Thread{
 					if(!res){
 						//error en el rename
 					}
-					
+
 					fos.close();
 					Logger logger = Logger.getLogger("PFC");
 					logger.log(Level.INFO, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+"\nArchivo de resultados: "+definitivo.getAbsolutePath());
 					break;
-							
+
 				case Global.FINEXAMEN:
 					ois = new ObjectInputStream(conexion.getInputStream());
 					datos = (DatosAlumno) ois.readObject();
