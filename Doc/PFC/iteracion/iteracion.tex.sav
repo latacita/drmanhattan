@@ -1,19 +1,78 @@
 %==================================================================%
-% Author : Pando Mu駉z, Manuel                                     %
-%          S醤chez Barreiro, Pablo                                 %
+% Author : Pando Mu帽oz, Manuel                                     %
+%          S谩nchez Barreiro, Pablo                                 %
 % Version: 1.0, 02/03/2011                                         %
 %                                                                  %
 % Memoria del Proyecto Fin de Carrera                              %
-% Archivo ra韟 para el cap韙ulo de iteraci髇                       %
-%==================================================================% 
+% Archivo ra铆z para el cap铆tulo de iteraci贸n                       %
+%==================================================================%
 
-\chapterheader{Antecedentes}{Antecedentes}
+\chapterheader{Segunda iteraci贸n}{Descripci贸n de una iteraci贸n}
 \label{chap:iteracion}
 
-En el siguiente cap韙ulo se describe lo realizado en la segunda iteraci髇 de construcci髇.
-Se parte de lo obtenido en las iteraciones previas, que es, la descripci髇 del sistema, la arquitectura del mismo y los diagramas de secuencia y estados, todo esto expuestos a lo largo de los cap韙ulos \ref{chap:planificacion} \ref{chap:arquitectura}.
-En cuanto al estado de la aplicaci髇, en la primera iteraci髇 de construcci髇 se ha desarrollado un sistema distribuido, en el que desde la aplicaci髇 del alumno se puede conectar con la aplicaci髇 del profesor y transmitir ficheros.
-El objetivo de esta iteraci髇 es que el profesor pueda establecer el inicio y de la prueba, poder prefijar una hora de finalizaci髇 de la misma y que la aplicaci髇 del alumno sea capaz de denegar el acceso a la red mientras dure la prueba.
+\chaptertoc
+
+En el siguiente cap铆tulo se describe lo realizado en la segunda iteraci贸n de construcci贸n.
+Se parte de lo obtenido en las iteraciones previas, que es, la descripci贸n del sistema, la arquitectura del mismo y los diagramas de secuencia y estados, todo esto expuestos a lo largo de los cap铆tulos \ref{chap:planificacion} \ref{chap:arquitectura}.
+En cuanto al estado de la aplicaci贸n, en la primera iteraci贸n de construcci贸n se ha desarrollado un sistema distribuido, en el que desde la aplicaci贸n del alumno se puede conectar con la aplicaci贸n del profesor y transmitir ficheros.
+El objetivo de esta iteraci贸n es que el profesor pueda establecer el inicio y de la prueba, poder prefijar una hora de finalizaci贸n de la misma y que la aplicaci贸n del alumno sea capaz de denegar el acceso a la red mientras dure la prueba. %
+
+Acorde con la tabla \ref{tabla:requisitos} los requisitos a implementar durante esta iteraci贸n son:
+
+\begin{table}[!h]
+\begin{tabular}{|c|l|}
+	\hline
+	\textbf{Identificador} & \textbf{Descripci贸n}
+	\\ \hline
+	
+	R03 & El profesor debe ser capaz desde el \emph{Watchman} de indicar el inicio de la prueba.
+	\\ \hline
+
+	R05 & El profesor ha de ser capaz desde el \emph{Watchman} de establecer una hora l铆mite para la duraci贸n de la prueba.
+	\\ \hline
+
+	R10 & El alumno desde su computador debe tener la posibilidad de ver el tiempo restante el pruebas de duraci贸n prefijada.
+	\\ \hline
+
+	R11 & La aplicaci贸n del alumno ha de ser capaz de denegar el acceso a la red al empezar la prueba.
+	\\ \hline
+	
+\end{tabular}
+\label{tabla:objetivosIteracion}
+\caption{Objetivos de la iteraci贸n}
+\end{table}
+
+
+Y los implementados hasta el momento:
+
+\begin{table}[!h]
+\begin{tabular}{|c|l|}
+	\hline
+	\textbf{Identificador} & \textbf{Descripci贸n}
+	\\ \hline
+
+	R01 & Un computador de la red debe poder ser designado como \emph{Watchman}.
+	\\ \hline
+
+	R02 & Todos los computadores que no sean \emph{Watchman} ser谩n computadores
+	normales, y podr谩n ser utilizados para la realizaci贸n de las pruebas evaluables.
+	\\ \hline
+
+	R06 & El profesor debe ser capaz desde el \emph{Watchman} de enviar el fichero de enunciado al resto de computadores.
+	\\ \hline
+
+	R07 & El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}.
+	\\ \hline
+
+	R13 & La aplicaci贸n ha de ser capaz de comprobar que los archivos se han enviado correctamente.
+	\\ \hline
+
+\end{tabular}
+\label{tabla:baseIteracion}
+\caption{Requisitos ya implementados del sistema}
+\end{table}
+
+En las siguientes secciones se describen los incrementos realizados dentro de esta iteraci贸n.
 
 %contar el desarrollo del daemon
 %contar como utilizo iptables
@@ -22,5 +81,33 @@ El objetivo de esta iteraci髇 es que el profesor pueda establecer el inicio y de
 \section{Inicio de la prueba}
 \label{sec:iteracion:iniPrueba}
 
-En esta secci髇 se comenta como se consigue que el profesor pueda notificar a los alumnos el inicio de la prueba.
-C髆o ya hemos comentado, partimos de la iteraci髇 anterior en la cual los alumnos eran capaces de conectar a la aplicaci髇 del profesor. Cada una de 
+En esta secci贸n se comenta c贸mo se consigue que el profesor pueda notificar a los alumnos el inicio de la prueba.
+Como ya hemos comentado, partimos de la iteraci贸n anterior en la cual los alumnos eran capaces de conectar a la aplicaci贸n del profesor. En la aplicaci贸n del alumno, cuando se crea una conexi贸n, se inicia a su vez un hilo de ejecuci贸n que se mantiene a la espera de recibir distintas 贸rdenes provenientes del computador del profesor. De este modo se hace muy simple mantener desde la aplicaci贸n del profesor una lista de las conexiones abiertas con cada alumno y, al presionar el bot贸n de iniciar la prueba, recorrer esa lista enviando la orden por cada conexi贸n.
+
+Cuando cada una de las aplicaciones del alumno recibe esa orden, act煤a en consecuencia.
+
+\section{Examen temporizado}
+\label{sec:iteracion:examenTemporizado}
+
+El profesor puede establecer una hora l铆mite, llegada la cual, la prueba terminar谩 autom谩ticamente. Cuando el profesor define este l铆mite en su aplicaci贸n y decide comenzar la prueba se env铆a tambi茅n si hay una hora de fin y, en caso afirmativo, cual es. De este modo la aplicaci贸n del alumno puede mostrar una cuanta atr谩s con los minutos restantes para la finalizaci贸n, para facilitar la referencia temporal. Se puede ver el resultado en la siguiente imagen.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=.75\linewidth]{iteracion/tiempoRestante}
+    \caption{Aspecto de la GUI del alumno con una prueba temporizada.}
+    \label{fig:iteracion:tiempoRestante}
+\end{figure}
+
+
+\section{Denegar acceso a red}
+\label{sec:iteracion:denegarRed}
+
+C贸mo ya hemos visto en las secciones anteriores, una vez que la aplicaci贸n del alumno recibe la orden de comenzar la prueba, se ha de denegar el acceso a la red. Para ello se utiliza iptables, por medio de un demonio.
+
+El demonio creado es muy simple, se ejecuta en segundo plano esperando a que la aplicaci贸n del alumno conecte, y en funci贸n de lo requerido en ese momento, permitir o no el acceso a la red interactuando con iptables. Este demonio se inicia en tiempo de arranque y con los permisos necesarios para poder usar el cortafuegos.
+
+Las 贸rdenes concretas que ejecuta el demonio son, cu谩ndo se desea
+
+
+\section{Pruebas}
+\todo{tema seguridad de que no se puede acceder a red}

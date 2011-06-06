@@ -5,7 +5,7 @@
 %                                                                  %
 % Memoria del Proyecto Fin de Carrera                              %
 % Archivo raíz para el capítulo de iteración                       %
-%==================================================================% 
+%==================================================================%
 
 \chapterheader{Segunda iteración}{Descripción de una iteración}
 \label{chap:iteracion}
@@ -16,6 +16,62 @@ En el siguiente capítulo se describe lo realizado en la segunda iteración de c
 Se parte de lo obtenido en las iteraciones previas, que es, la descripción del sistema, la arquitectura del mismo y los diagramas de secuencia y estados, todo esto expuestos a lo largo de los capítulos \ref{chap:planificacion} \ref{chap:arquitectura}.
 En cuanto al estado de la aplicación, en la primera iteración de construcción se ha desarrollado un sistema distribuido, en el que desde la aplicación del alumno se puede conectar con la aplicación del profesor y transmitir ficheros.
 El objetivo de esta iteración es que el profesor pueda establecer el inicio y de la prueba, poder prefijar una hora de finalización de la misma y que la aplicación del alumno sea capaz de denegar el acceso a la red mientras dure la prueba. %
+
+Acorde con la tabla \ref{tabla:requisitos} los requisitos a implementar durante esta iteración son:
+
+\begin{table}[!h]
+\begin{tabular}{|c|l|}
+	\hline
+	\textbf{Identificador} & \textbf{Descripción}
+	\\ \hline
+	
+	R03 & El profesor debe ser capaz desde el \emph{Watchman} de indicar el inicio de la prueba.
+	\\ \hline
+
+	R05 & El profesor ha de ser capaz desde el \emph{Watchman} de establecer una hora límite para la duración de la prueba.
+	\\ \hline
+
+	R10 & El alumno desde su computador debe tener la posibilidad de ver el tiempo restante el pruebas de duración prefijada.
+	\\ \hline
+
+	R11 & La aplicación del alumno ha de ser capaz de denegar el acceso a la red al empezar la prueba.
+	\\ \hline
+	
+\end{tabular}
+\label{tabla:objetivosIteracion}
+\caption{Objetivos de la iteración}
+\end{table}
+
+
+Y los implementados hasta el momento:
+
+\begin{table}[!h]
+\begin{tabular}{|c|l|}
+	\hline
+	\textbf{Identificador} & \textbf{Descripción}
+	\\ \hline
+
+	R01 & Un computador de la red debe poder ser designado como \emph{Watchman}.
+	\\ \hline
+
+	R02 & Todos los computadores que no sean \emph{Watchman} serán computadores
+	normales, y podrán ser utilizados para la realización de las pruebas evaluables.
+	\\ \hline
+
+	R06 & El profesor debe ser capaz desde el \emph{Watchman} de enviar el fichero de enunciado al resto de computadores.
+	\\ \hline
+
+	R07 & El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}.
+	\\ \hline
+
+	R13 & La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
+	\\ \hline
+
+\end{tabular}
+\label{tabla:baseIteracion}
+\caption{Requisitos ya implementados del sistema}
+\end{table}
+
 En las siguientes secciones se describen los incrementos realizados dentro de esta iteración.
 
 %contar el desarrollo del daemon
@@ -48,10 +104,58 @@ El profesor puede establecer una hora límite, llegada la cual, la prueba termin
 
 Cómo ya hemos visto en las secciones anteriores, una vez que la aplicación del alumno recibe la orden de comenzar la prueba, se ha de denegar el acceso a la red. Para ello se utiliza iptables, por medio de un demonio.
 
-El demonio creado es muy simple, se ejecuta en segundo plano esperando a que la aplicación del alumno conecte, y en función de lo requerido en ese momento, permitir o no el acceso a la red interactuando con iptables. Este demonio se inicia en tiempo de arranque 
+El demonio creado es muy simple, se ejecuta en segundo plano esperando a que la aplicación del alumno conecte, y en función de lo requerido en ese momento, permitir o no el acceso a la red interactuando con iptables. Este demonio se inicia en tiempo de arranque y con los permisos necesarios para poder usar el cortafuegos.
 
-\todo{comentar cosas de la creación del daemon}
+Las órdenes concretas que ejecuta el demonio son, cuándo se desea denegar la red son:
+
+\begin{center}
+
+    \emph{iptables -P OUTPUT DROP}
+
+    \emph{iptables -A OUTPUT -s 127.0.0.1 -j ACCEPT}
+
+\end{center}
+
+Con la primera de ellas se cambia la política del tratamiento a los paquetes salientes del equipo, de modo que los deseche, dicho de otro modo, no se permiten las comunicaciones salientes con otros computadores, de esta forma se evita que se hagan peticiones, por ejemplo, a un servidor web.
+
+La segunda es para permitir los paquetes salientes dirigidos al propio ordenador. Esto es necesario para la comunicación entre la aplicación del alumno y el demonio.
+
+Puede parecer que el equipo queda totalmente aislado, incluso del computador del profesor, pero esto no es así, puesto que ya hay una conexión establecida y dado que la aplicación del alumno espera órdenes de la aplicación del profesor, puede seguir funcionando perfectamente, puesto que los paquetes de entrada sí que están permitidos, lo que estas instrucciones imposibilitan es la creación de nuevas conexiones y el envío de mensajes a cualquier computador que no sea el propio.
 
 
 \section{Pruebas}
 \todo{tema seguridad de que no se puede acceder a red}
+
+En esta sección se describen las pruebas realizadas en la iteración.
+\todo{escribirlo de otra manera}
+Debido a la naturaleza de la aplicación, automatizar pruebas con una herramienta estilo JUnit es prácticamente imposible, ya que funciona a base de eventos.
+
+
+	R03 & El profesor debe ser capaz desde el \emph{Watchman} de indicar el inicio de la prueba.
+
+Pulsar el botón y ver que efectivamente llega la señal al computador del alumno.
+
+
+
+	R05 & El profesor ha de ser capaz desde el \emph{Watchman} de establecer una hora límite para la duración de la prueba.
+
+
+Establecer horas correctas futuras y comprobar que los minutos calculados restantes son correctos.
+
+Establecer horas pasadas y comprobar que no se temporiza la prueba.
+
+Establecer horas incorrectas y comprobar que es detectado.
+
+
+
+
+
+	R10 & El alumno desde su computador debe tener la posibilidad de ver el tiempo restante el pruebas de duración prefijada.
+
+Está ligado con la inmediatamente anterior.
+
+
+
+	R11 & La aplicación del alumno ha de ser capaz de denegar el acceso a la red al empezar la prueba.
+
+Después de que de inicio la prueba, intentar abrir páginas web en el navegador, pings a equipos.
