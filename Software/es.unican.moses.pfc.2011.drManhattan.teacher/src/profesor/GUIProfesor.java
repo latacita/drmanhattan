@@ -11,6 +11,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 import javax.swing.JScrollPane;
+
+import comun.Mensaje;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -232,8 +235,8 @@ public class GUIProfesor {
 					}
 
 				}catch (NumberFormatException e) {
-					//TODO error en el parsing
-					e.printStackTrace();
+					new Mensaje("Error al introducir la hora limite");
+					return; //No se comienza la prueba con una hora incorrecta
 				}
 
 				//TODO mejorar el modo de calcular los minutos
