@@ -13,6 +13,9 @@ import comun.DatosAlumno;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.IOException;
+import java.awt.Cursor;
+import java.awt.Toolkit;
 
 
 /**
@@ -71,6 +74,8 @@ public class GUIAlumno{
 		//creacion y distribucion de componentes
 
 		frmDrmanhattan = new JFrame();
+
+		frmDrmanhattan.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/manuel/Escritorio/srcPFC/es.unican.moses.pfc.2011.drManhattan.student/src/icono.png"));
 		frmDrmanhattan.setAlwaysOnTop(false);
 		frmDrmanhattan.setTitle("drManhattan - Alumno");
 		frmDrmanhattan.setResizable(false);
@@ -78,7 +83,8 @@ public class GUIAlumno{
 		frmDrmanhattan.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmDrmanhattan.getContentPane().setLayout(null);
 
-		btnConectar = new JButton("Conectar");		
+		btnConectar = new JButton("Conectar");
+		btnConectar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnConectar.setBounds(10, 212, 101, 23);
 		btnConectar.setToolTipText("Intenta conectarse al computador del profesor, una vez conectado no podran cambiarse los atributos");
 		frmDrmanhattan.getContentPane().add(btnConectar);
@@ -113,18 +119,21 @@ public class GUIAlumno{
 		frmDrmanhattan.getContentPane().add(tfDirEnunciado);
 		tfDirEnunciado.setColumns(10);
 
-		btnExplorar = new JButton("Explorar");		
+		btnExplorar = new JButton("Explorar");
+		btnExplorar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnExplorar.setBounds(461, 127, 108, 23);
 		btnExplorar.setToolTipText("Navegar por el sistema de ficheros para seleccionar el directorio donde se recibira el enunciado");
 		frmDrmanhattan.getContentPane().add(btnExplorar);
 
 		btnFinalizar = new JButton("Finalizar");
+		btnFinalizar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnFinalizar.setEnabled(false);
 		btnFinalizar.setBounds(64, 271, 117, 25);
 		btnFinalizar.setToolTipText("Finaliza la prueba sin enviar archivo de resultados");
 		frmDrmanhattan.getContentPane().add(btnFinalizar);
 
-		btnEnviarResultados = new JButton("Enviar resultados y finalizar");		
+		btnEnviarResultados = new JButton("Enviar resultados y finalizar");
+		btnEnviarResultados.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnEnviarResultados.setEnabled(false);
 		btnEnviarResultados.setBounds(239, 271, 261, 25);
 		btnEnviarResultados.setToolTipText("Finaliza la prueba y permite enviar un unico archivo de resultados");
@@ -145,7 +154,7 @@ public class GUIAlumno{
 		lblTiempoRestante.setBounds(10, 11, 152, 23);
 		frmDrmanhattan.getContentPane().add(lblTiempoRestante);
 
-		lblTiempo = new JLabel("Tiempo restante");
+		lblTiempo = new JLabel("- Desconocido -");
 		lblTiempo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTiempo.setBounds(202, 12, 126, 19);
 		frmDrmanhattan.getContentPane().add(lblTiempo);
@@ -221,8 +230,10 @@ public class GUIAlumno{
 		 */
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				tarea.finalizar();
-
+				int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "Vas a finalizar la prueba sin enviar resultados");				
+				if (JOptionPane.OK_OPTION == confirmado){
+					tarea.finalizar();
+				}
 			}
 		});
 
@@ -252,8 +263,8 @@ public class GUIAlumno{
 			frmDrmanhattan.setAlwaysOnTop(false);
 		}
 	});
-	
-	
+
+
 	/**
 	 * Clase para mantener una cuenta atras hasta la finalizacion de la prueba para que el alumno pueda consultarlo.
 	 * Actualiza cada segundo un componente label de la GUI.
@@ -291,11 +302,11 @@ public class GUIAlumno{
 						tarea.finalizarTiempo();
 						break;
 					}
-					
+
 					if(minutos == 5){
 						aviso.start();
 					}
-					
+
 					minutos--;
 
 					//si ademas, los minutos tambien son 0, se ha llegado al fin de examen
