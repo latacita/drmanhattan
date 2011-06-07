@@ -4,8 +4,15 @@
 \contentsline {section}{\numberline {1.2}Metodolog\IeC {\'\i }a de Desarrollo}{3}
 \contentsline {section}{\numberline {1.3}Requisitos de Alto Nivel del Sistema}{5}
 \contentsline {section}{\numberline {1.4}Iteraciones}{6}
-\contentsline {chapter}{\numberline {2}Descripci\IeC {\'o}n de una iteraci\IeC {\'o}n}{9}
-\contentsline {section}{\numberline {2.1}Inicio de la prueba}{10}
-\contentsline {section}{\numberline {2.2}Examen temporizado}{10}
-\contentsline {section}{\numberline {2.3}Denegar acceso a red}{11}
-\contentsline {section}{\numberline {2.4}Pruebas}{12}
+\contentsline {chapter}{\numberline {2}Antecedentes}{9}
+\contentsline {section}{\numberline {2.1}Red local}{9}
+\contentsline {section}{\numberline {2.2}Demonio}{10}
+\contentsline {section}{\numberline {2.3}Cortafuegos : Netfilter}{10}
+\contentsline {chapter}{\numberline {3}Definici\IeC {\'o}n Arquitect\IeC {\'o}nica y Dise\IeC {\~n}o Software}{11}
+\contentsline {section}{\numberline {3.1}Arquitectura f\IeC {\'\i }sica del Sistema}{11}
+\contentsline {section}{\numberline {3.2}Dise\IeC {\~n}o Software}{11}
+\contentsline {chapter}{\numberline {4}Descripci\IeC {\'o}n de una iteraci\IeC {\'o}n}{17}
+\contentsline {section}{\numberline {4.1}Inicio de la prueba}{18}
+\contentsline {section}{\numberline {4.2}Examen temporizado}{19}
+\contentsline {section}{\numberline {4.3}Denegar acceso a red}{19}
+\contentsline {section}{\numberline {4.4}Pruebas}{20}

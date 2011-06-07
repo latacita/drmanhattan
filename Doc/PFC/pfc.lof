@@ -5,5 +5,12 @@
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Carga de trabajo en las diferentes fases.}}{6}
 \contentsline {figure}{\numberline {1.3}{\ignorespaces Diagrama de casos de uso del sistema}}{6}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Descripci\IeC {\'o}n de una iteraci\IeC {\'o}n}{9}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Aspecto de la GUI del alumno con una prueba temporizada.}}{11}
+\contentsline {xchapter}{Antecedentes}{9}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Definici\IeC {\'o}n Arquitect\IeC {\'o}nica y Dise\IeC {\~n}o Software}{11}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de despliegue del sistema}}{12}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de actividad del sistema}}{13}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de estados de la aplicaci\IeC {\'o}n del alumno}}{14}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Descripci\IeC {\'o}n de una iteraci\IeC {\'o}n}{17}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Aspecto de la GUI del alumno con una prueba temporizada.}}{19}

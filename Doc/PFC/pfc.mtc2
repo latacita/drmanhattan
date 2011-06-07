@@ -1,4 +1,3 @@
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {2.1}Inicio de la prueba}{\reset@font\mtcSfont 10}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {2.2}Examen temporizado}{\reset@font\mtcSfont 10}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {2.3}Denegar acceso a red}{\reset@font\mtcSfont 11}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {2.4}Pruebas}{\reset@font\mtcSfont 12}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {2.1}Red local}{\reset@font\mtcSfont 9}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {2.2}Demonio}{\reset@font\mtcSfont 10}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {2.3}Cortafuegos : Netfilter}{\reset@font\mtcSfont 10}}
