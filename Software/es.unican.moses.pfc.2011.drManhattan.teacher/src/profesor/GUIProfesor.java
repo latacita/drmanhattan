@@ -5,14 +5,13 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 import javax.swing.JScrollPane;
-
-import comun.Mensaje;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -72,7 +71,7 @@ public class GUIProfesor {
 	private void initialize() {
 
 
-		
+
 
 
 		frmDrmanhattan = new JFrame();
@@ -164,8 +163,8 @@ public class GUIProfesor {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
+
+
 		//Manejadores de eventos
 
 		/**
@@ -235,20 +234,11 @@ public class GUIProfesor {
 					}
 
 				}catch (Exception e) {
-					new Mensaje("Error al introducir la hora limite");
+					JOptionPane.showMessageDialog(frmDrmanhattan, "Error al introducir la hora limite");
 					return; //No se comienza la prueba con una hora incorrecta
 				}
 
 				//TODO mejorar el modo de calcular los minutos
-
-				btnEnviarFichero.setEnabled(false);
-				btnExplorarDirResultados.setEnabled(false);
-				btnFinExamen.setEnabled(true);
-				btnComienzoExamen.setEnabled(false);
-				tfDirectorioResultados.setEnabled(false);
-				tfHoraLimite.setEnabled(false);
-				tfNombreAsignatura.setEnabled(false);
-
 
 				String asignatura = tfNombreAsignatura.getText().trim();
 				String asignaturaSinEspacios = "";
@@ -260,27 +250,51 @@ public class GUIProfesor {
 
 				String dirResultados = tfDirectorioResultados.getText().trim();
 
+				//comprobacion de permisos
+				File directorio = new File(dirResultados);
+				boolean permisos = directorio.canWrite();
+				System.out.println(dirResultados+" "+permisos);
+				if(!permisos){
+					JOptionPane.showMessageDialog(frmDrmanhattan, "No hay permisos de escritura en el directorio seleccionado" +
+					", no se recogeran resultados");
+				}
+
 				if(dirResultados.charAt(dirResultados.length()-1) == File.separatorChar){
 					dirResultados = dirResultados+asignaturaSinEspacios;
 				}else{
 					dirResultados = dirResultados+File.separator+asignaturaSinEspacios;
 				}
 
-				aceptaAlumnos.inicioPrueba(temporizar, minutos, dirResultados.trim());
-				aceptaAlumnos.interrupt();
-				logger.log(Level.INFO, "Comienza la prueba de la asignatura "+tfNombreAsignatura.getText().trim());
+
+				int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Comenzar la prueba con las caracteristicas seleccionadas?");				
+				if (JOptionPane.OK_OPTION == confirmado){					
+					btnEnviarFichero.setEnabled(false);
+					btnExplorarDirResultados.setEnabled(false);
+					btnFinExamen.setEnabled(true);
+					btnComienzoExamen.setEnabled(false);
+					tfDirectorioResultados.setEnabled(false);
+					tfHoraLimite.setEnabled(false);
+					tfNombreAsignatura.setEnabled(false);
+
+					aceptaAlumnos.inicioPrueba(temporizar, minutos, dirResultados.trim());
+					logger.log(Level.INFO, "Comienza la prueba de la asignatura "+tfNombreAsignatura.getText().trim());
+				}else{
+					//la prueba no comienza, asi que no se hace nada
+				}
 			}
 		});
-		
+
 		/**
 		 * Manejador del evento de pulsar el boton para finalizar la prueba.
 		 */
 		btnFinExamen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				aceptaAlumnos.finPrueba();
-				logger.log(Level.INFO, "Finaliza la prueba a orden del profesor");
-				
+				int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Finalizar la prueba?");				
+				if (JOptionPane.OK_OPTION == confirmado){
+					aceptaAlumnos.finPrueba();
+					logger.log(Level.INFO, "Finaliza la prueba a orden del profesor");
+				}
+
 			}
 		});
 

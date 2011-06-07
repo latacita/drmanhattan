@@ -98,7 +98,7 @@ public class HiloAceptadorAlumnos extends Thread{
 	/**
 	 * Evita que se acepten nuevas conexiones una vez comenzada la prueba
 	 */
-	public void desconectar(String dirResultados){
+	private void desconectar(String dirResultados){
 		this.interrupt();
 		/*
 		 * Con cada uno de los sockets creados a partir de las conexiones de los alumnos
@@ -309,7 +309,6 @@ public class HiloAceptadorAlumnos extends Thread{
 					//notificar
 					DataOutputStream dos = new DataOutputStream(s.getOutputStream());
 					dos.writeInt(comun.Global.FINEXAMEN);
-					//TODO crear hilo para esperar fin prueba
 				}
 			}
 		}catch(Exception e){
