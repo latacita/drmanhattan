@@ -1,8 +1,12 @@
 \select@language {spanish}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Descripci\IeC {\'o}n y Planificaci\IeC {\'o}n del Proyecto}{1}
-\contentsline {table}{\numberline {1.1}{\ignorespaces Requisitos del sistema}}{7}
+\contentsline {table}{\numberline {1.1}{\ignorespaces Requisitos de alto nivel del sistema}}{7}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Descripci\IeC {\'o}n de una iteraci\IeC {\'o}n}{9}
-\contentsline {table}{\numberline {2.1}{\ignorespaces Objetivos de la iteraci\IeC {\'o}n}}{10}
-\contentsline {table}{\numberline {2.2}{\ignorespaces Requisitos ya implementados del sistema}}{10}
+\contentsline {xchapter}{Antecedentes}{9}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Definici\IeC {\'o}n Arquitect\IeC {\'o}nica y Dise\IeC {\~n}o Software}{11}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Descripci\IeC {\'o}n de una iteraci\IeC {\'o}n}{17}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Objetivos de la iteraci\IeC {\'o}n}}{18}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Requisitos ya implementados del sistema}}{18}
