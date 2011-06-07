@@ -225,7 +225,7 @@ public class TareaAlumno extends Thread{
 			}
 			//recibe FINEXAMEN del profesor
 			//devolver red y finalizar
-			finalizarProfesor();
+			finalizarTiempo();
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -242,10 +242,10 @@ public class TareaAlumno extends Thread{
 
 	
 	/**
-	 * Metodo para cuando es el profesor quien decide finalizar la prueba.
+	 * Metodo para cuando es el profesor quien decide finalizar la prueba o se acaba el tiempo.
 	 * Permite de nuevo el acceso a la red.
 	 */
-	public void finalizarProfesor(){		
+	public void finalizarTiempo(){		
 		try {
 			this.interrupt();
 			DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
@@ -257,7 +257,7 @@ public class TareaAlumno extends Thread{
 			oos.writeObject(datos);
 			socketAlumno.close();
 			socketDaemon.close();
-			JOptionPane.showMessageDialog(estado, "El tiempo destinado para la realizacion dela prueba ha finalizado.");
+			JOptionPane.showMessageDialog(estado, "El tiempo destinado para la realizacion de la prueba ha finalizado.");
 			System.exit(0);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

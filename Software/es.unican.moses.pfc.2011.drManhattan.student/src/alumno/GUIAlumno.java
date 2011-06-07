@@ -71,6 +71,7 @@ public class GUIAlumno{
 		//creacion y distribucion de componentes
 
 		frmDrmanhattan = new JFrame();
+		frmDrmanhattan.setAlwaysOnTop(false);
 		frmDrmanhattan.setTitle("drManhattan - Alumno");
 		frmDrmanhattan.setResizable(false);
 		frmDrmanhattan.setBounds(100, 100, 583, 338);
@@ -244,7 +245,15 @@ public class GUIAlumno{
 
 	}
 
-
+	Thread aviso = new Thread(new Runnable(){
+		public void run(){
+			frmDrmanhattan.setAlwaysOnTop(true);
+			JOptionPane.showMessageDialog(frmDrmanhattan, "Quedan 5 minutos para la finalizacion");
+			frmDrmanhattan.setAlwaysOnTop(false);
+		}
+	});
+	
+	
 	/**
 	 * Clase para mantener una cuenta atras hasta la finalizacion de la prueba para que el alumno pueda consultarlo.
 	 * Actualiza cada segundo un componente label de la GUI.
@@ -276,15 +285,17 @@ public class GUIAlumno{
 
 				//si los segundos son 0 significa que hay que decrementar un minuto y poner los segundos a 59
 
-				if(segundos == 0){
-					System.out.println("Tiempo restante: " + minutos + ":"+segundos);
+				if(segundos == 0){					
 					if(minutos == 0){
-						finExamen = true;
-						//TODO se ha acabado el tiempo de examen, hacer algo al respecto
-						System.out.println("se acaba el examen por tiempo");
-						tarea.finalizar();
+						finExamen = true;												
+						tarea.finalizarTiempo();
 						break;
 					}
+					
+					if(minutos == 5){
+						aviso.start();
+					}
+					
 					minutos--;
 
 					//si ademas, los minutos tambien son 0, se ha llegado al fin de examen
