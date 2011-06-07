@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
 import javax.swing.JScrollPane;
 
+import java.awt.Cursor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -22,6 +23,7 @@ import java.util.StringTokenizer;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  * 
@@ -82,12 +84,15 @@ public class GUIProfesor {
 		frmDrmanhattan.getContentPane().setLayout(null);
 
 
-		btnComienzoExamen = new JButton("Comienzo de prueba");		
+		btnComienzoExamen = new JButton("Comienzo de prueba");
+		btnComienzoExamen.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnComienzoExamen.setToolTipText("Comienza la prueba, no se admiten nuevos alumnos");
 		btnComienzoExamen.setBounds(10, 150, 205, 23);
 		frmDrmanhattan.getContentPane().add(btnComienzoExamen);
 
-		btnFinExamen = new JButton("Fin de prueba");		
+		btnFinExamen = new JButton("Fin de prueba");
+		btnFinExamen.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		btnFinExamen.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnFinExamen.setToolTipText("Finaliza la prueba");
 		btnFinExamen.setEnabled(false);
 		btnFinExamen.setBounds(10, 199, 205, 23);
@@ -113,7 +118,8 @@ public class GUIProfesor {
 		frmDrmanhattan.getContentPane().add(tfDirectorioResultados);
 		tfDirectorioResultados.setColumns(10);
 
-		btnExplorarDirResultados = new JButton("Explorar");		
+		btnExplorarDirResultados = new JButton("Explorar");
+		btnExplorarDirResultados.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnExplorarDirResultados.setToolTipText("Navegar por el sistema de ficheros para seleccionar el directorio donde se recibiran los resultados");
 		btnExplorarDirResultados.setBounds(534, 70, 115, 23);
 		frmDrmanhattan.getContentPane().add(btnExplorarDirResultados);
@@ -143,7 +149,8 @@ public class GUIProfesor {
 		taLog.setEditable(false);
 		scrollPane.setViewportView(taLog);
 
-		btnEnviarFichero = new JButton("Enviar fichero");		
+		btnEnviarFichero = new JButton("Enviar fichero");
+		btnEnviarFichero.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnEnviarFichero.setToolTipText("Envia un fichero a todos los alumnos conectados");
 		btnEnviarFichero.setBounds(308, 150, 150, 23);
 		frmDrmanhattan.getContentPane().add(btnEnviarFichero);
