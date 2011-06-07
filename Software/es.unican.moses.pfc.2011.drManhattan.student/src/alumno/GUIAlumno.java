@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -121,13 +122,13 @@ public class GUIAlumno{
 		btnFinalizar.setBounds(64, 271, 117, 25);
 		btnFinalizar.setToolTipText("Finaliza la prueba sin enviar archivo de resultados");
 		frmDrmanhattan.getContentPane().add(btnFinalizar);
-		
+
 		btnEnviarResultados = new JButton("Enviar resultados y finalizar");		
 		btnEnviarResultados.setEnabled(false);
 		btnEnviarResultados.setBounds(239, 271, 261, 25);
 		btnEnviarResultados.setToolTipText("Finaliza la prueba y permite enviar un unico archivo de resultados");
 		frmDrmanhattan.getContentPane().add(btnEnviarResultados);
-		
+
 		lblIpProfesor = new JLabel("IP Profesor:");
 		lblIpProfesor.setBounds(10, 164, 152, 23);
 		frmDrmanhattan.getContentPane().add(lblIpProfesor);
@@ -155,7 +156,7 @@ public class GUIAlumno{
 		lblEstado = new JLabel("No conectado");
 		lblEstado.setBounds(289, 212, 280, 23);
 		frmDrmanhattan.getContentPane().add(lblEstado);
-		
+
 
 		//Manejadores de eventos
 
@@ -181,40 +182,50 @@ public class GUIAlumno{
 		btnConectar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				String ipProfesor = tfIPProfesor.getText();
 				String dirEnum = tfDirEnunciado.getText();
 				DatosAlumno da = new DatosAlumno();
 				da.nombre = tfNombre.getText();
 				da.apellidos = tfApellido.getText();
-				tarea = new TareaAlumno(ipProfesor, dirEnum, lblEstado, da, ct);
-				
-				//TODO si hubiese algun problema habria que volverlos a habilitar
-				
-				
-				btnConectar.setEnabled(false);
-				btnExplorar.setEnabled(false);
-				tfNombre.setEnabled(false);
-				tfDirEnunciado.setEnabled(false);
-				tfApellido.setEnabled(false);
-				tfIPProfesor.setEnabled(false);
-				btnFinalizar.setEnabled(true);
-				btnEnviarResultados.setEnabled(true);
+
+
+				//comprobacion de permisos
+				File directorio = new File(dirEnum);
+				boolean permisos = directorio.canWrite();
+				System.out.println(dirEnum+" "+permisos);
+				if(!permisos){
+					JOptionPane.showMessageDialog(frmDrmanhattan, "No hay permisos de escritura en el directorio seleccionado" +
+					", no se recibran archivos del profesor");
+				}
+
+				int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Conectarse con las caracteristicas seleccionadas?");				
+				if (JOptionPane.OK_OPTION == confirmado){
+					tarea = new TareaAlumno(ipProfesor, dirEnum, lblEstado, da, ct);
+					btnConectar.setEnabled(false);
+					btnExplorar.setEnabled(false);
+					tfNombre.setEnabled(false);
+					tfDirEnunciado.setEnabled(false);
+					tfApellido.setEnabled(false);
+					tfIPProfesor.setEnabled(false);
+					btnFinalizar.setEnabled(true);
+					btnEnviarResultados.setEnabled(true);
+				}
 			}
 		});
-		
-		
+
+
 		/**
 		 * Manejador del evento de pulsar el boton finaliza la prueba sin enviar resultados
 		 */
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tarea.finalizar();
-				
+
 			}
 		});
-		
-		
+
+
 		/**
 		 * Manejador del evento de pulsar el boton finaliza la prueba enviando un fichero de resultados
 		 */
@@ -264,8 +275,8 @@ public class GUIAlumno{
 				int segundos = Integer.parseInt(lblTiempo.getText().substring(lblTiempo.getText().indexOf(':')+1));
 
 				//si los segundos son 0 significa que hay que decrementar un minuto y poner los segundos a 59
-				
-				if(segundos==0){
+
+				if(segundos == 0){
 					System.out.println("Tiempo restante: " + minutos + ":"+segundos);
 					if(minutos == 0){
 						finExamen = true;
@@ -277,7 +288,7 @@ public class GUIAlumno{
 					minutos--;
 
 					//si ademas, los minutos tambien son 0, se ha llegado al fin de examen
-										
+
 					segundos = 59;
 
 					//sino simplemente se decrementa un segundo

@@ -15,6 +15,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import alumno.GUIAlumno.CuentaTiempo;
 
@@ -224,7 +225,7 @@ public class TareaAlumno extends Thread{
 			}
 			//recibe FINEXAMEN del profesor
 			//devolver red y finalizar
-			finalizar(); //TODO quizas otro metodo
+			finalizarProfesor();
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -239,7 +240,32 @@ public class TareaAlumno extends Thread{
 
 	}
 
-
+	
+	/**
+	 * Metodo para cuando es el profesor quien decide finalizar la prueba.
+	 * Permite de nuevo el acceso a la red.
+	 */
+	public void finalizarProfesor(){		
+		try {
+			this.interrupt();
+			DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
+			//opcion de permitir el acceso a la red
+			dosd.writeInt(Global.SIRED);
+			DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
+			dos.writeInt(Global.FINEXAMEN);
+			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
+			oos.writeObject(datos);
+			socketAlumno.close();
+			socketDaemon.close();
+			JOptionPane.showMessageDialog(estado, "El tiempo destinado para la realizacion dela prueba ha finalizado.");
+			System.exit(0);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
 	/**
 	 * Metodo para cuando se desea dar por finalizada una prueba sin enviar fichero de resultados.
 	 * Permite de nuevo el acceso a la red.
