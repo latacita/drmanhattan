@@ -1,0 +1,21 @@
+%==================================================================%
+% Author : Pando Muñoz, Manuel                                     %
+%          Sánchez Barreiro, Pablo                                 %
+% Version: 1.0, 10/06/2011                                         %
+%                                                                  %
+% Memoria del Proyecto Fin de Carrera                              %
+% Archivo raíz para el capítulo de implementación                  %
+%==================================================================%
+
+\chapterheader{Construcci\'on, Implementaci\'on, Pruebas y Despliegue}{Construcci\'on, Implementaci\'on, Pruebas y Despliegue}
+\label{chap:implementacion}
+
+\chaptertoc
+
+
+
+%Listado de pruebas
+
+%instaladores
+
+Para que la aplicación pueda ser probada de un modo cómodo fuera del ambiente de desarrollo se hace necesaria la creación de instaladores. Para ello 
