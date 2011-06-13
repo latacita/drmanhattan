@@ -277,9 +277,10 @@ public class TareaAlumno extends Thread{
 			socketAlumno.close();
 			socketDaemon.close();
 			System.exit(0);
-		} catch (IOException e) {
+		} catch (Exception e) {			
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.exit(0);
 		}
 	}
 

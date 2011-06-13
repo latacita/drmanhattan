@@ -12,9 +12,15 @@ import comun.DatosAlumno;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
+import java.text.ParseException;
 import java.awt.Cursor;
 import java.awt.Toolkit;
+import javax.swing.JFormattedTextField;
+import javax.swing.text.MaskFormatter;
 
 
 /**
@@ -79,7 +85,7 @@ public class GUIAlumno{
 		frmDrmanhattan.setTitle("drManhattan - Alumno");
 		frmDrmanhattan.setResizable(false);
 		frmDrmanhattan.setBounds(100, 100, 583, 338);
-		frmDrmanhattan.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmDrmanhattan.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frmDrmanhattan.getContentPane().setLayout(null);
 
 		btnConectar = new JButton("Conectar");
@@ -165,7 +171,7 @@ public class GUIAlumno{
 		lblEstado = new JLabel("No conectado");
 		lblEstado.setBounds(289, 212, 280, 23);
 		frmDrmanhattan.getContentPane().add(lblEstado);
-
+		
 
 		//Manejadores de eventos
 
@@ -251,8 +257,25 @@ public class GUIAlumno{
 				//TODO caso de que cancelo
 			}
 		});
-
+		
+		/**
+		 * Manejador del evento de cerrar la ventana.
+		 */
+		frmDrmanhattan.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent we){
+				if(!btnConectar.isEnabled()){
+					int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "Vas a finalizar la prueba sin enviar resultados");
+					if (JOptionPane.OK_OPTION == confirmado){					
+						tarea.finalizar();
+					}
+				}else{
+					System.exit(0);
+				}
+			}
+		});
 	}
+
+
 
 	Thread aviso = new Thread(new Runnable(){
 		public void run(){
@@ -261,6 +284,7 @@ public class GUIAlumno{
 			frmDrmanhattan.setAlwaysOnTop(false);
 		}
 	});
+	private JFormattedTextField ftfIPProfesor;
 
 
 	/**
