@@ -1,6 +1,5 @@
 package profesor;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -64,14 +63,14 @@ public class HiloAceptadorAlumnos extends Thread{
 				Socket socket;
 				//esperar a nueva conexion
 				socket = sSocket.accept();
-				
+
 				DataOutputStream dos = new DataOutputStream(socket.getOutputStream());				
 				boolean aceptado = true;				
 				if(this.isInterrupted()){
 					aceptado = false;
 				}				
 				dos.writeBoolean(aceptado);
-				
+
 				ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 				Object temp = ois.readObject();				
 				DatosAlumno da = (DatosAlumno) temp;
@@ -79,22 +78,15 @@ public class HiloAceptadorAlumnos extends Thread{
 				logger.log(Level.INFO, "Alumno: "+da.nombre+" "+da.apellidos+" conectado");
 
 				listaSocket.add(socket);
-
-				/*
-				 * TODO
-				 * Utilizar el socket creado, crear un hilo para la interaccion, log con su nombre y tal
-				 * 
-				 * --------- Comprobar si desconectamos, no aceptar mas -------------------
-				 *  
-				 */				
+		
 			}			
-			
+
 		}catch(Exception e){
 			//TODO tratamiento de errores
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Evita que se acepten nuevas conexiones una vez comenzada la prueba
 	 */
@@ -104,7 +96,7 @@ public class HiloAceptadorAlumnos extends Thread{
 		 * Con cada uno de los sockets creados a partir de las conexiones de los alumnos
 		 * crear un hilo de ejecucion para la finalizacion de la prueba
 		 */
-		
+
 		Iterator<Socket> iterador = listaSocket.listIterator();
 
 		//recorrer cada soket de alumnos
@@ -118,9 +110,9 @@ public class HiloAceptadorAlumnos extends Thread{
 			}
 		}
 	}
-	
 
-	
+
+
 
 	/**
 	 * Enviar un fichero a todos los alumnos conectados
@@ -143,7 +135,6 @@ public class HiloAceptadorAlumnos extends Thread{
 			byte[] md5sum = digest.digest();
 			BigInteger bigInt = new BigInteger(1, md5sum);
 			String md5 = bigInt.toString(16);
-			System.out.println("MD5: " + md5);
 
 			/*
 			 * Se envia un fichero a todos los alumnos conectados.
@@ -155,90 +146,76 @@ public class HiloAceptadorAlumnos extends Thread{
 			//recorrer cada soket de alumnos
 			while(iterador.hasNext()){
 
-				//variables utilizadas en caso de que haya que reenviar el fichero por problemas				
-				boolean enviar = true;
-				int contadorEnvios = 1;
-				
-				//hasta 3 posibles envios
-				while(enviar && contadorEnvios<=3){
+				Socket s = iterador.next();				
 
-					Socket s = iterador.next();				
+				//si la conexion sigue abierta
+				if(!s.isClosed()){
+					//enviar todo el fichero
 
-					//si la conexion sigue abierta
-					if(!s.isClosed()){
-						//enviar todo el fichero
+					//indicarle al alumno que vamos a enviar el fichero
+					DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+					dos.writeInt(comun.Global.ENVIOFICHERO);
 
-						//indicarle al alumno que vamos a enviar el fichero
-						DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-						dos.writeInt(comun.Global.ENVIOFICHERO);
+					//obtener el canal de salida
+					ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
 
-						//obtener el canal de salida
-						ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
+					//variable auxiliar para marcar cuando se envia el ultimo mensaje
+					boolean enviadoUltimo = false;
 
-						//variable auxiliar para marcar cuando se envia el ultimo mensaje
-						boolean enviadoUltimo = false;
+					//abrir el fichero
+					FileInputStream fis = new FileInputStream(ficheroEnviar);
 
-						//abrir el fichero
-						FileInputStream fis = new FileInputStream(ficheroEnviar);
+					//se instancia y rellena un mensaje de envio de fichero
+					BloquesFichero bloque = new BloquesFichero();
 
-						//se instancia y rellena un mensaje de envio de fichero
-						BloquesFichero bloque = new BloquesFichero();
+					bloque.nombreFichero = ficheroEnviar.getName();
 
-						bloque.nombreFichero = ficheroEnviar.getName();
+					//leer los bytes a enviar
+					int leidos = fis.read(bloque.bloque);
 
-						//leer los bytes a enviar
-						int leidos = fis.read(bloque.bloque);
+					//mientras se lean datos del fichero
+					while (leidos > -1){						
 
-						//mientras se lean datos del fichero
-						while (leidos > -1){						
+						//el numero de bytes leidos
+						bloque.datosUtiles = leidos;
 
-							//el numero de bytes leidos
-							bloque.datosUtiles = leidos;
-
-							//si se ha leido menos de lo posible, es porque se ha acabado
-							if (leidos < bloque.bloque.length){
-								//por tanto es el ultimo mensaje
-								bloque.ultimoBloque = true;
-								enviadoUltimo = true;
-							}else{
-								bloque.ultimoBloque = false;
-							}
-
-							bloque.md5 = md5;
-
-							//enviar por el socket  
-							oos.writeObject(bloque);
-
-							//si es el �ltimo mensaje, salimos del bucle
-							if (bloque.ultimoBloque){
-								break; //TODO intentar quitar este break
-							}
-							//se crea un nuevo bloque
-							bloque = new BloquesFichero();
-							bloque.nombreFichero = ficheroEnviar.getName();
-							bloque.md5 = md5;
-
-							//y se leen sus bytes
-							leidos = fis.read(bloque.bloque);
-						}
-
-						//si el fichero tenia un tamano multiplo del numero de bytes que se leen cada vez, el ultimo mensaje 
-						//no estara marcado como ultimo, ya que la condicion leidos < bloque.bloque.length, no se cumple
-						if (!enviadoUltimo){
+						//si se ha leido menos de lo posible, es porque se ha acabado
+						if (leidos < bloque.bloque.length){
+							//por tanto es el ultimo mensaje
 							bloque.ultimoBloque = true;
-							bloque.datosUtiles = 0;
-							oos.writeObject(bloque);
+							enviadoUltimo = true;
+						}else{
+							bloque.ultimoBloque = false;
 						}
-						
-						//leer boolean para comprobar la integridad del fichero
-						DataInputStream dis = new DataInputStream(s.getInputStream());
-						boolean rec = dis.readBoolean(); //true si se ha mandado correctamente, false en caso contrario
-						enviar = !rec; //variable de control del bucle, true significa que hay que volver a intentar enviarlo
-						contadorEnvios++;	
-						//en este punto el fichero esta enviado al alumno o hay que vovler a intentarlo
-						fis.close();
-					}//if(!s.isClosed())
-				}//while(enviar && contadorEnvios<=3)
+
+						bloque.md5 = md5;
+
+						//enviar por el socket  
+						oos.writeObject(bloque);
+
+						//si es el ultimo mensaje, salimos del bucle
+						if (bloque.ultimoBloque){
+							break; //TODO intentar quitar este break
+						}
+						//se crea un nuevo bloque
+						bloque = new BloquesFichero();
+						bloque.nombreFichero = ficheroEnviar.getName();
+						bloque.md5 = md5;
+
+						//y se leen sus bytes
+						leidos = fis.read(bloque.bloque);
+					}
+
+					//si el fichero tenia un tamano multiplo del numero de bytes que se leen cada vez, el ultimo mensaje 
+					//no estara marcado como ultimo, ya que la condicion leidos < bloque.bloque.length, no se cumple
+					if (!enviadoUltimo){
+						bloque.ultimoBloque = true;
+						bloque.datosUtiles = 0;
+						oos.writeObject(bloque);
+					}
+
+					fis.close();
+				}//if(!s.isClosed())
 
 			}//while(iterador.hasNext())
 			Logger logger = Logger.getLogger("PFC");
@@ -271,7 +248,7 @@ public class HiloAceptadorAlumnos extends Thread{
 				if(!s.isClosed()){
 					//notificar
 					DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-					dos.writeInt(comun.Global.COMIENZOEXAMEN);
+					dos.writeInt(comun.Global.COMIENZOPRUEBA);
 
 					ComienzoExamen ce = new ComienzoExamen();
 					ce.examenTemporizado = temporizar;
@@ -287,7 +264,7 @@ public class HiloAceptadorAlumnos extends Thread{
 			//TODO tratar errores
 		}
 	}
-	
+
 	/**
 	 * Enviar a los alumnos conectados la notificacion de que la prueba acaba
 	 */
@@ -308,7 +285,8 @@ public class HiloAceptadorAlumnos extends Thread{
 				if(!s.isClosed()){
 					//notificar
 					DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-					dos.writeInt(comun.Global.FINEXAMEN);
+					dos.writeInt(comun.Global.FINPRUEBA);
+					s.close();
 				}
 			}
 		}catch(Exception e){

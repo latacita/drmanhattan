@@ -40,50 +40,49 @@ public class TareaProfesor extends Thread{
 	}
 
 
-
 	public void run(){
 		try {
 			//flujos de transmision
 			DataInputStream dis = new DataInputStream(conexion.getInputStream());
 			int recibido;
 			recibido = dis.readInt();
+			DataOutputStream dos = new DataOutputStream(conexion.getOutputStream());
+			dos.writeInt(8);
 			//mientras no se acabe el examen
 			//TODO quizas anadir isInterrupt a la condicion, en caso de que no acabe el alumno
-			while((recibido != comun.Global.FINEXAMEN) || (recibido != comun.Global.FINRESULTADOS)){
+			while((recibido != comun.Global.FINPRUEBA) || (recibido != comun.Global.FINRESULTADOS)){
 
 				switch (recibido) {
-				
+
 				//caso: finalizar examen y enviar				
 				case Global.FINRESULTADOS:
-										
+
 					//el archivo de resultados se guarda en el directorio especificado/nombre de la asignatura/apellidosNombre
 					ObjectInputStream ois = new ObjectInputStream(conexion.getInputStream());
 					DatosAlumno datos = (DatosAlumno) ois.readObject();
 					String apellidosNombre = datos.apellidos.trim() + datos.nombre.trim();
 					String apellidosNombreSinEspacios = "";
-					
+
 					StringTokenizer tokenizer = new StringTokenizer(apellidosNombre);
 					while (tokenizer.hasMoreElements()){
 						apellidosNombreSinEspacios += tokenizer.nextElement();
 					}
 					//crear el directorio
-					
 					if(dirResultados.charAt(dirResultados.length()-1) == File.separatorChar){
 						dirResultados = dirResultados+apellidosNombreSinEspacios+File.separator;
 					}else{
 						dirResultados = dirResultados+File.separator+apellidosNombreSinEspacios+File.separator;
 					}
-					
+
 					File directorio = new File(dirResultados);
 					directorio.mkdirs();
 
 
 					File resultados;
 					FileOutputStream fos;
-					
-					
+
+
 					resultados = new File(directorio.getAbsolutePath().trim()+"temporal");
-					
 
 					//si el fichero no existia fisicamente, crearlo para poder volcar los datos
 					if(!resultados.exists()){
@@ -97,7 +96,6 @@ public class TareaProfesor extends Thread{
 					{
 						//leer el bloque recibido
 						Object mensajeAux = ois.readObject();
-
 						//que ha de ser lo que se esta esperando
 						if (mensajeAux instanceof BloquesFichero){
 							bloque = (BloquesFichero) mensajeAux;
@@ -107,8 +105,8 @@ public class TareaProfesor extends Thread{
 							//TODO tratar error, el mensaje no es del tipo esperado
 							break;
 						}
-
 					} while (!bloque.ultimoBloque);
+
 
 					//comprobacion de integridad
 					MessageDigest digest = MessageDigest.getInstance("MD5");
@@ -123,42 +121,39 @@ public class TareaProfesor extends Thread{
 					byte[] md5sum = digest.digest();
 					BigInteger bigInt = new BigInteger(1, md5sum);
 					String md5 = bigInt.toString(16);
-
-					//si no coinciden los md5
-					if(!md5.trim().equals(bloque.md5.trim())){
-						//pedir reenvio
-						DataOutputStream dos = new DataOutputStream(conexion.getOutputStream());
-						dos.writeBoolean(false);
-					}else{
-						DataOutputStream dos = new DataOutputStream(conexion.getOutputStream());
-						dos.writeBoolean(true);
-					}					
-					//fin comprobacion integridad
-
-					//TODO revisar el renameTo(), no funciona bien
-					//Nota: parece que el problema con renameTo es de windows, en Ubuntu funciona 
-					//renombrar el fichero con el nombre y la extension del recibido
-					File definitivo;
-					if(dirResultados.charAt(dirResultados.length()-1) == File.separatorChar){
-						definitivo = new File(dirResultados + bloque.nombreFichero);
-					}else{
-						definitivo = new File(dirResultados + File.separator + bloque.nombreFichero);
-					}
-
-					definitivo.createNewFile();
-
-					boolean res = resultados.renameTo(definitivo);
 					
-					if(!res){
-						//error en el rename
-					}
+					Logger logger;
+					
+					//si no coinciden los md5
+					if(!md5.trim().equals(bloque.md5.trim())){												
+						logger = Logger.getLogger("PFC");
+						logger.log(Level.SEVERE, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+"\nProblemas en transferencia de su archivo de resultados: ");
+						dos.writeInt(Global.BLOQUEMAL);
+					}else{
+						dos.writeInt(Global.BLOQUEOK);
+						//renombrar el fichero con el nombre y la extension del recibido
+						File definitivo;
+						if(dirResultados.charAt(dirResultados.length()-1) == File.separatorChar){
+							definitivo = new File(dirResultados + bloque.nombreFichero);
+						}else{
+							definitivo = new File(dirResultados + File.separator + bloque.nombreFichero);
+						}
+						definitivo.createNewFile();
 
+						boolean res = resultados.renameTo(definitivo);
+
+						if(!res){
+							//TODO error en el rename
+						}						
+						logger = Logger.getLogger("PFC");
+						logger.log(Level.INFO, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+"\nArchivo de resultados: "+definitivo.getAbsolutePath());
+
+					}
 					fos.close();
-					Logger logger = Logger.getLogger("PFC");
-					logger.log(Level.INFO, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+"\nArchivo de resultados: "+definitivo.getAbsolutePath());
+					
 					break;
 
-				case Global.FINEXAMEN:
+				case Global.FINPRUEBA:
 					ois = new ObjectInputStream(conexion.getInputStream());
 					datos = (DatosAlumno) ois.readObject();
 					logger = Logger.getLogger("PFC");
@@ -166,7 +161,6 @@ public class TareaProfesor extends Thread{
 					break;
 				default:
 					break;
-
 
 				}
 				recibido = dis.readInt();
@@ -185,5 +179,6 @@ public class TareaProfesor extends Thread{
 		}
 
 	}
+
 
 }

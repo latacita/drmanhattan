@@ -1,8 +1,10 @@
 package profesor;
 
+import java.awt.Color;
 import java.util.Date;
 import java.util.logging.Formatter;
 import java.util.logging.Handler;
+import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
 import javax.swing.JTextArea;
@@ -26,7 +28,14 @@ class FormatoLog extends Formatter {
 	 * Formato de cada log
 	 */
     public String format(LogRecord rec) {
-    	taLog.append(new Date().toString()+" "+formatMessage(rec)+"\n");
+    	
+    	if(rec.getLevel() == Level.SEVERE){
+    		//taLog.setForeground(Color.RED);
+    		taLog.append(new Date().toString()+" "+formatMessage(rec)+"\n");  		 
+    		//taLog.setForeground(Color.BLACK);
+    	}else{
+    		taLog.append(new Date().toString()+" "+formatMessage(rec)+"\n");	
+    	}
     	return new Date().toString()+" "+formatMessage(rec)+"\n";
     }
 

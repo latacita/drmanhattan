@@ -23,7 +23,10 @@ import java.util.StringTokenizer;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
+
+import comun.Global;
+
+import java.awt.Toolkit;
 
 /**
  * 
@@ -72,11 +75,8 @@ public class GUIProfesor {
 	 */
 	private void initialize() {
 
-
-
-
-
 		frmDrmanhattan = new JFrame();
+		frmDrmanhattan.setIconImage(Toolkit.getDefaultToolkit().getImage("/usr/share/drManhattanProfesor/iconos/icono.png"));
 		frmDrmanhattan.setResizable(false);
 		frmDrmanhattan.setTitle("drManhattan - Profesor");
 		frmDrmanhattan.setBounds(100, 100, 664, 598);
@@ -113,7 +113,7 @@ public class GUIProfesor {
 		frmDrmanhattan.getContentPane().add(lblRecibirResultadosEn);
 
 		tfDirectorioResultados = new JTextField();
-		tfDirectorioResultados.setText("/home/resultados");
+		tfDirectorioResultados.setText("/home/manuel/Escritorio/FicherosProfesor");
 		tfDirectorioResultados.setBounds(251, 70, 262, 23);
 		frmDrmanhattan.getContentPane().add(tfDirectorioResultados);
 		tfDirectorioResultados.setColumns(10);
@@ -130,7 +130,7 @@ public class GUIProfesor {
 
 		tfHoraLimite = new JTextField();
 		tfHoraLimite.setHorizontalAlignment(SwingConstants.CENTER);
-		tfHoraLimite.setText("10:25");
+		tfHoraLimite.setText("00:01");
 		tfHoraLimite.setBounds(251, 105, 59, 20);
 		frmDrmanhattan.getContentPane().add(tfHoraLimite);
 		tfHoraLimite.setColumns(10);
@@ -160,7 +160,7 @@ public class GUIProfesor {
 		logger = Logger.getLogger("PFC");
 		try {
 			FileHandler fh;
-			fh = new FileHandler("/home/manuel/Escritorio/drManhattan", true);
+			fh = new FileHandler(Global.FICHLOG, true);
 			logger.addHandler(fh);
 			logger.setLevel(Level.ALL);
 			FormatoLog mh = new FormatoLog(taLog);
@@ -228,6 +228,16 @@ public class GUIProfesor {
 
 					int hor = Integer.parseInt(hora)-ahora.getHours();
 					int min = (Integer.parseInt(minuto)-ahora.getMinutes());
+					
+					int horaIntroducida = Integer.parseInt(hora);
+					int minutosIntroducidos = Integer.parseInt(minuto);
+
+
+					if((horaIntroducida > 23) || (horaIntroducida <0) || (minutosIntroducidos <0) || (minutosIntroducidos>59)){
+						//hora introducida incorrecta
+						throw new NumberFormatException();
+					}
+
 					if(min<0){
 						min+=60;
 					}
@@ -259,8 +269,7 @@ public class GUIProfesor {
 
 				//comprobacion de permisos
 				File directorio = new File(dirResultados);
-				boolean permisos = directorio.canWrite();
-				System.out.println(dirResultados+" "+permisos);
+				boolean permisos = directorio.canWrite();				
 				if(!permisos){
 					JOptionPane.showMessageDialog(frmDrmanhattan, "No hay permisos de escritura en el directorio seleccionado" +
 					", no se recogeran resultados");
