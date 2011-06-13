@@ -14,7 +14,7 @@ public class Global {
 	
 	public static final int PUERTOPROFESOR = 8888;
 	
-	public static final int COMIENZOEXAMEN = 0;
+	public static final int COMIENZOPRUEBA = 0;
 	
 	public static final int ENVIOFICHERO = 1;
 	
@@ -22,7 +22,14 @@ public class Global {
 	
 	public static final int NORED = 3;
 		
-	public static final int FINEXAMEN = 4;
+	public static final int FINPRUEBA = 4;
+	
 	public static final int FINRESULTADOS = 5;
+	
+	public static final int BLOQUEOK = 6;
+	
+	public static final int BLOQUEMAL = 7;
+	
+	public static final String FICHLOG = "/home/manuel/drManhattan";
 	
 }
