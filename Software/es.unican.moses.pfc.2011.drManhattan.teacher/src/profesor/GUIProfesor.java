@@ -11,13 +11,17 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.MaskFormatter;
 import javax.swing.JScrollPane;
 
 import java.awt.Cursor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.StringTokenizer;
 import java.util.logging.FileHandler;
@@ -27,6 +31,7 @@ import java.util.logging.Logger;
 import comun.Global;
 
 import java.awt.Toolkit;
+import javax.swing.JFormattedTextField;
 
 /**
  * 
@@ -41,7 +46,6 @@ public class GUIProfesor {
 
 	private JTextField tfNombreAsignatura;
 	private JTextField tfDirectorioResultados;
-	private JTextField tfHoraLimite;
 
 	private JLabel lblNombreAsignatura;
 	private JLabel lblRecibirResultadosEn;
@@ -59,6 +63,8 @@ public class GUIProfesor {
 	private JButton btnEnviarFichero;
 
 	private Logger logger;
+
+	private JFormattedTextField ftfHoraLImite;
 
 
 
@@ -80,7 +86,7 @@ public class GUIProfesor {
 		frmDrmanhattan.setResizable(false);
 		frmDrmanhattan.setTitle("drManhattan - Profesor");
 		frmDrmanhattan.setBounds(100, 100, 664, 598);
-		frmDrmanhattan.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmDrmanhattan.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frmDrmanhattan.getContentPane().setLayout(null);
 
 
@@ -128,13 +134,6 @@ public class GUIProfesor {
 		lblHoraLimiteExamen.setBounds(10, 104, 223, 23);
 		frmDrmanhattan.getContentPane().add(lblHoraLimiteExamen);
 
-		tfHoraLimite = new JTextField();
-		tfHoraLimite.setHorizontalAlignment(SwingConstants.CENTER);
-		tfHoraLimite.setText("00:01");
-		tfHoraLimite.setBounds(251, 105, 59, 20);
-		frmDrmanhattan.getContentPane().add(tfHoraLimite);
-		tfHoraLimite.setColumns(10);
-
 		panelLog = new JPanel();
 		panelLog.setBorder(new TitledBorder(null, "Eventos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		panelLog.setBounds(10, 239, 586, 292);
@@ -154,13 +153,28 @@ public class GUIProfesor {
 		btnEnviarFichero.setToolTipText("Envia un fichero a todos los alumnos conectados");
 		btnEnviarFichero.setBounds(308, 150, 150, 23);
 		frmDrmanhattan.getContentPane().add(btnEnviarFichero);
+		
+		
+		
+		MaskFormatter formatter = null;
+		try {
+			formatter = new MaskFormatter("## : ##");
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		
+		ftfHoraLImite = new JFormattedTextField(formatter);
+		ftfHoraLImite.setHorizontalAlignment(SwingConstants.CENTER);
+		ftfHoraLImite.setText("00 : 01");
+		ftfHoraLImite.setBounds(251, 105, 59, 23);
+		frmDrmanhattan.getContentPane().add(ftfHoraLImite);
 
 		aceptaAlumnos = new HiloAceptadorAlumnos();
 
 		logger = Logger.getLogger("PFC");
 		try {
 			FileHandler fh;
-			fh = new FileHandler(Global.FICHLOG, true);
+			fh = new FileHandler();
 			logger.addHandler(fh);
 			logger.setLevel(Level.ALL);
 			FormatoLog mh = new FormatoLog(taLog);
@@ -222,7 +236,7 @@ public class GUIProfesor {
 				try{
 					Date ahora = new Date(System.currentTimeMillis());
 
-					String textoHora = tfHoraLimite.getText().trim();
+					String textoHora = ftfHoraLImite.getText().trim();
 					String hora = textoHora.substring(0, textoHora.indexOf(':')).trim();
 					String minuto = textoHora.substring(textoHora.indexOf(':')+1).trim();
 
@@ -289,7 +303,7 @@ public class GUIProfesor {
 					btnFinExamen.setEnabled(true);
 					btnComienzoExamen.setEnabled(false);
 					tfDirectorioResultados.setEnabled(false);
-					tfHoraLimite.setEnabled(false);
+					ftfHoraLImite.setEnabled(false);
 					tfNombreAsignatura.setEnabled(false);
 
 					aceptaAlumnos.inicioPrueba(temporizar, minutos, dirResultados.trim());
@@ -309,8 +323,28 @@ public class GUIProfesor {
 				if (JOptionPane.OK_OPTION == confirmado){
 					aceptaAlumnos.finPrueba();
 					logger.log(Level.INFO, "Finaliza la prueba a orden del profesor");
+					btnFinExamen.setEnabled(false);
 				}
 
+			}
+		});
+		
+		
+		/**
+		 * Manejador del evento de cerrar la ventana.
+		 */
+		frmDrmanhattan.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent we){
+				if(btnFinExamen.isEnabled()){
+					int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "Si cierra, finaliza la prueba");
+					if (JOptionPane.OK_OPTION == confirmado){
+						logger.log(Level.INFO, "Finaliza la prueba a orden del profesor");
+						aceptaAlumnos.finPrueba();
+						btnFinExamen.setEnabled(false);
+					}
+				}else{
+					System.exit(0);
+				}
 			}
 		});
 

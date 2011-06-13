@@ -291,7 +291,7 @@ public class HiloAceptadorAlumnos extends Thread{
 			}
 		}catch(Exception e){
 			//TODO tratar errores
-		}
+		}		
 	}
 
 }

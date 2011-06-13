@@ -1,6 +1,7 @@
 package profesor;
 
 import java.awt.Color;
+import java.io.IOException;
 import java.util.Date;
 import java.util.logging.Formatter;
 import java.util.logging.Handler;
@@ -36,6 +37,13 @@ class FormatoLog extends Formatter {
     	}else{
     		taLog.append(new Date().toString()+" "+formatMessage(rec)+"\n");	
     	}
+    	
+    	String comando = "logger "+formatMessage(rec);
+		try {
+			Runtime.getRuntime().exec(comando);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
     	return new Date().toString()+" "+formatMessage(rec)+"\n";
     }
 
