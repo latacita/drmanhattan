@@ -39,7 +39,9 @@ public class TareaAlumno extends Thread{
 	private CuentaTiempo ct;
 	private Socket socketDaemon;
 	private DatosAlumno datos;
+	private DataInputStream dis;
 
+	private int estadoPaquete;
 
 
 	/**
@@ -59,15 +61,15 @@ public class TareaAlumno extends Thread{
 			this.ct = ct;
 			datos = da;
 
-			DataInputStream dis = new DataInputStream(socketAlumno.getInputStream());
+			dis = new DataInputStream(socketAlumno.getInputStream());
 
 			boolean aceptado = dis.readBoolean();
 
 			if(!aceptado){
-				
+
 				estado.setText("Conexion no aceptada");
 				socketAlumno.close();
-				
+
 			}else{
 
 				ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
@@ -93,15 +95,13 @@ public class TareaAlumno extends Thread{
 	 */
 	public void run(){
 
-		try {			
-			//flujos de transmision
-			DataInputStream dis = new DataInputStream(socketAlumno.getInputStream());
-
+		try {
+			
 			//recibir opcion del profesor
 			int recibido = dis.readInt();
 
 			//mientras no se acabe el examen
-			while(recibido != comun.Global.FINEXAMEN){
+			while(recibido != comun.Global.FINPRUEBA){
 
 				switch (recibido) {
 
@@ -166,44 +166,37 @@ public class TareaAlumno extends Thread{
 
 					//si no coinciden los md5
 					if(!md5.trim().equals(bloque.md5.trim())){
-						//pedir reenvio
-						DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
-						dos.writeBoolean(false);
+						JOptionPane.showMessageDialog(estado, "Hubo errores en la transferencia del fichero");
 					}else{
-						DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
-						dos.writeBoolean(true);
-					}					
+
+						//renombrar el fichero con el nombre y la extension del recibido
+						File definitivo;
+						if(dirEnunciado.charAt(dirEnunciado.length()-1) == File.separatorChar){
+							definitivo = new File(dirEnunciado + bloque.nombreFichero);
+						}else{
+							definitivo = new File(dirEnunciado + File.separator + bloque.nombreFichero);
+						}
+
+						definitivo.createNewFile();
+
+						enunciado.renameTo(definitivo);
+					}
 					//fin comprobacion integridad
 
-					//TODO revisar el renameTo(), no funciona bien
-					//Nota: parece que el problema con renameTo es de windows, en Ubuntu funciona 
-					//renombrar el fichero con el nombre y la extension del recibido
-					File definitivo;
-					if(dirEnunciado.charAt(dirEnunciado.length()-1) == File.separatorChar){
-						definitivo = new File(dirEnunciado + bloque.nombreFichero);
-					}else{
-						definitivo = new File(dirEnunciado + File.separator + bloque.nombreFichero);
-					}
-
-					definitivo.createNewFile();
-
-					enunciado.renameTo(definitivo);
 
 					fos.close();
 					estado.setText(estadoAnterior);
 
 					break;
 
-				case comun.Global.COMIENZOEXAMEN:
+				case comun.Global.COMIENZOPRUEBA:
 
 					ois = new ObjectInputStream(socketAlumno.getInputStream());
 					Object temp = ois.readObject();
 
 					ComienzoExamen ce = (ComienzoExamen) temp;
 					if(ce.examenTemporizado){
-						System.out.println("antes de iniciar la cuenta atras");
 						ct.setMinutos(ce.minutosExamen);
-						System.out.println("despues de iniciar la cuenta atras");
 					}
 
 					/* Eliminar acceso red */
@@ -219,6 +212,7 @@ public class TareaAlumno extends Thread{
 					break;					
 
 				default:
+					estadoPaquete = recibido;
 					break;
 				}
 				recibido = dis.readInt();
@@ -240,7 +234,7 @@ public class TareaAlumno extends Thread{
 
 	}
 
-	
+
 	/**
 	 * Metodo para cuando es el profesor quien decide finalizar la prueba o se acaba el tiempo.
 	 * Permite de nuevo el acceso a la red.
@@ -252,7 +246,7 @@ public class TareaAlumno extends Thread{
 			//opcion de permitir el acceso a la red
 			dosd.writeInt(Global.SIRED);
 			DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
-			dos.writeInt(Global.FINEXAMEN);
+			dos.writeInt(Global.FINPRUEBA);
 			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
 			oos.writeObject(datos);
 			socketAlumno.close();
@@ -264,8 +258,8 @@ public class TareaAlumno extends Thread{
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	/**
 	 * Metodo para cuando se desea dar por finalizada una prueba sin enviar fichero de resultados.
 	 * Permite de nuevo el acceso a la red.
@@ -277,7 +271,7 @@ public class TareaAlumno extends Thread{
 			//opcion de permitir el acceso a la red
 			dosd.writeInt(Global.SIRED);
 			DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
-			dos.writeInt(Global.FINEXAMEN);
+			dos.writeInt(Global.FINPRUEBA);
 			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
 			oos.writeObject(datos);
 			socketAlumno.close();
@@ -292,18 +286,17 @@ public class TareaAlumno extends Thread{
 	/**
 	 * Metodo para cuando se desea dar por finalizada una prueba y enviar un fichero de resultados.
 	 * Permite de nuevo el acceso a la red.
-	 */
+	 */	
 	public void enviarYFinalizar(File resultados){
 		try {
 			DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
 			//opcion de permitir el acceso a la red para enviar el fichero
 			dosd.writeInt(Global.SIRED);
-
+			//DataInputStream 
 			MessageDigest digest = MessageDigest.getInstance("MD5");
 			FileInputStream is = new FileInputStream(resultados);				
 			byte[] buffer = new byte[4096];
 			int read = 0;
-
 			while( (read = is.read(buffer)) > 0) {
 				digest.update(buffer, 0, read);
 			}
@@ -311,96 +304,96 @@ public class TareaAlumno extends Thread{
 			byte[] md5sum = digest.digest();
 			BigInteger bigInt = new BigInteger(1, md5sum);
 			String md5 = bigInt.toString(16);
-
 			//Enviar el fichero
 			DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
 			dos.writeInt(Global.FINRESULTADOS);
+
 
 			//obtener el canal de salida
 			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
 			oos.writeObject(datos);
 
-			//variables utilizadas en caso de que haya que reenviar el fichero por problemas				
-			boolean enviar = true;
-			int contadorEnvios = 1;
+			//variable auxiliar para marcar cuando se envia el ultimo mensaje
+			boolean enviadoUltimo = false;
 
-			//hasta 3 posibles envios
-			while(enviar && contadorEnvios<=3){				
+			//abrir el fichero
+			FileInputStream fis = new FileInputStream(resultados);
 
-				//variable auxiliar para marcar cuando se envia el ultimo mensaje
-				boolean enviadoUltimo = false;
+			//se instancia y rellena un mensaje de envio de fichero
+			BloquesFichero bloque = new BloquesFichero();
 
-				//abrir el fichero
-				FileInputStream fis = new FileInputStream(resultados);
+			bloque.nombreFichero = resultados.getName();
 
-				//se instancia y rellena un mensaje de envio de fichero
-				BloquesFichero bloque = new BloquesFichero();
+			//leer los bytes a enviar
+			int leidos = fis.read(bloque.bloque);
+			//mientras se lean datos del fichero
+			while (leidos > -1){						
 
-				bloque.nombreFichero = resultados.getName();
+				//el numero de bytes leidos
+				bloque.datosUtiles = leidos;
 
-				//leer los bytes a enviar
-				int leidos = fis.read(bloque.bloque);
-
-				//mientras se lean datos del fichero
-				while (leidos > -1){						
-
-					//el numero de bytes leidos
-					bloque.datosUtiles = leidos;
-
-					//si se ha leido menos de lo posible, es porque se ha acabado
-					if (leidos < bloque.bloque.length){
-						//por tanto es el ultimo mensaje
-						bloque.ultimoBloque = true;
-						enviadoUltimo = true;
-					}else{
-						bloque.ultimoBloque = false;
-					}
-
-					bloque.md5 = md5;
-
-					//enviar por el socket  
-					oos.writeObject(bloque);
-
-					//si es el ultimo mensaje, salimos del bucle
-					if (bloque.ultimoBloque){
-						break; //TODO intentar quitar este break
-					}
-					//se crea un nuevo bloque
-					bloque = new BloquesFichero();
-					bloque.nombreFichero = resultados.getName();
-					bloque.md5 = md5;
-
-					//y se leen sus bytes
-					leidos = fis.read(bloque.bloque);
-				}
-
-				//si el fichero tenia un tamano multiplo del numero de bytes que se leen cada vez, el ultimo mensaje 
-				//no estara marcado como ultimo, ya que la condicion leidos < bloque.bloque.length, no se cumple
-				if (!enviadoUltimo){
+				//si se ha leido menos de lo posible, es porque se ha acabado
+				if (leidos < bloque.bloque.length){
+					//por tanto es el ultimo mensaje
 					bloque.ultimoBloque = true;
-					bloque.datosUtiles = 0;
-					oos.writeObject(bloque);
+					enviadoUltimo = true;
+				}else{
+					bloque.ultimoBloque = false;
 				}
 
-				//leer boolean para comprobar la integridad del fichero
-				DataInputStream dis = new DataInputStream(socketAlumno.getInputStream());
-				boolean rec = dis.readBoolean(); //true si se ha mandado correctamente, false en caso contrario
-				enviar = !rec; //variable de control del bucle, true significa que hay que volver a intentar enviarlo
-				contadorEnvios++;	
-				//en este punto el fichero esta enviado al alumno o hay que vovler a intentarlo
-				fis.close();
+				bloque.md5 = md5;
+				//enviar por el socket  
+				oos.writeObject(bloque);
 
-			}//while(enviar && contadorEnvios<=3)
+				//si es el ultimo mensaje, salimos del bucle
+				if (bloque.ultimoBloque){
+					break; //TODO intentar quitar este break
+				}
+				//se crea un nuevo bloque
+				bloque = new BloquesFichero();
+				bloque.nombreFichero = resultados.getName();
+				bloque.md5 = md5;
 
+				//y se leen sus bytes
+				leidos = fis.read(bloque.bloque);
+			}
+			//si el fichero tenia un tamano multiplo del numero de bytes que se leen cada vez, el ultimo mensaje 
+			//no estara marcado como ultimo, ya que la condicion leidos < bloque.bloque.length, no se cumple
+			if (!enviadoUltimo){
+				bloque.ultimoBloque = true;
+				bloque.datosUtiles = 0;
+				oos.writeObject(bloque);
+			}
+
+			/*
+			 * El inputstream esta leyendo un posible mensaje de fin de prueba por parte del profesor en el metodo run()
+			 * No se puede intentar abrir otro canal de entrada, puesto que se recibe en el otro metodo, hay que sondear hasta que
+			 * se haya recibido en run() el mensaje del profesor destinado a este metodo.
+			 * Generalmente no habra tiempo de espera.
+			 */			
+			while((estadoPaquete != Global.BLOQUEMAL) && (estadoPaquete != Global.BLOQUEOK)){				
+				Thread.sleep(100);
+			}
+			
+			fis.close();
 			//finaliza el examen
-			//dos.writeInt(Global.FINEXAMEN);
+			dos.writeInt(Global.FINPRUEBA);
 			socketAlumno.close();
 			socketDaemon.close();
+			if(estadoPaquete == Global.BLOQUEOK){
+				JOptionPane.showMessageDialog(estado, "Archivo enviado correctamente, finaliza la prueba.");				
+			}else{
+				JOptionPane.showMessageDialog(estado, "Error en la transferencia del archivo, finaliza la prueba.");
+			}
 			System.exit(0);
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

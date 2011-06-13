@@ -13,7 +13,6 @@ import comun.DatosAlumno;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
-import java.io.IOException;
 import java.awt.Cursor;
 import java.awt.Toolkit;
 
@@ -75,7 +74,7 @@ public class GUIAlumno{
 
 		frmDrmanhattan = new JFrame();
 
-		frmDrmanhattan.setIconImage(Toolkit.getDefaultToolkit().getImage("/home/manuel/Escritorio/srcPFC/es.unican.moses.pfc.2011.drManhattan.student/src/icono.png"));
+		frmDrmanhattan.setIconImage(Toolkit.getDefaultToolkit().getImage("/usr/share/drManhattanAlumno/iconos/icono.png"));
 		frmDrmanhattan.setAlwaysOnTop(false);
 		frmDrmanhattan.setTitle("drManhattan - Alumno");
 		frmDrmanhattan.setResizable(false);
@@ -114,7 +113,7 @@ public class GUIAlumno{
 		frmDrmanhattan.getContentPane().add(lblDirectorioEnunciado);
 
 		tfDirEnunciado = new JTextField();
-		tfDirEnunciado.setText("/home/enunciado");
+		tfDirEnunciado.setText("/home/manuel/Escritorio/FicherosAlumno");
 		tfDirEnunciado.setBounds(202, 127, 233, 23);
 		frmDrmanhattan.getContentPane().add(tfDirEnunciado);
 		tfDirEnunciado.setColumns(10);
@@ -203,7 +202,6 @@ public class GUIAlumno{
 				//comprobacion de permisos
 				File directorio = new File(dirEnum);
 				boolean permisos = directorio.canWrite();
-				System.out.println(dirEnum+" "+permisos);
 				if(!permisos){
 					JOptionPane.showMessageDialog(frmDrmanhattan, "No hay permisos de escritura en el directorio seleccionado" +
 					", no se recibran archivos del profesor");
