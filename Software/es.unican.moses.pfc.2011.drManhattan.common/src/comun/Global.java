@@ -30,6 +30,5 @@ public class Global {
 	
 	public static final int BLOQUEMAL = 7;
 	
-	public static final String FICHLOG = "/home/manuel/drManhattan";
 	
 }
