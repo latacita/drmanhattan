@@ -92,7 +92,7 @@ public class Daemon {
 
 				String comando; //variable utilizada para llamar al sistema y ejecutar ese comando
 
-				while(recibido != Global.FINEXAMEN){
+				while(recibido != Global.FINPRUEBA){
 					//realizar las operaciones correspondientes en funcion de la opcion requerida
 					switch(recibido){
 
@@ -131,6 +131,7 @@ public class Daemon {
 					}//switch
 					recibido = dis.readInt();
 				}//while
+				socket.close();
 			}catch(Exception e){
 			}
 
