@@ -30,5 +30,7 @@ public class Global {
 	
 	public static final int BLOQUEMAL = 7;
 	
+	public static final String ficheroEstado = "/home/manuel/estado";
+	
 	
 }

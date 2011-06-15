@@ -20,4 +20,7 @@ public class ComienzoExamen implements Serializable{
 	//En caso de haber limite prefijado, cuantos minutos durara
 	public int minutosExamen;
 	
+	//y cuantos segundos
+	public int segundosExamen;
+	
 }
