@@ -47,7 +47,7 @@ public class TareaProfesor extends Thread{
 			int recibido;
 			recibido = dis.readInt();
 			DataOutputStream dos = new DataOutputStream(conexion.getOutputStream());
-			dos.writeInt(8);
+
 			//mientras no se acabe el examen
 			//TODO quizas anadir isInterrupt a la condicion, en caso de que no acabe el alumno
 			while((recibido != comun.Global.FINPRUEBA) || (recibido != comun.Global.FINRESULTADOS)){

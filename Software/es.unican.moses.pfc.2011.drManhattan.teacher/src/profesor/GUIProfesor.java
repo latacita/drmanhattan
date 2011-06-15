@@ -21,14 +21,16 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.StringTokenizer;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import comun.Global;
 
 import java.awt.Toolkit;
 import javax.swing.JFormattedTextField;
@@ -43,9 +45,17 @@ import javax.swing.JFormattedTextField;
 public class GUIProfesor {
 
 	private JFrame frmDrmanhattan;
+	
+	private JPanel panelLog;
+	
+	private JScrollPane scrollPane;
+	
+	private JTextArea taLog;
 
 	private JTextField tfNombreAsignatura;
 	private JTextField tfDirectorioResultados;
+	
+	private JFormattedTextField ftfHoraLImite;
 
 	private JLabel lblNombreAsignatura;
 	private JLabel lblRecibirResultadosEn;
@@ -54,19 +64,13 @@ public class GUIProfesor {
 	private JButton btnComienzoExamen;
 	private JButton btnFinExamen;	
 	private JButton btnExplorarDirResultados;
-
-	private HiloAceptadorAlumnos aceptaAlumnos;
-	private JPanel panelLog;
-	private JScrollPane scrollPane;
-	private JTextArea taLog;
-
 	private JButton btnEnviarFichero;
-
+	
+	private HiloAceptadorAlumnos aceptaAlumnos;
+	
 	private Logger logger;
 
-	private JFormattedTextField ftfHoraLImite;
-
-
+	
 
 	/**
 	 * Create the application.
@@ -80,6 +84,22 @@ public class GUIProfesor {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+
+
+		try {
+			for (Enumeration<NetworkInterface> ifaces =  NetworkInterface.getNetworkInterfaces(); ifaces.hasMoreElements();){ 
+				NetworkInterface iface = ifaces.nextElement(); 
+				System.out.println(iface.getName() + ":"); 
+				for (Enumeration<InetAddress> addresses = iface.getInetAddresses(); addresses.hasMoreElements(); ){ 
+					InetAddress address = addresses.nextElement(); 
+					System.out.println("  " + address.toString()); 
+				} 
+			} 
+		} catch (SocketException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+
 
 		frmDrmanhattan = new JFrame();
 		frmDrmanhattan.setIconImage(Toolkit.getDefaultToolkit().getImage("/usr/share/drManhattanProfesor/iconos/icono.png"));
@@ -153,16 +173,14 @@ public class GUIProfesor {
 		btnEnviarFichero.setToolTipText("Envia un fichero a todos los alumnos conectados");
 		btnEnviarFichero.setBounds(308, 150, 150, 23);
 		frmDrmanhattan.getContentPane().add(btnEnviarFichero);
-		
-		
-		
+
 		MaskFormatter formatter = null;
 		try {
 			formatter = new MaskFormatter("## : ##");
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}
-		
+
 		ftfHoraLImite = new JFormattedTextField(formatter);
 		ftfHoraLImite.setHorizontalAlignment(SwingConstants.CENTER);
 		ftfHoraLImite.setText("00 : 01");
@@ -232,7 +250,10 @@ public class GUIProfesor {
 			public void actionPerformed(ActionEvent arg0) {
 
 				boolean temporizar = false;
-				int minutos = 0;
+				int horaLimite;
+				int minutosLimite;
+				int minutosEnteros;
+				int segundosEnteros;
 				try{
 					Date ahora = new Date(System.currentTimeMillis());
 
@@ -240,30 +261,29 @@ public class GUIProfesor {
 					String hora = textoHora.substring(0, textoHora.indexOf(':')).trim();
 					String minuto = textoHora.substring(textoHora.indexOf(':')+1).trim();
 
-					int hor = Integer.parseInt(hora)-ahora.getHours();
-					int min = (Integer.parseInt(minuto)-ahora.getMinutes());
+					horaLimite = Integer.parseInt(hora);
+					minutosLimite = Integer.parseInt(minuto);
 					
-					int horaIntroducida = Integer.parseInt(hora);
-					int minutosIntroducidos = Integer.parseInt(minuto);
-
-
-					if((horaIntroducida > 23) || (horaIntroducida <0) || (minutosIntroducidos <0) || (minutosIntroducidos>59)){
+					if((horaLimite > 23) || (horaLimite <0) || (minutosLimite <0) || (minutosLimite>59)){
 						//hora introducida incorrecta
 						throw new NumberFormatException();
 					}
+					
+					Date limite = new Date(ahora.getYear(), ahora.getMonth(), ahora.getDate(), horaLimite, minutosLimite, 0);
 
-					if(min<0){
-						min+=60;
-					}
-					if(ahora.getMinutes() >= Integer.parseInt(minuto)){
-						hor--;
-					}
-					minutos = hor*60 + min;
+					long diferencia =  limite.getTime()-ahora.getTime();
+					double segundosD = Math.floor(diferencia/1000);
+					int segundosI = (int) segundosD;
 
-					if(minutos > 0){
+					minutosEnteros = segundosI / 60;
+					segundosEnteros = segundosI-60*minutosEnteros;
+
+					if(segundosI>0){
 						temporizar = true;
 					}
 
+					
+					
 				}catch (Exception e) {
 					JOptionPane.showMessageDialog(frmDrmanhattan, "Error al introducir la hora limite");
 					return; //No se comienza la prueba con una hora incorrecta
@@ -306,7 +326,7 @@ public class GUIProfesor {
 					ftfHoraLImite.setEnabled(false);
 					tfNombreAsignatura.setEnabled(false);
 
-					aceptaAlumnos.inicioPrueba(temporizar, minutos, dirResultados.trim());
+					aceptaAlumnos.inicioPrueba(temporizar, minutosEnteros, dirResultados.trim(), horaLimite, minutosLimite, segundosEnteros);
 					logger.log(Level.INFO, "Comienza la prueba de la asignatura "+tfNombreAsignatura.getText().trim());
 				}else{
 					//la prueba no comienza, asi que no se hace nada
@@ -328,8 +348,8 @@ public class GUIProfesor {
 
 			}
 		});
-		
-		
+
+
 		/**
 		 * Manejador del evento de cerrar la ventana.
 		 */

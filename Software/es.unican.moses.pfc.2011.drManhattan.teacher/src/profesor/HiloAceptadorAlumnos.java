@@ -1,5 +1,6 @@
 package profesor;
 
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,6 +12,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,8 +36,13 @@ public class HiloAceptadorAlumnos extends Thread{
 	//para aceptar conexiones
 	private ServerSocket sSocket;
 
+	private List<Socket> listaSocket;
 
-	List<Socket> listaSocket;
+	//variables usadas en caso de reconexion
+	private int hora;
+	private int minutos;
+	private boolean temporizado;
+	private String dirRes;
 
 	/**
 	 * Constructor
@@ -54,32 +61,22 @@ public class HiloAceptadorAlumnos extends Thread{
 	}
 
 
+	
+
+
 	/**
 	 * Mientras este activo espera nuevas conexiones de alumnos
 	 */
 	public void run(){
 		try{			
-			while(!this.isInterrupted()){
+			while(true){
 				Socket socket;
 				//esperar a nueva conexion
 				socket = sSocket.accept();
+				
+				new ProcesaConexion(socket, this).start();
 
-				DataOutputStream dos = new DataOutputStream(socket.getOutputStream());				
-				boolean aceptado = true;				
-				if(this.isInterrupted()){
-					aceptado = false;
-				}				
-				dos.writeBoolean(aceptado);
-
-				ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-				Object temp = ois.readObject();				
-				DatosAlumno da = (DatosAlumno) temp;
-				Logger logger = Logger.getLogger("PFC");
-				logger.log(Level.INFO, "Alumno: "+da.nombre+" "+da.apellidos+" conectado");
-
-				listaSocket.add(socket);
-		
-			}			
+			}
 
 		}catch(Exception e){
 			//TODO tratamiento de errores
@@ -110,8 +107,6 @@ public class HiloAceptadorAlumnos extends Thread{
 			}
 		}
 	}
-
-
 
 
 	/**
@@ -227,11 +222,124 @@ public class HiloAceptadorAlumnos extends Thread{
 			e.printStackTrace();
 		}
 	}
+	
+	
+	/**
+	 * 
+	 * Clase privada para procesar los datos al aceptar una conexion nueva.
+	 * 
+	 * @author Manuel Pando
+	 *
+	 */
+	private class ProcesaConexion extends Thread{
+
+		private Socket conexion;
+		private HiloAceptadorAlumnos hiloPrincipal;
+
+		public ProcesaConexion(Socket s, HiloAceptadorAlumnos haa){
+			conexion = s;
+			hiloPrincipal = haa;
+		}
+
+		public void run(){
+
+			try{
+				
+				DataOutputStream dos = new DataOutputStream(conexion.getOutputStream());
+				DataInputStream dis = new DataInputStream(conexion.getInputStream());
+				
+				boolean reconexion = dis.readBoolean();
+				if(!reconexion){
+					//la conexion aceptada no es una reconexion
+					boolean aceptado = true;
+
+					if(hiloPrincipal.isInterrupted()){
+						aceptado = false;
+					}
+
+					dos.writeBoolean(aceptado);
+					if(aceptado){
+						ObjectInputStream ois = new ObjectInputStream(conexion.getInputStream());
+						Object temp = ois.readObject();				
+						DatosAlumno da = (DatosAlumno) temp;
+						Logger logger = Logger.getLogger("PFC");
+						logger.log(Level.INFO, "Alumno: "+da.nombre+" "+da.apellidos+" conectado");
+
+						listaSocket.add(conexion);
+					}
+				}else{
+					//hay reconexion
+
+					System.out.println("Prof: hay reconexion");
+
+					/*
+					 * Comprobar el tema del numero para aceptar reconexion
+					 * De momento aceptar todo
+					 */
+					dos.writeBoolean(true);
+
+					ObjectInputStream ois = new ObjectInputStream(conexion.getInputStream());
+					Object temp = ois.readObject();
+					DatosAlumno da = (DatosAlumno) temp;
+					Logger logger = Logger.getLogger("PFC");
+					logger.log(Level.INFO, "Alumno: "+da.nombre+" "+da.apellidos+" reconectado");
+					System.out.println("Se guarda el log");
+					//Directamente se reinicia la prueba
+					dos.writeInt(Global.COMIENZOPRUEBA);
+
+					Date ahora = new Date(System.currentTimeMillis());
+
+					Date limite = new Date(ahora.getYear(), ahora.getMonth(), ahora.getDate(), hiloPrincipal.hora, hiloPrincipal.minutos, 0);
+
+					long diferencia =  limite.getTime()-ahora.getTime();
+
+					double segundosD = Math.floor(diferencia/1000);
+
+					int segundosI = (int) segundosD;
+
+					int minutosEnteros = segundosI / 60;
+					int segundosEnteros = segundosI-60*minutosEnteros;
+
+					ComienzoExamen ce = new ComienzoExamen();
+					ce.examenTemporizado = temporizado;
+					ce.minutosExamen = minutosEnteros;
+					ce.segundosExamen = segundosEnteros;
+
+					ObjectOutputStream oos = new ObjectOutputStream(conexion.getOutputStream());
+					oos.writeObject(ce);
+
+					listaSocket.add(conexion);
+					
+					new TareaProfesor(conexion, dirRes);
+
+
+				}
+			}catch(Exception e){
+				//TODO tratamiento de errores
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * Enviar a los alumnos conectados la notificacion de que comienza la prueba
 	 */
-	public void inicioPrueba(boolean temporizar, int minutos, String dirResultados){
+	public void inicioPrueba(boolean temporizar, int minutos, String dirResultados, int h, int m, int segundos){
+		hora = h;
+		this.minutos = m;
+		temporizado = temporizar;
+		dirRes = dirResultados;
 		try{
 
 			/*
@@ -253,6 +361,7 @@ public class HiloAceptadorAlumnos extends Thread{
 					ComienzoExamen ce = new ComienzoExamen();
 					ce.examenTemporizado = temporizar;
 					ce.minutosExamen = minutos;
+					ce.segundosExamen = segundos;
 
 					ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
 					oos.writeObject(ce);
