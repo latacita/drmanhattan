@@ -33,7 +33,7 @@
 \tb{0.8}{0.50}{0.700}{\Large Para acceder al Título de \\
 					  INGENIERO EN INFORMÁTICA}   % the name of the supervisor
 \tb{0.2}{0.70}{0.850}{\begin{tabular}{r}
-\Large Autor: Alejandro Pérez Ruiz \\
+\Large Autor: \myname \\
 \Large Julio 2011 \\
 \end{tabular}}
 
