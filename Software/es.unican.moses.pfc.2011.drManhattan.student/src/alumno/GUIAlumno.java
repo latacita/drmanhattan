@@ -9,18 +9,19 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import comun.DatosAlumno;
+import comun.Global;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.io.BufferedReader;
 import java.io.File;
-import java.text.ParseException;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.awt.Cursor;
 import java.awt.Toolkit;
-import javax.swing.JFormattedTextField;
-import javax.swing.text.MaskFormatter;
 
 
 /**
@@ -45,22 +46,17 @@ public class GUIAlumno{
 	private JLabel lblDirectorioEnunciado;
 	private JLabel lblTiempoRestante;
 	private JLabel lblTiempo;
+	private JLabel lblTextoEstado;
+	private JLabel lblEstado;
 
 	private JButton btnConectar;
 	private JButton btnExplorar;
+	private JButton btnFinalizar;
+	private JButton btnEnviarResultados;
 
 	//variable para controlar la cuenta atras
-	private boolean finExamen = false;
-
-	private JLabel lblTextoEstado;
-
-	private JLabel lblEstado;
-
+	private boolean finExamen = false;	
 	private CuentaTiempo ct = new CuentaTiempo();
-
-	private JButton btnFinalizar;
-
-	private JButton btnEnviarResultados;
 	private TareaAlumno tarea;
 
 	/**
@@ -79,11 +75,11 @@ public class GUIAlumno{
 		//creacion y distribucion de componentes
 
 		frmDrmanhattan = new JFrame();
+		frmDrmanhattan.setResizable(false);
 
 		frmDrmanhattan.setIconImage(Toolkit.getDefaultToolkit().getImage("/usr/share/drManhattanAlumno/iconos/icono.png"));
 		frmDrmanhattan.setAlwaysOnTop(false);
 		frmDrmanhattan.setTitle("drManhattan - Alumno");
-		frmDrmanhattan.setResizable(false);
 		frmDrmanhattan.setBounds(100, 100, 583, 338);
 		frmDrmanhattan.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frmDrmanhattan.getContentPane().setLayout(null);
@@ -171,7 +167,7 @@ public class GUIAlumno{
 		lblEstado = new JLabel("No conectado");
 		lblEstado.setBounds(289, 212, 280, 23);
 		frmDrmanhattan.getContentPane().add(lblEstado);
-		
+
 
 		//Manejadores de eventos
 
@@ -199,14 +195,14 @@ public class GUIAlumno{
 			public void actionPerformed(ActionEvent arg0) {
 
 				String ipProfesor = tfIPProfesor.getText();
-				String dirEnum = tfDirEnunciado.getText();
+				String dirEnun = tfDirEnunciado.getText();
 				DatosAlumno da = new DatosAlumno();
 				da.nombre = tfNombre.getText();
 				da.apellidos = tfApellido.getText();
 
 
 				//comprobacion de permisos
-				File directorio = new File(dirEnum);
+				File directorio = new File(dirEnun);
 				boolean permisos = directorio.canWrite();
 				if(!permisos){
 					JOptionPane.showMessageDialog(frmDrmanhattan, "No hay permisos de escritura en el directorio seleccionado" +
@@ -215,7 +211,7 @@ public class GUIAlumno{
 
 				int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Conectarse con las caracteristicas seleccionadas?");				
 				if (JOptionPane.OK_OPTION == confirmado){
-					tarea = new TareaAlumno(ipProfesor, dirEnum, lblEstado, da, ct);
+					tarea = new TareaAlumno(ipProfesor, dirEnun, lblEstado, da, ct, false);
 					btnConectar.setEnabled(false);
 					btnExplorar.setEnabled(false);
 					tfNombre.setEnabled(false);
@@ -257,7 +253,7 @@ public class GUIAlumno{
 				//TODO caso de que cancelo
 			}
 		});
-		
+
 		/**
 		 * Manejador del evento de cerrar la ventana.
 		 */
@@ -273,6 +269,76 @@ public class GUIAlumno{
 				}
 			}
 		});
+
+		try {
+			/*
+			 * Comprobar el estado anterior de la aplicacion
+			 */
+
+
+			File estado = new File(Global.ficheroEstado);
+			/*
+			 * El fichero sera
+			 * 
+			 * un numero: en caso de que se hubiese iniciado la prueba
+			 * ipServidor
+			 * 
+			 */
+			if(estado.exists()){
+				System.out.println("El fichero existe");
+				FileReader fr = new FileReader(estado);
+				BufferedReader br = new BufferedReader(fr);				
+				String linea = br.readLine();
+				System.out.println("linea: " + linea);
+				String ipProf = br.readLine();
+				System.out.println("ip prof: "+ipProf);
+				String dirEnun = br.readLine();
+				System.out.println("dir enum: "+dirEnun);
+				String nombre = br.readLine();
+				System.out.println("nombre: "+nombre);
+				String apellido = br.readLine();
+				System.out.println("apellido: "+apellido);
+
+				br.close();
+				fr.close();
+
+				//reconectarse al servidor
+				reconectar(ipProf, dirEnun, nombre, apellido);
+
+			}
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+
+	private void reconectar(String ip, String dirE, String nom, String ape){
+
+		System.out.println("Metodo reconectar de GUI Alumno");
+
+		String ipProfesor = ip;
+		String dirEnun = dirE;
+		DatosAlumno da = new DatosAlumno();
+		da.nombre = nom;
+		da.apellidos = ape;
+
+
+		tarea = new TareaAlumno(ipProfesor, dirEnun, lblEstado, da, ct, true);
+		System.out.println("Deshabilitando botones");
+		btnConectar.setEnabled(false);
+		btnExplorar.setEnabled(false);
+		tfNombre.setEnabled(false);
+		tfDirEnunciado.setEnabled(false);
+		tfApellido.setEnabled(false);
+		tfIPProfesor.setEnabled(false);
+		btnFinalizar.setEnabled(true);
+		btnEnviarResultados.setEnabled(true);
+
 	}
 
 
@@ -284,7 +350,6 @@ public class GUIAlumno{
 			frmDrmanhattan.setAlwaysOnTop(false);
 		}
 	});
-	private JFormattedTextField ftfIPProfesor;
 
 
 	/**
@@ -301,8 +366,8 @@ public class GUIAlumno{
 		 * Inicia el contador
 		 * @param minutos que durara el examen
 		 */
-		public void setMinutos(int minutos){
-			lblTiempo.setText((minutos-1)+":59");
+		public void setMinutos(int minutos, int segundos){
+			lblTiempo.setText((minutos)+":"+segundos);
 			new Thread(this).start();
 		}
 
