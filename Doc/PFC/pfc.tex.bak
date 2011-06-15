@@ -1,8 +1,8 @@
 %==================================================================%
-% Author : Pando Mu\~noz, Manuel                                     %
-%          S\'anchez Barreiro, Pablo                                 %
-% Version: 1.0, 02/03/2011                                         %                   %
-%
+% Author : Pando Mu\~noz, Manuel                                   %
+%          S\'anchez Barreiro, Pablo                               %
+% Version: 1.0, 02/03/2011                                         %
+%                                                                  %
 % Memoria del Proyecto Fin de Carrera                              %
 %==================================================================%
 
@@ -74,7 +74,7 @@ Faculty of Sciences}
 %\input{cover/firstPage.tex}
 
 % reset page numbering
-\input{config/begin.tex}
+%\input{config/begin.tex}
 
 % acknowledgement
 %\input{cover/acknowledgements.tex} % acknowledgements
@@ -120,7 +120,10 @@ Faculty of Sciences}
 
 \input{implementacion/implementacion.tex}
 
-% Cap\'itulo 8: Discusi\'on, Conclusiones y Trabajos Futuros
+% Cap\'itulo 7: Discusi\'on, Conclusiones y Trabajos Futuros
+
+\input{futuro/futuro.tex}
+
 
 %%
 

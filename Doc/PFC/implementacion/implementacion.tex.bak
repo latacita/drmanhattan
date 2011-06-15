@@ -15,6 +15,17 @@
 \todo{introducción}
 
 
+\section{Construcción}
+
+Para la construcción del sistema se ha utilizado el entorno de desarrollo Eclipse 3.5.2, en su versión para java.
+Eclipse es un IDE de código abierto, multiplataforma, en el que se pueden instalar multitud de plug-ins para aumentar sus funcionalidades. Concretamente, para la realización de este proyecto se han usado el Google Web Toolkit en su versión para eclipse 3.5, que facilita mucho la creación de interfaces gráficas de modo visual, y Subeclipse, para simplificar el trabajo con el repositorio Subversion.
+
+
+
+
+Además, el %comentar lo del google code
+
+
 \section{Creación de instaladores}
 \label{sec:implementacion:instaladores}
 
@@ -46,7 +57,7 @@ Por ejemplo, la aplicación del alumno, creará en los siguientes directorios, l
         \item \emph{drManhattanAlumno.sh}
         \item \emph{drManhattanDaemon.jar}
     \end{itemize}
-    
+
     En este directorio se encuentran los ejecutables de las aplicaciones que pueden utilizar todos los usuarios.
 
     \item {\bfseries /usr/share/applications:}
@@ -75,18 +86,29 @@ Por ejemplo, la aplicación del alumno, creará en los siguientes directorios, l
 
 
 
-Pasos para crear el instalador:
-
 Una vez que están definidos los archivos y el directorio dónde los ha de colocar el instalador, creamos una carpeta a modo de raíz en la que simulamos el árbol de directorios anterior. Por ejemplo, creamos la carpeta /home/usuario/deb, y dentro de ella creamos /home/usuario/deb/etc/rc2.d/, /home/usuario/deb/usr/bin/, etc y los archivos correspondientes.
-Dentro
+\newline
 
+Dentro de la carpeta raíz se ha de crear además de lo anterior, un directorio llamado \"DEBIAN\" con tres ficheros, "control", "postinst" y "postrm". En el primero se especifican las características del paquete y los otros dos se ejecutan justo después de instalar el paquete y justo después de desinstalarlo, respectivamente, en nuestro caso actualizan los menús desplegables para que aparezca o desparezca la aplicación.
+\newline
 
+Una vez que tenemos todo creado, cambiamos los permisos del directorio raiz y subdirectorios así:
+
+\begin{center}
+    \emph{chown root.root -R /home/usuario/deb/}
+\end{center}
+
+Después de esto, la orden para empaquetarlo en un fichero .deb es:
+
+\begin{center}
+    \emph{dpkg -b /home/usuario/deb /home/usuario/paquete.deb}
+\end{center}
+
+Para instalar, teniendo permisos de administrador:
+
+\begin{center}
+    \emph{dpkg -i /home/usuario/paquete.deb}
+\end{center}
 
 
 %Listado de pruebas
-
-%instaladores
-
-%comentar el tema de la utilidad de cada directorio
-%que tenemos dos aplicaciones
-%el nombre de rc.2, que empiece por S, S=start, K=kill 
