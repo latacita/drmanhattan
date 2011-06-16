@@ -27,6 +27,8 @@ import java.math.BigInteger;
 import java.security.Key;
 import java.awt.Cursor;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 
 /**
@@ -53,6 +55,7 @@ public class GUIAlumno{
 	private JLabel lblTiempo;
 	private JLabel lblTextoEstado;
 	private JLabel lblEstado;
+	private JLabel lblAutor;
 
 	private JButton btnConectar;
 	private JButton btnExplorar;
@@ -90,13 +93,15 @@ public class GUIAlumno{
 		frmDrmanhattan.setIconImage(Toolkit.getDefaultToolkit().getImage("/usr/share/drManhattanAlumno/iconos/icono.png"));
 		frmDrmanhattan.setAlwaysOnTop(false);
 		frmDrmanhattan.setTitle("drManhattan - Alumno");
-		frmDrmanhattan.setBounds(100, 100, 583, 338);
+		frmDrmanhattan.setBounds(100, 100, 649, 398);
 		frmDrmanhattan.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frmDrmanhattan.getContentPane().setLayout(null);
 
 		btnConectar = new JButton("Conectar");
+		btnConectar.setHorizontalAlignment(SwingConstants.LEFT);
+		btnConectar.setIcon(new ImageIcon("/usr/share/drManhattanAlumno/iconos/conectar.png"));
 		btnConectar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnConectar.setBounds(10, 212, 101, 23);
+		btnConectar.setBounds(10, 212, 145, 47);
 		btnConectar.setToolTipText("Intenta conectarse al computador del profesor, una vez conectado no podran cambiarse los atributos");
 		frmDrmanhattan.getContentPane().add(btnConectar);
 
@@ -131,22 +136,25 @@ public class GUIAlumno{
 		tfDirEnunciado.setColumns(10);
 
 		btnExplorar = new JButton("Explorar");
+		btnExplorar.setIcon(new ImageIcon("/usr/share/drManhattanAlumno/iconos/explorar.png"));
 		btnExplorar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		btnExplorar.setBounds(461, 127, 108, 23);
+		btnExplorar.setBounds(467, 118, 152, 47);
 		btnExplorar.setToolTipText("Navegar por el sistema de ficheros para seleccionar el directorio donde se recibira el enunciado");
 		frmDrmanhattan.getContentPane().add(btnExplorar);
 
 		btnFinalizar = new JButton("Finalizar");
+		btnFinalizar.setIcon(new ImageIcon("/usr/share/drManhattanAlumno/iconos/fin.png"));
 		btnFinalizar.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnFinalizar.setEnabled(false);
-		btnFinalizar.setBounds(64, 271, 117, 25);
+		btnFinalizar.setBounds(10, 287, 145, 47);
 		btnFinalizar.setToolTipText("Finaliza la prueba sin enviar archivo de resultados");
 		frmDrmanhattan.getContentPane().add(btnFinalizar);
 
 		btnEnviarResultados = new JButton("Enviar resultados y finalizar");
+		btnEnviarResultados.setIcon(new ImageIcon("/usr/share/drManhattanAlumno/iconos/envioFichero.png"));
 		btnEnviarResultados.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnEnviarResultados.setEnabled(false);
-		btnEnviarResultados.setBounds(239, 271, 261, 25);
+		btnEnviarResultados.setBounds(250, 287, 280, 47);
 		btnEnviarResultados.setToolTipText("Finaliza la prueba y permite enviar un unico archivo de resultados");
 		frmDrmanhattan.getContentPane().add(btnEnviarResultados);
 
@@ -177,6 +185,11 @@ public class GUIAlumno{
 		lblEstado = new JLabel("No conectado");
 		lblEstado.setBounds(289, 212, 280, 23);
 		frmDrmanhattan.getContentPane().add(lblEstado);
+		
+		lblAutor = new JLabel("Manuel Pando Muñoz - Proyecto fin de carrera");
+		lblAutor.setFont(new Font("Dialog", Font.BOLD, 10));
+		lblAutor.setBounds(10, 346, 625, 15);
+		frmDrmanhattan.getContentPane().add(lblAutor);
 
 
 		//Manejadores de eventos
@@ -419,6 +432,7 @@ public class GUIAlumno{
 			frmDrmanhattan.setAlwaysOnTop(false);
 		}
 	});
+	
 
 
 	/**
