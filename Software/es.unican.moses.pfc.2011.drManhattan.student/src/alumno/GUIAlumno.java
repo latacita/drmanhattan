@@ -1,5 +1,8 @@
 package alumno;
 
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -15,11 +18,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.math.BigInteger;
+import java.security.Key;
 import java.awt.Cursor;
 import java.awt.Toolkit;
 
@@ -59,6 +64,10 @@ public class GUIAlumno{
 	private CuentaTiempo ct = new CuentaTiempo();
 	private TareaAlumno tarea;
 
+	private Key key = null;
+	private Cipher cipher = null;
+
+	
 	/**
 	 * Create the application.
 	 */
@@ -71,6 +80,7 @@ public class GUIAlumno{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+
 
 		//creacion y distribucion de componentes
 
@@ -147,7 +157,7 @@ public class GUIAlumno{
 		tfIPProfesor = new JTextField();
 		tfIPProfesor.setHorizontalAlignment(SwingConstants.LEFT);
 		tfIPProfesor.setText("127.0.0.1");
-		tfIPProfesor.setBounds(202, 161, 89, 22);
+		tfIPProfesor.setBounds(202, 161, 108, 22);
 		frmDrmanhattan.getContentPane().add(tfIPProfesor);
 		tfIPProfesor.setColumns(10);
 
@@ -250,7 +260,6 @@ public class GUIAlumno{
 					File resultados = chooser.getSelectedFile();
 					tarea.enviarYFinalizar(resultados);
 				}
-				//TODO caso de que cancelo
 			}
 		});
 
@@ -270,66 +279,125 @@ public class GUIAlumno{
 			}
 		});
 
-		try {
-			/*
-			 * Comprobar el estado anterior de la aplicacion
-			 */
 
+
+		try {
+
+			//Comprobar el estado anterior de la aplicacion
+
+			key = KeyGenerator.getInstance("AES").generateKey();
+			cipher = Cipher.getInstance("AES");
+
+			File fichClave = new File(Global.ficheroClave);
+
+			if(fichClave.exists()){				
+				//si el fichero de clave existe, lo cargo				
+				ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fichClave));
+				key = (Key) ois.readObject();
+				ois.close();
+			}else{
+				//si no, lo creo y guardo la clave				
+				fichClave.createNewFile();
+				ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(Global.ficheroClave));
+				outputStream.writeObject(key);
+				outputStream.close();				
+			}
 
 			File estado = new File(Global.ficheroEstado);
-			/*
-			 * El fichero sera
-			 * 
-			 * un numero: en caso de que se hubiese iniciado la prueba
-			 * ipServidor
-			 * 
-			 */
 			if(estado.exists()){
-				System.out.println("El fichero existe");
-				FileReader fr = new FileReader(estado);
-				BufferedReader br = new BufferedReader(fr);				
-				String linea = br.readLine();
-				System.out.println("linea: " + linea);
-				String ipProf = br.readLine();
-				System.out.println("ip prof: "+ipProf);
-				String dirEnun = br.readLine();
-				System.out.println("dir enum: "+dirEnun);
-				String nombre = br.readLine();
-				System.out.println("nombre: "+nombre);
-				String apellido = br.readLine();
-				System.out.println("apellido: "+apellido);
 
-				br.close();
-				fr.close();
+				/*
+				 * Estructura del fichero
+				 * -Sesion
+				 * -ip
+				 * -dirEnun
+				 * -nombre
+				 * -apellido
+				 */				
 
-				//reconectarse al servidor
-				reconectar(ipProf, dirEnun, nombre, apellido);
+				FileInputStream fisEstado = new FileInputStream(estado);					
+				int tamano = fisEstado.read();
+				byte[] lineaDescifrada = new byte[tamano];
+				fisEstado.read(lineaDescifrada);
+				String desCi = descifrar(lineaDescifrada);
+				fisEstado.close();
+				
+				//lectura del contenido del fichero
+				//cada parametro esta separado por un salto de linea
+				
+				int posIntro = desCi.indexOf("\n");
+				String sesion = desCi.substring(0, posIntro).trim();
+				desCi = desCi.substring(posIntro+1).trim();
+
+				posIntro = desCi.indexOf("\n");
+				String ipProf = desCi.substring(0, posIntro).trim();
+				desCi = desCi.substring(posIntro+1).trim();
+
+				posIntro = desCi.indexOf("\n");
+				String dirEnun = desCi.substring(0, posIntro).trim();
+				desCi = desCi.substring(posIntro+1).trim();
+
+				posIntro = desCi.indexOf("\n");
+				String nombre = desCi.substring(0, posIntro).trim();
+				desCi = desCi.substring(posIntro+1).trim();
+
+				String apellido = desCi.trim();
+
+				BigInteger id = new BigInteger(sesion);
+
+
+				//reconectarse al profesor
+				reconectar(ipProf, dirEnun, nombre, apellido, id);
 
 			}
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e){
 			e.printStackTrace();
 		}
 
 	}
 
 
-	private void reconectar(String ip, String dirE, String nom, String ape){
 
-		System.out.println("Metodo reconectar de GUI Alumno");
+	/**
+	 * Devuelve el String resultado de descifrar una cadena de bytes usando el algoritmo AES.
+	 */
+	public String descifrar(byte[] encryptionBytes){
+		try{
+			cipher.init(Cipher.DECRYPT_MODE, key);
+
+			byte[] recoveredBytes = cipher.doFinal(encryptionBytes);
+
+			String recovered = new String(recoveredBytes);
+
+			return recovered;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
+
+
+	/**
+	 * Con los parametros correspondientes al estado anterior de la aplicación, reconectarse.
+	 */
+	private void reconectar(String ip, String dirE, String nom, String ape, BigInteger sesion){
 
 		String ipProfesor = ip;
 		String dirEnun = dirE;
 		DatosAlumno da = new DatosAlumno();
 		da.nombre = nom;
 		da.apellidos = ape;
-
+		da.id = sesion;
 
 		tarea = new TareaAlumno(ipProfesor, dirEnun, lblEstado, da, ct, true);
-		System.out.println("Deshabilitando botones");
+
+		tfApellido.setText(ape);
+		tfIPProfesor.setText(ip);
+		tfDirEnunciado.setText(dirE);
+		tfNombre.setText(nom);
+
 		btnConectar.setEnabled(false);
 		btnExplorar.setEnabled(false);
 		tfNombre.setEnabled(false);
@@ -342,7 +410,8 @@ public class GUIAlumno{
 	}
 
 
-
+	//Hilo utilizado para el aviso de que restan 5 minutos para acabar la prueba.
+	//Al usar un hilo aparte no se bloquea la interfaz
 	Thread aviso = new Thread(new Runnable(){
 		public void run(){
 			frmDrmanhattan.setAlwaysOnTop(true);
