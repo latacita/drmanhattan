@@ -30,7 +30,8 @@ public class Global {
 	
 	public static final int BLOQUEMAL = 7;
 	
-	public static final String ficheroEstado = "/home/manuel/estado";
+	public static final String ficheroEstado = "/usr/bin/drManhattan/dralu.dat";
 	
+	public static final String ficheroClave = "/usr/bin/drManhattan/dralu.key";	
 	
 }

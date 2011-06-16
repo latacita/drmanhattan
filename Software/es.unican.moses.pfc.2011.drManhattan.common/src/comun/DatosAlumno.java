@@ -1,5 +1,6 @@
 package comun;
 import java.io.Serializable;
+import java.math.BigInteger;
 
 /**
 *
@@ -14,5 +15,6 @@ public class DatosAlumno implements Serializable{
 	private static final long serialVersionUID = 4539746680450927737L;
 	public String nombre;
 	public String apellidos;
+	public BigInteger id;
 	
 }
