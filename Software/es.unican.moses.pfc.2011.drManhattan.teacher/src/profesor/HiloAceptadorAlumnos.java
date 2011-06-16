@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -43,6 +44,7 @@ public class HiloAceptadorAlumnos extends Thread{
 	private int minutos;
 	private boolean temporizado;
 	private String dirRes;
+	private BigInteger id;
 
 	/**
 	 * Constructor
@@ -52,7 +54,8 @@ public class HiloAceptadorAlumnos extends Thread{
 			//Inicializa las variables
 			sSocket = new ServerSocket(Global.PUERTOPROFESOR);
 			listaSocket = new LinkedList<Socket>();
-
+			id = new BigInteger(128, new Random(System.currentTimeMillis()));
+			
 			this.start();
 		}catch(Exception e){
 			//TODO tratamiento de errores
@@ -61,14 +64,11 @@ public class HiloAceptadorAlumnos extends Thread{
 	}
 
 
-	
-
-
 	/**
 	 * Mientras este activo espera nuevas conexiones de alumnos
 	 */
 	public void run(){
-		try{			
+		try{
 			while(true){
 				Socket socket;
 				//esperar a nueva conexion
@@ -270,49 +270,56 @@ public class HiloAceptadorAlumnos extends Thread{
 				}else{
 					//hay reconexion
 
-					System.out.println("Prof: hay reconexion");
-
-					/*
-					 * Comprobar el tema del numero para aceptar reconexion
-					 * De momento aceptar todo
-					 */
+					//dejar la opcion a no permitir reconexiones, de momento se permiten
+					//en el siguiente if() se comprueba que sea una reconexion correcta
 					dos.writeBoolean(true);
 
 					ObjectInputStream ois = new ObjectInputStream(conexion.getInputStream());
 					Object temp = ois.readObject();
 					DatosAlumno da = (DatosAlumno) temp;
-					Logger logger = Logger.getLogger("PFC");
-					logger.log(Level.INFO, "Alumno: "+da.nombre+" "+da.apellidos+" reconectado");
-					System.out.println("Se guarda el log");
-					//Directamente se reinicia la prueba
-					dos.writeInt(Global.COMIENZOPRUEBA);
 
-					Date ahora = new Date(System.currentTimeMillis());
+					//si la id recibida es correcta
+					if(da.id.toString().trim().equals(id.toString().trim())){
+						
+						//permitir la reconexion
+						dos.writeBoolean(true);
+						
+						Logger logger = Logger.getLogger("PFC");
+						logger.log(Level.INFO, "Alumno: "+da.nombre+" "+da.apellidos+" reconectado");
+						System.out.println("Se guarda el log");
+						//Directamente se reinicia la prueba
+						dos.writeInt(Global.COMIENZOPRUEBA);
 
-					Date limite = new Date(ahora.getYear(), ahora.getMonth(), ahora.getDate(), hiloPrincipal.hora, hiloPrincipal.minutos, 0);
+						Date ahora = new Date(System.currentTimeMillis());
 
-					long diferencia =  limite.getTime()-ahora.getTime();
+						Date limite = new Date(ahora.getYear(), ahora.getMonth(), ahora.getDate(), hiloPrincipal.hora, hiloPrincipal.minutos, 0);
 
-					double segundosD = Math.floor(diferencia/1000);
+						long diferencia =  limite.getTime()-ahora.getTime();
 
-					int segundosI = (int) segundosD;
+						double segundosD = Math.floor(diferencia/1000);
 
-					int minutosEnteros = segundosI / 60;
-					int segundosEnteros = segundosI-60*minutosEnteros;
+						int segundosI = (int) segundosD;
 
-					ComienzoExamen ce = new ComienzoExamen();
-					ce.examenTemporizado = temporizado;
-					ce.minutosExamen = minutosEnteros;
-					ce.segundosExamen = segundosEnteros;
+						int minutosEnteros = segundosI / 60;
+						int segundosEnteros = segundosI - 60*minutosEnteros;
 
-					ObjectOutputStream oos = new ObjectOutputStream(conexion.getOutputStream());
-					oos.writeObject(ce);
+						ComienzoExamen ce = new ComienzoExamen();
+						ce.pruebaTemporizada = temporizado;
+						ce.minutosPrueba = minutosEnteros;
+						ce.segundosPrueba = segundosEnteros;
+						ce.sesion = id;
 
-					listaSocket.add(conexion);
-					
-					new TareaProfesor(conexion, dirRes);
+						ObjectOutputStream oos = new ObjectOutputStream(conexion.getOutputStream());
+						oos.writeObject(ce);
 
-
+						listaSocket.add(conexion);
+						
+						new TareaProfesor(conexion, dirRes);												
+						
+					}else{
+						//y si no lo es, denegarla
+						dos.writeBoolean(false);
+					}
 				}
 			}catch(Exception e){
 				//TODO tratamiento de errores
@@ -320,15 +327,6 @@ public class HiloAceptadorAlumnos extends Thread{
 			}
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 
@@ -359,9 +357,10 @@ public class HiloAceptadorAlumnos extends Thread{
 					dos.writeInt(comun.Global.COMIENZOPRUEBA);
 
 					ComienzoExamen ce = new ComienzoExamen();
-					ce.examenTemporizado = temporizar;
-					ce.minutosExamen = minutos;
-					ce.segundosExamen = segundos;
+					ce.pruebaTemporizada = temporizar;
+					ce.minutosPrueba = minutos;
+					ce.segundosPrueba = segundos;					
+					ce.sesion = id;
 
 					ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
 					oos.writeObject(ce);
@@ -374,6 +373,7 @@ public class HiloAceptadorAlumnos extends Thread{
 		}
 	}
 
+	
 	/**
 	 * Enviar a los alumnos conectados la notificacion de que la prueba acaba
 	 */
@@ -402,5 +402,4 @@ public class HiloAceptadorAlumnos extends Thread{
 			//TODO tratar errores
 		}		
 	}
-
 }

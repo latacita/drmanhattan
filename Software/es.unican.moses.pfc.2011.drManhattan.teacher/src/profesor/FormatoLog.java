@@ -1,6 +1,5 @@
 package profesor;
 
-import java.awt.Color;
 import java.io.IOException;
 import java.util.Date;
 import java.util.logging.Formatter;
@@ -29,11 +28,11 @@ class FormatoLog extends Formatter {
 	 * Formato de cada log
 	 */
     public String format(LogRecord rec) {
+
+    	//TODO Colores segun importancia
     	
     	if(rec.getLevel() == Level.SEVERE){
-    		//taLog.setForeground(Color.RED);
-    		taLog.append(new Date().toString()+" "+formatMessage(rec)+"\n");  		 
-    		//taLog.setForeground(Color.BLACK);
+    		taLog.append(new Date().toString()+" "+formatMessage(rec)+"\n");
     	}else{
     		taLog.append(new Date().toString()+" "+formatMessage(rec)+"\n");	
     	}
