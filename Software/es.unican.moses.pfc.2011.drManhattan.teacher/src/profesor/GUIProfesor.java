@@ -34,6 +34,9 @@ import java.util.logging.Logger;
 
 import java.awt.Toolkit;
 import javax.swing.JFormattedTextField;
+import javax.swing.ImageIcon;
+import javax.swing.JToolBar;
+import java.awt.Font;
 
 /**
  * 
@@ -60,6 +63,7 @@ public class GUIProfesor {
 	private JLabel lblNombreAsignatura;
 	private JLabel lblRecibirResultadosEn;
 	private JLabel lblHoraLimiteExamen;
+	private JLabel lblAutor;
 
 	private JButton btnComienzoExamen;
 	private JButton btnFinExamen;	
@@ -69,6 +73,8 @@ public class GUIProfesor {
 	private HiloAceptadorAlumnos aceptaAlumnos;
 	
 	private Logger logger;
+
+	
 
 	
 
@@ -105,23 +111,27 @@ public class GUIProfesor {
 		frmDrmanhattan.setIconImage(Toolkit.getDefaultToolkit().getImage("/usr/share/drManhattanProfesor/iconos/icono.png"));
 		frmDrmanhattan.setResizable(false);
 		frmDrmanhattan.setTitle("drManhattan - Profesor");
-		frmDrmanhattan.setBounds(100, 100, 664, 598);
+		frmDrmanhattan.setBounds(100, 100, 706, 695);
 		frmDrmanhattan.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frmDrmanhattan.getContentPane().setLayout(null);
 
 
 		btnComienzoExamen = new JButton("Comienzo de prueba");
+		btnComienzoExamen.setHorizontalAlignment(SwingConstants.LEFT);
+		btnComienzoExamen.setIcon(new ImageIcon("/usr/share/drManhattanProfesor/iconos/inicio.png"));
 		btnComienzoExamen.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnComienzoExamen.setToolTipText("Comienza la prueba, no se admiten nuevos alumnos");
-		btnComienzoExamen.setBounds(10, 150, 205, 23);
+		btnComienzoExamen.setBounds(10, 167, 223, 50);
 		frmDrmanhattan.getContentPane().add(btnComienzoExamen);
 
 		btnFinExamen = new JButton("Fin de prueba");
+		btnFinExamen.setHorizontalAlignment(SwingConstants.LEFT);
+		btnFinExamen.setIcon(new ImageIcon("/usr/share/drManhattanProfesor/iconos/fin.png"));
 		btnFinExamen.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnFinExamen.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnFinExamen.setToolTipText("Finaliza la prueba");
 		btnFinExamen.setEnabled(false);
-		btnFinExamen.setBounds(10, 199, 205, 23);
+		btnFinExamen.setBounds(10, 251, 223, 50);
 		frmDrmanhattan.getContentPane().add(btnFinExamen);
 
 		lblNombreAsignatura = new JLabel("Nombre de la asignatura:");
@@ -138,6 +148,11 @@ public class GUIProfesor {
 		lblRecibirResultadosEn.setBounds(10, 70, 160, 23);
 		frmDrmanhattan.getContentPane().add(lblRecibirResultadosEn);
 
+		lblAutor = new JLabel("Manuel Pando Muñoz - Proyecto fin de carrera");
+		lblAutor.setBounds(10, 640, 283, 13);
+		frmDrmanhattan.getContentPane().add(lblAutor);
+		lblAutor.setFont(new Font("Dialog", Font.BOLD, 10));
+		
 		tfDirectorioResultados = new JTextField();
 		tfDirectorioResultados.setText("/home/manuel/Escritorio/FicherosProfesor");
 		tfDirectorioResultados.setBounds(251, 70, 262, 23);
@@ -145,9 +160,10 @@ public class GUIProfesor {
 		tfDirectorioResultados.setColumns(10);
 
 		btnExplorarDirResultados = new JButton("Explorar");
+		btnExplorarDirResultados.setIcon(new ImageIcon("/usr/share/drManhattanProfesor/iconos/explorar.png"));
 		btnExplorarDirResultados.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnExplorarDirResultados.setToolTipText("Navegar por el sistema de ficheros para seleccionar el directorio donde se recibiran los resultados");
-		btnExplorarDirResultados.setBounds(534, 70, 115, 23);
+		btnExplorarDirResultados.setBounds(537, 56, 142, 50);
 		frmDrmanhattan.getContentPane().add(btnExplorarDirResultados);
 
 		lblHoraLimiteExamen = new JLabel("Hora fin de examen (hh:mm):");
@@ -156,12 +172,12 @@ public class GUIProfesor {
 
 		panelLog = new JPanel();
 		panelLog.setBorder(new TitledBorder(null, "Eventos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panelLog.setBounds(10, 239, 586, 292);
+		panelLog.setBounds(10, 313, 680, 292);
 		frmDrmanhattan.getContentPane().add(panelLog);
 		panelLog.setLayout(null);
 
 		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 23, 564, 258);
+		scrollPane.setBounds(10, 23, 658, 258);
 		panelLog.add(scrollPane);
 
 		taLog = new JTextArea();
@@ -169,9 +185,10 @@ public class GUIProfesor {
 		scrollPane.setViewportView(taLog);
 
 		btnEnviarFichero = new JButton("Enviar fichero");
+		btnEnviarFichero.setIcon(new ImageIcon("/usr/share/drManhattanProfesor/iconos/envioFichero.png"));
 		btnEnviarFichero.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnEnviarFichero.setToolTipText("Envia un fichero a todos los alumnos conectados");
-		btnEnviarFichero.setBounds(308, 150, 150, 23);
+		btnEnviarFichero.setBounds(314, 167, 184, 50);
 		frmDrmanhattan.getContentPane().add(btnEnviarFichero);
 
 		MaskFormatter formatter = null;
