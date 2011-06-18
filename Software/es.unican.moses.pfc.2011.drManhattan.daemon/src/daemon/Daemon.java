@@ -19,7 +19,9 @@ public class Daemon {
 
 
 	//ServerSocket para escuchar en el puerto definido
-	ServerSocket ss;	
+	private ServerSocket ss;
+
+	Socket anterior;
 
 	/**
 	 * Constructor, crea el daemon.
@@ -27,6 +29,7 @@ public class Daemon {
 	public Daemon(){		
 		try {
 			ss = new ServerSocket(Global.PUERTODAEMON);
+			anterior = new Socket();
 			esperaConexion();			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -35,13 +38,24 @@ public class Daemon {
 
 	/**
 	 * Una vez que el daemon esta creado, este metodo espera a que se cree una conexion.
-	 * Una vez la conexion esta establecida, crea un hilo para poder atenderla y seguir escuchando a posibles nuevas conexiones.
+	 * Una vez la conexion esta establecida, crea un hilo para poder atenderla. No acepta varias conexiones simultaneas.
+	 * 
+	 * Al no aceptar varias conexiones se evita que, desde la aplicacion drManhattan-Alumno se desee eliminar el acceso a red
+	 * y conecte otro programa para permitirlo.
+	 * 
 	 */
 	private void esperaConexion() { 
 		try {
 			while(true){
-				Socket socket = ss.accept();			
-				new ProcesoDaemon(socket);
+				Socket socket = ss.accept();
+				//si hay una conexion activa
+				if(!anterior.isConnected()){
+					anterior = socket;
+					new ProcesoDaemon(socket);
+				}else{
+					//desecharla
+					socket.close();
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -69,7 +83,7 @@ public class Daemon {
 		 * @param s socket de la conexion creada entre el daemon y el programa del alumno
 		 */
 		public ProcesoDaemon(Socket s){
-			try{
+			try{				
 				//asigna e inicializa atributos
 				socket = s;
 				dis = new DataInputStream(socket.getInputStream());
@@ -98,32 +112,32 @@ public class Daemon {
 
 					//denegar acceso a la red						
 					case Global.NORED:
-						
+
 						/*
 						 * Para denegar el acceso se cambia la politica de los paquetes salientes del PC de modo
 						 * que cualquier paquete dirigido a cualquier direccion es descartado.
 						 * Con esto se consigue que no se puedan hacer peticiones a otros equipos, pero si recibir
 						 * los datos del computador del profesor.
 						 */
-						
+
 						//ejecutar comando IPtables para denegar la red
 						comando = "iptables -P OUTPUT DROP";
 						Runtime.getRuntime().exec(comando);
 						comando = "iptables -A OUTPUT -s 127.0.0.1 -j ACCEPT";
 						Runtime.getRuntime().exec(comando);
 						break;
-					
-					//dar acceso a toda la red
+
+						//dar acceso a toda la red
 					case Global.SIRED:
-						
+
 						//cambiar la politica
 						comando = "iptables -P OUTPUT ACCEPT";
 						Runtime.getRuntime().exec(comando);
-						
+
 						comando = "iptables -D OUTPUT -s 127.0.0.1 -j ACCEPT";
 						Runtime.getRuntime().exec(comando);
 						break;						
-						
+
 					default:
 						//TODO error, no deberia llegar aqui
 						break;
