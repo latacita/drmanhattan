@@ -45,6 +45,7 @@ public class HiloAceptadorAlumnos extends Thread{
 	private boolean temporizado;
 	private String dirRes;
 	private BigInteger id;
+	private boolean pruebaFinalizada;
 
 	/**
 	 * Constructor
@@ -55,10 +56,10 @@ public class HiloAceptadorAlumnos extends Thread{
 			sSocket = new ServerSocket(Global.PUERTOPROFESOR);
 			listaSocket = new LinkedList<Socket>();
 			id = new BigInteger(128, new Random(System.currentTimeMillis()));
-			
+			pruebaFinalizada = false;
+
 			this.start();
-		}catch(Exception e){
-			//TODO tratamiento de errores
+		}catch(Exception e){			
 			e.printStackTrace();
 		}
 	}
@@ -73,13 +74,16 @@ public class HiloAceptadorAlumnos extends Thread{
 				Socket socket;
 				//esperar a nueva conexion
 				socket = sSocket.accept();
-				
-				new ProcesaConexion(socket, this).start();
+				if(!pruebaFinalizada){
+					new ProcesaConexion(socket, this).start();
+				}else{
+					//si la prueba ha finalizado, no esperar mas conexiones/reconexiones
+					break;
+				}
 
 			}
 
-		}catch(Exception e){
-			//TODO tratamiento de errores
+		}catch(Exception e){			
 			e.printStackTrace();
 		}
 	}
@@ -103,7 +107,7 @@ public class HiloAceptadorAlumnos extends Thread{
 
 			//si la conexion sigue abierta
 			if(!s.isClosed()){
-				new TareaProfesor(s, dirResultados);
+				new TareaProfesor(s, dirResultados, this);
 			}
 		}
 	}
@@ -190,7 +194,7 @@ public class HiloAceptadorAlumnos extends Thread{
 
 						//si es el ultimo mensaje, salimos del bucle
 						if (bloque.ultimoBloque){
-							break; //TODO intentar quitar este break
+							break;
 						}
 						//se crea un nuevo bloque
 						bloque = new BloquesFichero();
@@ -216,14 +220,13 @@ public class HiloAceptadorAlumnos extends Thread{
 			Logger logger = Logger.getLogger("PFC");
 			logger.log(Level.INFO, "Fichero "+ficheroEnviar.getAbsolutePath()+" enviado a los alumnos conectados");
 		}catch(IOException e) {
-			//TODO error en el fichero
-		} catch (NoSuchAlgorithmException e) {
-			// TODO error al cargar md5
+			e.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {			
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	/**
 	 * 
 	 * Clase privada para procesar los datos al aceptar una conexion nueva.
@@ -244,10 +247,10 @@ public class HiloAceptadorAlumnos extends Thread{
 		public void run(){
 
 			try{
-				
+
 				DataOutputStream dos = new DataOutputStream(conexion.getOutputStream());
 				DataInputStream dis = new DataInputStream(conexion.getInputStream());
-				
+
 				boolean reconexion = dis.readBoolean();
 				if(!reconexion){
 					//la conexion aceptada no es una reconexion
@@ -280,55 +283,81 @@ public class HiloAceptadorAlumnos extends Thread{
 
 					//si la id recibida es correcta
 					if(da.id.toString().trim().equals(id.toString().trim())){
-						
-						//permitir la reconexion
-						dos.writeBoolean(true);
-						
-						Logger logger = Logger.getLogger("PFC");
-						logger.log(Level.INFO, "Alumno: "+da.nombre+" "+da.apellidos+" reconectado");
-						System.out.println("Se guarda el log");
-						//Directamente se reinicia la prueba
-						dos.writeInt(Global.COMIENZOPRUEBA);
 
-						Date ahora = new Date(System.currentTimeMillis());
+						//y la prueba no ha finalizado
+						if(!pruebaFinalizada){
 
-						Date limite = new Date(ahora.getYear(), ahora.getMonth(), ahora.getDate(), hiloPrincipal.hora, hiloPrincipal.minutos, 0);
+							Date ahora = new Date(System.currentTimeMillis());
+							Date limite = new Date(ahora.getYear(), ahora.getMonth(), ahora.getDate(), hiloPrincipal.hora, hiloPrincipal.minutos, 0);
+							long diferencia =  limite.getTime()-ahora.getTime();
+							double segundosD = Math.floor(diferencia/1000);
+							int segundosI = (int) segundosD;
+							int minutosEnteros = segundosI / 60;
+							int segundosEnteros = segundosI - 60*minutosEnteros;
 
-						long diferencia =  limite.getTime()-ahora.getTime();
+							System.out.println("tiempo: "+minutosEnteros+":"+segundosEnteros+" temporizado: "+temporizado);
 
-						double segundosD = Math.floor(diferencia/1000);
+							//y queda tiempo en caso de ser temporizado					
 
-						int segundosI = (int) segundosD;
+							if(temporizado){
+								if((minutosEnteros >= 0) && (segundosEnteros>0)){
+									//permitir la reconexion
+									dos.writeBoolean(true);
 
-						int minutosEnteros = segundosI / 60;
-						int segundosEnteros = segundosI - 60*minutosEnteros;
+									Logger logger = Logger.getLogger("PFC");
+									logger.log(Level.INFO, "Alumno: "+da.nombre+" "+da.apellidos+" reconectado");
+									//Directamente se reinicia la prueba
+									dos.writeInt(Global.COMIENZOPRUEBA);
 
-						ComienzoExamen ce = new ComienzoExamen();
-						ce.pruebaTemporizada = temporizado;
-						ce.minutosPrueba = minutosEnteros;
-						ce.segundosPrueba = segundosEnteros;
-						ce.sesion = id;
+									ComienzoExamen ce = new ComienzoExamen();
+									ce.pruebaTemporizada = temporizado;
+									ce.minutosPrueba = minutosEnteros;
+									ce.segundosPrueba = segundosEnteros;
+									ce.sesion = id;
 
-						ObjectOutputStream oos = new ObjectOutputStream(conexion.getOutputStream());
-						oos.writeObject(ce);
+									ObjectOutputStream oos = new ObjectOutputStream(conexion.getOutputStream());
+									oos.writeObject(ce);
 
-						listaSocket.add(conexion);
-						
-						new TareaProfesor(conexion, dirRes);												
-						
+									listaSocket.add(conexion);
+									new TareaProfesor(conexion, dirRes, hiloPrincipal);
+								}
+							}else{
+								//permitir la reconexion
+								dos.writeBoolean(true);
+
+								Logger logger = Logger.getLogger("PFC");
+								logger.log(Level.INFO, "Alumno: "+da.nombre+" "+da.apellidos+" reconectado");
+								//Directamente se reinicia la prueba
+								dos.writeInt(Global.COMIENZOPRUEBA);
+
+								ComienzoExamen ce = new ComienzoExamen();
+								ce.pruebaTemporizada = temporizado;
+								ce.minutosPrueba = minutosEnteros;
+								ce.segundosPrueba = segundosEnteros;
+								ce.sesion = id;
+
+								ObjectOutputStream oos = new ObjectOutputStream(conexion.getOutputStream());
+								oos.writeObject(ce);
+
+								listaSocket.add(conexion);
+								new TareaProfesor(conexion, dirRes, hiloPrincipal);
+							}
+						}else{
+							dos.writeBoolean(false);
+						}
+
 					}else{
 						//y si no lo es, denegarla
 						dos.writeBoolean(false);
 					}
 				}
 			}catch(Exception e){
-				//TODO tratamiento de errores
 				e.printStackTrace();
 			}
 		}
 	}
-	
-	
+
+
 
 	/**
 	 * Enviar a los alumnos conectados la notificacion de que comienza la prueba
@@ -369,16 +398,17 @@ public class HiloAceptadorAlumnos extends Thread{
 			}
 			desconectar(dirResultados);
 		}catch(Exception e){
-			//TODO tratar errores
+			e.printStackTrace();
 		}
 	}
 
-	
+
 	/**
 	 * Enviar a los alumnos conectados la notificacion de que la prueba acaba
 	 */
 	public void finPrueba(){
 		try{
+			this.pruebaFinalizada = true;
 
 			/*
 			 * Recorre la lista de sockets y envia secuencialmente la notificacion de que finaliza la prueba
@@ -399,7 +429,7 @@ public class HiloAceptadorAlumnos extends Thread{
 				}
 			}
 		}catch(Exception e){
-			//TODO tratar errores
-		}		
+			e.printStackTrace();
+		}
 	}
 }

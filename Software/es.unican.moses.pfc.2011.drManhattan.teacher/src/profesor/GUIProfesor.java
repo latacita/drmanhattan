@@ -21,12 +21,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
 import java.text.ParseException;
 import java.util.Date;
-import java.util.Enumeration;
 import java.util.StringTokenizer;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -35,7 +31,6 @@ import java.util.logging.Logger;
 import java.awt.Toolkit;
 import javax.swing.JFormattedTextField;
 import javax.swing.ImageIcon;
-import javax.swing.JToolBar;
 import java.awt.Font;
 
 /**
@@ -48,16 +43,16 @@ import java.awt.Font;
 public class GUIProfesor {
 
 	private JFrame frmDrmanhattan;
-	
+
 	private JPanel panelLog;
-	
+
 	private JScrollPane scrollPane;
-	
+
 	private JTextArea taLog;
 
 	private JTextField tfNombreAsignatura;
 	private JTextField tfDirectorioResultados;
-	
+
 	private JFormattedTextField ftfHoraLImite;
 
 	private JLabel lblNombreAsignatura;
@@ -69,14 +64,11 @@ public class GUIProfesor {
 	private JButton btnFinExamen;	
 	private JButton btnExplorarDirResultados;
 	private JButton btnEnviarFichero;
-	
+
 	private HiloAceptadorAlumnos aceptaAlumnos;
-	
+
 	private Logger logger;
 
-	
-
-	
 
 	/**
 	 * Create the application.
@@ -90,22 +82,6 @@ public class GUIProfesor {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-
-
-		try {
-			for (Enumeration<NetworkInterface> ifaces =  NetworkInterface.getNetworkInterfaces(); ifaces.hasMoreElements();){ 
-				NetworkInterface iface = ifaces.nextElement(); 
-				System.out.println(iface.getName() + ":"); 
-				for (Enumeration<InetAddress> addresses = iface.getInetAddresses(); addresses.hasMoreElements(); ){ 
-					InetAddress address = addresses.nextElement(); 
-					System.out.println("  " + address.toString()); 
-				} 
-			} 
-		} catch (SocketException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-
 
 		frmDrmanhattan = new JFrame();
 		frmDrmanhattan.setIconImage(Toolkit.getDefaultToolkit().getImage("/usr/share/drManhattanProfesor/iconos/icono.png"));
@@ -152,7 +128,7 @@ public class GUIProfesor {
 		lblAutor.setBounds(10, 640, 283, 13);
 		frmDrmanhattan.getContentPane().add(lblAutor);
 		lblAutor.setFont(new Font("Dialog", Font.BOLD, 10));
-		
+
 		tfDirectorioResultados = new JTextField();
 		tfDirectorioResultados.setText("/home/manuel/Escritorio/FicherosProfesor");
 		tfDirectorioResultados.setBounds(251, 70, 262, 23);
@@ -163,7 +139,7 @@ public class GUIProfesor {
 		btnExplorarDirResultados.setIcon(new ImageIcon("/usr/share/drManhattanProfesor/iconos/explorar.png"));
 		btnExplorarDirResultados.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		btnExplorarDirResultados.setToolTipText("Navegar por el sistema de ficheros para seleccionar el directorio donde se recibiran los resultados");
-		btnExplorarDirResultados.setBounds(537, 56, 142, 50);
+		btnExplorarDirResultados.setBounds(525, 56, 142, 50);
 		frmDrmanhattan.getContentPane().add(btnExplorarDirResultados);
 
 		lblHoraLimiteExamen = new JLabel("Hora fin de examen (hh:mm):");
@@ -280,12 +256,12 @@ public class GUIProfesor {
 
 					horaLimite = Integer.parseInt(hora);
 					minutosLimite = Integer.parseInt(minuto);
-					
+
 					if((horaLimite > 23) || (horaLimite <0) || (minutosLimite <0) || (minutosLimite>59)){
 						//hora introducida incorrecta
 						throw new NumberFormatException();
 					}
-					
+
 					Date limite = new Date(ahora.getYear(), ahora.getMonth(), ahora.getDate(), horaLimite, minutosLimite, 0);
 
 					long diferencia =  limite.getTime()-ahora.getTime();
@@ -299,8 +275,8 @@ public class GUIProfesor {
 						temporizar = true;
 					}
 
-					
-					
+
+
 				}catch (Exception e) {
 					JOptionPane.showMessageDialog(frmDrmanhattan, "Error al introducir la hora limite");
 					return; //No se comienza la prueba con una hora incorrecta
@@ -311,42 +287,47 @@ public class GUIProfesor {
 				String asignatura = tfNombreAsignatura.getText().trim();
 				String asignaturaSinEspacios = "";
 
-				StringTokenizer tokenizer = new StringTokenizer(asignatura);
-				while (tokenizer.hasMoreElements()){
-					asignaturaSinEspacios += tokenizer.nextElement();
-				}
-
-				String dirResultados = tfDirectorioResultados.getText().trim();
-
-				//comprobacion de permisos
-				File directorio = new File(dirResultados);
-				boolean permisos = directorio.canWrite();				
-				if(!permisos){
-					JOptionPane.showMessageDialog(frmDrmanhattan, "No hay permisos de escritura en el directorio seleccionado" +
-					", no se recogeran resultados");
-				}
-
-				if(dirResultados.charAt(dirResultados.length()-1) == File.separatorChar){
-					dirResultados = dirResultados+asignaturaSinEspacios;
+				if(asignatura.isEmpty() || tfDirectorioResultados.getText().trim().isEmpty()){
+					JOptionPane.showMessageDialog(frmDrmanhattan, "Rellena todos los datos antes de comenzar");
 				}else{
-					dirResultados = dirResultados+File.separator+asignaturaSinEspacios;
-				}
+
+					StringTokenizer tokenizer = new StringTokenizer(asignatura);
+					while (tokenizer.hasMoreElements()){
+						asignaturaSinEspacios += tokenizer.nextElement();
+					}
+
+					String dirResultados = tfDirectorioResultados.getText().trim();
+
+					//comprobacion de permisos
+					File directorio = new File(dirResultados);
+					boolean permisos = directorio.canWrite();				
+					if(!permisos){
+						JOptionPane.showMessageDialog(frmDrmanhattan, "No hay permisos de escritura en el directorio seleccionado" +
+						", no se recogeran resultados");
+					}
+
+					if(dirResultados.charAt(dirResultados.length()-1) == File.separatorChar){
+						dirResultados = dirResultados+asignaturaSinEspacios;
+					}else{
+						dirResultados = dirResultados+File.separator+asignaturaSinEspacios;
+					}
 
 
-				int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Comenzar la prueba con las caracteristicas seleccionadas?");				
-				if (JOptionPane.OK_OPTION == confirmado){					
-					btnEnviarFichero.setEnabled(false);
-					btnExplorarDirResultados.setEnabled(false);
-					btnFinExamen.setEnabled(true);
-					btnComienzoExamen.setEnabled(false);
-					tfDirectorioResultados.setEnabled(false);
-					ftfHoraLImite.setEnabled(false);
-					tfNombreAsignatura.setEnabled(false);
+					int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Comenzar la prueba con las caracteristicas seleccionadas?");				
+					if (JOptionPane.OK_OPTION == confirmado){					
+						btnEnviarFichero.setEnabled(false);
+						btnExplorarDirResultados.setEnabled(false);
+						btnFinExamen.setEnabled(true);
+						btnComienzoExamen.setEnabled(false);
+						tfDirectorioResultados.setEnabled(false);
+						ftfHoraLImite.setEnabled(false);
+						tfNombreAsignatura.setEnabled(false);
 
-					aceptaAlumnos.inicioPrueba(temporizar, minutosEnteros, dirResultados.trim(), horaLimite, minutosLimite, segundosEnteros);
-					logger.log(Level.INFO, "Comienza la prueba de la asignatura "+tfNombreAsignatura.getText().trim());
-				}else{
-					//la prueba no comienza, asi que no se hace nada
+						aceptaAlumnos.inicioPrueba(temporizar, minutosEnteros, dirResultados.trim(), horaLimite, minutosLimite, segundosEnteros);
+						logger.log(Level.INFO, "Comienza la prueba de la asignatura "+tfNombreAsignatura.getText().trim());
+					}else{
+						//la prueba no comienza, asi que no se hace nada
+					}
 				}
 			}
 		});
@@ -384,6 +365,5 @@ public class GUIProfesor {
 				}
 			}
 		});
-
 	}
 }

@@ -32,7 +32,7 @@ class FormatoLog extends Formatter {
     	//TODO Colores segun importancia
     	
     	if(rec.getLevel() == Level.SEVERE){
-    		taLog.append(new Date().toString()+" "+formatMessage(rec)+"\n");
+    		taLog.append("¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡\n"+new Date().toString()+" "+formatMessage(rec)+"\n");
     	}else{
     		taLog.append(new Date().toString()+" "+formatMessage(rec)+"\n");	
     	}

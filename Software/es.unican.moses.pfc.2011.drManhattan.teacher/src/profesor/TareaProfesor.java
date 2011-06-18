@@ -32,11 +32,13 @@ public class TareaProfesor extends Thread{
 
 	private Socket conexion;
 	private String dirResultados;
+	private HiloAceptadorAlumnos hiloPrincipal;
 
-	public TareaProfesor(Socket s, String dirResultados){
+	public TareaProfesor(Socket s, String dirResultados, HiloAceptadorAlumnos hilo){
 		conexion = s;
 		this.dirResultados = dirResultados;
 		this.start();
+		this.hiloPrincipal = hilo;
 	}
 
 
@@ -140,12 +142,13 @@ public class TareaProfesor extends Thread{
 						}
 						definitivo.createNewFile();
 
-						boolean res = resultados.renameTo(definitivo);
-
-						if(!res){
-							//TODO error en el rename
-						}						
 						logger = Logger.getLogger("PFC");
+						
+						boolean res = resultados.renameTo(definitivo);
+						if(!res){
+							logger.log(Level.SEVERE, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+"\nArchivo de resultados con problemas");
+						}						
+						
 						logger.log(Level.INFO, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+"\nArchivo de resultados: "+definitivo.getAbsolutePath());
 
 					}
@@ -156,7 +159,13 @@ public class TareaProfesor extends Thread{
 				case Global.FINPRUEBA:
 					ois = new ObjectInputStream(conexion.getInputStream());
 					datos = (DatosAlumno) ois.readObject();
+					boolean tiempo = dis.readBoolean(); //saber si el tiempo destinado a la prueba a finalizado
 					logger = Logger.getLogger("PFC");
+					if(tiempo){
+						hiloPrincipal.finPrueba();
+						logger.log(Level.INFO, "El tiempo destinado a la prueba ha finalizado");
+					}
+					
 					logger.log(Level.INFO, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+".\n Sin archivo de resultados");
 					break;
 				default:
@@ -168,13 +177,10 @@ public class TareaProfesor extends Thread{
 			//acabar la conexion, el alumno acaba la prueba
 			conexion.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
