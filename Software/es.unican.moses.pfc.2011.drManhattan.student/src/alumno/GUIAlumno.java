@@ -25,6 +25,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.math.BigInteger;
 import java.security.Key;
+import java.util.Date;
 import java.awt.Cursor;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -70,7 +71,7 @@ public class GUIAlumno{
 	private Key key = null;
 	private Cipher cipher = null;
 
-	
+
 	/**
 	 * Create the application.
 	 */
@@ -185,7 +186,7 @@ public class GUIAlumno{
 		lblEstado = new JLabel("No conectado");
 		lblEstado.setBounds(289, 212, 280, 23);
 		frmDrmanhattan.getContentPane().add(lblEstado);
-		
+
 		lblAutor = new JLabel("Manuel Pando Muñoz - Proyecto fin de carrera");
 		lblAutor.setFont(new Font("Dialog", Font.BOLD, 10));
 		lblAutor.setBounds(10, 346, 625, 15);
@@ -217,32 +218,40 @@ public class GUIAlumno{
 
 			public void actionPerformed(ActionEvent arg0) {
 
-				String ipProfesor = tfIPProfesor.getText();
-				String dirEnun = tfDirEnunciado.getText();
+				String ipProfesor = tfIPProfesor.getText().trim();
+				String dirEnun = tfDirEnunciado.getText().trim();
 				DatosAlumno da = new DatosAlumno();
-				da.nombre = tfNombre.getText();
-				da.apellidos = tfApellido.getText();
+				da.nombre = tfNombre.getText().trim();
+				da.apellidos = tfApellido.getText().trim();
 
 
-				//comprobacion de permisos
-				File directorio = new File(dirEnun);
-				boolean permisos = directorio.canWrite();
-				if(!permisos){
-					JOptionPane.showMessageDialog(frmDrmanhattan, "No hay permisos de escritura en el directorio seleccionado" +
-					", no se recibran archivos del profesor");
-				}
+				if(ipProfesor.isEmpty() || dirEnun.isEmpty() || da.nombre.isEmpty() || da.apellidos.isEmpty()){
+					JOptionPane.showMessageDialog(frmDrmanhattan, "Rellena todos los datos antes de comenzar");
+				}else{
 
-				int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Conectarse con las caracteristicas seleccionadas?");				
-				if (JOptionPane.OK_OPTION == confirmado){
-					tarea = new TareaAlumno(ipProfesor, dirEnun, lblEstado, da, ct, false);
-					btnConectar.setEnabled(false);
-					btnExplorar.setEnabled(false);
-					tfNombre.setEnabled(false);
-					tfDirEnunciado.setEnabled(false);
-					tfApellido.setEnabled(false);
-					tfIPProfesor.setEnabled(false);
-					btnFinalizar.setEnabled(true);
-					btnEnviarResultados.setEnabled(true);
+					//comprobacion de permisos
+					File directorio = new File(dirEnun);
+					boolean permisos = directorio.canWrite();
+					if(!permisos){
+						JOptionPane.showMessageDialog(frmDrmanhattan, "No hay permisos de escritura en el directorio seleccionado" +
+						", no se recibran archivos del profesor");
+					}				
+
+
+					int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Conectarse con las caracteristicas seleccionadas?");				
+					if (JOptionPane.OK_OPTION == confirmado){
+						try {
+							tarea = new TareaAlumno(ipProfesor, dirEnun, lblEstado, da, ct, false, btnFinalizar, btnEnviarResultados);
+							btnConectar.setEnabled(false);
+							btnExplorar.setEnabled(false);
+							tfNombre.setEnabled(false);
+							tfDirEnunciado.setEnabled(false);
+							tfApellido.setEnabled(false);
+							tfIPProfesor.setEnabled(false);
+						} catch (Exception e) {
+							JOptionPane.showMessageDialog(frmDrmanhattan, "Error en la conexion");
+						}					
+					}
 				}
 			}
 		});
@@ -282,9 +291,16 @@ public class GUIAlumno{
 		frmDrmanhattan.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent we){
 				if(!btnConectar.isEnabled()){
-					int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "Vas a finalizar la prueba sin enviar resultados");
-					if (JOptionPane.OK_OPTION == confirmado){					
-						tarea.finalizar();
+					if(!btnFinalizar.isEnabled()){
+						int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Desea cerrar realmente?");
+						if (JOptionPane.OK_OPTION == confirmado){					
+							System.exit(0);
+						}
+					}else{
+						int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "Vas a finalizar la prueba sin enviar resultados");
+						if (JOptionPane.OK_OPTION == confirmado){
+							tarea.finalizar();
+						}
 					}
 				}else{
 					System.exit(0);
@@ -321,6 +337,7 @@ public class GUIAlumno{
 
 				/*
 				 * Estructura del fichero
+				 * -Fecha
 				 * -Sesion
 				 * -ip
 				 * -dirEnun
@@ -334,34 +351,50 @@ public class GUIAlumno{
 				fisEstado.read(lineaDescifrada);
 				String desCi = descifrar(lineaDescifrada);
 				fisEstado.close();
-				
+
 				//lectura del contenido del fichero
 				//cada parametro esta separado por un salto de linea
-				
+
 				int posIntro = desCi.indexOf("\n");
-				String sesion = desCi.substring(0, posIntro).trim();
+				String fecha = desCi.substring(0, posIntro).trim();
 				desCi = desCi.substring(posIntro+1).trim();
 
-				posIntro = desCi.indexOf("\n");
-				String ipProf = desCi.substring(0, posIntro).trim();
-				desCi = desCi.substring(posIntro+1).trim();
+				Date fechaEstado = new Date(fecha);
+				Date ahora = new Date(System.currentTimeMillis());
+				//si los datos de estado son del mismo dia
 
-				posIntro = desCi.indexOf("\n");
-				String dirEnun = desCi.substring(0, posIntro).trim();
-				desCi = desCi.substring(posIntro+1).trim();
+				if((ahora.getDate() == fechaEstado.getDate()) && (ahora.getDay() == fechaEstado.getDay())){
 
-				posIntro = desCi.indexOf("\n");
-				String nombre = desCi.substring(0, posIntro).trim();
-				desCi = desCi.substring(posIntro+1).trim();
+					System.out.println("son iguales las fechas");
 
-				String apellido = desCi.trim();
+					posIntro = desCi.indexOf("\n");
+					String sesion = desCi.substring(0, posIntro).trim();
+					desCi = desCi.substring(posIntro+1).trim();
 
-				BigInteger id = new BigInteger(sesion);
+					posIntro = desCi.indexOf("\n");
+					String ipProf = desCi.substring(0, posIntro).trim();
+					desCi = desCi.substring(posIntro+1).trim();
+
+					posIntro = desCi.indexOf("\n");
+					String dirEnun = desCi.substring(0, posIntro).trim();
+					desCi = desCi.substring(posIntro+1).trim();
+
+					posIntro = desCi.indexOf("\n");
+					String nombre = desCi.substring(0, posIntro).trim();
+					desCi = desCi.substring(posIntro+1).trim();
+
+					String apellido = desCi.trim();
+
+					BigInteger id = new BigInteger(sesion);
 
 
-				//reconectarse al profesor
-				reconectar(ipProf, dirEnun, nombre, apellido, id);
-
+					//reconectarse al profesor
+					reconectar(ipProf, dirEnun, nombre, apellido, id);
+				}else{
+					//si no lo son, son datos antiguos, borrarlos
+					estado.delete();
+					fichClave.delete();
+				}
 			}
 		} catch (Exception e){
 			e.printStackTrace();
@@ -404,22 +437,23 @@ public class GUIAlumno{
 		da.apellidos = ape;
 		da.id = sesion;
 
-		tarea = new TareaAlumno(ipProfesor, dirEnun, lblEstado, da, ct, true);
 
-		tfApellido.setText(ape);
-		tfIPProfesor.setText(ip);
-		tfDirEnunciado.setText(dirE);
-		tfNombre.setText(nom);
+		try {
+			tarea = new TareaAlumno(ipProfesor, dirEnun, lblEstado, da, ct, true, btnEnviarResultados, btnFinalizar);
+			tfApellido.setText(ape);
+			tfIPProfesor.setText(ip);
+			tfDirEnunciado.setText(dirE);
+			tfNombre.setText(nom);
 
-		btnConectar.setEnabled(false);
-		btnExplorar.setEnabled(false);
-		tfNombre.setEnabled(false);
-		tfDirEnunciado.setEnabled(false);
-		tfApellido.setEnabled(false);
-		tfIPProfesor.setEnabled(false);
-		btnFinalizar.setEnabled(true);
-		btnEnviarResultados.setEnabled(true);
-
+			btnConectar.setEnabled(false);
+			btnExplorar.setEnabled(false);
+			tfNombre.setEnabled(false);
+			tfDirEnunciado.setEnabled(false);
+			tfApellido.setEnabled(false);
+			tfIPProfesor.setEnabled(false);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(frmDrmanhattan, "Error en la conexion");
+		}
 	}
 
 
@@ -432,7 +466,7 @@ public class GUIAlumno{
 			frmDrmanhattan.setAlwaysOnTop(false);
 		}
 	});
-	
+
 
 
 	/**
@@ -466,7 +500,8 @@ public class GUIAlumno{
 
 				//si los segundos son 0 significa que hay que decrementar un minuto y poner los segundos a 59
 
-				if(segundos == 0){					
+				if(segundos == 0){
+					//si ademas, los minutos tambien son 0, se ha llegado al fin de examen
 					if(minutos == 0){
 						finExamen = true;												
 						tarea.finalizarTiempo();
@@ -479,8 +514,6 @@ public class GUIAlumno{
 
 					minutos--;
 
-					//si ademas, los minutos tambien son 0, se ha llegado al fin de examen
-
 					segundos = 59;
 
 					//sino simplemente se decrementa un segundo
@@ -489,8 +522,11 @@ public class GUIAlumno{
 					segundos--;
 				}
 				//se muestra el nuevo tiempo
-
-				lblTiempo.setText(minutos+":"+segundos);
+				if(segundos <=9){
+					lblTiempo.setText(minutos+":0"+segundos);
+				}else{
+					lblTiempo.setText(minutos+":"+segundos);
+				}
 				try {
 
 					long tiempoActualPasado = System.currentTimeMillis();

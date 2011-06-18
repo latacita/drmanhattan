@@ -12,12 +12,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.math.BigInteger;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.security.Key;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 
 import javax.crypto.Cipher;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -46,6 +47,9 @@ public class TareaAlumno extends Thread{
 	private DataInputStream dis;
 	private String ipProfesor;
 	private int estadoPaquete;
+	private JButton bFin;
+	private JButton bRes;
+
 
 
 	/**
@@ -56,9 +60,13 @@ public class TareaAlumno extends Thread{
 	 * @param da datos del alumno
 	 * @param ct variable usada para notificar el tiempo restante en la prueba
 	 * @param reconectar booleano true indica que nos estamos reconectando con la prueba ya iniciada
+	 * @param fin boton de la GUI del alumno que habra que activar al comenzar la prueba
+	 * @param resultados boton de la GUI del alumno que habra que activar al comenzar la prueba
+	 * @throws Exception 
 	 */
-	public TareaAlumno(String ip, String directorioEnunciado, JLabel estado, DatosAlumno da, CuentaTiempo ct, boolean reconectar){		
+	public TareaAlumno(String ip, String directorioEnunciado, JLabel estado, DatosAlumno da, CuentaTiempo ct, boolean reconectar, JButton fin, JButton resultados) throws Exception{		
 		try {
+			
 			//creacion del socket e inicio del hilo de ejecucion
 			socketAlumno = new Socket(ip, comun.Global.PUERTOPROFESOR);
 			dirEnunciado = directorioEnunciado;
@@ -66,6 +74,8 @@ public class TareaAlumno extends Thread{
 			this.ct = ct;
 			datos = da;
 			this.ipProfesor = ip;
+			bFin = fin;
+			bRes = resultados;
 
 			DataOutputStream dos = new DataOutputStream(socketAlumno.getOutputStream());
 
@@ -91,7 +101,7 @@ public class TareaAlumno extends Thread{
 				}
 			}else{
 				//si nos reconectamos
-				
+
 				dis = new DataInputStream(socketAlumno.getInputStream());
 				boolean aceptado = dis.readBoolean();
 
@@ -113,13 +123,8 @@ public class TareaAlumno extends Thread{
 
 
 			}
-
-		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		}catch (Exception e) {
+			throw e;
 		}		
 	}
 
@@ -226,56 +231,61 @@ public class TareaAlumno extends Thread{
 
 				case comun.Global.COMIENZOPRUEBA:
 
-					ois = new ObjectInputStream(socketAlumno.getInputStream());
-					Object temp = ois.readObject();
+					try{
+						ois = new ObjectInputStream(socketAlumno.getInputStream());
+						Object temp = ois.readObject();
 
-					ComienzoExamen ce = (ComienzoExamen) temp;
+						ComienzoExamen ce = (ComienzoExamen) temp;
 
-					if(ce.pruebaTemporizada){
-						System.out.println("Es temporizado");
-						ct.setMinutos(ce.minutosPrueba, ce.segundosPrueba);
+						if(ce.pruebaTemporizada){
+							ct.setMinutos(ce.minutosPrueba, ce.segundosPrueba);
+						}
+
+						/* Eliminar acceso red */
+
+						//crear el socket con el proceso daemon
+						//esta en el mismo equipo
+						socketDaemon = new Socket("127.0.0.1", comun.Global.PUERTODAEMON);
+						DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
+						//opcion de denegar el acceso a la red
+						dosd.writeInt(Global.NORED);
+
+						estado.setText("Realizando prueba");
+						bFin.setEnabled(true);
+						bRes.setEnabled(true);
+
+
+						//escribir el fichero de estado
+
+						Date ahora = new Date(System.currentTimeMillis());												
+						String fecha = ahora.toString();
+						String linea = ce.sesion.toString();
+						String ipProf = this.ipProfesor;
+						String dirEnun = this.dirEnunciado;
+						String nombre = datos.nombre;
+						String apellido = datos.apellidos;
+
+						String aCifrar = fecha + "\n" + linea + "\n" + ipProf + "\n" + dirEnun + "\n" + nombre + "\n" + apellido;
+
+						ObjectInputStream oisClave = new ObjectInputStream(new FileInputStream(Global.ficheroClave));
+						Key key = (Key) oisClave.readObject();
+						oisClave.close();
+
+						File estado = new File(Global.ficheroEstado);
+
+						if(estado.exists()){
+							estado.delete();
+							estado.createNewFile();
+						}
+
+						FileOutputStream fosEstado = new FileOutputStream(estado);
+						byte[] lineaCifrada = cifrar(aCifrar, key);
+						fosEstado.write(lineaCifrada.length);
+						fosEstado.write(lineaCifrada);
+						fosEstado.close();
+					}catch(Exception e){
+						JOptionPane.showMessageDialog(bFin, "Error interno al intentar comenzar la prueba");
 					}
-
-					/* Eliminar acceso red */
-
-					//crear el socket con el proceso daemon
-					//esta en el mismo equipo
-					System.out.println("Intentando conexion con el daemon");
-					socketDaemon = new Socket("127.0.0.1", comun.Global.PUERTODAEMON);
-					DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
-					//opcion de denegar el acceso a la red
-					dosd.writeInt(Global.NORED);
-
-					estado.setText("Realizando prueba");
-
-
-					//escribir el fichero de estado
-
-					String linea = ce.sesion.toString();
-					String ipProf = this.ipProfesor;
-					String dirEnun = this.dirEnunciado;
-					String nombre = datos.nombre;
-					String apellido = datos.apellidos;
-
-					String aCifrar = linea + "\n" + ipProf + "\n" + dirEnun + "\n" + nombre + "\n" + apellido;
-
-					ObjectInputStream oisClave = new ObjectInputStream(new FileInputStream(Global.ficheroClave));
-					Key key = (Key) oisClave.readObject();
-					oisClave.close();
-
-					File estado = new File(Global.ficheroEstado);
-
-					if(estado.exists()){
-						estado.delete();
-						estado.createNewFile();
-					}
-
-					FileOutputStream fosEstado = new FileOutputStream(estado);
-					byte[] lineaCifrada = cifrar(aCifrar, key);
-					fosEstado.write(lineaCifrada.length);
-					fosEstado.write(lineaCifrada);
-					fosEstado.close();
-
 
 					break;					
 
@@ -290,13 +300,10 @@ public class TareaAlumno extends Thread{
 			finalizarTiempo();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -341,6 +348,7 @@ public class TareaAlumno extends Thread{
 			dos.writeInt(Global.FINPRUEBA);
 			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
 			oos.writeObject(datos);
+			dos.writeBoolean(true); //indica que ha finalizado la prueba por tiempo
 			socketAlumno.close();
 			socketDaemon.close();
 			File fichEstado = new File(Global.ficheroEstado);
@@ -348,7 +356,6 @@ public class TareaAlumno extends Thread{
 			JOptionPane.showMessageDialog(estado, "El tiempo destinado para la realizacion de la prueba ha finalizado.");
 			System.exit(0);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -368,6 +375,7 @@ public class TareaAlumno extends Thread{
 			dos.writeInt(Global.FINPRUEBA);
 			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
 			oos.writeObject(datos);
+			dos.writeBoolean(false);
 			socketAlumno.close();
 			socketDaemon.close();
 			File fichEstado = new File(Global.ficheroEstado);
@@ -375,8 +383,7 @@ public class TareaAlumno extends Thread{
 			File fichClave = new File(Global.ficheroClave);
 			fichClave.delete();			
 			System.exit(0);
-		} catch (Exception e) {			
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
 			System.exit(0);
 		}
@@ -411,7 +418,7 @@ public class TareaAlumno extends Thread{
 			//obtener el canal de salida
 			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
 			oos.writeObject(datos);
-
+			
 			//variable auxiliar para marcar cuando se envia el ultimo mensaje
 			boolean enviadoUltimo = false;
 
@@ -475,18 +482,15 @@ public class TareaAlumno extends Thread{
 			}
 
 			fis.close();
-			System.out.println("5");
 			//finaliza el examen
 			dos.writeInt(Global.FINPRUEBA);
+			dos.writeBoolean(false);
 			socketAlumno.close();
 			socketDaemon.close();
-			System.out.println("6");
 			File fichEstado = new File(Global.ficheroEstado);
 			fichEstado.delete();
-			System.out.println("7");
 			File fichClave = new File(Global.ficheroClave);
 			fichClave.delete();
-			System.out.println("8");
 			if(estadoPaquete == Global.BLOQUEOK){
 				JOptionPane.showMessageDialog(estado, "Archivo enviado correctamente, finaliza la prueba.");				
 			}else{
@@ -495,13 +499,10 @@ public class TareaAlumno extends Thread{
 			System.exit(0);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
