@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  19 JUN 2011 15:18
+This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  19 JUN 2011 18:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -518,24 +518,24 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
 * driver: pdftex
-* paper: a4paper
+* paper: <default>
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(89.62709pt, 418.25368pt, 89.6271pt)
-* v-part:(T,H,B)=(76.25339pt, 654.41338pt, 114.38008pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=418.25368pt
+* h-part:(L,W,R)=(92.14519pt, 430.00462pt, 92.14519pt)
+* v-part:(T,H,B)=(56.22263pt, 654.41338pt, 84.33398pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=430.00462pt
 * \textheight=654.41338pt
-* \oddsidemargin=17.3571pt
-* \evensidemargin=17.3571pt
-* \topmargin=-36.46935pt
+* \oddsidemargin=19.8752pt
+* \evensidemargin=19.8752pt
+* \topmargin=-56.5001pt
 * \headheight=12.0pt
 * \headsep=28.45274pt
 * \topskip=11.0pt
 * \footskip=30.0pt
-* \marginparwidth=50.0pt
+* \marginparwidth=59.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
 * \skip\footins=10.0pt plus 4.0pt minus 2.0pt
@@ -614,11 +614,6 @@ File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 <imagenes/portada.png, id=104, 513.92pt x 513.92pt>
 File: imagenes/portada.png Graphic file (type png)
  <use imagenes/portada.png>
-Overfull \hbox (0.27362pt too wide) in paragraph at lines 43--44
-[]\T1/lmr/m/n/10 El si-guien-te do-cu-men-to re-pre-sen-ta el ma-nual de usua-r
-io pa-ra la apli-ca-ción drMan-
- []
-
 [1
 
 {c:/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./imagenes/port
@@ -661,9 +656,9 @@ l.26 ...te a errores en el sistema}{18}{section.6}
 
  [2] [3]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 86.
+(Font)              <9> on input line 91.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 86.
+(Font)              <5> on input line 91.
  [4]
 <imagenes/inst1.png, id=164, 429.10312pt x 304.13625pt>
 File: imagenes/inst1.png Graphic file (type png)
@@ -713,26 +708,19 @@ File: imagenes/eventoEnviar.png Graphic file (type png)
 
 <use imagenes/eventoEnviar.png> [13 <./imagenes/enviar.png (PNG copy)>]
 [14 <./imagenes/eventoEnviar.png (PNG copy)>] [15] [16] [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 350.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 355.
  [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 350.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 355.
  (./manual.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 350.
-
-
-Package rerunfilecheck Warning: File `manual.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `manual.out':
-(rerunfilecheck)             Before: 5962221D2C215152613B0B9628C29904;1772
-(rerunfilecheck)             After:  C64652BA9303265872E6A32FA34C7116;1772.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 355.
+Package rerunfilecheck Info: File `manual.out' has not changed.
+(rerunfilecheck)             Checksum: C64652BA9303265872E6A32FA34C7116;1772.
  ) 
 Here is how much of TeX's memory you used:
- 6571 strings out of 493763
- 95492 string characters out of 3148267
- 181380 words of memory out of 3000000
- 9674 multiletter control sequences out of 15000+200000
+ 6570 strings out of 493763
+ 95467 string characters out of 3148267
+ 181422 words of memory out of 3000000
+ 9673 multiletter control sequences out of 15000+200000
  56813 words of font info for 46 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  31i,8n,28p,553b,548s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -743,7 +731,7 @@ pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2010
 /texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2010/texmf-dist/fonts/ty
 pe1/public/lm/lmr9.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/lm/lmtt10
 .pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on manual.pdf (19 pages, 1113442 bytes).
+Output written on manual.pdf (19 pages, 1113547 bytes).
 PDF statistics:
  288 PDF objects out of 1000 (max. 8388607)
  243 compressed objects within 3 object streams

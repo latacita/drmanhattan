@@ -1,9 +1,9 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[11pt]{article}
 
 \usepackage[T1]{fontenc}
 \usepackage[spanish]{babel}
 \usepackage{lmodern}
-\usepackage[textheight=23cm,headsep=1cm]{geometry}
+\usepackage[]{geometry}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
@@ -250,7 +250,7 @@ Antes de comenzar realiza ciertas comprobaciones, entre ellas si se tienen permi
 
 Antes de comenzar definitivamente la prueba, se pide confirmación para evitar posibles errores.
 
-\subsubsection{explicación pruebas temporizadas}
+\subsubsection{Explicación pruebas temporizadas}
 
 El software drManhattan ofrece la posibilidad de definir una hora límite para la duración de la prueba, mediante el campo de texto Hora fin de examen. Cuándo comienza una prueba, se calcula el límite de tiempo y se notifica a las aplicaciones de los alumnos conectadas. Si se introduce una hora inferior a la actual se obvia y la prueba no tiene duración prefijada. El tiempo restante aparecerá en la interfaz del alumno a modo de cuenta atrás, produciendo un aviso cuando resten 5 minutos para la finalización automática.
 
