@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  19 JUN 2011 18:10
+This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  19 JUN 2011 23:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -647,7 +647,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.26 ...te a errores en el sistema}{18}{section.6}
+l.26 ...te a errores en el sistema}{19}{section.6}
                                                    [1
 
 ])
@@ -682,45 +682,62 @@ File: imagenes/instalacionConsola.png Graphic file (type png)
 
 <use imagenes/instalacionConsola.png> [7 <./imagenes/inst4.png (PNG copy)> <./i
 magenes/instalacionConsola.png (PNG copy)>]
-<imagenes/localLizacionCentroSoftware.png, id=184, 213.04594pt x 219.06844pt>
+<imagenes/localLizacionCentroSoftware.png, id=186, 213.04594pt x 219.06844pt>
 File: imagenes/localLizacionCentroSoftware.png Graphic file (type png)
 
 <use imagenes/localLizacionCentroSoftware.png>
-<imagenes/desinstalar.png, id=185, 451.6875pt x 319.1925pt>
+<imagenes/desinstalar.png, id=187, 451.6875pt x 319.1925pt>
 File: imagenes/desinstalar.png Graphic file (type png)
 
 <use imagenes/desinstalar.png> [8 <./imagenes/localLizacionCentroSoftware.png (
-PNG copy)>] <imagenes/desConsola.png, id=191, 435.87843pt x 291.33844pt>
+PNG copy)>] <imagenes/desConsola.png, id=194, 435.87843pt x 291.33844pt>
 File: imagenes/desConsola.png Graphic file (type png)
 
 <use imagenes/desConsola.png> [9 <./imagenes/desinstalar.png (PNG copy)>]
 [10 <./imagenes/desConsola.png (PNG copy)>]
-<imagenes/GUIProfesor.png, id=200, 451.6875pt x 444.91219pt>
+<imagenes/GUIProfesor.png, id=203, 451.6875pt x 444.91219pt>
 File: imagenes/GUIProfesor.png Graphic file (type png)
 
 <use imagenes/GUIProfesor.png> [11 <./imagenes/GUIProfesor.png (PNG copy)>]
-<imagenes/enviar.png, id=206, 451.6875pt x 444.15938pt>
+<imagenes/enviar.png, id=209, 451.6875pt x 444.15938pt>
 File: imagenes/enviar.png Graphic file (type png)
 
 <use imagenes/enviar.png> [12]
-<imagenes/eventoEnviar.png, id=212, 451.6875pt x 442.65375pt>
+<imagenes/eventoEnviar.png, id=215, 451.6875pt x 442.65375pt>
 File: imagenes/eventoEnviar.png Graphic file (type png)
 
 <use imagenes/eventoEnviar.png> [13 <./imagenes/enviar.png (PNG copy)>]
-[14 <./imagenes/eventoEnviar.png (PNG copy)>] [15] [16] [17]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 355.
- [18]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 355.
+<imagenes/comienzoPermisos.png, id=220, 523.9575pt x 94.85437pt>
+File: imagenes/comienzoPermisos.png Graphic file (type png)
+
+<use imagenes/comienzoPermisos.png> [14 <./imagenes/eventoEnviar.png (PNG copy)
+> <./imagenes/comienzoPermisos.png (PNG copy)>]
+<imagenes/tiempoLimite.png, id=225, 451.6875pt x 277.78781pt>
+File: imagenes/tiempoLimite.png Graphic file (type png)
+
+<use imagenes/tiempoLimite.png> [15 <./imagenes/tiempoLimite.png (PNG copy)>]
+[16] <imagenes/GUIAlumno.png, id=240, 451.6875pt x 277.78781pt>
+File: imagenes/GUIAlumno.png Graphic file (type png)
+
+<use imagenes/GUIAlumno.png> [17 <./imagenes/GUIAlumno.png (PNG copy)>]
+[18]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 377.
+ [19]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 377.
  (./manual.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 355.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 377.
 Package rerunfilecheck Info: File `manual.out' has not changed.
 (rerunfilecheck)             Checksum: C64652BA9303265872E6A32FA34C7116;1772.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 6570 strings out of 493763
- 95467 string characters out of 3148267
+ 6587 strings out of 493763
+ 95895 string characters out of 3148267
  181422 words of memory out of 3000000
- 9673 multiletter control sequences out of 15000+200000
+ 9685 multiletter control sequences out of 15000+200000
  56813 words of font info for 46 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  31i,8n,28p,553b,548s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -731,10 +748,10 @@ pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2010
 /texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2010/texmf-dist/fonts/ty
 pe1/public/lm/lmr9.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/lm/lmtt10
 .pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on manual.pdf (19 pages, 1113547 bytes).
+Output written on manual.pdf (20 pages, 1245266 bytes).
 PDF statistics:
- 288 PDF objects out of 1000 (max. 8388607)
- 243 compressed objects within 3 object streams
- 50 named destinations out of 1000 (max. 500000)
- 261 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 298 PDF objects out of 1000 (max. 8388607)
+ 249 compressed objects within 3 object streams
+ 52 named destinations out of 1000 (max. 500000)
+ 276 words of extra memory for PDF output out of 10000 (max. 10000000)
 
