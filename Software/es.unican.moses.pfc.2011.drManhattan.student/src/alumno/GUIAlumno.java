@@ -365,8 +365,6 @@ public class GUIAlumno{
 
 				if((ahora.getDate() == fechaEstado.getDate()) && (ahora.getDay() == fechaEstado.getDay())){
 
-					System.out.println("son iguales las fechas");
-
 					posIntro = desCi.indexOf("\n");
 					String sesion = desCi.substring(0, posIntro).trim();
 					desCi = desCi.substring(posIntro+1).trim();

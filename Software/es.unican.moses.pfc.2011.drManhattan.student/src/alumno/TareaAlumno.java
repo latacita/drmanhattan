@@ -112,7 +112,7 @@ public class TareaAlumno extends Thread{
 					ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
 					oos.writeObject(da);
 					aceptado = dis.readBoolean();
-					if(!aceptado){
+					if(!aceptado){						
 						estado.setText("Reconexion no aceptada");
 						socketAlumno.close();
 					}else{
