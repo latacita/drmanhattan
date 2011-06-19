@@ -48,8 +48,8 @@ public class Daemon {
 		try {
 			while(true){
 				Socket socket = ss.accept();
-				//si hay una conexion activa
-				if(!anterior.isConnected()){
+				//si hay una conexion activa				
+				if(!anterior.isConnected() || anterior.isClosed()){
 					anterior = socket;
 					new ProcesoDaemon(socket);
 				}else{
@@ -61,6 +61,7 @@ public class Daemon {
 			e.printStackTrace();
 		}
 	}
+
 
 	/**
 	 * 
@@ -147,6 +148,11 @@ public class Daemon {
 				}//while
 				socket.close();
 			}catch(Exception e){
+				try {
+					socket.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			}
 
 		}
