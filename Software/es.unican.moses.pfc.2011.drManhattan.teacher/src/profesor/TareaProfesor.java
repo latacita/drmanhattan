@@ -51,7 +51,6 @@ public class TareaProfesor extends Thread{
 			DataOutputStream dos = new DataOutputStream(conexion.getOutputStream());
 
 			//mientras no se acabe el examen
-			//TODO quizas anadir isInterrupt a la condicion, en caso de que no acabe el alumno
 			while((recibido != comun.Global.FINPRUEBA) || (recibido != comun.Global.FINRESULTADOS)){
 
 				switch (recibido) {
@@ -123,9 +122,9 @@ public class TareaProfesor extends Thread{
 					byte[] md5sum = digest.digest();
 					BigInteger bigInt = new BigInteger(1, md5sum);
 					String md5 = bigInt.toString(16);
-					
+
 					Logger logger;
-					
+
 					//si no coinciden los md5
 					if(!md5.trim().equals(bloque.md5.trim())){												
 						logger = Logger.getLogger("PFC");
@@ -143,17 +142,17 @@ public class TareaProfesor extends Thread{
 						definitivo.createNewFile();
 
 						logger = Logger.getLogger("PFC");
-						
+
 						boolean res = resultados.renameTo(definitivo);
 						if(!res){
 							logger.log(Level.SEVERE, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+"\nArchivo de resultados con problemas");
 						}						
-						
+
 						logger.log(Level.INFO, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+"\nArchivo de resultados: "+definitivo.getAbsolutePath());
 
 					}
 					fos.close();
-					
+
 					break;
 
 				case Global.FINPRUEBA:
@@ -161,11 +160,7 @@ public class TareaProfesor extends Thread{
 					datos = (DatosAlumno) ois.readObject();
 					boolean tiempo = dis.readBoolean(); //saber si el tiempo destinado a la prueba a finalizado
 					logger = Logger.getLogger("PFC");
-					if(tiempo){
-						hiloPrincipal.finPrueba();
-						logger.log(Level.INFO, "El tiempo destinado a la prueba ha finalizado");
-					}
-					
+					hiloPrincipal.finPrueba(tiempo);
 					logger.log(Level.INFO, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+".\n Sin archivo de resultados");
 					break;
 				default:

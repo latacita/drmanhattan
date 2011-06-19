@@ -180,7 +180,7 @@ public class GUIProfesor {
 		ftfHoraLImite.setBounds(251, 105, 59, 23);
 		frmDrmanhattan.getContentPane().add(ftfHoraLImite);
 
-		aceptaAlumnos = new HiloAceptadorAlumnos();
+		aceptaAlumnos = new HiloAceptadorAlumnos(btnFinExamen);
 
 		logger = Logger.getLogger("PFC");
 		try {
@@ -339,11 +339,8 @@ public class GUIProfesor {
 			public void actionPerformed(ActionEvent arg0) {
 				int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Finalizar la prueba?");				
 				if (JOptionPane.OK_OPTION == confirmado){
-					aceptaAlumnos.finPrueba();
-					logger.log(Level.INFO, "Finaliza la prueba a orden del profesor");
-					btnFinExamen.setEnabled(false);
+					aceptaAlumnos.finPrueba(false);
 				}
-
 			}
 		});
 
@@ -356,8 +353,8 @@ public class GUIProfesor {
 				if(btnFinExamen.isEnabled()){
 					int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "Si cierra, finaliza la prueba");
 					if (JOptionPane.OK_OPTION == confirmado){
-						logger.log(Level.INFO, "Finaliza la prueba a orden del profesor");
-						aceptaAlumnos.finPrueba();
+						//logger.log(Level.INFO, "Finaliza la prueba a orden del profesor");
+						aceptaAlumnos.finPrueba(false);
 						btnFinExamen.setEnabled(false);
 					}
 				}else{

@@ -20,6 +20,8 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JButton;
+
 import comun.BloquesFichero;
 import comun.ComienzoExamen;
 import comun.DatosAlumno;
@@ -46,18 +48,19 @@ public class HiloAceptadorAlumnos extends Thread{
 	private String dirRes;
 	private BigInteger id;
 	private boolean pruebaFinalizada;
+	private JButton btnFin;
 
 	/**
 	 * Constructor
 	 */
-	public HiloAceptadorAlumnos(){
+	public HiloAceptadorAlumnos(JButton fin){
 		try{
 			//Inicializa las variables
 			sSocket = new ServerSocket(Global.PUERTOPROFESOR);
 			listaSocket = new LinkedList<Socket>();
 			id = new BigInteger(128, new Random(System.currentTimeMillis()));
 			pruebaFinalizada = false;
-
+			btnFin = fin;
 			this.start();
 		}catch(Exception e){			
 			e.printStackTrace();
@@ -74,15 +77,8 @@ public class HiloAceptadorAlumnos extends Thread{
 				Socket socket;
 				//esperar a nueva conexion
 				socket = sSocket.accept();
-				if(!pruebaFinalizada){
-					new ProcesaConexion(socket, this).start();
-				}else{
-					//si la prueba ha finalizado, no esperar mas conexiones/reconexiones
-					break;
+				new ProcesaConexion(socket, this).start();
 				}
-
-			}
-
 		}catch(Exception e){			
 			e.printStackTrace();
 		}
@@ -295,8 +291,6 @@ public class HiloAceptadorAlumnos extends Thread{
 							int minutosEnteros = segundosI / 60;
 							int segundosEnteros = segundosI - 60*minutosEnteros;
 
-							System.out.println("tiempo: "+minutosEnteros+":"+segundosEnteros+" temporizado: "+temporizado);
-
 							//y queda tiempo en caso de ser temporizado					
 
 							if(temporizado){
@@ -320,6 +314,8 @@ public class HiloAceptadorAlumnos extends Thread{
 
 									listaSocket.add(conexion);
 									new TareaProfesor(conexion, dirRes, hiloPrincipal);
+								}else{
+									dos.writeBoolean(false);
 								}
 							}else{
 								//permitir la reconexion
@@ -406,9 +402,17 @@ public class HiloAceptadorAlumnos extends Thread{
 	/**
 	 * Enviar a los alumnos conectados la notificacion de que la prueba acaba
 	 */
-	public void finPrueba(){
+	public void finPrueba(boolean tiempo){
 		try{
 			this.pruebaFinalizada = true;
+			btnFin.setEnabled(false);
+
+			Logger logger = Logger.getLogger("PFC");
+			if(tiempo){
+				logger.log(Level.INFO, "El tiempo destinado a la prueba ha finalizado");
+			}else{
+				logger.log(Level.INFO, "Finaliza la prueba a orden del profesor");
+			}
 
 			/*
 			 * Recorre la lista de sockets y envia secuencialmente la notificacion de que finaliza la prueba
