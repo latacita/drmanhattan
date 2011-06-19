@@ -1,0 +1,247 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{lmodern}
+\usepackage[textheight=23cm,headsep=1cm]{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\hypersetup{colorlinks,linkcolor=blue}
+
+\parskip=4mm
+
+
+\begin{document}
+
+%portada
+
+\begin{titlepage}
+    \begin{ttfamily}
+        \begin{center}
+            \vspace*{1in}
+            {\LARGE drManhattan - Manual de usuario}
+            \par
+            \vspace{0.5in}
+            \includegraphics[width=4.5cm]{imagenes/portada}
+
+            \vspace{0.5in}
+            {\large Manuel Pando Muñoz}
+            \par
+            Proyecto fin de carrera
+            \par
+            Universidad de Cantabria
+            \par
+            \vspace{0.5in}
+            \today
+        \end{center}
+    \end{ttfamily}
+
+    \vfill
+
+    \begin{abstract}
+        El siguiente documento representa el manual de usuario para la aplicación drManhattan.
+    \end{abstract}
+\end{titlepage}
+
+
+
+\cleardoublepage
+
+\tableofcontents
+
+
+\newpage
+
+\section{Descripción}
+\label{sec:descripcion}
+
+drManhattan nace con motivo del proyecto de fin de carrera de Manuel Pando Muñoz, ofertado por Pablo Sánchez Barreiro en la Universidad de Cantabria para acceder al título de Ingeniero en informática.
+
+El objetivo del proyecto era crear una aplicación que permitiese a los docentes, durante la realización de pruebas evaluables, tener control sobre si los alumnos pueden o no acceder a la red, como principal función, pero además tener la posibilidad de enviar ficheros a los alumnos o la recogida automática de resultados, aprovechando la red.
+
+\newpage
+
+\section{Requisitos}
+
+En la siguiente sección se describen los requisitos necesarios para un uso correcto de drManhattan.
+
+\subsection{Requisitos hardware}
+
+\begin{itemize}
+
+    \item PC Compatible con java.
+
+    \item Memoria RAM de al menos 512MB.
+
+\end{itemize}
+
+La aplicación no hace un uso intensivo de los recursos del sistema, por lo que prácticamente cualquier PC de hoy en día cumple los requisitos.
+
+
+\subsection{Requisitos software}
+
+\begin{itemize}
+
+    \item Sistema operativo basado en Debian\footnote{\href{http://www.debian.org/misc/children-distros}{Lista de distribuciones basadas en Debian}}, de 32 o 64 bits.
+
+    \item Java Runtime Environment 1.6
+
+\end{itemize}
+
+Como se puede observar, la aplicación se ha desarrollado para utilizarse en sistemas Linux.
+
+
+\newpage
+
+\section{Instalación y desinstalación}
+
+El software drManhattan es distribuido y se compone de dos aplicaciones. Una de ellas es la aplicación utilizada por el profesor y la otra la usada para el alumno.
+
+\subsection{Instalación}
+
+\subsubsection{Visual}
+
+Para simplificar lo más posible la instalación, se han creado archivos .deb diferenciados. Una vez que se tenga decidido qué computador utilizará el profesor y cuales los alumnos, simplemente es hacer doble click en el archivo .deb correspondiente.
+
+\begin{center}
+
+    \includegraphics{imagenes/inst12}
+
+\end{center}
+
+Tras pulsar el botón de instalar nos pedirá la contraseña de administrador.
+
+\begin{center}
+
+    \includegraphics{imagenes/inst22}
+
+\end{center}
+
+
+Después de introducirla vemos como se está instalando.
+
+%\begin{center}
+
+    %\includegraphics{imagenes/inst33}
+
+%\end{center}
+
+Al finalizar la instalación, se puede iniciar la aplicación que está ubicada en:
+
+\begin{center}
+
+    \includegraphics{imagenes/inst44}
+
+\end{center}
+
+
+\subsubsection{Consola}
+
+El proceso de instalación utilizando la consola es el siguiente, también muy simple partiendo de los ficheros .deb.
+
+
+\begin{center}
+
+    \includegraphics{imagenes/instCons}
+
+\end{center}
+
+Se ejecuta la orden privilegiada dpkg -i paquete.deb y la aplicación queda instalada y lista para usar.
+
+\subsubsection{como es libre tienes el fuente...}
+
+Otra opción para utilizar el software es descargarse el código fuente\footnote{\href{http://code.google.com/p/drmanhattan/}{Repositorio drManhattan en googlecode}} y compilarlo localmente. Esto es posible ya que la aplicación utiliza la licencia GPL V3.
+
+\subsection{Destinstalación}
+
+\subsubsection{Visual}
+
+
+\subsubsection{Consola}
+
+
+\section{Aplicación del profesor}
+
+En la siguiente sección se describe la aplicación del profesor, así como las funcionalidades aportadas por ella.
+
+\subsection{Breve explicación de cada componente}
+
+\begin{center}
+    %\includegraphics[width=.90\linewidth]{imagenes/GUIProfesor2}
+    \includegraphics[width=.90\linewidth]{imagenes/GUIProfesor2}
+\end{center}
+
+En la interfaz tenemos tres campos de texto:
+\begin{itemize}
+    \item {\bfseries Nombre de la asignatura:} Para definir de que asignatura es la prueba a realizar.
+    \item {\bfseries Recibir resultados en:} Para definir, en caso de que los haya, dónde se recibirán los resultados de los alumnos.
+    \item {\bfseries Hora fin de examen:} Para definir una hora en la que automáticamente se acabará la prueba.
+\end{itemize}
+
+Cuatro botones:
+
+\begin{itemize}
+    \item {\bfseries Explorar:} Para escoger cómodamente navegando por el sistema de ficheros un directorio dónde recoger los resultados.
+    \item {\bfseries Enviar fichero:} Para escoger un archivo local y enviarlo a los alumnos que realizarán la prueba.
+    \item {\bfseries Comienzo de prueba:} Para indicar el comienzo la prueba.
+    \item {\bfseries Fin de prueba:} Para indicar la finalización de la prueba.
+\end{itemize}
+
+Y una región de texto:
+
+\begin{itemize}
+    \item {\bfseries Eventos:} Dónde aparecen en tiempo real mensajes relacionados con la prueba, por ejemplo, la finalización de un alumno.
+\end{itemize}
+
+\subsection{Enviar fichero de enunciado}
+
+Cuándo los alumnos que realizarán la prueba se han conectado, sección \ref{sec:conectarse}, al pulsar el botón Enviar fichero
+
+\begin{center}
+    %\includegraphics[width=.90\linewidth]
+    \includegraphics[width=.90\linewidth]{imagenes/enviar}
+\end{center}
+
+Cuando finalize el envío se notificará en la región de texto inferior.
+
+\begin{center}
+    %\includegraphics[width=.90\linewidth]
+    \includegraphics[width=.90\linewidth]{imagenes/eventoEnviar2}
+\end{center}
+
+
+
+
+\subsection{Comienzo de prueba}
+
+Cuándo el docente decide que ha llegado el momento para comenzar la prueba, pulsa el botón Comienzo prueba, esto manda una señal a todos los alumnos conectados y, desde ese momento, dejan de tener acceso a la red. 
+Antes de comenzar realiza ciertas comprobaciones, entre ellas si se tienen permisos de escritura en el directorio escogido para recibir los resultados, en caso de que no los tuviese, se informa de ello mediante un diálogo modal.
+
+Antes de comenzar definitivamente la prueba, se pide confirmación para evitar posibles errores.
+
+\subsubsection{explicación pruebas temporizadas}
+
+\subsection{Finalización de prueba}
+
+\subsubsection{Recogida de resultados}
+
+
+\section{Aplicación del alumno}
+
+\subsection{Breve explicación de cada componente}
+
+\subsection{Conectarse}
+\label{sec:conectarse}
+
+
+\subsection{Finalización de prueba}
+
+\subsubsection{Envío de resultados}
+
+
+\section{Protección frente a errores en el sistema}
+
+
+
+\end{document} 
