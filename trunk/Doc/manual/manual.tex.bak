@@ -58,10 +58,9 @@
 
 drManhattan nace con motivo del proyecto de fin de carrera de Manuel Pando Muñoz, ofertado por Pablo Sánchez Barreiro en la Universidad de Cantabria para acceder al título de Ingeniero en informática.
 
-El objetivo del proyecto era trata de desarrollar un software que, una vez instalado en los laboratorios con computadores del centro, permita controlar el acceso del alumnado a la red durante la realización de pruebas evaluables, de forma que el software permita el uso lícito de la red, pero bloquee el ilícito.
+El objetivo del proyecto era trata de desarrollar un software que, una vez instalado en los laboratorios con computadores del centro, permitiese controlar el acceso del alumnado a la red durante la realización de pruebas evaluables, de forma que el software permita el uso lícito de la red, pero bloquee el ilícito.
 
 Con uso ilícito nos referimos, por ejemplo, a mirar posibles soluciones en internet, o comunicarse con otro alumno, esto es deseable evitarlo, pero a su vez, el que haya una red que interconecte los computadores permite enviar ficheros de modo casi automático por parte del profesor, o la recogida de los resultados de los alumnos, esos serían usos lícitos.
-
 
 
 
@@ -199,6 +198,9 @@ En función de cual de los dos paquetes se quiera desinstalar.
 
 \end{center}
 
+Como vemos, tanto la instalación cómo la desinstalación de la aplicación son procesos muy sencillos.
+
+
 \newpage
 \section{Aplicación del profesor}
 
@@ -237,7 +239,7 @@ Algunos componentes aparecen deshabilitados, esto es así ya que no tiene sentid
 
 \subsection{Enviar fichero de enunciado}
 
-Cuándo los alumnos que realizarán la prueba se han conectado, sección \ref{sec:conectarse}, al pulsar el botón \lq\lq Enviar fichero\rq\rq
+Cuándo los alumnos que realizarán la prueba se han conectado, sección \ref{sec:conectarse}, al pulsar el botón \lq\lq Enviar fichero\rq\rq se abe un diálogo con el que podemos navegar por el sistema de archivos y seleccionar un fichero a enviar.
 
 \begin{center}
     \includegraphics[width=.90\linewidth]{imagenes/enviar}
@@ -256,11 +258,22 @@ Antes del comienzo de la prueba se pueden enviar tantos archivos de enunciado co
 Cuándo el docente decide que ha llegado el momento para comenzar la prueba, pulsa el botón Comienzo prueba, esto manda una señal a todos los alumnos conectados y, desde ese momento, dejan de tener acceso a la red.
 Antes de comenzar realiza ciertas comprobaciones, entre ellas si se tienen permisos de escritura en el directorio escogido para recibir los resultados, en caso de que no los tuviese, se informa de ello mediante un diálogo modal.
 
+\begin{center}
+    \includegraphics[width=.90\linewidth]{imagenes/comienzoPermisos}
+\end{center}
+
 Antes de comenzar definitivamente la prueba, se pide confirmación para evitar posibles errores.
+
+
+
 
 \subsubsection{Explicación pruebas temporizadas}
 
 El software drManhattan ofrece la posibilidad de definir una hora límite para la duración de la prueba, mediante el campo de texto Hora fin de examen. Cuándo comienza una prueba, se calcula el límite de tiempo y se notifica a las aplicaciones de los alumnos conectadas. Si se introduce una hora inferior a la actual se obvia y la prueba no tiene duración prefijada. El tiempo restante aparecerá en la interfaz del alumno a modo de cuenta atrás, produciendo un aviso cuando resten 5 minutos para la finalización automática.
+
+\begin{center}
+    \includegraphics[width=.90\linewidth]{imagenes/tiempoLimite}
+\end{center}
 
 
 \subsection{Finalización de prueba}
@@ -294,6 +307,11 @@ Se realiza una comprobación de integridad del fichero utilizando el algoritmo M
 
 \newpage
 \section{Aplicación del alumno}
+
+\begin{center}
+    \includegraphics[width=.90\linewidth]{imagenes/GUIAlumno}
+\end{center}
+
 
 \subsection{Breve explicación de cada componente}
 
