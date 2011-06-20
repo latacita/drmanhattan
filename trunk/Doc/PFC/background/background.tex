@@ -160,3 +160,14 @@ El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo
 %              ¿Se rechaza o se acepta?                                      %
 %============================================================================%
 Si tenemos iptables con la configuración por defecto, se aceptan todos los paquetes entrantes y salientes, no hay ninguna restricción.
+
+
+\section{MD5}
+
+MD5 son las siglas de Message-Digest Algorithm 5, algoritmo resumen del mensaje, que genera un número, conocido como firma, de 128 bits a partir del contenido de ese mensaje, de tal modo que, sí por cualquier razón, el contenido cambia, el número resultante de aplicar el algoritmo al nuevo contenido cambiará también.
+\newline
+
+Es utilizado, por ejemplo, para realizar firmas a los paquetes que nos descargamos de los repositorios para instalar aplicaciones en Linux, de este modo, si vemos que la firma MD5 del fichero que hemos descargado, no concuerda con el que debería, puede ser que se haya corrompido en el proceso de descarga, o que lo descargado no sea lo que aparenta.
+\newline
+
+En la aplicación es utilizado para comprobar la integridad de los archivos enviados por la red, se genera el MD5 en el computador local del fichero a transferir, se transfieren el fichero y el resultado del MD5, al recibir, se reconstruye el fichero y se genera un nuevo MD5 a partir de el, si coinciden, tenemos la garantía de que se ha transferido correctamente.

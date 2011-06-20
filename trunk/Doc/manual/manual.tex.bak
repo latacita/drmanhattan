@@ -198,7 +198,7 @@ En función de cual de los dos paquetes se quiera desinstalar.
 
 \end{center}
 
-Como vemos, tanto la instalación cómo la desinstalación de la aplicación son procesos muy sencillos.
+Como vemos, tanto la instalación cómo la desinstalación de la aplicación son dos procesos muy sencillos.
 
 
 \newpage
@@ -239,7 +239,7 @@ Algunos componentes aparecen deshabilitados, esto es así ya que no tiene sentid
 
 \subsection{Enviar fichero de enunciado}
 
-Cuándo los alumnos que realizarán la prueba se han conectado, sección \ref{sec:conectarse}, al pulsar el botón \lq\lq Enviar fichero\rq\rq se abe un diálogo con el que podemos navegar por el sistema de archivos y seleccionar un fichero a enviar.
+Cuándo los alumnos que realizarán la prueba se han conectado, sección \ref{sec:conectarse}, al pulsar el botón \lq\lq Enviar fichero\rq\rq \ se abe un diálogo con el que podemos navegar por el sistema de archivos y seleccionar un fichero a enviar.
 
 \begin{center}
     \includegraphics[width=.90\linewidth]{imagenes/enviar}
@@ -255,7 +255,7 @@ Antes del comienzo de la prueba se pueden enviar tantos archivos de enunciado co
 
 \subsection{Comienzo de prueba}
 
-Cuándo el docente decide que ha llegado el momento para comenzar la prueba, pulsa el botón Comienzo prueba, esto manda una señal a todos los alumnos conectados y, desde ese momento, dejan de tener acceso a la red.
+Cuándo el docente decide que ha llegado el momento para comenzar la prueba, pulsa el botón \lq\lq Comienzo prueba\rq\rq, \ esto manda una señal a todos los alumnos conectados y, desde ese momento, dejan de tener acceso a la red.
 Antes de comenzar realiza ciertas comprobaciones, entre ellas si se tienen permisos de escritura en el directorio escogido para recibir los resultados, en caso de que no los tuviese, se informa de ello mediante un diálogo modal.
 
 \begin{center}
@@ -267,9 +267,9 @@ Antes de comenzar definitivamente la prueba, se pide confirmación para evitar p
 
 
 
-\subsubsection{Explicación pruebas temporizadas}
+\subsubsection{Pruebas temporizadas}
 
-El software drManhattan ofrece la posibilidad de definir una hora límite para la duración de la prueba, mediante el campo de texto Hora fin de examen. Cuándo comienza una prueba, se calcula el límite de tiempo y se notifica a las aplicaciones de los alumnos conectadas. Si se introduce una hora inferior a la actual se obvia y la prueba no tiene duración prefijada. El tiempo restante aparecerá en la interfaz del alumno a modo de cuenta atrás, produciendo un aviso cuando resten 5 minutos para la finalización automática.
+El software drManhattan ofrece la posibilidad de definir una hora límite para la duración de la prueba, mediante el campo de texto \lq\lq Hora fin de examen\rq\rq. \ Cuándo comienza una prueba, se calcula el límite de tiempo y se notifica a las aplicaciones de los alumnos conectadas. Si se introduce una hora inferior a la actual se obvia y la prueba no tiene duración prefijada. El tiempo restante aparecerá en la interfaz del alumno a modo de cuenta atrás, produciendo un aviso cuando resten 5 minutos para la finalización automática.
 
 \begin{center}
     \includegraphics[width=.90\linewidth]{imagenes/tiempoLimite}
@@ -293,7 +293,7 @@ Las pruebas pueden finalizar de cuatro modos distintos:
 
 \end{enumerate}
 
-La primera ocurre cuándo el profesor pulsa el botón de Fin de prueba, esto manda una señal a las aplicaciones de los alumnos indicando que se ha acabado el tiempo, no se recogerán resultados después de pulsar el botón.
+La primera ocurre cuándo el profesor pulsa el botón de \lq\lq Fin de prueba\rq\rq, \  esto manda una señal a las aplicaciones de los alumnos indicando que se ha acabado el tiempo, no se recogerán resultados después de pulsar el botón.
 
 La segunda sucede durante una prueba temporizada, cuándo se agota el tiempo destinado para la misma. Tampoco se recogen resultados después de que acabe la prueba.
 
@@ -301,12 +301,14 @@ La tercera se explica en la sección \ref{sec:finAlumno} y la cuarta en la \ref{
 
 \subsubsection{Recogida de resultados}
 
-Cuándo los alumnos envían sus resultados, la aplicación del profesor los recoge y crea un árbol de directorios tomando cómo base el establecido en el campo de texto Recibir resultados en. Dentro de ese directorio se crea otro con el nombre de la asignatura definido y a su vez, dentro de el, se crea, por cada alumno que envíe resultados, otra carpeta utilizando los apellidos y el nombre del alumno, dónde se almacena el archivo de resultados.
+Cuándo los alumnos envían sus resultados, la aplicación del profesor los recoge y crea un árbol de directorios tomando cómo base el establecido en el campo de texto \lq\lq Recibir resultados en\rq\rq. \ Dentro de ese directorio se crea otro con el nombre de la asignatura definido y a su vez, dentro de el, se crea, por cada alumno que envíe resultados, otra carpeta utilizando los apellidos y el nombre del alumno, dónde se almacena el archivo de resultados.
 
 Se realiza una comprobación de integridad del fichero utilizando el algoritmo MD5 para garantizar la falta de errores durante la transferencia.
 
 \newpage
 \section{Aplicación del alumno}
+
+En la siguiente sección se describe la aplicación del alumno, así como las funcionalidades aportadas por ella.
 
 \begin{center}
     \includegraphics[width=.90\linewidth]{imagenes/GUIAlumno}
@@ -339,7 +341,7 @@ Cuatro botones
 
 \end{itemize}
 
-Y dos etiqueta dinámica:
+Y dos etiquetas dinámicas:
 
 \begin{itemize}
 
@@ -354,19 +356,30 @@ Del mismo modo que en la interfaz del profesor, los componentes se habilitan o n
 \subsection{Conectarse}
 \label{sec:conectarse}
 
-Al pulsar el botón de Conectar, se realizan comprobaciones a los valores de los campos de texto introducidos, similares a las comprobaciones que se ejecutan en la aplicación del profesor al comenzar una prueba. Si está todo correcto la aplicación conectará con la del profesor. Se puedo comprobar ya que la etiqueta Estado cambia su valor.
+Al pulsar el botón \lq\lq Conectar\rq\rq, \ se realizan comprobaciones a los valores de los campos de texto introducidos, similares a las comprobaciones que se ejecutan en la aplicación del profesor al comenzar una prueba. Si está todo correcto la aplicación conectará con la del profesor. Se puedo comprobar ya que la etiqueta Estado cambia su valor.
+
+\begin{center}
+    \includegraphics[width=.90\linewidth]{imagenes/Conectado}
+\end{center}
 
 \subsection{Finalización de prueba}
 \label{sec:finAlumno}
 
 Cómo comentamos en la sección \ref{sec:finalizacionPrueba} el alumno puede finalizar la prueba enviando o no resultados.
 
-Para finalizar la prueba sin enviar resultados basta con pulsar el botón Finalizar, preguntará si estamos seguros y finalizará la prueba, permitiendo de nuevo el acceso a la red. Una vez que se finaliza, no se puede volver a conectar.
+Para finalizar la prueba sin enviar resultados basta con pulsar el botón \lq\lq Finalizar\rq\rq, \ preguntará si estamos seguros y finalizará la prueba, permitiendo de nuevo el acceso a la red. Una vez que se finaliza, no se puede volver a conectar.
 
 \subsubsection{Envío de resultados}
 \label{sec:finResultados}
 
-En el caso de que se deseen enviar resultados se utilizará el botón Enviar resultados y finalizar. Hay que tener en cuenta que sólo es posible mandar un único fichero de resultados, por lo tanto, si se tienen varios, hay que empaquetarlos de algún modo, un fichero .tar, por ejemplo.
+En el caso de que se deseen enviar resultados se utilizará el botón \lq\lq Enviar resultados y finalizar\rq\rq. \ Hay que tener en cuenta que sólo es posible mandar un único fichero de resultados, por lo tanto, si se tienen varios, hay que empaquetarlos de algún modo, un fichero .tar, por ejemplo.
+
+\begin{center}
+    \includegraphics[width=.90\linewidth]{imagenes/finResCorrecto}
+\end{center}
+
+Si hay algún problema en el envío del fichero, se notifica, tanto al alumno como al profesor, para que lo recoja de otro modo.
+
 
 \newpage
 \section{Protección frente a errores en el sistema}

@@ -7,7 +7,12 @@
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
-\hypersetup{colorlinks,linkcolor=blue}
+\hypersetup{colorlinks,urlcolor=blue,citecolor=blue,
+	 linkcolor=blue,filecolor=blue,pdfnewwindow,
+	pdftitle={Manual de usuario drManhattan},
+	pdfauthor={Manuel Pando Muñoz},
+	pdfsubject={Manual de usuario del software drManhattan}}
+
 
 \parskip=4mm
 
@@ -239,7 +244,7 @@ Algunos componentes aparecen deshabilitados, esto es así ya que no tiene sentid
 
 \subsection{Enviar fichero de enunciado}
 
-Cuándo los alumnos que realizarán la prueba se han conectado, sección \ref{sec:conectarse}, al pulsar el botón \lq\lq Enviar fichero\rq\rq se abe un diálogo con el que podemos navegar por el sistema de archivos y seleccionar un fichero a enviar.
+Cuándo los alumnos que realizarán la prueba se han conectado, sección \ref{sec:conectarse}, al pulsar el botón \lq\lq Enviar fichero\rq\rq \ se abe un diálogo con el que podemos navegar por el sistema de archivos y seleccionar un fichero a enviar.
 
 \begin{center}
     \includegraphics[width=.90\linewidth]{imagenes/enviar}
@@ -356,7 +361,7 @@ Del mismo modo que en la interfaz del profesor, los componentes se habilitan o n
 \subsection{Conectarse}
 \label{sec:conectarse}
 
-Al pulsar el botón \lq\lq Conectar\rq\rq, se realizan comprobaciones a los valores de los campos de texto introducidos, similares a las comprobaciones que se ejecutan en la aplicación del profesor al comenzar una prueba. Si está todo correcto la aplicación conectará con la del profesor. Se puedo comprobar ya que la etiqueta Estado cambia su valor.
+Al pulsar el botón \lq\lq Conectar\rq\rq, se realizan comprobaciones a los valores de los campos de texto introducidos, similares a las comprobaciones que se ejecutan en la aplicación del profesor al comenzar una prueba. Si está todo correcto la aplicación conectará con la del profesor. Se puedo comprobar ya que la etiqueta \lq\lq Estado\rq\rq \ cambia su valor.
 
 \begin{center}
     \includegraphics[width=.90\linewidth]{imagenes/Conectado}
@@ -384,6 +389,6 @@ Si hay algún problema en el envío del fichero, se notifica, tanto al alumno co
 \newpage
 \section{Protección frente a errores en el sistema}
 
-El software drManhattan, concretamente en la parte del alumno, es capaz de guardar su estado, es decir, si durante la realización de una prueba, algún alumno, por el motivo que sea, se ve obligado a reiniciar el sistema, cuando se vuelva a iniciar la aplicación, esta reconectará de forma automática con la aplicación del profesor, volviendo al estado previo, antes del error.
+El software drManhattan, concretamente en la parte del alumno, es capaz de guardar su estado, es decir, si durante la realización de una prueba, algún alumno, por el motivo que sea, se ve obligado a reiniciar el sistema, cuando se vuelva a iniciar la aplicación, esta reconectará de forma automática con la aplicación del profesor, volviendo al estado previo, antes del error, es decir, realizando la prueba, y por tanto, sin acceso a la red.
 
 \end{document} 

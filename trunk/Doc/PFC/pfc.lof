@@ -7,16 +7,16 @@
 \addvspace {10\p@ }
 \contentsline {xchapter}{Antecedentes}{9}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Definici\IeC {\'o}n Arquitect\IeC {\'o}nica y Dise\IeC {\~n}o Software}{11}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de despliegue del sistema}}{12}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de actividad del sistema}}{13}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de estados de la aplicaci\IeC {\'o}n del alumno}}{14}
+\contentsline {xchapter}{Definici\IeC {\'o}n Arquitect\IeC {\'o}nica y Dise\IeC {\~n}o Software}{13}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de despliegue del sistema}}{14}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de actividad del sistema}}{15}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de estados de la aplicaci\IeC {\'o}n del alumno}}{16}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Descripci\IeC {\'o}n de una iteraci\IeC {\'o}n}{17}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Aspecto de la GUI del alumno con una prueba temporizada.}}{19}
+\contentsline {xchapter}{Descripci\IeC {\'o}n de una iteraci\IeC {\'o}n}{19}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Aspecto de la GUI del alumno con una prueba temporizada.}}{21}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Construcci\'on, Implementaci\'on, Pruebas y Despliegue}{23}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Plug-in Google Web Toolkit}}{24}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Cambios en el repositorio Subversion.}}{24}
+\contentsline {xchapter}{Construcci\'on, Implementaci\'on, Pruebas y Despliegue}{25}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Plug-in Google Web Toolkit}}{26}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Cambios en el repositorio Subversion.}}{26}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Discusi\'on, Conclusiones y Trabajos Futuros}{29}
+\contentsline {xchapter}{Discusi\'on, Conclusiones y Trabajos Futuros}{31}
