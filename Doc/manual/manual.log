@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  19 JUN 2011 23:48
+This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  20 JUN 2011 13:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -647,7 +647,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.26 ...te a errores en el sistema}{19}{section.6}
+l.26 ...te a errores en el sistema}{20}{section.6}
                                                    [1
 
 ])
@@ -656,9 +656,9 @@ l.26 ...te a errores en el sistema}{19}{section.6}
 
  [2] [3]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 91.
+(Font)              <9> on input line 90.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 91.
+(Font)              <5> on input line 90.
  [4]
 <imagenes/inst1.png, id=164, 429.10312pt x 304.13625pt>
 File: imagenes/inst1.png Graphic file (type png)
@@ -720,27 +720,31 @@ File: imagenes/tiempoLimite.png Graphic file (type png)
 File: imagenes/GUIAlumno.png Graphic file (type png)
 
 <use imagenes/GUIAlumno.png> [17 <./imagenes/GUIAlumno.png (PNG copy)>]
-[18]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 377.
- [19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 377.
+<imagenes/Conectado.png, id=245, 451.6875pt x 277.78781pt>
+File: imagenes/Conectado.png Graphic file (type png)
+
+<use imagenes/Conectado.png> [18 <./imagenes/Conectado.png (PNG copy)>]
+<imagenes/finResCorrecto.png, id=252, 451.6875pt x 277.78781pt>
+File: imagenes/finResCorrecto.png Graphic file (type png)
+
+<use imagenes/finResCorrecto.png> [19 <./imagenes/finResCorrecto.png (PNG copy)
+>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 389.
+ [20]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 389.
  (./manual.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 377.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 389.
 Package rerunfilecheck Info: File `manual.out' has not changed.
-(rerunfilecheck)             Checksum: C64652BA9303265872E6A32FA34C7116;1772.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+(rerunfilecheck)             Checksum: 2DE12339700C2AD99E3DE801085B22C9;1757.
  ) 
 Here is how much of TeX's memory you used:
- 6587 strings out of 493763
- 95895 string characters out of 3148267
+ 6598 strings out of 493763
+ 96167 string characters out of 3148267
  181422 words of memory out of 3000000
- 9685 multiletter control sequences out of 15000+200000
+ 9693 multiletter control sequences out of 15000+200000
  56813 words of font info for 46 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
- 31i,8n,28p,553b,548s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 31i,8n,28p,566b,548s stack positions out of 5000i,500n,10000p,200000b,50000s
 {c:/texlive/2010/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}<c:/texlive/2010/tex
 mf-dist/fonts/type1/public/lm/lmbx10.pfb><c:/texlive/2010/texmf-dist/fonts/type
 1/public/lm/lmbx12.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/lm/lmr10.
@@ -748,10 +752,10 @@ pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/lm/lmr6.pfb><c:/texlive/2010
 /texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/texlive/2010/texmf-dist/fonts/ty
 pe1/public/lm/lmr9.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/lm/lmtt10
 .pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/lm/lmtt12.pfb>
-Output written on manual.pdf (20 pages, 1245266 bytes).
+Output written on manual.pdf (21 pages, 1354992 bytes).
 PDF statistics:
- 298 PDF objects out of 1000 (max. 8388607)
- 249 compressed objects within 3 object streams
- 52 named destinations out of 1000 (max. 500000)
- 276 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 304 PDF objects out of 1000 (max. 8388607)
+ 252 compressed objects within 3 object streams
+ 53 named destinations out of 1000 (max. 500000)
+ 286 words of extra memory for PDF output out of 10000 (max. 10000000)
 
