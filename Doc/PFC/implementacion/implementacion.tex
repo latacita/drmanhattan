@@ -107,7 +107,7 @@ Por ejemplo, la aplicación del alumno, creará en los siguientes directorios, l
         \end{itemize}
 
     Cada archivo localizado en este directorio contiene la información necesaria para que GNOME pueda crear una entrada en el menú despegable de aplicaciones.
-    
+
     \todo{añadir los fichero de doc, licencia}
 
 \end{itemize}
@@ -145,25 +145,55 @@ Para instalar, teniendo permisos de administrador:
 \section{Pruebas}
 \label{sec:implementacion:pruebas}
 
-Como se comentó en la sección \ref{sec:iteracion:pruebas} en la que se explicaban las pruebas realizadas durante una iteración, las pruebas han sido combinaciones de acciones, tanto de modo local mientras se desarrollaba, como en los laboratorios de la Facultad con el objetivo de imprimir mayor realismo en el entorno de ejecución como la carga de las aplicaciones. \todo{modificación desconexión a raíz de hablar con Esteban}
+Como se comentó en la sección \ref{sec:iteracion:pruebas} en la que se explicaban las pruebas realizadas durante una iteración, las pruebas han sido combinaciones de acciones, tanto de modo local mientras se desarrollaba, como en los laboratorios de la Facultad con el objetivo de imprimir mayor realismo en el entorno de ejecución como la carga de las aplicaciones.
+\newline
+
+\begin{enumerate}
+
+    \item Intentar conectar a una IP en la que no se está ejecutando la aplicación del profesor.
+
+    \item Sin alumnos conectados, enviar fichero de enunciado.
+
+    \item Con un alumno conectado, enviar ficheros de enunciado.
+
+    \item Con varios alumnos conectados, enviar ficheros de enunciado.
 
 
-Intentar conectar a una IP en la que no se está ejecutando la aplicación del profesor.
+    \item Iniciar prueba sin alumnos conectados.
 
-Sin alumnos conectados, enviar fichero de enunciado.
-
-Con un alumno conectado, enviar ficheros de enunciado.
-
-Con varios alumnos conectados, enviar ficheros de enunciado.
+    \item Iniciar prueba con varios alumnos conectados.
 
 
-Iniciar prueba sin alumnos conectados.
+    \item Introducir hora errónea e iniciar prueba.
 
-Iniciar prueba con varios alumnos conectados.
+    \item Iniciar prueba temporizada y esperar a que acabe el tiempo.
+
+    \item Iniciar prueba temporizada y finalizar manualmente.
 
 
-Introducir hora errónea e iniciar prueba.
+    \item Iniciar prueba normal y finalizar todos los alumnos sin resultados.
 
-Iniciar prueba temporizada y esperar a que acabe el tiempo.
+    \item Iniciar prueba normal y finalizar alumnos sin resultados y alumnos con ellos.
 
-\todo{seguir añadiendo pruebas}
+    \item Iniciar prueba normal y finalizar todos los alumnos con resultados.
+
+    \item Iniciar prueba normal y finalizar mientras hay alumnos realizando la prueba.
+
+
+
+    \item Iniciar prueba normal y reiniciar el computador de un alumno para intentar reconectar sin acabar la prueba.
+
+    \item Iniciar prueba normal, reiniciar el computador de un alumno, finalizar la prueba e intentar reconectar.
+
+
+
+    \item Iniciar prueba temporizada y reiniciar el computador de un alumno para reconectar antes de que se acabe la prueba.
+
+    \item Iniciar prueba temporizada y reiniciar el computador de un alumno para reconectar después de que se acabe la prueba.
+
+\end{enumerate}
+
+
+Esta lista contiene las pruebas de integración y validación realizadas, esto es, cuándo se prueba el funcionamiento del sistema completo para comprobar que cumple los requisitos establecidos en la tabla \ref{tabla:requisitos}.
+\newline
+
