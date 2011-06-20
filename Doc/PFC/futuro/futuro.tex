@@ -11,13 +11,33 @@
 \chapterheader{Discusi\'on, Conclusiones y Trabajos Futuros}{Discusi\'on, Conclusiones y Trabajos Futuros}
 \label{chap:futuro}
 
+\section{Conclusiones}
+\label{sec:futuro:conclusiones}
 
+Como se comentaba al principio de este documento el objetivo del proyecto era el de crear una aplicación que facilitase la realización de pruebas evaluables a los docentes, automatizando ciertas tareas que sino han de realizarse manualmente, como la recogida de resultados, con el gasto de tiempo que ello conlleva, además de tener que ser realizado secuencialmente.
+\newline
 
+Para conseguir esto, se ha pasado por una fase de investigación, para tener conocimientos suficientes del problema a solucionar, las diferentes opciones posibles para ello y poder así tomar decisiones razonadas. Esto se transformó en una planificación y un diseño del proyecto, que se ha ido exponiendo a lo largo del documento.
+\newline
 
-%cosas futuras
+La solución obtenida es una aplicación Open Source que permite, enviar archivos desde el computador del profesor a los alumnos, deshabilitar el acceso a la red durante el transcurso de la prueba, haciendo uso de iptables, software muy utilizado y probado, recoger automáticamente los resultados, comprobando la integridad de los ficheros, como principales funciones a través de interfaces visuales intuitivas y amigables.
+\newline
 
-%deshabilitar usb
+En la siguiente sección se detallan posibles mejoras o adaptaciones a realizar en la aplicación para aumentar su funcionalidad, usabilidad y atractivo en general.
 
-%integrar con algún otro sistema de control
+\section{Trabajos futuros}
+\label{sec:futuro:futuro}
 
-%permitir acceder a ciertas páginas en ciertos momentos
+Como continuación de este proyecto, en lo referido a su principal función, el mantenimiento de la integridad de las pruebas evaluables, o en el aumento de la comodidad a los docentes, pueden añadirse las siguientes líneas de desarrollo:
+
+\begin{itemize}
+
+    \item {\bfseries Deshabilitar USB:} Los dispositivos USB son otro posible aspecto que podría enturbar los resultados de una prueba, teniendo en cuenta que cada día son mas pequeños.
+        
+    \item {\bfseries Acceso restringido:} En algunos momentos puede ser deseable que los alumnos accedan a ciertos contenidos en la red, apuntes de la asignatura en una plataforma como Moodle, por ejemplo, pero no al resto de internet, que el docente pudiese especificar qué contenidos son accesibles y durante cuánto tiempo sin duda puede resultar interesante.
+    
+    \item {\bfseries Multiplataforma:} El proyecto ha sido construido íntegramente con el lenguaje de programación Java, pero el hecho de utilizar un cortafuegos propio del sistema Linux hace que no sea multiplataforma. Modificar esa parte del código y adaptarla para otros sistemas, haría que se pudiese utilizar independientemente de la plataforma, algo que es siempre atractivo.
+        
+    \item {\bfseries Integración con otras aplicaciones:} Todos sabemos que en lo referente a la seguridad informática no se puede garantizar que una aplicación sea a prueba de todo, la integración con otros sistemas, de análisis de tráfico por ejemplo, proporcionarían un aumento de la confianza en el proyecto.
+    
+\end{itemize}

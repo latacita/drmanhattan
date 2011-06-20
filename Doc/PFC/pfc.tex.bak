@@ -120,11 +120,11 @@ Faculty of Sciences}
 
 %% Detalles de implementación
 
-\input{implementacion/implementacion.tex}
+%\input{implementacion/implementacion.tex}
 
 % Cap\'itulo 7: Discusi\'on, Conclusiones y Trabajos Futuros
 
-%\input{futuro/futuro.tex}
+\input{futuro/futuro.tex}
 
 
 %%
