@@ -14,8 +14,27 @@
 
 
 
+\section{Diseño Software}
+\label{sec:futuro:futuro}
+
+Una de las principales funciones de este proyecto era hacer más cómodo el garantizar el uso correcto de la red durante las pruebas evaluables para que estas tengan algún sentido, lo pierden en el momento en que se pueden consultar las respuestas en internet, por ejemplo.
+
+
+Como continuaci´on de este PFC, en la aplicaci´on m´ovil pueden seguirse las siguientes l´ýneas
+de investigaci´on:
+
+Como continuación de este proyecto, en lo referido a su principal función, el mantenimiento de la integridad de las pruebas evaluables, pueden añadirse las siguientes líneas de desarrollo:
+
+
+
 %cosas futuras
 
 %deshabilitar usb
 
 %integrar con algún otro sistema de control
+
+%permitir acceder a ciertas páginas en ciertos momentos
+
+%multiplataforma
+
+
