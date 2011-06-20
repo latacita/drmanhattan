@@ -16,15 +16,26 @@
 
 
 \section{Construcción}
+\label{sec:implementacion:construccion}
 
 Para la construcción del sistema se ha utilizado el entorno de desarrollo Eclipse 3.5.2, en su versión para java.
 Eclipse es un IDE de código abierto, multiplataforma, en el que se pueden instalar multitud de plug-ins para aumentar sus funcionalidades. Concretamente, para la realización de este proyecto se han usado el Google Web Toolkit en su versión para eclipse 3.5, que facilita mucho la creación de interfaces gráficas de modo visual, y Subeclipse, para simplificar el trabajo con el repositorio Subversion.
+\newline
 
+En la figura \ref{fig:implementacion:GWT} se muestra la interfaz del plug-in Google Web Toolkit. En la columna de la izquierda están los componentes listados en la parte superior, y características y atributos del seleccionado en la parte inferior. En el centro tenemos la paleta de componentes y en la derecha una vista previa de la interfaz que estemos construyendo. El código generado de la interfaz utiliza los componentes de la librería Swing.
 
+\todo{revisar las imágenes, sale muy mal}
 
+\begin{figure}[width=3cm]%[width=.75\linewidth]
+    \centering
+    \includegraphics{implementacion/GWT2}
+    \caption{Plug-in Google Web Toolkit}
+    \label{fig:implementacion:GWT}
+\end{figure}
 
-Además, el %comentar lo del google code
+\todo{comentar lo del google code}
 
+Todo ello sobre el sistema operativo Ubuntu 9.10 de 32 bits y la versión de kernel 2.6.35.
 
 \section{Creación de instaladores}
 \label{sec:implementacion:instaladores}
