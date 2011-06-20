@@ -22,6 +22,8 @@
 \usepackage{pifont}
 \usepackage{graphicx}
 
+
+
 %\usepackage[spanish,activeacute]{babel}
 \usepackage[spanish]{babel}
 
@@ -93,13 +95,13 @@ Faculty of Sciences}
 %\input{introduction/introduction.tex} % Chapter 1
 
 % Cap\'itulo 2: Descripci\'on General del Proceso
-\input{planificacion/planificacion.tex}
+%\input{planificacion/planificacion.tex}
 
 % Cap\'itulo 3: Resumen del Estado del Arte
-\input{background/background.tex}
+%\input{background/background.tex}
 
 % Cap\'itulo 4: Definici\'on Arquitect\'onica y Dise\~no Software
-\input{arquitectura/arquitectura.tex}
+%\input{arquitectura/arquitectura.tex}
 
 %% Describir la arquitectura física del sistema (despliegue)
 
@@ -110,7 +112,7 @@ Faculty of Sciences}
 %% Razonar porque el software es seguro
 
 % Capítulo 5: Ejemplo de una iteración
-\input{iteracion/iteracion.tex}
+%\input{iteracion/iteracion.tex}
 
 %% Describe la que más te guste
 
@@ -122,7 +124,7 @@ Faculty of Sciences}
 
 % Cap\'itulo 7: Discusi\'on, Conclusiones y Trabajos Futuros
 
-\input{futuro/futuro.tex}
+%\input{futuro/futuro.tex}
 
 
 %%

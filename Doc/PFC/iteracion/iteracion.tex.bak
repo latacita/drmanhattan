@@ -127,6 +127,7 @@ Puede parecer que el equipo queda totalmente aislado, incluso del computador del
 
 
 \section{Pruebas}
+\label{sec:iteracion:pruebas}
 
 En esta sección se describen las pruebas realizadas en la iteración.
 \newline
@@ -160,7 +161,7 @@ Debido a la naturaleza del sistema, automatizar pruebas con una herramienta esti
 
     \begin{itemize}
 
-        \item Después de que de inicio la prueba, intentar abrir páginas web en el navegador, pings a equipos.
+        \item Después de que de inicio la prueba, en el computador del alumno, intentar abrir páginas web en el navegador, pings a equipos.
     \end{itemize}
 
 \end{itemize} 

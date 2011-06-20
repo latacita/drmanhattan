@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  15 JUN 2011 23:04
+This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  20 JUN 2011 14:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -567,10 +567,6 @@ Package minitoc Info: I0033
 (minitoc)             Writing pfc.mtc5.
 \openout3 = `pfc.mtc5'.
 
-Package minitoc Info: I0033
-(minitoc)             Writing pfc.mtc6.
-\openout3 = `pfc.mtc6'.
-
  (./pfc.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
 
@@ -864,7 +860,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 123--125
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--133
+Underfull \hbox (badness 10000) in paragraph at lines 132--134
 
  []
 
@@ -890,35 +886,41 @@ Overfull \hbox (27.69748pt too wide) in paragraph at lines 31--32
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 43--45
+Underfull \hbox (badness 10000) in paragraph at lines 38--40
 
  []
 
 [23
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 46--48
+] <implementacion/svn.jpg, id=122, 457.71pt x 136.25906pt>
+File: implementacion/svn.jpg Graphic file (type jpg)
+
+<use implementacion/svn.jpg>
+Underfull \hbox (badness 10000) in paragraph at lines 55--57
+
+ []
+
+[24 <./implementacion/GWT2.png (PNG copy)> <./implementacion/svn.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 58--60
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--51
+Underfull \hbox (badness 10000) in paragraph at lines 61--63
 
  []
 
-[24 <./implementacion/GWT2.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 100--102
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 117--119
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 103--105
+Underfull \hbox (badness 10000) in paragraph at lines 120--122
 
  []
 
-[25]) (./futuro/futuro.tex [26]
-Cap\'{\i }tulo 6.
-)
+[26])
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the pfc.maf file.
@@ -927,37 +929,35 @@ Package minitoc Info: I0009
 Package minitoc(hints) Info: I0019
 (minitoc(hints))             No hints have been written 
 (minitoc(hints))             in the pfc.log file..
- [27
-
-
-] (./pfc.aux) ) 
+ [27] (./pfc.aux) ) 
 Here is how much of TeX's memory you used:
- 4882 strings out of 493763
- 63889 string characters out of 3148267
- 145412 words of memory out of 3000000
- 7784 multiletter control sequences out of 15000+200000
+ 4883 strings out of 493763
+ 64012 string characters out of 3148267
+ 145436 words of memory out of 3000000
+ 7790 multiletter control sequences out of 15000+200000
  26827 words of font info for 67 fonts, out of 3000000 for 9000
  716 hyphenation exceptions out of 8191
- 38i,12n,43p,1247b,478s stack positions out of 5000i,500n,10000p,200000b,50000s
-{c:/texlive/2010/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1
-.enc}<c:/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/
-texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfbl1095.pfb><c:/texlive/20
-10/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2010/texmf-d
-ist/fonts/type1/public/cm-super/sfbx1095.pfb><c:/texlive/2010/texmf-dist/fonts/
-type1/public/cm-super/sfbx1200.pfb><c:/texlive/2010/texmf-dist/fonts/type1/publ
-ic/cm-super/sfbx1440.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-supe
-r/sfbx2074.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfbx2488
-.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/t
-exlive/2010/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/201
-0/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2010/texmf-di
-st/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2010/texmf-dist/fonts/t
-ype1/public/cm-super/sfsl1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/publi
-c/cm-super/sfti0900.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super
-/sfti1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on pfc.pdf (33 pages, 927730 bytes).
+ 38i,12n,43p,1247b,474s stack positions out of 5000i,500n,10000p,200000b,50000s
+{c:/texlive/2010/texmf-dist/fonts/enc/dvips/cm-super/cm-supe
+r-t1.enc}<c:/texlive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+<c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfbl1095.pfb><c:/texliv
+e/2010/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2010/tex
+mf-dist/fonts/type1/public/cm-super/sfbx1095.pfb><c:/texlive/2010/texmf-dist/fo
+nts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2010/texmf-dist/fonts/type1/
+public/cm-super/sfbx1440.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-
+super/sfbx2074.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfbx
+2488.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><
+c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive
+/2010/texmf-dist/fonts/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2010/texm
+f-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2010/texmf-dist/fon
+ts/type1/public/cm-super/sfsl1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/p
+ublic/cm-super/sfti0900.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-s
+uper/sfti1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/urw/zapfding/uzdr.pfb
+>
+Output written on pfc.pdf (33 pages, 977633 bytes).
 PDF statistics:
- 188 PDF objects out of 1000 (max. 8388607)
+ 189 PDF objects out of 1000 (max. 8388607)
  124 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
