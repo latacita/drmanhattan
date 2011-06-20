@@ -92,7 +92,7 @@ El profesor puede establecer una hora límite, llegada la cual, la prueba termin
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=.75\linewidth]{iteracion/tiempoRestante}
+    \includegraphics[width=.75\linewidth]{iteracion/tiempoRestante2}
     \caption{Aspecto de la GUI del alumno con una prueba temporizada.}
     \label{fig:iteracion:tiempoRestante}
 \end{figure}
@@ -129,7 +129,7 @@ Puede parecer que el equipo queda totalmente aislado, incluso del computador del
 \section{Pruebas}
 \label{sec:iteracion:pruebas}
 
-En esta sección se describen las pruebas realizadas en la iteración.
+En esta sección se describen las pruebas realizadas en la iteración con el objetivo de determinar si el funcionamiento de lo construido es correcto.
 \newline
 
 Debido a la naturaleza del sistema, automatizar pruebas con una herramienta estilo \emph{JUnit} es prácticamente imposible, ya que funciona a base de eventos y es distribuido, por eso, para probar la aplicación utilizo el equipo de sobremesa y un portátil, para intentar recrear el entorno del laboratorio y ejecuto secuencias de acciones para desencadenar los eventos requeridos en cada funcionalidad.

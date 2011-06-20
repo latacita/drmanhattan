@@ -107,7 +107,7 @@ Por ejemplo, la aplicación del alumno, creará en los siguientes directorios, l
         \end{itemize}
 
     Cada archivo localizado en este directorio contiene la información necesaria para que GNOME pueda crear una entrada en el menú despegable de aplicaciones.
-    
+
     \todo{añadir los fichero de doc, licencia}
 
 \end{itemize}
@@ -145,7 +145,7 @@ Para instalar, teniendo permisos de administrador:
 \section{Pruebas}
 \label{sec:implementacion:pruebas}
 
-Como se comentó en la sección \ref{sec:iteracion:pruebas} en la que se explicaban las pruebas realizadas durante una iteración, las pruebas han sido combinaciones de acciones, tanto de modo local mientras se desarrollaba, como en los laboratorios de la Facultad con el objetivo de imprimir mayor realismo en el entorno de ejecución como la carga de las aplicaciones.
+Como se comentó en la sección \ref{sec:iteracion:pruebas} en la que se explicaban las pruebas realizadas durante una iteración, las pruebas han sido combinaciones de acciones, tanto de modo local mientras se desarrollaba, como en los laboratorios de la Facultad con el objetivo de imprimir mayor realismo en el entorno de ejecución como la carga de las aplicaciones. \todo{modificación desconexión a raíz de hablar con Esteban}
 
 
 Intentar conectar a una IP en la que no se está ejecutando la aplicación del profesor.
@@ -166,4 +166,33 @@ Introducir hora errónea e iniciar prueba.
 
 Iniciar prueba temporizada y esperar a que acabe el tiempo.
 
-\todo{seguir añadiendo pruebas}
+
+Iniciar prueba normal y finalizar todos los alumnos sin resultados.
+
+Iniciar prueba normal y finalizar alumnos sin resultados y alumnos con ellos.
+
+Iniciar prueba normal y finalizar todos los alumnos con resultados.
+
+Iniciar prueba normal y finalizar mientras hay alumnos realizando la prueba.
+
+
+Iniciar prueba normal y reiniciar el computador de un alumno para intentar reconectar sin acabar la prueba.
+
+Iniciar prueba normal, reiniciar el computador de un alumno, finalizar la prueba e intentar reconectar.
+
+
+
+Iniciar prueba temporizada y reiniciar el computador de un alumno para reconectar antes de que se acabe la prueba.
+
+
+
+
+
+
+
+
+
+
+
+
+\todo{seguir añadiendo pruebas} 
