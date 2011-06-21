@@ -61,7 +61,7 @@ que será normalmente el computador asignado al docente. Dicho computador será 
 Se desea que el acceso a la red esté habilitado en las siguientes circunstancias:
 \begin{enumerate}
 	\item Al comienzo de la realización de las pruebas, de forma que el docente pueda distribuir material electrónico necesario o de interés para la realización de la prueba (e.g., manuales, el enunciado de la prueba, etc.) entre los diferentes computadores de forma cómoda y eficiente.
-	\item Cuando el alumno haya finalizado la prueba, de forma que se puedan enviar los resultados a través de la red, evitando el penoso proceso de tener que recogerlos de forma individual mediante copia en un memoria USB o dispositivo similar. En estos casos, sería además deseable, con objeto de evitar posteriores problemas, que el sistema comprobase la integridad de los archivos recibidos, es decir, que comprobase que no se han sufrido alteración alguna durante la transmisión.
+	\item Cuando el alumno haya finalizado la prueba, de forma que se puedan enviar los resultados a través de la red, evitando el tedioso proceso de tener que recogerlos de forma individual mediante copia en un memoria USB o dispositivo similar. En estos casos, sería además deseable, con objeto de evitar posteriores problemas, que el sistema comprobase la integridad de los archivos recibidos, es decir, que comprobase que no se han sufrido alteración alguna durante la transmisión.
 \end{enumerate}
 
 Durante el periodo de tiempo que un alumno esté realizando una prueba, se debe denegar el acceso a la red del computador que esté utilizando para la realización de la prueba.
@@ -98,7 +98,7 @@ Además, se guardarán registros de los eventos ocurridos en cada prueba, con el
 \newline
 
 Para comodidad del alumno, en las pruebas con hora de finalización predeterminada se mostrará en la interfaz de la aplicación los minutos restantes hasta el final.
-
+\newline
 
 %==========================================================================%
 % NOTA(Pablo): Observa el párrafo de enlace
@@ -118,12 +118,12 @@ Se ha escogido el proceso de desarrollo \emph{iterativo e incremental} que suele
 %Qué es
 La idea principal de este proceso se basa, como su nombre, en iteraciones e incrementos, que no son lo mismo.
 El software se construye mediante tareas repetitivas, \emph{iteraciones}, en las que se añaden nuevas funcionalidades progresivamente, \emph{incrementos}, para crear una versión del sistema que cumple más requisitos que la anterior. Se realizan tantas iteraciones sean necesarias hasta que todos los requisitos se hayan implementado y, por tanto, el sistema este finalizado.
-
+\newline
 
 
 \begin{figure}
     \centering
-    \includegraphics[width=10cm]{planificacion/iteracionIncremento}
+    \includegraphics[width=\linewidth]{planificacion/iteracionIncremento}
     \caption{Diferencia entre iteración e incremento.}
     \label{fig:planificacion:iteracionIncremento}
 \end{figure}
@@ -146,8 +146,14 @@ El proceso se divide en cuatro partes fundamentales:
 \end{enumerate}
 
 
+\begin{figure}[!h]
+    \centering
+    \includegraphics[]{planificacion/trabajoFases}
+    \caption{Carga de trabajo en las diferentes fases.}
+    \label{fig:planificacion:trabajoFases}
+\end{figure}
 
-Cada una de estas fases, como es lógico, puede tener más de una iteración, en función del tamaño del proyecto, con tareas propias de la etapa en que se esté, así por ejemplo, en la etapa de construcción, en cada iteración se escoge un grupo de requisitos de alto nivel, se refinan, y partiendo de la versión del sistema obtenida en la iteración anterior, se diseñan, implementan y prueban esos requisitos, creando la versión que se utilizará en la siguiente iteración.
+Cada una de estas fases, como es lógico, puede tener más de una iteración, en función del tamaño del proyecto, con tareas propias de la etapa en que se esté, así por ejemplo, en la etapa de construcción, en cada iteración se escoge un grupo de requisitos de alto nivel, se refinan, y partiendo de la versión del sistema obtenida en la iteración anterior, se diseñan, implementan y prueban esos requisitos, creando la versión que se utilizará en la siguiente iteración. En la figura \ref{fig:planificacion:trabajoFases} se muestra una aproximación de lo que sería la carga de trabajo que requieren las distintas tareas en función de la etapa en que se encuentre el proyecto.
 \newline
 
 Al finalizar el proceso obtenemos tanto el código de la aplicación, como modelos y documentación de la misma que se van creando a lo largo de las iteraciones.
@@ -169,19 +175,12 @@ Las principales razones por las que se ha escogido este tipo de proceso y no otr
 \end{itemize}
 
 
-\begin{figure}
-    \centering
-    \includegraphics[]{planificacion/trabajoFases}
-    \caption{Carga de trabajo en las diferentes fases.}
-    \label{fig:planificacion:trabajoFases}
-\end{figure}
-
 
 De la primera fase, \emph{iniciación}, la descripción funcional detallando el alcance del sistema está descrita en la sección \ref{sec:planificacion:descFuncional}, a continuación se muestra un diagrama de casos de uso, basado en esa descripción y en la siguiente sección se describen los requisitos de alto nivel extraídos.
 
-\begin{figure}
+\begin{figure}[!h]
     \centering
-    \includegraphics[width=10cm]{planificacion/casosUsoSistema}
+    \includegraphics[width=\linewidth]{planificacion/casosUsoSistema2}%[width=.90\linewidth]{planificacion/casosUsoSistema}
     \caption{Diagrama de casos de uso del sistema}
     \label{fig:planificacion:casosUso}
 \end{figure}
