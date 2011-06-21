@@ -23,7 +23,7 @@ En el presente capítulo se presentan, mediante diagramas UML, la arquitectura f
 En esta sección se describe la arquitectura física del sistema mediante un diagrama de despliegue.
 \begin{figure}
     \centering
-    \includegraphics[width=.75\linewidth]{arquitectura/despliegueSistema}
+    \includegraphics[width=\linewidth]{arquitectura/despliegueSistema2}
     \caption{Diagrama de despliegue del sistema}
     \label{fig:arquitectura:despliegueSistema}
 \end{figure}
@@ -47,22 +47,38 @@ A su vez, la aplicación del alumno interactúa con un único demonio del sistem
 \section{Diseño Software}
 \label{sec:arquitectura:diseno}
 
-En está sección se muestra un diagrama de actividad que resume las posibles interacciones que tanto el alumno como el profesor realizan con sus respectivas aplicaciones durante el trascurso normal de una prueba.
+En está sección se muestra un diagrama de actividad que resume las posibles interacciones que tanto el alumno como el profesor realizan con sus respectivas aplicaciones durante el trascurso normal de una prueba y un diagrama de estados para clarificar la aplicación del alumno.
 \newline
+
 
 \begin{figure}
     \centering
-    \includegraphics[width=12cm]{arquitectura/actividadSistema}
+    \includegraphics[width=\linewidth]{arquitectura/actividadSistema3}
     \caption{Diagrama de actividad del sistema}
     \label{fig:arquitectura:actividadSistema}
 \end{figure}
 
 
-Vemos que se siguen los pasos descritos en la sección \ref{sec:planificacion:descFuncional}
+Vemos en la figura \ref{fig:arquitectura:actividadSistema} que se siguen los pasos descritos en la sección \ref{sec:planificacion:descFuncional}
 
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{arquitectura/estadosAlumno2}
+    \caption{Diagrama de estados de la aplicación del alumno}
+    \label{fig:arquitectura:estadosAlumno}
+\end{figure}
+
+
+En la figura \ref{fig:arquitectura:estadosAlumno} se describen los estados por los que puede pasar la aplicación del alumno. Se corresponden directamente con el estado en que se encuentra la prueba.
+
+
+\section{Seguridad del software}
+\label{sec:arquitectura:seguro}
 
 %% Razonar porque el software es seguro
-La principal funcionalidad de la aplicación es la de denegar el acceso a la red en los computadores de los alumnos que están realizando la prueba, mientras la prueba esté en marcha, sin necesidad de apagar el router o switch del laboratorio. Esto se consigue por medio de iptables, cambiando la política de los paquetes salientes una vez que empieza la prueba y hasta que acaba.
+La principal funcionalidad de la aplicación es la de denegar el acceso a la red en los computadores de los alumnos que están realizando la prueba, mientras la prueba esté en marcha, sin necesidad de apagar el router o switch del laboratorio. Esto se consigue por medio de iptables, sección \ref{sec:introduction:iptables}, cambiando la política de los paquetes salientes una vez que empieza la prueba y hasta que acaba.
 \newline
 
 Por defecto iptables permite todo el tráfico que entre y salga del equipo, modificando las reglas para que deseche cualquier paquete destinado a cualquier equipo, conseguimos que no se pueda realizar ninguna petición a ningún nodo de la red, y, por tanto, tampoco recibiremos el contenido de la posible respuesta, el equipo del alumno queda aislado del resto.
@@ -71,15 +87,10 @@ Por defecto iptables permite todo el tráfico que entre y salga del equipo, modi
 A la hora de volver a permitir el acceso a la red, basta con modificar la política para el tratamiento de los paquetes salientes y restaurarla al estado anterior. Un alumno corriente no puede realizar esta operación ya que son necesarios privilegios de administrador para ello.
 \newline
 
+Para garantizar la imposibilidad de acceder a la red por parte del alumno, aunque se haya reiniciado el sistema, a propósito o por algún error, la aplicación es capaz de guardar el estado en el que se encontraba y cuándo se vuelva a iniciar, lo recuperará, como estaría realizando la prueba, bloquearía el acceso a la red, por tanto, incluso reiniciando el computador durante el transcurso de la prueba no se conseguiría acceso a la red.
+\newline
+
+
 Otro punto importante es el de la recogida de resultados automática, se ha de garantizar que el archivo no se ha corrompido a lo largo de la transferencia, para ello se realizan, tanto en el equipo que envía el fichero como en el que lo recibe, firmas MD5 al mismo para comprobar que no ha habido errores en la transferencia.
 
 
-\begin{figure}
-    \centering
-    \includegraphics[width=12cm]{arquitectura/estadosAlumno}
-    \caption{Diagrama de estados de la aplicación del alumno}
-    \label{fig:arquitectura:estadosAlumno}
-\end{figure}
-
-
-En la figura \ref{fig:arquitectura:estadosAlumno} se describen los estados por los que puede pasar la aplicación del alumno. Se corresponden directamente con el estado en que se encuentra la prueba. 

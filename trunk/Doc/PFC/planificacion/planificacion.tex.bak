@@ -61,7 +61,7 @@ que será normalmente el computador asignado al docente. Dicho computador será 
 Se desea que el acceso a la red esté habilitado en las siguientes circunstancias:
 \begin{enumerate}
 	\item Al comienzo de la realización de las pruebas, de forma que el docente pueda distribuir material electrónico necesario o de interés para la realización de la prueba (e.g., manuales, el enunciado de la prueba, etc.) entre los diferentes computadores de forma cómoda y eficiente.
-	\item Cuando el alumno haya finalizado la prueba, de forma que se puedan enviar los resultados a través de la red, evitando el penoso proceso de tener que recogerlos de forma individual mediante copia en un memoria USB o dispositivo similar. En estos casos, sería además deseable, con objeto de evitar posteriores problemas, que el sistema comprobase la integridad de los archivos recibidos, es decir, que comprobase que no se han sufrido alteración alguna durante la transmisión.
+	\item Cuando el alumno haya finalizado la prueba, de forma que se puedan enviar los resultados a través de la red, evitando el tedioso proceso de tener que recogerlos de forma individual mediante copia en un memoria USB o dispositivo similar. En estos casos, sería además deseable, con objeto de evitar posteriores problemas, que el sistema comprobase la integridad de los archivos recibidos, es decir, que comprobase que no se han sufrido alteración alguna durante la transmisión.
 \end{enumerate}
 
 Durante el periodo de tiempo que un alumno esté realizando una prueba, se debe denegar el acceso a la red del computador que esté utilizando para la realización de la prueba.
@@ -237,7 +237,7 @@ En concreto, se han identificado los requisitos de alto nivel para nuestro siste
 	R01 & Un computador de la red debe poder ser designado como \emph{Watchman}.
 	\\ \hline
 
-	\\ R02 & Todos los computadores que no sean \emph{Watchman} serán computadores
+	R02 & Todos los computadores que no sean \emph{Watchman} serán computadores
 	normales, y podrán ser utilizados para la realización de las pruebas evaluables.
 	\\ \hline
 
