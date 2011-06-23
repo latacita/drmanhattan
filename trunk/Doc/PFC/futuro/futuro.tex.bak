@@ -25,10 +25,14 @@ La solución obtenida es una aplicación Open Source que permite, enviar archivo
 
 
 Una de las lecciones que considero más importantes aprendidas a lo largo del desarrollo de este proyecto de fin de carrera, es la importancia de tener unos requisitos claros y definidos antes de planificar el diseño y construcción de la aplicación y tener un análisis y un diseño correcto y claro antes de codificar realmente el software y cómo el cambio en requisitos en fases avanzadas del proyecto puede suponer muchas horas de trabajo extra, en comparación con las primeras fases.
+\newline
 
-Durante la realización de las pruebas descritas en la sección \ref{sec:implementacion:pruebas} se encontraba presente el administrador de sistemas de la Facultad, que propuso la funcionalidad de recuperar el estado frente a reinicios del sistema, esto realmente no significa un cambio en uno de los requisitos, sino la adición de uno nuevo, y gracias a la metodología usada para la construcción, que es flexible y prevé posibles cambios en los requisitos el tiempo extra de codificación no fue mucho, comparado con lo que podría haber sido de utilizar una metodología en cascada.
+Merece la pena \lq\lq perder\rq\rq \ el tiempo revisando los requisitos y sus posibles incongruencias antes de empezar con la codificación.
+\newline
 
 
+Durante la realización de las pruebas descritas en la sección \ref{sec:implementacion:pruebas} se encontraba presente el administrador de sistemas de la Facultad, que propuso la funcionalidad de recuperar el estado frente a reinicios del sistema, parecía algo interesante añadirlo a la aplicación, así que se hizo. Esto realmente no significa un cambio en uno de los requisitos, sino la adición de uno nuevo, y gracias a la metodología usada para la construcción, que es flexible y prevé posibles cambios en los requisitos, el tiempo extra de codificación y diseño no fue mucho, comparado con lo que podría haber sido de utilizar una metodología en cascada.
+\newline
 
 En la siguiente sección se detallan posibles mejoras o adaptaciones a realizar en la aplicación para aumentar su funcionalidad, usabilidad y atractivo en general.
 

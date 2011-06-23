@@ -98,7 +98,7 @@ Además, se guardarán registros de los eventos ocurridos en cada prueba, con el
 \newline
 
 Para comodidad del alumno, en las pruebas con hora de finalización predeterminada se mostrará en la interfaz de la aplicación los minutos restantes hasta el final.
-
+\newline
 
 %==========================================================================%
 % NOTA(Pablo): Observa el párrafo de enlace
@@ -118,12 +118,12 @@ Se ha escogido el proceso de desarrollo \emph{iterativo e incremental} que suele
 %Qué es
 La idea principal de este proceso se basa, como su nombre, en iteraciones e incrementos, que no son lo mismo.
 El software se construye mediante tareas repetitivas, \emph{iteraciones}, en las que se añaden nuevas funcionalidades progresivamente, \emph{incrementos}, para crear una versión del sistema que cumple más requisitos que la anterior. Se realizan tantas iteraciones sean necesarias hasta que todos los requisitos se hayan implementado y, por tanto, el sistema este finalizado.
-
+\newline
 
 
 \begin{figure}
     \centering
-    \includegraphics[width=10cm]{planificacion/iteracionIncremento}
+    \includegraphics[width=\linewidth]{planificacion/iteracionIncremento}
     \caption{Diferencia entre iteración e incremento.}
     \label{fig:planificacion:iteracionIncremento}
 \end{figure}
@@ -146,8 +146,14 @@ El proceso se divide en cuatro partes fundamentales:
 \end{enumerate}
 
 
+\begin{figure}[!h]
+    \centering
+    \includegraphics[]{planificacion/trabajoFases}
+    \caption{Carga de trabajo en las diferentes fases.}
+    \label{fig:planificacion:trabajoFases}
+\end{figure}
 
-Cada una de estas fases, como es lógico, puede tener más de una iteración, en función del tamaño del proyecto, con tareas propias de la etapa en que se esté, así por ejemplo, en la etapa de construcción, en cada iteración se escoge un grupo de requisitos de alto nivel, se refinan, y partiendo de la versión del sistema obtenida en la iteración anterior, se diseñan, implementan y prueban esos requisitos, creando la versión que se utilizará en la siguiente iteración.
+Cada una de estas fases, como es lógico, puede tener más de una iteración, en función del tamaño del proyecto, con tareas propias de la etapa en que se esté, así por ejemplo, en la etapa de construcción, en cada iteración se escoge un grupo de requisitos de alto nivel, se refinan, y partiendo de la versión del sistema obtenida en la iteración anterior, se diseñan, implementan y prueban esos requisitos, creando la versión que se utilizará en la siguiente iteración. En la figura \ref{fig:planificacion:trabajoFases} se muestra una aproximación de lo que sería la carga de trabajo que requieren las distintas tareas en función de la etapa en que se encuentre el proyecto.
 \newline
 
 Al finalizar el proceso obtenemos tanto el código de la aplicación, como modelos y documentación de la misma que se van creando a lo largo de las iteraciones.
@@ -169,19 +175,12 @@ Las principales razones por las que se ha escogido este tipo de proceso y no otr
 \end{itemize}
 
 
-\begin{figure}
-    \centering
-    \includegraphics[]{planificacion/trabajoFases}
-    \caption{Carga de trabajo en las diferentes fases.}
-    \label{fig:planificacion:trabajoFases}
-\end{figure}
-
 
 De la primera fase, \emph{iniciación}, la descripción funcional detallando el alcance del sistema está descrita en la sección \ref{sec:planificacion:descFuncional}, a continuación se muestra un diagrama de casos de uso, basado en esa descripción y en la siguiente sección se describen los requisitos de alto nivel extraídos.
 
-\begin{figure}
+\begin{figure}[!h]
     \centering
-    \includegraphics[width=10cm]{planificacion/casosUsoSistema}
+    \includegraphics[width=\linewidth]{planificacion/casosUsoSistema2}%[width=.90\linewidth]{planificacion/casosUsoSistema}
     \caption{Diagrama de casos de uso del sistema}
     \label{fig:planificacion:casosUso}
 \end{figure}
@@ -283,6 +282,7 @@ En concreto, se han identificado los requisitos de alto nivel para nuestro siste
 \end{table}
 
 \section{Iteraciones}
+\label{sec:planificacion:iteraciones}
 
 En esta sección se describen las iteraciones previstas para el desarrollo de la aplicación.
 
@@ -328,29 +328,21 @@ En este capítulo se ha descrito el ámbito funcional del sistema y la metodolog
 \newline
 
 
-% Los requisitos R01 y R02 están implementados en arquitectura del sistema, no son
-% funcionalidades.
+
+\section{Construcción}
+\label{sec:despliegue:construccion}
+
+Para la construcción del sistema se ha utilizado el entorno de desarrollo Eclipse 3.5.2, en su versión para java.
+Eclipse es un IDE de código abierto, multiplataforma, en el que se pueden instalar multitud de plug-ins para aumentar sus funcionalidades. Concretamente, para la realización de este proyecto se han usado el Google Web Toolkit en su versión para eclipse 3.5, que facilita mucho la creación de interfaces gráficas de modo visual, y Subeclipse, para simplificar el trabajo con el repositorio Subversion.
+\newline
+
+El código generado de la interfaz utiliza los componentes de la librería Swing.
 
 
-%Iteraciones previstas
-
-% Iteración 1: Crear un minisistema distribuido
-%R06, R07 - En la primera iteración la aplicación del alumno se podrá conectar al watchman para esperar el inicio de la prueba, envío de ficheros etc... y el profesor es capaz de enviar el enunciado.
-
-% Iteración 2: Denegar acceso a red una vez comenzado el examen
-%R03, R05, R10, R11 - En la segunda iteración el profesor puede establecer una hora límite e indicar el inicio de la prueba. La aplicación del alumno es capaz de denegar el acceso a la red cuando se inicia la prueba y en caso de que la duración este prefijada, consultar el tiempo restante
+Google Code es un servicio de alojamiento de proyectos ofrecido por Google, que permite alojar código de Subversion de modo que se puede crear fácilmente un sistema de control de cambios, muy útil si se quiere regresar a un estado anterior del programa, recuperar algún objeto borrado, etc.
+\newline
 
 
-%Iteración 3: Habilitar red y enviar resultados
-%R04, R08, R09, R12 - En la tercera iteración se permite al profesor finalizar la prueba de modo general. Del mismo modo, cada alumno puede finalizar la prueba por su cuenta y enviar su archivo de resultados al computador del profesor. La aplicación del alumno, cuando este finaliza la prueba, habilita el acceso a la red.
 
-% Los requisitos R01 y R02 están implementados en arquitectura del sistema, no son
-% funcionalidades.
-
-% Iteración 4:
-% R13: Se implementa tanto en el caso de que el profesor envíe el enunciado, como cuando reciba % los resultados.
-
-% Iteración 5:
-% R14: Cuando en la aplicación ocurre algo de lo que se deseen guardar logs se implementará con % independencia de la iteración en la que nos encontremos.
-
+Todo ello sobre el sistema operativo Ubuntu 9.10 de 32 bits y la versión de kernel 2.6.35.
 
