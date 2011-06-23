@@ -1,0 +1,106 @@
+%==================================================================%
+% Author : Pando Muñoz, Manuel                                     %
+% Sánchez Barreiro, Pablo                                          %
+% Version: 1.0, 02/03/2011                                         %
+%                                                                  %
+% Memoria del Proyecto Fin de Carrera                              %
+% Archivo raíz para el capítulo de iteración1                      %
+%==================================================================%
+
+\chapterheader{Primera iteración}{Descripción de una iteración}
+\label{chap:iteracion1}
+
+\chaptertoc
+
+En el siguiente capítulo se describe lo realizado en la primera iteración de la fase de construcción.
+
+La base de la que se parte son los resultados de las iteraciones anteriores, correspondientes a las fases de iniciación y elaboración, es decir, los requisitos del sistema y su arquitectura.
+
+De acuerdo con lo planificado en la sección \ref{sec:planificacion:iteraciones}, el objetivo de esta iteración es el de crear la base del sistema distribuido, implementando los requisitos de la tabla \ref{tabla:iteracion1:requisitosObjetivo} que son el subconjunto de los casos de uso mostrados en la figura \ref{fig:iteracion1:casosUso}.
+
+
+\begin{table}
+    \begin{tabular}{|c|p{10cm}|}
+        \hline
+        \textbf{Identificador} & \textbf{Descripción}
+        \\ \hline
+
+        R01 & Un computador de la red debe poder ser designado como \emph{Watchman}.
+        \\ \hline
+
+        R02 & Todos los computadores que no sean \emph{Watchman} serán computadores
+        normales, y podrán ser utilizados para la realización de las pruebas evaluables.
+        \\ \hline
+
+        R06 & El profesor debe ser capaz desde el \emph{Watchman} de enviar el fichero de enunciado al resto de computadores.
+        \\ \hline
+
+        R07 & El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}.
+        \\ \hline
+
+        R13 & La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
+        \\ \hline
+
+    \end{tabular}
+    \label{tabla:iteracion1:requisitosObjetivo}
+    \caption{Requisitos objetivo de la iteración}
+\end{table}
+
+
+
+\begin{table}
+    \begin{tabular}{|c|p{10cm}|}
+        \hline
+        \textbf{Identificador} & \textbf{Descripción}
+        \\ \hline
+
+        R01 & Un computador de la red debe poder ser designado como \emph{Watchman}.
+        \\ \hline
+
+        R02 & Todos los computadores que no sean \emph{Watchman} serán computadores
+        normales, y podrán ser utilizados para la realización de las pruebas evaluables.
+        \\ \hline
+
+        R06 & El profesor debe ser capaz desde el \emph{Watchman} de enviar el fichero de enunciado al resto de computadores.
+        \\ \hline
+
+        R07 & El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}.
+        \\ \hline
+        
+        R07.1 & La identificación necesaria para la conexión del \emph{Watchman} se realizará por medio de su IP.
+        \\ \hline
+        
+        R07.2 & Para una correcta conexión son necesarios datos del alumno, nombre y apellidos.
+        \\ \hline
+        
+        R07.2 & Para una correcta conexión es necesario que el alumno indique en que directorio desea recibir el anunciado en caso de que lo haya.
+        \\ \hline
+
+        R13 & La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
+        \\ \hline
+        
+        R13.1 & Para la comprobación de integridad de los archivos se usarán firmas MD5.
+        \\ \hline
+
+    \end{tabular}
+    \label{tabla:iteracion1:requisitosObjetivo}
+    \caption{Requisitos objetivo de la iteración}
+\end{table}
+
+
+
+
+
+
+
+
+
+\begin{figure}[]
+    \centering
+    \includegraphics[width=.90\linewidth]{iteracion1/casosUso}
+    \caption{Casos de uso a implementar}
+    \label{fig:iteracion1:casosUso}
+\end{figure}
+
+
+En las siguientes secciones se describen los incrementos realizados para la implementación.

@@ -1,0 +1,210 @@
+%==================================================================%
+% Author : Pando Muñoz, Manuel                                     %
+% Sánchez Barreiro, Pablo                                          %
+% Version: 1.0, 02/03/2011                                         %
+%                                                                  %
+% Memoria del Proyecto Fin de Carrera                              %
+% Archivo raíz para el capítulo de iteración1                      %
+%==================================================================%
+
+\chapterheader{Primera iteración}{Descripción de una iteración}
+\label{chap:iteracion1}
+
+\chaptertoc
+
+En el siguiente capítulo se describe lo realizado en la primera iteración de la fase de construcción.
+\newline
+
+La base de la que se parte son los resultados de las iteraciones anteriores, correspondientes a las fases de iniciación y elaboración, es decir, los requisitos del sistema y su arquitectura.
+\newline
+
+De acuerdo con lo planificado en la sección \ref{sec:planificacion:iteraciones}, el objetivo de esta iteración es el de crear la base del sistema distribuido, implementando los requisitos de la tabla \ref{tabla:iteracion1:requisitosObjetivo} que son el subconjunto de los casos de uso mostrados en la figura \ref{fig:iteracion1:casosUso}.
+\newline
+
+\begin{table}
+    \begin{tabular}{|c|p{10cm}|}
+        \hline
+        \textbf{Identificador} & \textbf{Descripción}
+        \\ \hline
+
+        R01 & Un computador de la red debe poder ser designado como \emph{Watchman}.
+        \\ \hline
+
+        R02 & Todos los computadores que no sean \emph{Watchman} serán computadores
+        normales, y podrán ser utilizados para la realización de las pruebas evaluables.
+        \\ \hline
+
+        R06 & El profesor debe ser capaz desde el \emph{Watchman} de enviar el fichero de enunciado al resto de computadores.
+        \\ \hline
+
+        R07 & El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}.
+        \\ \hline
+
+        R13 & La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
+        \\ \hline
+
+    \end{tabular}
+    \label{tabla:iteracion1:requisitosObjetivo}
+    \caption{Requisitos objetivo de la iteración}
+\end{table}
+
+El primer paso en una iteración de la fase de construcción de acuerdo a la metodología es refinar los requisitos de alto nivel a implementar, con lo que obtenemos la tabla \ref{tabla:iteracion1:requisitosObjetivoRefinados}
+
+\begin{table}
+    \begin{tabular}{|c|p{10cm}|}
+        \hline
+        \textbf{Identificador} & \textbf{Descripción}
+        \\ \hline
+
+        R01 & Un computador de la red debe poder ser designado como \emph{Watchman}.
+        \\ \hline
+
+        R02 & Todos los computadores que no sean \emph{Watchman} serán computadores
+        normales, y podrán ser utilizados para la realización de las pruebas evaluables.
+        \\ \hline
+
+        R06 & El profesor debe ser capaz desde el \emph{Watchman} de enviar el fichero de enunciado al resto de computadores.
+        \\ \hline
+        
+        R06.1 & El profesor escogerá el fichero a enviar con un diálogo desde la aplicación.
+        \\ \hline
+        
+        R06.2 & Solamente es posible transferir un fichero a la vez.
+        \\ \hline
+
+        R07 & El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}.
+        \\ \hline
+        
+        R07.1 & La identificación del equipo necesaria para la conexión del \emph{Watchman} se realizará por medio de la IP.
+        \\ \hline
+        
+        R07.2 & El \emph{Watchman} debe soportar conexiones simultaneas.
+        \\ \hline
+        
+        R07.3 & Para una correcta conexión son necesarios datos del alumno, nombre y apellidos.
+        \\ \hline
+        
+        R07.4 & Para una correcta conexión es necesario que el alumno indique en que directorio desea recibir el enunciado en caso de que lo haya.
+        \\ \hline
+        
+        R07.4.1 & El alumno ha de tener permisos de escritura en el directorio que seleccione.
+        \\ \hline
+
+        R13 & La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
+        \\ \hline
+        
+        R13.1 & Para la comprobación de integridad de los archivos se usarán firmas MD5.
+        \\ \hline
+
+    \end{tabular}
+    \label{tabla:iteracion1:requisitosObjetivoRefinados}
+    \caption{Requisitos objetivo refinados de la iteración}
+\end{table}
+
+
+\begin{figure}[]
+    \centering
+    \includegraphics[width=.90\linewidth]{iteracion1/casosUso}
+    \caption{Casos de uso a implementar}
+    \label{fig:iteracion1:casosUso}
+\end{figure}
+
+
+En las siguientes secciones se describen los incrementos realizados para la implementación.
+
+
+\section{Interfaces gráficas}
+
+Los requisitos R01 y R02 no reflejan funcionalidades que ha de tener el sistema, sino que tratan sobre la arquitectura del mismo. Como se ha comentado es un software distribuido, así que tenemos dos aplicaciones distintas. Las interfaces diseñadas para estas aplicaciones se muestran en la imagen \ref{fig:iteracion1:GUIProf} la que utilizará el profesor y en la \ref{fig:iteracion1:GUIAlu} la que utilizará el alumno.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.90\linewidth]{iteracion1/GUIProfesor}
+    \caption{Interfaz de la aplicación profesor}
+    \label{fig:iteracion1:GUIProf}
+\end{figure}
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.90\linewidth]{iteracion1/GUIAlumno}
+    \caption{Interfaz de la aplicación alumno}
+    \label{fig:iteracion1:GUIAlu}
+\end{figure}
+
+
+
+\section{Conexión}
+\label{sec:iteracion1:conexion}
+
+En esta sección se comenta el proceso para implementar el requisito R07 \lq \lq El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}\rq \rq \ el caso de uso \lq \lq Conectarse\rq \rq \ representado en el diagrama de secuencia de la imagen \ref{fig:iteracion1:casosUso}. \todo{el resto de diagramas de cada caso de uso se encuentran en el CD carpeta...}
+\newline
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.90\linewidth]{iteracion1/secConectar}
+    \caption{Diagrama de secuencia caso de uso conectar}
+    \label{fig:iteracion1:casosUso}
+\end{figure}
+
+En este incremento la aplicación del alumno debe, dada la IP del equipo dónde se está ejecutando el computador del profesor, establecer una conexión con el. Este es un punto básico del sistema, si no se es capaz de establecer correctamente una conexión, las dos aplicaciones no podrán comunicarse y no funcionará nada. 
+
+Para que se pueda establecer la conexión se utilizan las clases \lq \lq ServerSocket\rq \rq \  y \lq \lq Socket \rq \rq, de la librería \lq \lq java.net \rq \rq. Con la primera hacemos que la aplicación del profesor espere nuevas conexiones de alumnos y con la segunda creamos realmente la conexión desde la aplicación del alumno, partiendo de la IP proporcionada.
+
+
+\section{Envío de ficheros}
+\label{sec:iteracion1:envio}
+
+Una vez que los alumnos están conectados correctamente el profesor puede enviarles un enunciado o ficheros necesarios para la realización de la prueba y el sistema ha de poder detectar errores en la transferencia de dichos ficheros.
+\newline
+\todo{ampliarlo de algún modo}
+
+\section{Pruebas}
+
+\todo{el tema de que las pruebas unitarias se sobreentienden}
+
+Después de finalizar la codificación de las funcionalidades descritas en las secciones anteriores es el turno para las pruebas. 
+\newline
+
+Debido a la naturaleza del sistema, automatizar pruebas con una herramienta estilo \emph{JUnit} es prácticamente imposible, ya que funciona a base de eventos y es distribuido, por eso, para probar la aplicación se utilizan secuencias de acciones con el fin de desencadenar los eventos requeridos en cada funcionalidad. En esta iteración se realizan las siguientes:
+
+\begin{itemize}
+
+
+    \item {\bfseries R07} El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}.
+
+    \begin{itemize}
+        \item Prueba: Intentar conectarse a un equipo en el que no se ejecuta la aplicación del profesor.
+        \item Objetivo: La aplicación responde correctamente ante direcciones erróneas.
+        \newline
+        
+        \item Prueba: Conectarse al equipo en el que se está ejecutando la aplicación del profesor.
+        \item Objetivo: La aplicación conecta correctamente.
+        \newline
+        
+        \item Prueba: Conectar varios alumnos al profesor.
+        \item Objetivo: La aplicación del profesor soporta correctamente varios alumnos conectados.
+        
+    \end{itemize}
+
+    \item {\bfseries R06} -  El profesor debe ser capaz desde el \emph{Watchman} de enviar el fichero de enunciado al resto de computadores.
+
+    \item  {\bfseries R13} La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
+
+    \begin{itemize}
+
+        \item Prueba: Intentar enviar un fichero sin alumnos conectados.
+        \item Objetivo: La aplicación no produce errores porque no haya alumnos conectados.
+        \newline
+        
+        \item Prueba: Enviar un fichero a varios alumnos conectados.
+        \item Objetivo: Cada alumno recibe correctamente una copia del fichero original.
+
+    \end{itemize}
+
+\end{itemize}
+
+
+En el siguiente capítulo se describe la segunda iteración de la fase de construcción que tiene su base en lo generado en la iteración descrita a lo largo de este capítulo.
+

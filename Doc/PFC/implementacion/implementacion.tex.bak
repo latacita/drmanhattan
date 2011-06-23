@@ -7,50 +7,17 @@
 % Archivo raíz para el capítulo de implementación                  %
 %==================================================================%
 
-\chapterheader{Construcci\'on, Implementaci\'on, Pruebas y Despliegue}{Construcci\'on, Implementaci\'on, Pruebas y Despliegue}
-\label{chap:implementacion}
+\chapterheader{Despliegue y aceptación}{Despliegue y aceptación}
+\label{chap:despliegue}
 
 \chaptertoc
 
 \todo{introducción}
 
 
-\section{Construcción}
-\label{sec:implementacion:construccion}
 
-Para la construcción del sistema se ha utilizado el entorno de desarrollo Eclipse 3.5.2, en su versión para java.
-Eclipse es un IDE de código abierto, multiplataforma, en el que se pueden instalar multitud de plug-ins para aumentar sus funcionalidades. Concretamente, para la realización de este proyecto se han usado el Google Web Toolkit en su versión para eclipse 3.5, que facilita mucho la creación de interfaces gráficas de modo visual, y Subeclipse, para simplificar el trabajo con el repositorio Subversion.
-\newline
-
-En la figura \ref{fig:implementacion:GWT} se muestra la interfaz del plug-in Google Web Toolkit. En la columna de la izquierda están los componentes listados en la parte superior, y características y atributos del seleccionado en la parte inferior. En el centro tenemos la paleta de componentes y en la derecha una vista previa de la interfaz que estemos construyendo. El código generado de la interfaz utiliza los componentes de la librería Swing.
-
-\todo{revisar las imágenes, sale muy mal}
-
-\begin{figure}[width=3cm]%[width=.75\linewidth]
-    \centering
-    \includegraphics{implementacion/GWT2}
-    \caption{Plug-in Google Web Toolkit}
-    \label{fig:implementacion:GWT}
-\end{figure}
-
-\todo{comentar lo del google code}
-
-Google Code es un servicio de alojamiento de proyectos ofrecido por Google, que permite alojar código de Subversion de modo que se puede crear fácilmente un sistema de control de cambios, muy útil si se quiere regresar a un estado anterior del programa, recuperar algún objeto borrado, etc.
-\newline
-
-\begin{figure}
-    \centering
-    \includegraphics[width=.75\linewidth]{implementacion/svn}
-    \caption{Cambios en el repositorio Subversion.}
-    \label{fig:implementacion:subversion}
-\end{figure}
-
-
-
-Todo ello sobre el sistema operativo Ubuntu 9.10 de 32 bits y la versión de kernel 2.6.35.
-
-\section{Creación de instaladores}
-\label{sec:implementacion:instaladores}
+\section{Despliegue}
+\label{sec:despliegue:despliegue}
 
 Para que la aplicación pueda ser probada de un modo cómodo fuera del ambiente de desarrollo se hace necesaria la creación de instaladores. Esto se puede hacer, por ejemplo, con el comando \emph{dpkg} en sistemas Linux derivados de Debian, ya que con el se crear archivos .deb. En nuestro caso se han de crear dos instaladores, uno para la aplicación del profesor, y otro para la aplicación de los alumnos.
 \newline
@@ -143,56 +110,59 @@ Para instalar, teniendo permisos de administrador:
 
 
 \section{Pruebas}
-\label{sec:implementacion:pruebas}
+\label{sec:despliegue:pruebas}
 
-Como se comentó en la sección \ref{sec:iteracion:pruebas} en la que se explicaban las pruebas realizadas durante una iteración, las pruebas han sido combinaciones de acciones, tanto de modo local mientras se desarrollaba, como en los laboratorios de la Facultad con el objetivo de imprimir mayor realismo en el entorno de ejecución como la carga de las aplicaciones. \todo{modificación desconexión a raíz de hablar con Esteban}
+Como se comentó en la sección \ref{sec:iteracion:pruebas} en la que se explicaban las pruebas realizadas durante una iteración, las pruebas han sido combinaciones de acciones, tanto de modo local mientras se desarrollaba, como en los laboratorios de la Facultad con el objetivo de imprimir mayor realismo en el entorno de ejecución como la carga de las aplicaciones.
+\newline
 
+\todo{poner el resultado y el resultado esperado en cada prueba}
 
-Intentar conectar a una IP en la que no se está ejecutando la aplicación del profesor.
+\begin{enumerate}
 
-Sin alumnos conectados, enviar fichero de enunciado.
+    \item Intentar conectar a una IP en la que no se está ejecutando la aplicación del profesor.
 
-Con un alumno conectado, enviar ficheros de enunciado.
+    \item Sin alumnos conectados, enviar fichero de enunciado.
 
-Con varios alumnos conectados, enviar ficheros de enunciado.
+    \item Con un alumno conectado, enviar ficheros de enunciado.
 
-
-Iniciar prueba sin alumnos conectados.
-
-Iniciar prueba con varios alumnos conectados.
-
-
-Introducir hora errónea e iniciar prueba.
-
-Iniciar prueba temporizada y esperar a que acabe el tiempo.
+    \item Con varios alumnos conectados, enviar ficheros de enunciado.
 
 
-Iniciar prueba normal y finalizar todos los alumnos sin resultados.
+    \item Iniciar prueba sin alumnos conectados.
 
-Iniciar prueba normal y finalizar alumnos sin resultados y alumnos con ellos.
-
-Iniciar prueba normal y finalizar todos los alumnos con resultados.
-
-Iniciar prueba normal y finalizar mientras hay alumnos realizando la prueba.
+    \item Iniciar prueba con varios alumnos conectados.
 
 
-Iniciar prueba normal y reiniciar el computador de un alumno para intentar reconectar sin acabar la prueba.
+    \item Introducir hora errónea e iniciar prueba.
 
-Iniciar prueba normal, reiniciar el computador de un alumno, finalizar la prueba e intentar reconectar.
+    \item Iniciar prueba temporizada y esperar a que acabe el tiempo.
+
+    \item Iniciar prueba temporizada y finalizar manualmente.
 
 
+    \item Iniciar prueba normal y finalizar todos los alumnos sin resultados.
 
-Iniciar prueba temporizada y reiniciar el computador de un alumno para reconectar antes de que se acabe la prueba.
+    \item Iniciar prueba normal y finalizar alumnos sin resultados y alumnos con ellos.
+
+    \item Iniciar prueba normal y finalizar todos los alumnos con resultados.
+
+    \item Iniciar prueba normal y finalizar mientras hay alumnos realizando la prueba.
 
 
 
+    \item Iniciar prueba normal y reiniciar el computador de un alumno para intentar reconectar sin acabar la prueba.
+
+    \item Iniciar prueba normal, reiniciar el computador de un alumno, finalizar la prueba e intentar reconectar.
 
 
 
+    \item Iniciar prueba temporizada y reiniciar el computador de un alumno para reconectar antes de que se acabe la prueba.
+
+    \item Iniciar prueba temporizada y reiniciar el computador de un alumno para reconectar después de que se acabe la prueba.
+
+\end{enumerate}
 
 
+Esta lista contiene las pruebas de integración y validación realizadas, esto es, cuándo se prueba el funcionamiento del sistema completo para comprobar que cumple los requisitos establecidos en la tabla \ref{tabla:requisitos}.
+\newline
 
-
-
-
-\todo{seguir añadiendo pruebas} 

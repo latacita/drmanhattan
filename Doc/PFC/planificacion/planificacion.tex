@@ -282,6 +282,7 @@ En concreto, se han identificado los requisitos de alto nivel para nuestro siste
 \end{table}
 
 \section{Iteraciones}
+\label{sec:planificacion:iteraciones}
 
 En esta sección se describen las iteraciones previstas para el desarrollo de la aplicación.
 
@@ -327,29 +328,19 @@ En este capítulo se ha descrito el ámbito funcional del sistema y la metodolog
 \newline
 
 
-% Los requisitos R01 y R02 están implementados en arquitectura del sistema, no son
-% funcionalidades.
 
+\section{Construcción}
+\label{sec:planificacion:construccion}
 
-%Iteraciones previstas
+Para el diseño se utiliza el programa Visual Paradigm, versión 8.1 y para la construcción del sistema se ha utilizará el entorno de desarrollo Eclipse 3.5.2, en su versión para java.
+Eclipse es un IDE de código abierto, multiplataforma, en el que se pueden instalar multitud de plug-ins para aumentar sus funcionalidades. Concretamente, para la realización de este proyecto se han usado el Google Web Toolkit en su versión para eclipse 3.5, que facilita mucho la creación de interfaces gráficas de modo visual, y Subeclipse, para simplificar el trabajo con el repositorio Subversion.
+\newline
 
-% Iteración 1: Crear un minisistema distribuido
-%R06, R07 - En la primera iteración la aplicación del alumno se podrá conectar al watchman para esperar el inicio de la prueba, envío de ficheros etc... y el profesor es capaz de enviar el enunciado.
+Google Code es un servicio de alojamiento de proyectos ofrecido por Google, que permite alojar código de Subversion de modo que se puede crear fácilmente un sistema de control de cambios, muy útil si se quiere regresar a un estado anterior del programa, recuperar algún objeto borrado, etc.
+\newline
 
-% Iteración 2: Denegar acceso a red una vez comenzado el examen
-%R03, R05, R10, R11 - En la segunda iteración el profesor puede establecer una hora límite e indicar el inicio de la prueba. La aplicación del alumno es capaz de denegar el acceso a la red cuando se inicia la prueba y en caso de que la duración este prefijada, consultar el tiempo restante
+Las razones principales para trabajar con estas y no otras herramientas son que, todas ellas tienen licencias que permiten usarlas gratuitamente y que ya se tenía cierta experiencia en su uso.
+\newline
 
-
-%Iteración 3: Habilitar red y enviar resultados
-%R04, R08, R09, R12 - En la tercera iteración se permite al profesor finalizar la prueba de modo general. Del mismo modo, cada alumno puede finalizar la prueba por su cuenta y enviar su archivo de resultados al computador del profesor. La aplicación del alumno, cuando este finaliza la prueba, habilita el acceso a la red.
-
-% Los requisitos R01 y R02 están implementados en arquitectura del sistema, no son
-% funcionalidades.
-
-% Iteración 4:
-% R13: Se implementa tanto en el caso de que el profesor envíe el enunciado, como cuando reciba % los resultados.
-
-% Iteración 5:
-% R14: Cuando en la aplicación ocurre algo de lo que se deseen guardar logs se implementará con % independencia de la iteración en la que nos encontremos.
-
-
+El sistema operativo escogido ha sido Ubuntu 9.10 de 32 bits y la versión de kernel 2.6.35.
+\newline
