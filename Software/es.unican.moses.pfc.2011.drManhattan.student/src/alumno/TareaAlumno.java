@@ -16,7 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-*/
+ */
 package alumno;
 
 
@@ -70,7 +70,6 @@ public class TareaAlumno extends Thread{
 	private JButton bRes;
 
 
-
 	/**
 	 * 
 	 * @param ip direcion del computador del profesor
@@ -85,7 +84,7 @@ public class TareaAlumno extends Thread{
 	 */
 	public TareaAlumno(String ip, String directorioEnunciado, JLabel estado, DatosAlumno da, CuentaTiempo ct, boolean reconectar, JButton fin, JButton resultados) throws Exception{		
 		try {
-			
+
 			//creacion del socket e inicio del hilo de ejecucion
 			socketAlumno = new Socket(ip, comun.Global.PUERTOPROFESOR);
 			dirEnunciado = directorioEnunciado;
@@ -125,13 +124,22 @@ public class TareaAlumno extends Thread{
 				boolean aceptado = dis.readBoolean();
 
 				if(!aceptado){
+					File fichEstado = new File(Global.ficheroEstado);
+					fichEstado.delete();
+					File fichClave = new File(Global.ficheroClave);
+					fichClave.delete();
+					
 					estado.setText("Reconexion no aceptada");
 					socketAlumno.close();
 				}else{
 					ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
 					oos.writeObject(da);
 					aceptado = dis.readBoolean();
-					if(!aceptado){						
+					if(!aceptado){
+						File fichEstado = new File(Global.ficheroEstado);
+						fichEstado.delete();
+						File fichClave = new File(Global.ficheroClave);
+						fichClave.delete();
 						estado.setText("Reconexion no aceptada");
 						socketAlumno.close();
 					}else{
@@ -139,8 +147,6 @@ public class TareaAlumno extends Thread{
 						this.start();
 					}					
 				}
-
-
 			}
 		}catch (Exception e) {
 			throw e;
@@ -167,10 +173,10 @@ public class TareaAlumno extends Thread{
 				//opcion de recibir un fichero
 				case comun.Global.ENVIOFICHERO:
 					String estadoAnterior =  estado.getText().trim();
+
+					ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());
+
 					estado.setText("Recibiendo fichero");
-
-					ObjectInputStream ois = new ObjectInputStream(socketAlumno.getInputStream());					
-
 					//crear el flujo de salida para guardar el fichero
 					//como inicialmente no se conoce ni el nombre ni la extension
 					//se deja general, al finalizar el envio, se cambia
@@ -244,6 +250,7 @@ public class TareaAlumno extends Thread{
 
 
 					fos.close();
+
 					estado.setText(estadoAnterior);
 
 					break;
@@ -251,6 +258,7 @@ public class TareaAlumno extends Thread{
 				case comun.Global.COMIENZOPRUEBA:
 
 					try{
+
 						ois = new ObjectInputStream(socketAlumno.getInputStream());
 						Object temp = ois.readObject();
 
@@ -302,7 +310,9 @@ public class TareaAlumno extends Thread{
 						fosEstado.write(lineaCifrada.length);
 						fosEstado.write(lineaCifrada);
 						fosEstado.close();
+
 					}catch(Exception e){
+						e.printStackTrace();
 						JOptionPane.showMessageDialog(bFin, "Error interno al intentar comenzar la prueba");
 					}
 
@@ -320,9 +330,10 @@ public class TareaAlumno extends Thread{
 
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -417,7 +428,6 @@ public class TareaAlumno extends Thread{
 			DataOutputStream dosd = new DataOutputStream(socketDaemon.getOutputStream());
 			//opcion de permitir el acceso a la red para enviar el fichero
 			dosd.writeInt(Global.SIRED);
-			//DataInputStream 
 			MessageDigest digest = MessageDigest.getInstance("MD5");
 			FileInputStream is = new FileInputStream(resultados);				
 			byte[] buffer = new byte[4096];
@@ -437,7 +447,7 @@ public class TareaAlumno extends Thread{
 			//obtener el canal de salida
 			ObjectOutputStream oos = new ObjectOutputStream(socketAlumno.getOutputStream());
 			oos.writeObject(datos);
-			
+
 			//variable auxiliar para marcar cuando se envia el ultimo mensaje
 			boolean enviadoUltimo = false;
 

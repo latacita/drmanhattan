@@ -16,7 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-*/
+ */
 package alumno;
 
 
@@ -44,7 +44,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.math.BigInteger;
 import java.security.Key;
-import java.util.Date;
 import java.awt.Cursor;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
@@ -134,13 +133,11 @@ public class GUIAlumno{
 		frmDrmanhattan.getContentPane().add(lblApellido);
 
 		tfNombre = new JTextField();
-		tfNombre.setText("Nombre");
 		tfNombre.setBounds(202, 59, 126, 23);
 		frmDrmanhattan.getContentPane().add(tfNombre);
 		tfNombre.setColumns(10);
 
 		tfApellido = new JTextField();
-		tfApellido.setText("Apellidos");
 		tfApellido.setBounds(202, 93, 233, 23);
 		frmDrmanhattan.getContentPane().add(tfApellido);
 		tfApellido.setColumns(10);
@@ -150,7 +147,6 @@ public class GUIAlumno{
 		frmDrmanhattan.getContentPane().add(lblDirectorioEnunciado);
 
 		tfDirEnunciado = new JTextField();
-		tfDirEnunciado.setText("/home/manuel/Escritorio/FicherosAlumno");
 		tfDirEnunciado.setBounds(202, 127, 233, 23);
 		frmDrmanhattan.getContentPane().add(tfDirEnunciado);
 		tfDirEnunciado.setColumns(10);
@@ -252,24 +248,22 @@ public class GUIAlumno{
 					File directorio = new File(dirEnun);
 					boolean permisos = directorio.canWrite();
 					if(!permisos){
-						JOptionPane.showMessageDialog(frmDrmanhattan, "No hay permisos de escritura en el directorio seleccionado" +
-						", no se recibran archivos del profesor");
-					}				
-
-
-					int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Conectarse con las caracteristicas seleccionadas?");				
-					if (JOptionPane.OK_OPTION == confirmado){
-						try {
-							tarea = new TareaAlumno(ipProfesor, dirEnun, lblEstado, da, ct, false, btnFinalizar, btnEnviarResultados);
-							btnConectar.setEnabled(false);
-							btnExplorar.setEnabled(false);
-							tfNombre.setEnabled(false);
-							tfDirEnunciado.setEnabled(false);
-							tfApellido.setEnabled(false);
-							tfIPProfesor.setEnabled(false);
-						} catch (Exception e) {
-							JOptionPane.showMessageDialog(frmDrmanhattan, "Error en la conexion");
-						}					
+						JOptionPane.showMessageDialog(frmDrmanhattan, "Selecciona un directorio en el que se tengan permisos de escritura");
+					}else{
+						int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Conectarse con las caracteristicas seleccionadas?");				
+						if (JOptionPane.OK_OPTION == confirmado){
+							try {
+								tarea = new TareaAlumno(ipProfesor, dirEnun, lblEstado, da, ct, false, btnFinalizar, btnEnviarResultados);
+								btnConectar.setEnabled(false);
+								btnExplorar.setEnabled(false);
+								tfNombre.setEnabled(false);
+								tfDirEnunciado.setEnabled(false);
+								tfApellido.setEnabled(false);
+								tfIPProfesor.setEnabled(false);
+							} catch (Exception e) {
+								JOptionPane.showMessageDialog(frmDrmanhattan, "Error en la conexion");
+							}					
+						}
 					}
 				}
 			}
@@ -353,7 +347,6 @@ public class GUIAlumno{
 
 			File estado = new File(Global.ficheroEstado);
 			if(estado.exists()){
-
 				/*
 				 * Estructura del fichero
 				 * -Fecha
@@ -370,7 +363,6 @@ public class GUIAlumno{
 				fisEstado.read(lineaDescifrada);
 				String desCi = descifrar(lineaDescifrada);
 				fisEstado.close();
-
 				//lectura del contenido del fichero
 				//cada parametro esta separado por un salto de linea
 
@@ -378,40 +370,29 @@ public class GUIAlumno{
 				String fecha = desCi.substring(0, posIntro).trim();
 				desCi = desCi.substring(posIntro+1).trim();
 
-				Date fechaEstado = new Date(fecha);
-				Date ahora = new Date(System.currentTimeMillis());
-				//si los datos de estado son del mismo dia
+				posIntro = desCi.indexOf("\n");
+				String sesion = desCi.substring(0, posIntro).trim();
+				desCi = desCi.substring(posIntro+1).trim();
 
-				if((ahora.getDate() == fechaEstado.getDate()) && (ahora.getDay() == fechaEstado.getDay())){
+				posIntro = desCi.indexOf("\n");
+				String ipProf = desCi.substring(0, posIntro).trim();
+				desCi = desCi.substring(posIntro+1).trim();
 
-					posIntro = desCi.indexOf("\n");
-					String sesion = desCi.substring(0, posIntro).trim();
-					desCi = desCi.substring(posIntro+1).trim();
+				posIntro = desCi.indexOf("\n");
+				String dirEnun = desCi.substring(0, posIntro).trim();
+				desCi = desCi.substring(posIntro+1).trim();
 
-					posIntro = desCi.indexOf("\n");
-					String ipProf = desCi.substring(0, posIntro).trim();
-					desCi = desCi.substring(posIntro+1).trim();
+				posIntro = desCi.indexOf("\n");
+				String nombre = desCi.substring(0, posIntro).trim();
+				desCi = desCi.substring(posIntro+1).trim();
 
-					posIntro = desCi.indexOf("\n");
-					String dirEnun = desCi.substring(0, posIntro).trim();
-					desCi = desCi.substring(posIntro+1).trim();
+				String apellido = desCi.trim();
 
-					posIntro = desCi.indexOf("\n");
-					String nombre = desCi.substring(0, posIntro).trim();
-					desCi = desCi.substring(posIntro+1).trim();
+				BigInteger id = new BigInteger(sesion);
 
-					String apellido = desCi.trim();
-
-					BigInteger id = new BigInteger(sesion);
-
-
-					//reconectarse al profesor
-					reconectar(ipProf, dirEnun, nombre, apellido, id);
-				}else{
-					//si no lo son, son datos antiguos, borrarlos
-					estado.delete();
-					fichClave.delete();
-				}
+				//reconectarse al profesor
+				reconectar(ipProf, dirEnun, nombre, apellido, id);
+				
 			}
 		} catch (Exception e){
 			e.printStackTrace();
