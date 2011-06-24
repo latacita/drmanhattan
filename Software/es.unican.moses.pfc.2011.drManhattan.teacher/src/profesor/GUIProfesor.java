@@ -16,7 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-*/
+ */
 package profesor;
 
 
@@ -133,8 +133,7 @@ public class GUIProfesor {
 		lblNombreAsignatura.setBounds(10, 36, 223, 23);
 		frmDrmanhattan.getContentPane().add(lblNombreAsignatura);
 
-		tfNombreAsignatura = new JTextField();		
-		tfNombreAsignatura.setText("PFC");
+		tfNombreAsignatura = new JTextField();
 		tfNombreAsignatura.setBounds(251, 36, 262, 23);
 		frmDrmanhattan.getContentPane().add(tfNombreAsignatura);
 		tfNombreAsignatura.setColumns(10);
@@ -149,7 +148,6 @@ public class GUIProfesor {
 		lblAutor.setFont(new Font("Dialog", Font.BOLD, 10));
 
 		tfDirectorioResultados = new JTextField();
-		tfDirectorioResultados.setText("/home/manuel/Escritorio/FicherosProfesor");
 		tfDirectorioResultados.setBounds(251, 70, 262, 23);
 		frmDrmanhattan.getContentPane().add(tfDirectorioResultados);
 		tfDirectorioResultados.setColumns(10);
@@ -321,31 +319,31 @@ public class GUIProfesor {
 					File directorio = new File(dirResultados);
 					boolean permisos = directorio.canWrite();				
 					if(!permisos){
-						JOptionPane.showMessageDialog(frmDrmanhattan, "No hay permisos de escritura en el directorio seleccionado" +
-						", no se recogeran resultados");
-					}
-
-					if(dirResultados.charAt(dirResultados.length()-1) == File.separatorChar){
-						dirResultados = dirResultados+asignaturaSinEspacios;
+						JOptionPane.showMessageDialog(frmDrmanhattan, "Selecciona un directorio en el que se tengan permisos de escritura");
 					}else{
-						dirResultados = dirResultados+File.separator+asignaturaSinEspacios;
-					}
+
+						if(dirResultados.charAt(dirResultados.length()-1) == File.separatorChar){
+							dirResultados = dirResultados+asignaturaSinEspacios;
+						}else{
+							dirResultados = dirResultados+File.separator+asignaturaSinEspacios;
+						}
 
 
-					int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Comenzar la prueba con las caracteristicas seleccionadas?");				
-					if (JOptionPane.OK_OPTION == confirmado){					
-						btnEnviarFichero.setEnabled(false);
-						btnExplorarDirResultados.setEnabled(false);
-						btnFinExamen.setEnabled(true);
-						btnComienzoExamen.setEnabled(false);
-						tfDirectorioResultados.setEnabled(false);
-						ftfHoraLImite.setEnabled(false);
-						tfNombreAsignatura.setEnabled(false);
+						int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "¿Comenzar la prueba con las caracteristicas seleccionadas?");				
+						if (JOptionPane.OK_OPTION == confirmado){					
+							btnEnviarFichero.setEnabled(false);
+							btnExplorarDirResultados.setEnabled(false);
+							btnFinExamen.setEnabled(true);
+							btnComienzoExamen.setEnabled(false);
+							tfDirectorioResultados.setEnabled(false);
+							ftfHoraLImite.setEnabled(false);
+							tfNombreAsignatura.setEnabled(false);
 
-						aceptaAlumnos.inicioPrueba(temporizar, minutosEnteros, dirResultados.trim(), horaLimite, minutosLimite, segundosEnteros);
-						logger.log(Level.INFO, "Comienza la prueba de la asignatura "+tfNombreAsignatura.getText().trim());
-					}else{
-						//la prueba no comienza, asi que no se hace nada
+							aceptaAlumnos.inicioPrueba(temporizar, minutosEnteros, dirResultados.trim(), horaLimite, minutosLimite, segundosEnteros);
+							logger.log(Level.INFO, "Comienza la prueba de la asignatura "+tfNombreAsignatura.getText().trim());
+						}else{
+							//la prueba no comienza, asi que no se hace nada
+						}
 					}
 				}
 			}
@@ -372,7 +370,6 @@ public class GUIProfesor {
 				if(btnFinExamen.isEnabled()){
 					int confirmado = JOptionPane.showConfirmDialog(frmDrmanhattan, "Si cierra, finaliza la prueba");
 					if (JOptionPane.OK_OPTION == confirmado){
-						//logger.log(Level.INFO, "Finaliza la prueba a orden del profesor");
 						aceptaAlumnos.finPrueba(false);
 						btnFinExamen.setEnabled(false);
 					}

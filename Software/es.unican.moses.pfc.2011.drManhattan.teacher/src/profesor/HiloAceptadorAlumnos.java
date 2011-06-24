@@ -16,7 +16,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-*/
+ */
 package profesor;
 
 import java.io.DataInputStream;
@@ -97,7 +97,7 @@ public class HiloAceptadorAlumnos extends Thread{
 				//esperar a nueva conexion
 				socket = sSocket.accept();
 				new ProcesaConexion(socket, this).start();
-				}
+			}
 		}catch(Exception e){			
 			e.printStackTrace();
 		}
@@ -117,12 +117,11 @@ public class HiloAceptadorAlumnos extends Thread{
 
 		//recorrer cada soket de alumnos
 		while(iterador.hasNext()){
-
-			Socket s = iterador.next();				
-
-			//si la conexion sigue abierta
-			if(!s.isClosed()){
+			try{
+				Socket s = iterador.next();
 				new TareaProfesor(s, dirResultados, this);
+			}catch(Exception e){
+				e.printStackTrace();
 			}
 		}
 	}
@@ -161,9 +160,8 @@ public class HiloAceptadorAlumnos extends Thread{
 			while(iterador.hasNext()){
 
 				Socket s = iterador.next();				
+				try{
 
-				//si la conexion sigue abierta
-				if(!s.isClosed()){
 					//enviar todo el fichero
 
 					//indicarle al alumno que vamos a enviar el fichero
@@ -229,8 +227,9 @@ public class HiloAceptadorAlumnos extends Thread{
 					}
 
 					fis.close();
-				}//if(!s.isClosed())
-
+				}catch(Exception e){
+					e.printStackTrace();
+				}
 			}//while(iterador.hasNext())
 			Logger logger = Logger.getLogger("PFC");
 			logger.log(Level.INFO, "Fichero "+ficheroEnviar.getAbsolutePath()+" enviado a los alumnos conectados");
@@ -391,12 +390,9 @@ public class HiloAceptadorAlumnos extends Thread{
 
 			//recorrer cada soket de alumnos
 			while(iterador.hasNext()){
+				Socket s = iterador.next();
+				try{
 
-				Socket s = iterador.next();				
-
-				//si la conexion sigue abierta
-				if(!s.isClosed()){
-					//notificar
 					DataOutputStream dos = new DataOutputStream(s.getOutputStream());
 					dos.writeInt(comun.Global.COMIENZOPRUEBA);
 
@@ -409,6 +405,8 @@ public class HiloAceptadorAlumnos extends Thread{
 					ObjectOutputStream oos = new ObjectOutputStream(s.getOutputStream());
 					oos.writeObject(ce);
 
+				}catch(Exception e){
+					e.printStackTrace();
 				}
 			}
 			desconectar(dirResultados);
@@ -422,35 +420,42 @@ public class HiloAceptadorAlumnos extends Thread{
 	 * Enviar a los alumnos conectados la notificacion de que la prueba acaba
 	 */
 	public void finPrueba(boolean tiempo){
-		try{
-			this.pruebaFinalizada = true;
+		try{			
 			btnFin.setEnabled(false);
 
-			Logger logger = Logger.getLogger("PFC");
-			if(tiempo){
-				logger.log(Level.INFO, "El tiempo destinado a la prueba ha finalizado");
-			}else{
-				logger.log(Level.INFO, "Finaliza la prueba a orden del profesor");
-			}
+			if(!pruebaFinalizada){
+				Logger logger = Logger.getLogger("PFC");
+				if(tiempo){
+					logger.log(Level.INFO, "El tiempo destinado a la prueba ha finalizado");
+				}else{
+					logger.log(Level.INFO, "Finaliza la prueba a orden del profesor");
 
-			/*
-			 * Recorre la lista de sockets y envia secuencialmente la notificacion de que finaliza la prueba
-			 */
-			Iterator<Socket> iterador = listaSocket.listIterator();
+					/*
+					 * Recorre la lista de sockets y envia secuencialmente la notificacion de que finaliza la prueba
+					 */
+					Iterator<Socket> iterador = listaSocket.listIterator();
 
-			//recorrer cada soket de alumnos
-			while(iterador.hasNext()){
+					//recorrer cada soket de alumnos
+					while(iterador.hasNext()){
+						try{
+							Socket s = iterador.next();
 
-				Socket s = iterador.next();				
-
-				//si la conexion sigue abierta
-				if(!s.isClosed()){
-					//notificar
-					DataOutputStream dos = new DataOutputStream(s.getOutputStream());
-					dos.writeInt(comun.Global.FINPRUEBA);
-					s.close();
+							//si la conexion sigue abierta
+							if(!s.isClosed()){
+								//notificar
+								DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+								dos.writeInt(comun.Global.FINPRUEBA);
+								s.close();
+							}
+						}catch(Exception e){
+							e.printStackTrace();
+						}
+					}
 				}
 			}
+
+			this.pruebaFinalizada = true;
+
 		}catch(Exception e){
 			e.printStackTrace();
 		}

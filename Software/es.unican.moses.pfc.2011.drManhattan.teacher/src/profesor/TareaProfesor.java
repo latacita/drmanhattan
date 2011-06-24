@@ -179,7 +179,9 @@ public class TareaProfesor extends Thread{
 					datos = (DatosAlumno) ois.readObject();
 					boolean tiempo = dis.readBoolean(); //saber si el tiempo destinado a la prueba a finalizado
 					logger = Logger.getLogger("PFC");
-					hiloPrincipal.finPrueba(tiempo);
+					if(tiempo){
+						hiloPrincipal.finPrueba(tiempo);
+					}
 					logger.log(Level.INFO, "Finaliza la prueba el alumno: "+datos.nombre+" "+datos.apellidos+".\n Sin archivo de resultados");
 					break;
 				default:
