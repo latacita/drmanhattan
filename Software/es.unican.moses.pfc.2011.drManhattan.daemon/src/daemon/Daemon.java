@@ -60,7 +60,7 @@ public class Daemon {
 	 * Una vez la conexion esta establecida, crea un hilo para poder atenderla. No acepta varias conexiones simultaneas.
 	 * 
 	 * Al no aceptar varias conexiones se evita que, desde la aplicacion drManhattan-Alumno se desee eliminar el acceso a red
-	 * y conecte otro programa para permitirlo.
+	 * y se conecte otro programa para permitirlo.
 	 * 
 	 */
 	private void esperaConexion() { 
