@@ -65,7 +65,7 @@ drManhattan nace con motivo del proyecto de fin de carrera de Manuel Pando Muño
 
 El objetivo del proyecto era trata de desarrollar un software que, una vez instalado en los laboratorios con computadores del centro, permitiese controlar el acceso del alumnado a la red durante la realización de pruebas evaluables, de forma que el software permita el uso lícito de la red, pero bloquee el ilícito.
 
-Con uso ilícito nos referimos, por ejemplo, a mirar posibles soluciones en internet, o comunicarse con otro alumno, esto es deseable evitarlo, pero a su vez, el que haya una red que interconecte los computadores permite enviar ficheros de modo casi automático por parte del profesor, o la recogida de los resultados de los alumnos, esos serían usos lícitos.
+Con uso ilícito nos referimos, por ejemplo, a consultar posibles soluciones en internet, o comunicarse con otro alumno, esto es deseable evitarlo, pero a su vez, el que haya una red que interconecte los computadores permite enviar ficheros de modo casi automático por parte del profesor, o la recogida de los resultados de los alumnos, esos serían usos lícitos.
 
 
 
@@ -93,6 +93,8 @@ La aplicación no hace un uso intensivo de los recursos del sistema, por lo que 
 \begin{itemize}
 
     \item Sistema operativo basado en Debian\footnote{\href{http://www.debian.org/misc/children-distros}{Lista de distribuciones basadas en Debian: http://www.debian.org/misc/children-distros}}, de 32 o 64 bits.
+
+    \item iptables versión 1.4.4 o superior
 
     \item Java Runtime Environment 1.6
 
@@ -160,8 +162,7 @@ Se ejecuta la orden privilegiada dpkg -i paquete.deb y la aplicación queda inst
 
 \subsubsection{Compilar código fuente}
 
-Otra opción para utilizar el software es descargarse el código fuente del \href{http://code.google.com/p/drmanhattan/}{repositorio drManhattan en googlecode} y compilarlo localmente. Esto es posible ya que la aplicación utiliza la licencia GPL V3\footnote{\href{http://www.gnu.org/licenses/gpl.html}{Términos de la licencia GPL}}, es decir, es software libre, por lo que se puede descargar el código fuente.
-
+Otra opción para utilizar el software es descargarse el código fuente del \href{http://code.google.com/p/drmanhattan/}{repositorio drManhattan en googlecode} y compilarlo localmente. Esto es posible ya que la aplicación utiliza la licencia GPL V3\footnote{\href{http://www.gnu.org/licenses/gpl.html}{Términos de la licencia GPL}}, es decir, es software libre, por lo que se puede descargar el código fuente y compilarlo.
 
 
 
@@ -177,7 +178,7 @@ Para desinstalar el software visualmente, abrir el Centro de software Ubuntu loc
 
 \end{center}
 
-Y dentro de el, seleccionar Software Instalado > Otros, aparecerá una lista de paquetes entre ellos los referentes a esta aplicación. Click en desinstalar. Como ocurre en la instalación, también es necesario introducir la contraseña de administrador.
+Y dentro de el, seleccionar Software Instalado > \ Otros, aparecerá una lista de paquetes entre ellos los referentes a esta aplicación. Click en desinstalar. Como ocurre en la instalación, también es necesario introducir la contraseña de administrador.
 
 \begin{center}
 
@@ -362,10 +363,15 @@ Del mismo modo que en la interfaz del profesor, los componentes se habilitan o n
 \label{sec:conectarse}
 
 Al pulsar el botón \lq\lq Conectar\rq\rq, se realizan comprobaciones a los valores de los campos de texto introducidos, similares a las comprobaciones que se ejecutan en la aplicación del profesor al comenzar una prueba. Si está todo correcto la aplicación conectará con la del profesor. Se puedo comprobar ya que la etiqueta \lq\lq Estado\rq\rq \ cambia su valor.
+\newline
 
 \begin{center}
     \includegraphics[width=.90\linewidth]{imagenes/Conectado}
 \end{center}
+
+\subsubsection{Obtener IP}
+
+Como es lógico, para introducir la IP del computador a conectarse hay que conocerla. Linux pone a disposición el comando \emph{ifconfig} para cuya ejecución no son necesarios permisos especiales. Este comando devuelve una lista de las interfaces de red existentes en el equipo y su dirección. En la mayoría de los casos nos interesará el valor de la interfaz \emph{eth0}.
 
 \subsection{Finalización de prueba}
 \label{sec:finAlumno}
@@ -389,6 +395,9 @@ Si hay algún problema en el envío del fichero, se notifica, tanto al alumno co
 \newpage
 \section{Protección frente a errores en el sistema}
 
-El software drManhattan, concretamente en la parte del alumno, es capaz de guardar su estado, es decir, si durante la realización de una prueba, algún alumno, por el motivo que sea, se ve obligado a reiniciar el sistema, cuando se vuelva a iniciar la aplicación, esta reconectará de forma automática con la aplicación del profesor, volviendo al estado previo, antes del error, es decir, realizando la prueba, y por tanto, sin acceso a la red.
+El software drManhattan, concretamente en la parte del alumno, es capaz de guardar su estado, es decir, si durante la realización de una prueba, algún alumno, por el motivo que sea, se ve obligado a reiniciar el sistema, cuando se vuelva a iniciar la aplicación, esta reconectará de forma automática con la aplicación del profesor, volviendo al estado previo, antes del error, es decir, realizando la prueba, y por tanto, sin acceso a la red. 
+\newline
+
+También se incluyen comprobaciones de integridad a los ficheros transferidos, de modo que  se pueda garantizar una correcta entrega de los resultados, ya que es un elemento bastante sensible.
 
 \end{document} 
