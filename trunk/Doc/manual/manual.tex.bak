@@ -7,7 +7,12 @@
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
-\hypersetup{colorlinks,linkcolor=blue}
+\hypersetup{colorlinks,urlcolor=blue,citecolor=blue,
+	 linkcolor=blue,filecolor=blue,pdfnewwindow,
+	pdftitle={Manual de usuario drManhattan},
+	pdfauthor={Manuel Pando Muñoz},
+	pdfsubject={Manual de usuario del software drManhattan}}
+
 
 \parskip=4mm
 
@@ -88,6 +93,8 @@ La aplicación no hace un uso intensivo de los recursos del sistema, por lo que 
 \begin{itemize}
 
     \item Sistema operativo basado en Debian\footnote{\href{http://www.debian.org/misc/children-distros}{Lista de distribuciones basadas en Debian: http://www.debian.org/misc/children-distros}}, de 32 o 64 bits.
+
+    \item iptables versión 1.4.4 o superior
 
     \item Java Runtime Environment 1.6
 
@@ -172,7 +179,7 @@ Para desinstalar el software visualmente, abrir el Centro de software Ubuntu loc
 
 \end{center}
 
-Y dentro de el, seleccionar Software Instalado > Otros, aparecerá una lista de paquetes entre ellos los referentes a esta aplicación. Click en desinstalar. Como ocurre en la instalación, también es necesario introducir la contraseña de administrador.
+Y dentro de el, seleccionar Software Instalado > \ Otros, aparecerá una lista de paquetes entre ellos los referentes a esta aplicación. Click en desinstalar. Como ocurre en la instalación, también es necesario introducir la contraseña de administrador.
 
 \begin{center}
 
@@ -255,7 +262,7 @@ Antes del comienzo de la prueba se pueden enviar tantos archivos de enunciado co
 
 \subsection{Comienzo de prueba}
 
-Cuándo el docente decide que ha llegado el momento para comenzar la prueba, pulsa el botón \lq\lq Comienzo prueba\rq\rq, \ esto manda una señal a todos los alumnos conectados y, desde ese momento, dejan de tener acceso a la red.
+Cuándo el docente decide que ha llegado el momento para comenzar la prueba, pulsa el botón \lq\lq Comienzo prueba\rq\rq, esto manda una señal a todos los alumnos conectados y, desde ese momento, dejan de tener acceso a la red.
 Antes de comenzar realiza ciertas comprobaciones, entre ellas si se tienen permisos de escritura en el directorio escogido para recibir los resultados, en caso de que no los tuviese, se informa de ello mediante un diálogo modal.
 
 \begin{center}
@@ -269,7 +276,7 @@ Antes de comenzar definitivamente la prueba, se pide confirmación para evitar p
 
 \subsubsection{Pruebas temporizadas}
 
-El software drManhattan ofrece la posibilidad de definir una hora límite para la duración de la prueba, mediante el campo de texto \lq\lq Hora fin de examen\rq\rq. \ Cuándo comienza una prueba, se calcula el límite de tiempo y se notifica a las aplicaciones de los alumnos conectadas. Si se introduce una hora inferior a la actual se obvia y la prueba no tiene duración prefijada. El tiempo restante aparecerá en la interfaz del alumno a modo de cuenta atrás, produciendo un aviso cuando resten 5 minutos para la finalización automática.
+El software drManhattan ofrece la posibilidad de definir una hora límite para la duración de la prueba, mediante el campo de texto \lq\lq Hora fin de examen\rq\rq. Cuándo comienza una prueba, se calcula el límite de tiempo y se notifica a las aplicaciones de los alumnos conectadas. Si se introduce una hora inferior a la actual se obvia y la prueba no tiene duración prefijada. El tiempo restante aparecerá en la interfaz del alumno a modo de cuenta atrás, produciendo un aviso cuando resten 5 minutos para la finalización automática.
 
 \begin{center}
     \includegraphics[width=.90\linewidth]{imagenes/tiempoLimite}
@@ -293,7 +300,7 @@ Las pruebas pueden finalizar de cuatro modos distintos:
 
 \end{enumerate}
 
-La primera ocurre cuándo el profesor pulsa el botón de \lq\lq Fin de prueba\rq\rq, \  esto manda una señal a las aplicaciones de los alumnos indicando que se ha acabado el tiempo, no se recogerán resultados después de pulsar el botón.
+La primera ocurre cuándo el profesor pulsa el botón de \lq\lq Fin de prueba\rq\rq, esto manda una señal a las aplicaciones de los alumnos indicando que se ha acabado el tiempo, no se recogerán resultados después de pulsar el botón.
 
 La segunda sucede durante una prueba temporizada, cuándo se agota el tiempo destinado para la misma. Tampoco se recogen resultados después de que acabe la prueba.
 
@@ -301,7 +308,7 @@ La tercera se explica en la sección \ref{sec:finAlumno} y la cuarta en la \ref{
 
 \subsubsection{Recogida de resultados}
 
-Cuándo los alumnos envían sus resultados, la aplicación del profesor los recoge y crea un árbol de directorios tomando cómo base el establecido en el campo de texto \lq\lq Recibir resultados en\rq\rq. \ Dentro de ese directorio se crea otro con el nombre de la asignatura definido y a su vez, dentro de el, se crea, por cada alumno que envíe resultados, otra carpeta utilizando los apellidos y el nombre del alumno, dónde se almacena el archivo de resultados.
+Cuándo los alumnos envían sus resultados, la aplicación del profesor los recoge y crea un árbol de directorios tomando cómo base el establecido en el campo de texto \lq\lq Recibir resultados en\rq\rq. Dentro de ese directorio se crea otro con el nombre de la asignatura definido y a su vez, dentro de el, se crea, por cada alumno que envíe resultados, otra carpeta utilizando los apellidos y el nombre del alumno, dónde se almacena el archivo de resultados.
 
 Se realiza una comprobación de integridad del fichero utilizando el algoritmo MD5 para garantizar la falta de errores durante la transferencia.
 
@@ -356,23 +363,28 @@ Del mismo modo que en la interfaz del profesor, los componentes se habilitan o n
 \subsection{Conectarse}
 \label{sec:conectarse}
 
-Al pulsar el botón \lq\lq Conectar\rq\rq, \ se realizan comprobaciones a los valores de los campos de texto introducidos, similares a las comprobaciones que se ejecutan en la aplicación del profesor al comenzar una prueba. Si está todo correcto la aplicación conectará con la del profesor. Se puedo comprobar ya que la etiqueta Estado cambia su valor.
+Al pulsar el botón \lq\lq Conectar\rq\rq, se realizan comprobaciones a los valores de los campos de texto introducidos, similares a las comprobaciones que se ejecutan en la aplicación del profesor al comenzar una prueba. Si está todo correcto la aplicación conectará con la del profesor. Se puedo comprobar ya que la etiqueta \lq\lq Estado\rq\rq \ cambia su valor.
+\newline
 
 \begin{center}
     \includegraphics[width=.90\linewidth]{imagenes/Conectado}
 \end{center}
+
+\subsubsection{Obtener IP}
+
+Como es lógico, para introducir la IP del computador a conectarse hay que conocerla. Linux pone a disposición el comando \emph{ifconfig} para cuya ejecución no son necesarios permisos especiales. Este comando devuelve una lista de las interfaces de red existentes en el equipo y su dirección. En la mayoría de los casos nos interesará el valor de la interfaz \emph{eth0}.
 
 \subsection{Finalización de prueba}
 \label{sec:finAlumno}
 
 Cómo comentamos en la sección \ref{sec:finalizacionPrueba} el alumno puede finalizar la prueba enviando o no resultados.
 
-Para finalizar la prueba sin enviar resultados basta con pulsar el botón \lq\lq Finalizar\rq\rq, \ preguntará si estamos seguros y finalizará la prueba, permitiendo de nuevo el acceso a la red. Una vez que se finaliza, no se puede volver a conectar.
+Para finalizar la prueba sin enviar resultados basta con pulsar el botón \lq\lq Finalizar\rq\rq, preguntará si estamos seguros y finalizará la prueba, permitiendo de nuevo el acceso a la red. Una vez que se finaliza, no se puede volver a conectar.
 
 \subsubsection{Envío de resultados}
 \label{sec:finResultados}
 
-En el caso de que se deseen enviar resultados se utilizará el botón \lq\lq Enviar resultados y finalizar\rq\rq. \ Hay que tener en cuenta que sólo es posible mandar un único fichero de resultados, por lo tanto, si se tienen varios, hay que empaquetarlos de algún modo, un fichero .tar, por ejemplo.
+En el caso de que se deseen enviar resultados se utilizará el botón \lq\lq Enviar resultados y finalizar\rq\rq. Hay que tener en cuenta que sólo es posible mandar un único fichero de resultados, por lo tanto, si se tienen varios, hay que empaquetarlos de algún modo, un fichero .tar, por ejemplo.
 
 \begin{center}
     \includegraphics[width=.90\linewidth]{imagenes/finResCorrecto}
@@ -384,6 +396,9 @@ Si hay algún problema en el envío del fichero, se notifica, tanto al alumno co
 \newpage
 \section{Protección frente a errores en el sistema}
 
-El software drManhattan, concretamente en la parte del alumno, es capaz de guardar su estado, es decir, si durante la realización de una prueba, algún alumno, por el motivo que sea, se ve obligado a reiniciar el sistema, cuando se vuelva a iniciar la aplicación, esta reconectará de forma automática con la aplicación del profesor, volviendo al estado previo, antes del error.
+El software drManhattan, concretamente en la parte del alumno, es capaz de guardar su estado, es decir, si durante la realización de una prueba, algún alumno, por el motivo que sea, se ve obligado a reiniciar el sistema, cuando se vuelva a iniciar la aplicación, esta reconectará de forma automática con la aplicación del profesor, volviendo al estado previo, antes del error, es decir, realizando la prueba, y por tanto, sin acceso a la red. 
+\newline
+
+También se incluyen comprobaciones de integridad a los ficheros transferidos, de modo que  se pueda garantizar una correcta entrega de los resultados, ya que es un elemento bastante sensible.
 
 \end{document} 

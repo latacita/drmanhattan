@@ -21,6 +21,7 @@
 \contentsline {section}{\numberline {5}Aplicaci\IeC {\'o}n del alumno}{17}{section.5}
 \contentsline {subsection}{\numberline {5.1}Breve explicaci\IeC {\'o}n de cada componente}{17}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Conectarse}{18}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Obtener IP}{19}{subsubsection.5.2.1}
 \contentsline {subsection}{\numberline {5.3}Finalizaci\IeC {\'o}n de prueba}{19}{subsection.5.3}
 \contentsline {subsubsection}{\numberline {5.3.1}Env\IeC {\'\i }o de resultados}{19}{subsubsection.5.3.1}
 \contentsline {section}{\numberline {6}Protecci\IeC {\'o}n frente a errores en el sistema}{20}{section.6}
