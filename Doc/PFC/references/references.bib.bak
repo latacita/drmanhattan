@@ -1,0 +1,124 @@
+% This file was created with JabRef 2.6.
+% Encoding: Cp1252
+
+@BOOK{distribuidos:2006,
+  title = {Distributed Systems: Principles and Paradigms},
+  publisher = {Prentice Hall},
+  year = {2006},
+  author = {Andrew S. Tanenbaum, Maarten Van Steen},
+  owner = {Manuel},
+  timestamp = {2011.06.24}
+}
+
+@BOOK{linux:2004,
+  title = {{Linux Pocket Guide}},
+  publisher = {O'Reilly},
+  year = {2004},
+  author = {Daniel J. Barrett}
+}
+
+@BOOK{ubuntu:2011,
+  title = {Official Ubuntu Book},
+  publisher = {Prentice Hall},
+  year = {2011},
+  author = {Benjamin Hill, Matthew Helmke, Amber Graner, Corey Burger},
+  owner = {Manuel},
+  timestamp = {2011.06.24}
+}
+
+@BOOK{eclipse:2005,
+  title = {Eclipse IDE Pocket Guide},
+  publisher = {O'Reilly},
+  year = {2005},
+  author = {Ed Burnette},
+  owner = {Manuel},
+  timestamp = {2011.06.24}
+}
+
+@BOOK{subversion:2008,
+  title = {Version Control with Subversion},
+  publisher = {O'Reilly},
+  year = {2008},
+  author = {C. Michael Pilato, Ben Collins-Sussman, Brian W. Fitzpatrick},
+  owner = {Manuel},
+  timestamp = {2011.06.24}
+}
+
+@BOOK{MD5:2007,
+  title = {Cryptography for Developers},
+  publisher = {Syngress},
+  year = {2007},
+  author = {Tom St. Denis},
+  owner = {Manuel},
+  timestamp = {2011.06.24}
+}
+
+@BOOK{java:2005,
+  title = {Java Programming Language},
+  publisher = {Prentice Hall},
+  year = {2005},
+  author = {Ken Arnold, James Gosling, David Holmes},
+  owner = {Manuel},
+  timestamp = {2011.06.24}
+}
+
+@BOOK{TCPIP,
+  title = {The TCP/IP Guide: A Comprehensive, Illustrated Internet Protocols
+	Reference},
+  publisher = {No Starch Press},
+  year = {2005},
+  author = {Charles M. Kozierok},
+  owner = {Manuel},
+  timestamp = {2011.06.24}
+}
+
+@BOOK{RUP:2003,
+  title = {The Rational Unified Process: An Introduction},
+  publisher = {Addison-Wesley Professional},
+  year = {2003},
+  author = {Philippe Kruchten},
+  owner = {Manuel},
+  timestamp = {2011.06.24}
+}
+
+@BOOK{AGIL:2003,
+  title = {Agile and Iterative Development: A Manager's Guide},
+  publisher = {Addison-Wesley Professional},
+  year = {2003},
+  author = {Craig Larman},
+  owner = {Manuel},
+  timestamp = {2011.06.24}
+}
+
+@BOOK{UP:2006,
+  title = {Agility and Discipline Made Easy: Practices from OpenUP and RUP},
+  publisher = {Addison-Wesley Professional},
+  year = {2006},
+  author = {Per Kroll, Bruce MacIsaac},
+  owner = {Manuel},
+  timestamp = {2011.06.24}
+}
+
+@BOOK{iptables:2004,
+  title = {{Linux iptables Pocket Reference}},
+  publisher = {O'Reilly},
+  year = {2004},
+  author = {Gregor N. Purdy}
+}
+
+@BOOK{SO:2006,
+  title = {Sistemas Operativos},
+  publisher = {Pearson},
+  year = {2006},
+  author = {William Stallings},
+  owner = {Manuel},
+  timestamp = {2011.06.24}
+}
+
+@BOOK{redes:2004,
+  title = {{Comunicaciones y redes de computadores}},
+  publisher = {Pearson},
+  year = {2004},
+  author = {William Stallings}
+}
+

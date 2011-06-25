@@ -68,20 +68,20 @@ Faculty of Sciences}
 \begin{document}
 
 % Cover page
-%\input{cover/cover.tex}
+\input{cover/cover.tex}
 
-%\input{cover/supervisorApproval.tex}
+\input{cover/supervisorApproval.tex}
 
-%\input{cover/firstPage.tex}
+\input{cover/firstPage.tex}
 
 % reset page numbering
-%\input{config/begin.tex}
+\input{config/begin.tex}
 
 % acknowledgement
-%\input{cover/acknowledgements.tex} % acknowledgements
+\input{cover/acknowledgements.tex} % acknowledgements
 
 % Preface
-%\input{introduction/preface-lff.tex}   % preface
+\input{introduction/preface-lff.tex}   % preface
 
 % Toc
 \input{config/toc.tex}
@@ -91,16 +91,16 @@ Faculty of Sciences}
 \input{config/chapters.tex}
 
 % Cap\'itulo 1: Introducci\'on
-%\input{introduction/introduction.tex} % Chapter 1
+\input{introduction/introduction.tex} % Chapter 1
 
 % Cap\'itulo 2: Descripci\'on General del Proceso
-%\input{planificacion/planificacion.tex}
+\input{planificacion/planificacion.tex}
 
 % Cap\'itulo 3: Resumen del Estado del Arte
-%\input{background/background.tex}
+\input{background/background.tex}
 
 % Cap\'itulo 4: Definici\'on Arquitect\'onica y Dise\~no Software
-%\input{arquitectura/arquitectura.tex}
+\input{arquitectura/arquitectura.tex}
 
 %% Describir la arquitectura física del sistema (despliegue)
 
@@ -122,11 +122,11 @@ Faculty of Sciences}
 
 %% Detalles de implementación
 
-%\input{implementacion/implementacion.tex}
+\input{implementacion/implementacion.tex}
 
 % Cap\'itulo 8: Discusi\'on, Conclusiones y Trabajos Futuros
 
-%\input{futuro/futuro.tex}
+\input{futuro/futuro.tex}
 
 
 %%
@@ -138,7 +138,7 @@ Faculty of Sciences}
 % \input{populo/populo.tex} % Appendix I
 
 % CONFIG: Bibliography style
-% \input{config/bibliography.tex}
-% \bibliography{references/references}
+\input{config/bibliography.tex}
+\bibliography{references/references}
 
 \end{document} 

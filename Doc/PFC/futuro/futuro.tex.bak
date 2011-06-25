@@ -8,7 +8,7 @@
 %==================================================================%
 
 
-\chapterheader{Discusi\'on, Conclusiones y Trabajos Futuros}{Discusi\'on, Conclusiones y Trabajos Futuros}
+\chapterheader{Conclusiones y Trabajos Futuros}{Conclusiones y Trabajos Futuros}
 \label{chap:futuro}
 
 \section{Conclusiones}
@@ -20,7 +20,7 @@ Como se comentaba al principio de este documento el objetivo del proyecto era el
 Para conseguir esto, se ha pasado por una fase de investigación, para tener conocimientos suficientes del problema a solucionar, las diferentes opciones posibles para ello y poder así tomar decisiones razonadas. Esto se transformó en una planificación y un diseño del proyecto, que se ha ido exponiendo a lo largo del documento.
 \newline
 
-La solución obtenida es una aplicación Open Source que permite, enviar archivos desde el computador del profesor a los alumnos, deshabilitar el acceso a la red durante el transcurso de la prueba, haciendo uso de iptables, software muy utilizado y probado, recoger automáticamente los resultados, comprobando la integridad de los ficheros, como principales funciones a través de interfaces visuales intuitivas y amigables.
+La solución obtenida es una aplicación que permite, enviar archivos desde el computador del profesor a los alumnos, deshabilitar el acceso a la red durante el transcurso de la prueba, haciendo uso de iptables, software muy utilizado y probado, recoger automáticamente los resultados, comprobando la integridad de los ficheros, como principales funciones a través de interfaces visuales intuitivas y amigables.
 \newline
 
 
@@ -50,5 +50,7 @@ Como continuación de este proyecto, en lo referido a su principal función, el 
     \item {\bfseries Multiplataforma:} El proyecto ha sido construido íntegramente con el lenguaje de programación Java, pero el hecho de utilizar un cortafuegos propio del sistema Linux hace que no sea multiplataforma. Modificar esa parte del código y adaptarla para otros sistemas, haría que se pudiese utilizar independientemente de la plataforma, algo que es siempre atractivo.
 
     \item {\bfseries Integración con otras aplicaciones:} Todos sabemos que en lo referente a la seguridad informática no se puede garantizar que una aplicación sea a prueba de todo, la integración con otros sistemas, de análisis de tráfico por ejemplo, proporcionarían un aumento de la confianza en el proyecto.
+
+        \todo{tema copia seguridad}
 
 \end{itemize} 

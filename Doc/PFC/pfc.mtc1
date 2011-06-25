@@ -1,5 +1,9 @@
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.1}Descripci\IeC {\'o}n Funcional del Sistema}{\reset@font\mtcSfont 1}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.2}Metodolog\IeC {\'\i }a de Desarrollo}{\reset@font\mtcSfont 3}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.3}Requisitos de Alto Nivel del Sistema}{\reset@font\mtcSfont 6}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.4}Iteraciones}{\reset@font\mtcSfont 7}}
-{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.5}Construcci\IeC {\'o}n}{\reset@font\mtcSfont 9}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.1}Introducci\IeC {\'o}n}{\reset@font\mtcSfont 1}}
+{\reset@font\mtcSfont\mtc@string\contentsline{section}{\noexpand \leavevmode \numberline {1.2}Estructura del Documento}{\reset@font\mtcSfont 2}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Cap\IeC {\'\i }tulo 2: Descripci\IeC {\'o}n y Planificaci\IeC {\'o}n del Proyecto}{\reset@font\mtcPfont 2}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Cap\IeC {\'\i }tulo 3: Antecedentes}{\reset@font\mtcPfont 2}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Cap\IeC {\'\i }tulo 4: Definici\IeC {\'o}n Arquitect\IeC {\'o}nica y Dise\IeC {\~n}o Software}{\reset@font\mtcPfont 2}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Cap\IeC {\'\i }tulo 5: Descripci\IeC {\'o}n de la primera iteraci\IeC {\'o}n}{\reset@font\mtcPfont 2}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Cap\IeC {\'\i }tulo 6: Descripci\IeC {\'o}n de la segunda iteraci\IeC {\'o}n}{\reset@font\mtcPfont 2}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Cap\IeC {\'\i }tulo 7: Despliegue y Aceptaci\IeC {\'o}n}{\reset@font\mtcPfont 3}}
+{\reset@font\mtcPfont\mtc@string\contentsline{paragraph}{\noexpand \leavevmode Cap\IeC {\'\i }tulo 8: Conclusiones y Trabajos Futuros}{\reset@font\mtcPfont 3}}

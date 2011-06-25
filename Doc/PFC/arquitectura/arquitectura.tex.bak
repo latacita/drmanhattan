@@ -11,70 +11,71 @@
 \chapterheader{Arquitectura y diseño}{Definición Arquitectónica y Diseño Software}
 \label{chap:arquitectura}
 
-En el presente capítulo se presentan, mediante diagramas UML, la arquitectura física del sistema, los módulos y las comunicaciones entre ellos existentes en el sistema, y el funcionamiento del mismo.
-
-\todo{finalizar breve introducción}
+En el presente capítulo se presentan, mediante diagramas UML, la arquitectura del sistema, los módulos de los que está compuesto, las comunicaciones existentes entre ellos, y el funcionamiento del mismo.
 
 \chaptertoc
 
-\section{Arquitectura física del Sistema}
-\label{sec:arquitectura:arqFisica}
+\section{Vista lógica de la arquitectura}
+\label{sec:arquitectura:arqLogica}
 
-En esta sección se describe la arquitectura física del sistema mediante un diagrama de despliegue.
+En esta sección se describe la vista lógica de la arquitectura mediante un diagrama de componentes en la imagen \ref{fig:arquitectura:componentes}.
+\newline
+
+
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{arquitectura/despliegueSistema2}
-    \caption{Diagrama de despliegue del sistema}
+    \includegraphics[width=\linewidth]{arquitectura/componentes}
+    \caption{Diagrama de componentes}
+    \label{fig:arquitectura:componentes}
+\end{figure}
+
+
+Los dos componentes principales \emph{DrManhattanProfesor} y \emph{DrManhattanAlumno} ofrecen cada uno interfaces de comunicación usadas por el otro. \emph{DrManhattanAlumno} también se comunica con una tercera parte del sistema, el \emph{Demonio}, que como vemos en la figura \ref{fig:arquitectura:despliegueSistema} forma parte de la aplicación del alumno. Este \emph{Demonio} es el encargado de comunicarse con \emph{iptables} cuándo hay que cambiar la política de acceso a la red.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\linewidth]{arquitectura/despliegueSistema}
+    \caption{Diagrama despliegue del sistema}
     \label{fig:arquitectura:despliegueSistema}
 \end{figure}
+
+En la imagen \ref{fig:arquitectura:despliegueSistema} vemos la vista de despliegue del sistema.l Tenemos dos tipos de computadores, en lo que se ejecuta la aplicación del profesor, y en los que se ejecuta la del alumno.
+\newline
+
+Sólo se permite la existencia de una aplicación en el computador del profesor, a la que se conectan mediante TCP/IP un número indefinido de aplicaciones alumno, lógico, ya que en una prueba de una asignatura suelen ser varios los alumnos realizándola.
 \newline
 
 
-\lq\lq LanzadorProfesor.jar\rq\rq contiene lo necesario para mostrar la interfaz de usuario en la aplicación del profesor, así como la lógica de manejo de eventos y comunicación con las aplicaciones de los alumnos.
-
-\lq\lq LanzadorAlumno.jar\rq\rq contiene las funciones para mostrar la interfaz de usuario de la aplicación del alumno, el manejo de eventos producidos por su uso y la lógica de comunicación con la aplicación del profesor y el demonio local.
-
-\lq\lq LanzadorDaemon.jar\rq\rq contiene la lógica de comunicación con la aplicación del alumno y lo necesario para interactuar con iptables.
-
-\lq\lq iptables\rq\rq es parte del núcleo del sistema Linux sobre el que se ejecutará la aplicación.
-
-Cómo se puede puede observar, sólo se permite la existencia de una aplicación en el computador del profesor, a la que se conectan mediante TCP/IP un número indefinido de aplicaciones alumno, lógico, ya que en cada prueba suele haber varios los alumnos realizándola y uno el número de profesores.
-\newline
-
-A su vez, la aplicación del alumno interactúa con un único demonio del sistema.
-
-
-\section{Diseño Software}
-\label{sec:arquitectura:diseno}
-
-En está sección se muestra un diagrama de actividad que resume las posibles interacciones que tanto el alumno como el profesor realizan con sus respectivas aplicaciones durante el trascurso normal de una prueba y un diagrama de estados para clarificar la aplicación del alumno.
-\newline
+En la figura \ref{fig:arquitectura:actividadSistema} se muestran las las posibles interacciones que tanto el alumno como el profesor realizan con sus respectivas aplicaciones durante el trascurso normal de una prueba, se siguen los pasos descritos en la sección \ref{sec:planificacion:descFuncional}.
 
 
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{arquitectura/actividadSistema3}
+    \includegraphics[width=\linewidth]{arquitectura/actividadSistema4}
     \caption{Diagrama de actividad del sistema}
     \label{fig:arquitectura:actividadSistema}
 \end{figure}
 
+\section{Diseño Software}
+\label{sec:arquitectura:diseno}
 
-Vemos en la figura \ref{fig:arquitectura:actividadSistema} que se siguen los pasos descritos en la sección \ref{sec:planificacion:descFuncional}
-
+En está sección se muestra en la figura \ref{fig:arquitectura:estadosAlumno} un diagrama de estados para clarificar la aplicación del alumno.
+\newline
 
 
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{arquitectura/estadosAlumno2}
+    \includegraphics[width=\linewidth]{arquitectura/estadosAlumno3}
     \caption{Diagrama de estados de la aplicación del alumno}
     \label{fig:arquitectura:estadosAlumno}
 \end{figure}
 
 
-%Los estados se corresponden directamente con el estado en que se encuentra la prueba.
-
-En la figura \ref{fig:arquitectura:estadosAlumno} se describe mediante un diagrama de estados el protocolo a implementar en la aplicación del alumno que ha de garantizar la principal funcionalidad de la aplicación, denegar el acceso a la red en los computadores de los alumnos que están realizando la prueba, mientras la prueba esté en marcha, sin necesidad de apagar el router o switch del laboratorio. 
+Esa figura representa el protocolo a implementar en la aplicación del alumno que ha de garantizar la principal funcionalidad de la aplicación, denegar el acceso a la red en los computadores de los alumnos que están realizando la prueba, mientras la prueba esté en marcha, sin necesidad de apagar el router o switch del laboratorio.
 \newline
+
+
 
 El acto desactivar la red se consigue por medio de iptables, sección \ref{sec:introduction:iptables}, cambiando la política de los paquetes salientes una vez que empieza la prueba y hasta que acaba.
 \newline
@@ -94,6 +95,8 @@ Para entrar en el estado \lq\lq Realizando prueba\rq\rq, se pueden seguir dos ca
 
 El otro camino involucra a una funcionalidad que tiene el sistema que consiste en permitir reconexiones de alumnos que estuviesen realizando la prueba y por el motivo que sea, un error en el sistema, por ejemplo, hayan tenido que reiniciar el computador, cuándo la aplicación del alumno vuelva a ejecutarse, al inicio de la sesión automáticamente, se reconectará con la aplicación del profesor. En la imagen se observa que sólo se puede reconectar si previamente se estaba realizando la prueba y al reconectar volveríamos automáticamente a ese estado, en el que la red se desactiva al entrar, es decir, que aunque se reinicie el computador del alumno durante el transcurso de la prueba no se conseguiría acceso a la red.
 \newline
+
+
 
 
 %Otro punto importante es el de la recogida de resultados automática, se ha de garantizar que el archivo no se ha corrompido a lo largo de la transferencia, para ello se realizan, tanto en el equipo que envía el fichero como en el que lo recibe, firmas MD5 al mismo para comprobar que no ha habido errores en la transferencia.
