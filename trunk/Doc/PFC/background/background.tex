@@ -11,161 +11,87 @@
 \chapterheader{Antecedentes}{Antecedentes}
 \label{chap:introduction}
 
-%==================================================================%
-% TODO(Pablo) : Completa este párrafo introductorio de manera      %
-%               adecuada                                           %
-%==================================================================%
 
-El siguiente cap\'itulo describe brevemente las tecnolog\'ias sobre las que se fundamenta el presente proyecto. M\'as concretamente, se explica el funcionamiento de las redes locales, del framework Netfilter para el filtrado de paquetes, y de los demonios en los sistemas Linux, tres aspectos fuertemente relacionados con el proyecto. \newline
+El siguiente cap\'itulo describe brevemente las tecnolog\'ias sobre las que se fundamenta el presente proyecto. M\'as concretamente, se explica el funcionamiento de las redes locales, del framework Netfilter para el filtrado de paquetes, de los demonios en los sistemas Linux\cite{linux:2004} y del algoritmo MD5, cuatro aspectos fuertemente relacionados con el proyecto.
+\newline
 
-La aplicación a desarrollar está pensado que se utilice en los laboratorios de la Facultad de Ciencias de la Universidad de Cantabria, en estos laboratorios los computadores están conectado mediante una \emph{red local} y utilizan sistemas Linux. Para gestionar los permisos de acceso a la red se va a utilizar un \emph{demonio} que interactúe con \emph{Netfilter} por medio de iptables.
+La aplicación a desarrollar está pensado que se utilice en los laboratorios de la Facultad de Ciencias de la Universidad de Cantabria, en estos laboratorios los computadores están conectado mediante una \emph{red local} y utilizan sistemas Linux. Para gestionar los permisos de acceso a la red se va a utilizar un \emph{demonio} que interactúe con \emph{Netfilter} por medio de iptables. Para detectar si hay algún problema en la transferencia de los ficheros por la red se utilizará MD5.
 
 
 \chaptertoc
 
 \section{Red local}
 
-%============================================================================%
-% NOTA(Pablo): Poner un párrafo de como se ha llegado hasta aquí             %
-%============================================================================%
-Una \emph{Red local} o LAN, siglas en inglés de Local Area Network, es un conjunto de computadoras conectadas entre sí en un \'area relativamente peque\~na, como los laboratorios de la Facultad.
-
-%============================================================================%
-% NOTA(Pablo): Poner ejemplo de área relativamente pequeña y explicar cómo   %
-%              y en que se diferencian las LANs de las WANs.                 %
-%============================================================================%
-
-Cada uno de estos equipos interconectados en la red se conoce como nodo. Estos nodos son capaces de enviar, recibir y procesar comandos con el fin de transportar datos, así como compartir informaci\'on y recursos a través de la red.
-
-%============================================================================%
-% NOTA(Pablo): Esto queda suelto                                             %
-%============================================================================%
-El funcionamiento de la red está estandarizado siendo el protocolo TCP/IP el más extendido.
-
-%============================================================================%
-% NOTA(Pablo): Esto suena a escribir por escribir, así que mejor lo quitamos %
-%============================================================================%
-% Entre las ventajas de las redes locales cabe destacar el ahorro en hardware,
-% si se desea que todos los equipos puedan imprimir no es necesario disponer de % una impresora para cada equipo, sirve con una conectada a la red, y del mismo % modo, el ahorro en la factura de internet, puesto que con una sola conexi\'on % se puede dar acceso a todos los equipos de la red.
-%
-% Otra ventaja, probablemente la m\'as importante desde el punto de vista
-% t\'ecnico es que al estar estandarizados como han de comunicarse los nodos en % la red permite la conexi\'on de equipos heterog\'eneos.
-%============================================================================%
-
-%==================================================================%
-% TODO(Pablo) : Esto así a pelo queda muy duro, quizás haya que    %
-%               explicar antes cómo es la arquitectura global de   %
-%               la aplicación.                                     %
-%==================================================================%
-
-\section{Demonio}
-
-% NOTA(Pablo): No se suele decir la palabra "informática", ya que está
-%              demasiado sobrecargada y no se sabe si son redes,
-%              programación, inteligencia artificial o simplemente saber
-%              manejar el Word
-% En inform\'atica
-
-Un \emph{demonio} (del inglés, \emph{daemon}) es un tipo de proceso que posee la siguientes características:
-
-\begin{enumerate}
-	\item Se ejecuta en segundo plano;
-	\item Generalmente se inicia en tiempo de arranque;
-	\item No usa los sistemas de entrada/salida est\'andar;
-	\item Mantienen la información que necesitan en ficheros especiales bien identificados.
-\end{enumerate}
-
-%=========================================================================%
-% NOTA(Pablo): Esta información es demasiado técnica y poco interesante.  %
-%              Mejor la borramos                                          %
-%=========================================================================%
-% En los sistemas Windows se conocen como servicios ya que son usados para,
-% precisamente, proporcionar un servicio al usuario.
-% En los sistemas linux, cada daemon suele tener un script en la carpeta
-% /etc/init.d/ que permite iniciarlo, pararlo o consultar su estado.
-%
-% El nombre del ejecutable suele acabar en "d".
-%
-%=========================================================================%
-
-Normalmente est\'an cargados en memoria esperando una señal para ser ejecutados, por lo que su gasto de recursos no suele ser significativo.
-
-% NOTA(Pablo): Pero consumen memoria, ¿no?
-
-%=========================================================================%
-% NOTA(Pablo): Esta información es demasiado técnica y poco interesante.  %
-%              Mejor la borramos                                          %
-%=========================================================================%
-%
-% Adem\'as suelen ser concurrentes, es decir, cuando se va a atender una
-% petici\'on, el daemon crea un hilo especifico para ejecutar las \'ordenes de
-% esa petici\'on concreta, de modo que el hilo principal puede seguir a la
-% espera de nuevas peticiones.\newline
-%
-%=========================================================================%
-
-%=========================================================================%
-% NOTA(Pablo): Faltaría poner un ejemplo de demonio y dejar clara su      %
-%              utilidad, sin entrar en detalles técnicos                  %
-%              Habría que poner también la utilidad de los demonios para  %
-%              el proyecto en cuestión                                    %
-%=========================================================================%
-
-Un ejemplo claro de demonio es \emph{httpd}, que se ejecuta en los servidores web. El nombre viene de \emph{HTTP D}aemon y es utilizado para aceptar peticiones, una vez que las acepta, crea otros procesos se encargan de atenderlas.
+Una \emph{Red local} o LAN\cite{redes:2004}, siglas en inglés de Local Area Network, es un conjunto de computadoras conectadas entre sí en un \'area relativamente peque\~na, como los laboratorios de la Facultad.
 \newline
 
-En el proyecto se implementa un demonio para interactuar con Netfilter, descrito en la siguiente sección.
+Cada uno de estos equipos interconectados en la red se conoce como nodo. Estos nodos son capaces de enviar, recibir y procesar comandos con el fin de transportar datos, así como compartir informaci\'on y recursos a través de la red.
+\newline
 
-%=========================================================================%
-% NOTA(Pablo): Titular la sección con el nombre del concepto que          %
-%              representan las ip tables                                  %
-%=========================================================================%
+El funcionamiento de la red está estandarizado siendo el protocolo TCP/IP\cite{TCPIP} el más extendido, gracias a esto cualquier equipo que cumple el estándar podrá comunicarse con otros que también lo cumplan, sin importar fabricante o tecnología interna.
+\newline
+
+
 
 \section{Cortafuegos : Netfilter/iptables}
 \label{sec:introduction:iptables}
 
-%=========================================================================%
-% NOTA(Pablo): Esto sin ningún tipo de intoducción, así a bocajarro,      %
-%              queda un poco duro                                         %
-%=========================================================================%
-
 Netfilter es un framework que permite filtrar de paquetes, traducci\'on de direcciones y puertos de red y varias funcionalidades m\'as para el manejo de paquetes. Es parte del n\'ucleo de linux desde la versi\'on 2.4 del mismo, sustituyendo a ipchains, bastante limitado en comparaci\'on con Netfilter.
 \newline
-%=========================================================================%
-% NOTA(Pablo): Demasiado técnico y poco interesante, lo borramos          %
-%=========================================================================%
-% Iptables es una aplicaci\'on de l\'inea de comandos, que permite a un
-% usuario con privilegios de administrador, configurar un conjunto de
-% reglas para el filtrado de paquetes.
-%
-%  Tambi\'en es parte del mismo proyecto que Netfilter, por lo que
-% generalmente se suele hablar solamente de iptables, puesto que es el
-% programa con el que interact\'ua directamente el usuario, para referirse
-% al d\'uo netfilter/iptables.
-%
 
 
-Para interactuar con Netfilter una de las aplicaciones más usadas es \emph{iptables}, siendo necesarios permisos de administrador para ello.
+Para interactuar con Netfilter una de las aplicaciones más usadas es \emph{iptables}\cite{iptables:2004}, siendo necesarios permisos de administrador para ello.
+\newline
 
 Ejemplo de uso de iptables:
 
 \begin{center}
-\# iptables -A INPUT -s 195.65.34.234 -j ACCEPT\\
+    \# iptables -A INPUT -s 195.65.34.234 -j ACCEPT\\
 \end{center}
 
 
 El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo es aceptar todos los paquetes entrantes provenientes del host indicado\footnote{en vez de la IP podemos poner su FQDN (\emph{Fully Qualified Domain Name)} si lo deseáramos}. Del mismo modo, si lo que queremos es no aceptar las peticiones se cambiar\'ia ACCEPT por DROP y si nos queremos referir a los paquetes salientes OUTPUT por INPUT.
-%============================================================================%
-% NOTA(Pablo): Por defecto ¿qué pasa cuando un paquete                       %
-%              proviniente de un host llega y no se ha tocado iptables?      %
-%              ¿Se rechaza o se acepta?                                      %
-%============================================================================%
+\newline
+
+Para cambiar el tratamiento por defecto de un tipo de paquete se puede usar:
+
+\begin{center}
+    \# iptables -P INPUT DROP\\
+\end{center}
+
+Con esta orden conseguimos que por defecto, todos los paquetes entrantes (INPUT) sean rechazados (DROP). Se pueden variar los términos del mismo modo que el ejemplo anterior.
+\newline
+
+
 Si tenemos iptables con la configuración por defecto, se aceptan todos los paquetes entrantes y salientes, no hay ninguna restricción.
+
+
+
+
+\section{Demonio}
+
+Un \emph{demonio} (del inglés, \emph{daemon}\cite{SO:2006}) es un tipo de proceso que posee la siguientes características:
+
+\begin{enumerate}
+	\item Se ejecuta en segundo plano,
+	\item Generalmente se inicia en tiempo de arranque,
+	\item No usa los sistemas de entrada/salida est\'andar,
+	\item Mantienen la información que necesitan en ficheros especiales bien identificados.
+\end{enumerate}
+
+Normalmente est\'an cargados en memoria esperando una señal para ser ejecutados, por lo que su gasto de recursos no suele ser significativo.
+\newline
+
+
+Un ejemplo claro de demonio es \emph{httpd}, que se ejecuta en los servidores web. El nombre viene de \emph{HTTP D}aemon y es utilizado para aceptar peticiones, una vez que las acepta, crea otros procesos se encargan de atenderlas.
+\newline
+
+En el proyecto se implementa un demonio para interactuar con Netfilter, que como hemos visto en la sección anterior, requiere privilegios de administrador para ello, por eso se ha decidido utilizar un demonio y no realizarlo desde la aplicación principal. Es mas sencillo configurar un programa simple como el demonio, que acepta peticiones y actuar en consecuencia de las órdenes recibidas, para iniciarse en tiempo de arranque con privilegios de administrador, que no ser necesarios permisos especiales para ejecutar la aplicación del alumno.
 
 
 \section{MD5}
 
-MD5 son las siglas de Message-Digest Algorithm 5, algoritmo resumen del mensaje, que genera un número, conocido como firma, de 128 bits a partir del contenido de ese mensaje, de tal modo que, sí por cualquier razón, el contenido cambia, el número resultante de aplicar el algoritmo al nuevo contenido cambiará también.
+MD5\cite{MD5:2007} son las siglas de Message-Digest Algorithm 5, algoritmo resumen del mensaje, que genera un número, conocido como firma, de 128 bits a partir del contenido de ese mensaje, de tal modo que, sí por cualquier razón, el contenido cambia, el número resultante de aplicar el algoritmo al nuevo contenido cambiará también.
 \newline
 
 Es utilizado, por ejemplo, para realizar firmas a los paquetes que nos descargamos de los repositorios para instalar aplicaciones en Linux, de este modo, si vemos que la firma MD5 del fichero que hemos descargado, no concuerda con el que debería, puede ser que se haya corrompido en el proceso de descarga, o que lo descargado no sea lo que aparenta.

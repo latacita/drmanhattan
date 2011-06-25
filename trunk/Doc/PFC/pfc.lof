@@ -1,26 +1,29 @@
 \select@language {spanish}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Descripci\IeC {\'o}n y Planificaci\IeC {\'o}n del Proyecto}{1}
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Diferencia entre iteraci\IeC {\'o}n e incremento.}}{4}
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Carga de trabajo en las diferentes fases.}}{5}
-\contentsline {figure}{\numberline {1.3}{\ignorespaces Diagrama de casos de uso del sistema}}{6}
+\contentsline {xchapter}{Introducci\IeC {\'o}n}{1}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Antecedentes}{11}
+\contentsline {xchapter}{Descripci\IeC {\'o}n y Planificaci\IeC {\'o}n del Proyecto}{5}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Diferencia entre iteraci\IeC {\'o}n e incremento.\cite {UP:2006}}}{8}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Carga de trabajo en las diferentes fases.\cite {RUP:2003}}}{9}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Diagrama de casos de uso del sistema}}{10}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Definici\IeC {\'o}n Arquitect\IeC {\'o}nica y Dise\IeC {\~n}o Software}{15}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de despliegue del sistema}}{16}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de actividad del sistema}}{17}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de estados de la aplicaci\IeC {\'o}n del alumno}}{18}
+\contentsline {xchapter}{Antecedentes}{15}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Descripci\IeC {\'o}n de una iteraci\IeC {\'o}n}{21}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Casos de uso a implementar}}{22}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Interfaz de la aplicaci\IeC {\'o}n profesor}}{24}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Interfaz de la aplicaci\IeC {\'o}n alumno}}{24}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Diagrama de secuencia caso de uso conectar}}{25}
+\contentsline {xchapter}{Definici\IeC {\'o}n Arquitect\IeC {\'o}nica y Dise\IeC {\~n}o Software}{19}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de componentes}}{19}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Diagrama despliegue del sistema}}{20}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Diagrama de actividad del sistema}}{21}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Diagrama de estados de la aplicaci\IeC {\'o}n del alumno}}{22}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Descripci\IeC {\'o}n de una iteraci\IeC {\'o}n}{27}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Aspecto de la GUI del alumno con una prueba temporizada.}}{30}
+\contentsline {xchapter}{Descripci\IeC {\'o}n de la primera iteraci\IeC {\'o}n}{25}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Casos de uso a implementar}}{27}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Interfaz de la aplicaci\IeC {\'o}n profesor}}{28}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Interfaz de la aplicaci\IeC {\'o}n alumno}}{28}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagrama de secuencia caso de uso conectar}}{29}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Despliegue y aceptaci\IeC {\'o}n}{33}
+\contentsline {xchapter}{Descripci\IeC {\'o}n de la segunda iteraci\IeC {\'o}n}{31}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Aspecto de la GUI del alumno con una prueba temporizada.}}{34}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones y Trabajos Futuros}{37}
+\contentsline {xchapter}{Despliegue y aceptaci\IeC {\'o}n}{37}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Conclusiones y Trabajos Futuros}{43}

@@ -112,7 +112,7 @@ La siguiente sección detalla la metodología de desarrollo que usaremos para la
 En esta sección se describe la metodología utilizada para desarrollar el sistema.
 \newline
 
-Se ha escogido el proceso de desarrollo \emph{iterativo e incremental} que suele ser parte esencial en las metodologías de desarrollo ágiles.
+Se ha escogido el proceso de desarrollo \emph{iterativo e incremental} que suele ser parte esencial en las metodologías de desarrollo ágiles\cite{AGIL:2003}.
 \newline
 
 %Qué es
@@ -124,7 +124,7 @@ El software se construye mediante tareas repetitivas, \emph{iteraciones}, en las
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{planificacion/iteracionIncremento}
-    \caption{Diferencia entre iteración e incremento.}
+    \caption{Diferencia entre iteración e incremento.\cite{UP:2006}}
     \label{fig:planificacion:iteracionIncremento}
 \end{figure}
 
@@ -149,7 +149,7 @@ El proceso se divide en cuatro partes fundamentales:
 \begin{figure}[!h]
     \centering
     \includegraphics[]{planificacion/trabajoFases}
-    \caption{Carga de trabajo en las diferentes fases.}
+    \caption{Carga de trabajo en las diferentes fases.\cite{RUP:2003}}
     \label{fig:planificacion:trabajoFases}
 \end{figure}
 
@@ -277,8 +277,8 @@ En concreto, se han identificado los requisitos de alto nivel para nuestro siste
 	\\ \hline
 
 \end{tabular}
-\label{tabla:requisitos}
 \caption{Requisitos de alto nivel del sistema}
+\label{tabla:requisitos}
 \end{table}
 
 \section{Iteraciones}
@@ -287,13 +287,13 @@ En concreto, se han identificado los requisitos de alto nivel para nuestro siste
 En esta sección se describen las iteraciones previstas para el desarrollo de la aplicación.
 
 \begin{itemize}
-    \item {\bfseries Iteración 1: Crear un sistema distribuido.}
+    \item {\bfseries Iteración 1: Crear un sistema distribuido\cite{distribuidos:2006}.}
     \begin{itemize}
         \item Requisitos implementados: R06, R07
         \item Descripción: En la primera iteración la aplicación del alumno se podrá conectar al watchman para esperar el inicio de la prueba, envío de ficheros etc... y el profesor es capaz de enviar el enunciado.
     \end{itemize}
 
-    \item {\bfseries Iteración 2: Denegar acceso a red una vez comenzado el examen.}
+    \item {\bfseries Iteración 2: Denegar acceso a red una vez comenzada la prueba.}
     \begin{itemize}
         \item Requisitos implementados: R03, R05, R10, R11
         \item Descripción: En la segunda iteración el profesor puede establecer una hora límite e indicar el inicio de la prueba. La aplicación del alumno es capaz de denegar el acceso a la red cuando se inicia la prueba y en caso de que la duración este prefijada, consultar el tiempo restante
@@ -332,8 +332,8 @@ En este capítulo se ha descrito el ámbito funcional del sistema y la metodolog
 \section{Construcción}
 \label{sec:planificacion:construccion}
 
-Para el diseño se utiliza el programa Visual Paradigm, versión 8.1 y para la construcción del sistema se ha utilizará el entorno de desarrollo Eclipse 3.5.2, en su versión para java.
-Eclipse es un IDE de código abierto, multiplataforma, en el que se pueden instalar multitud de plug-ins para aumentar sus funcionalidades. Concretamente, para la realización de este proyecto se han usado el Google Web Toolkit en su versión para eclipse 3.5, que facilita mucho la creación de interfaces gráficas de modo visual, y Subeclipse, para simplificar el trabajo con el repositorio Subversion.
+Para el diseño se utiliza el programa Visual Paradigm, versión 8.1 y para la construcción del sistema se ha utilizará el entorno de desarrollo Eclipse 3.5.2\cite{eclipse:2005}, en su versión para el lenguaje Java\cite{java:2005}.
+Eclipse es un IDE de código abierto, multiplataforma, en el que se pueden instalar multitud de plug-ins para aumentar sus funcionalidades. Concretamente, para la realización de este proyecto se han usado el Google Web Toolkit en su versión para eclipse 3.5, que facilita mucho la creación de interfaces gráficas de modo visual, y Subeclipse, para simplificar el trabajo con el repositorio Subversion\cite{subversion:2008}.
 \newline
 
 Google Code es un servicio de alojamiento de proyectos ofrecido por Google, que permite alojar código de Subversion de modo que se puede crear fácilmente un sistema de control de cambios, muy útil si se quiere regresar a un estado anterior del programa, recuperar algún objeto borrado, etc.
@@ -342,5 +342,5 @@ Google Code es un servicio de alojamiento de proyectos ofrecido por Google, que 
 Las razones principales para trabajar con estas y no otras herramientas son que, todas ellas tienen licencias que permiten usarlas gratuitamente y que ya se tenía cierta experiencia en su uso.
 \newline
 
-El sistema operativo escogido ha sido Ubuntu 9.10 de 32 bits y la versión de kernel 2.6.35.
-\newline
+El sistema operativo escogido ha sido Ubuntu 10.10\cite{ubuntu:2011} de 32 bits y la versión de kernel 2.6.35.
+\newline 
