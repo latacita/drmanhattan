@@ -11,7 +11,7 @@
 \chapterheader{Arquitectura y diseño}{Definición Arquitectónica y Diseño Software}
 \label{chap:arquitectura}
 
-En el presente capítulo se presentan, mediante diagramas UML, la arquitectura del sistema, los módulos de los que está compuesto, las comunicaciones existentes entre ellos, y el funcionamiento del mismo.
+En el presente capítulo se presentan, mediante diagramas UML\cite{UML:2004, UML2:2004}, la arquitectura del sistema\cite{ARQ:2010}, los módulos de los que está compuesto, las comunicaciones existentes entre ellos, y el funcionamiento del mismo, es decir, se crea el marco de referencia que servirá de base para la construcción de la aplicación.
 
 \chaptertoc
 
@@ -31,7 +31,7 @@ En esta sección se describe la vista lógica de la arquitectura mediante un dia
 
 
 Los dos componentes principales \emph{DrManhattanProfesor} y \emph{DrManhattanAlumno} ofrecen cada uno interfaces de comunicación usadas por el otro. \emph{DrManhattanAlumno} también se comunica con una tercera parte del sistema, el \emph{Demonio}, que como vemos en la figura \ref{fig:arquitectura:despliegueSistema} forma parte de la aplicación del alumno. Este \emph{Demonio} es el encargado de comunicarse con \emph{iptables} cuándo hay que cambiar la política de acceso a la red.
-
+\newline
 
 \begin{figure}
     \centering
@@ -40,19 +40,19 @@ Los dos componentes principales \emph{DrManhattanProfesor} y \emph{DrManhattanAl
     \label{fig:arquitectura:despliegueSistema}
 \end{figure}
 
-En la imagen \ref{fig:arquitectura:despliegueSistema} vemos la vista de despliegue del sistema.l Tenemos dos tipos de computadores, en lo que se ejecuta la aplicación del profesor, y en los que se ejecuta la del alumno.
+En la imagen \ref{fig:arquitectura:despliegueSistema} vemos la vista de despliegue del sistema. Tenemos dos tipos de computadores, en los que se ejecuta la aplicación del profesor, y en los que se ejecuta la del alumno.
 \newline
 
 Sólo se permite la existencia de una aplicación en el computador del profesor, a la que se conectan mediante TCP/IP un número indefinido de aplicaciones alumno, lógico, ya que en una prueba de una asignatura suelen ser varios los alumnos realizándola.
 \newline
 
 
-En la figura \ref{fig:arquitectura:actividadSistema} se muestran las las posibles interacciones que tanto el alumno como el profesor realizan con sus respectivas aplicaciones durante el trascurso normal de una prueba, se siguen los pasos descritos en la sección \ref{sec:planificacion:descFuncional}.
+En la figura \ref{fig:arquitectura:actividadSistema} se muestran las posibles interacciones que tanto el alumno como el profesor realizan con sus respectivas aplicaciones durante el trascurso normal de una prueba, se siguen los pasos descritos en la sección \ref{sec:planificacion:descFuncional}.
 
 
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{arquitectura/actividadSistema4}
+    \includegraphics[width=\linewidth]{arquitectura/actividadSistema}
     \caption{Diagrama de actividad del sistema}
     \label{fig:arquitectura:actividadSistema}
 \end{figure}
@@ -66,13 +66,13 @@ En está sección se muestra en la figura \ref{fig:arquitectura:estadosAlumno} u
 
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{arquitectura/estadosAlumno3}
+    \includegraphics[width=\linewidth]{arquitectura/estadosAlumno}
     \caption{Diagrama de estados de la aplicación del alumno}
     \label{fig:arquitectura:estadosAlumno}
 \end{figure}
 
 
-Esa figura representa el protocolo a implementar en la aplicación del alumno que ha de garantizar la principal funcionalidad de la aplicación, denegar el acceso a la red en los computadores de los alumnos que están realizando la prueba, mientras la prueba esté en marcha, sin necesidad de apagar el router o switch del laboratorio.
+Esa figura representa el protocolo a implementar que ha de garantizar la principal funcionalidad de la aplicación, denegar el acceso a la red en los computadores de los alumnos que están realizando la prueba, mientras esta esté en marcha, sin necesidad de apagar el router o switch del laboratorio.
 \newline
 
 
@@ -87,7 +87,7 @@ A la hora de volver a permitir el acceso a la red, basta con modificar la polít
 \newline
 
 
-Vemos en la imagen que el único modo de finalizar la prueba es partiendo de una prueba ya iniciada, lógicamente, es decir, desde el estado \lq\lq Realizando prueba\rq\rq. Nada más entrar en este estado se desactiva el acceso a la red, por tanto, si se pretende finalizar la prueba, se ha tenido que realizar la misma sin acceso a la red.
+Vemos en la imagen que el único modo de finalizar la prueba es partiendo de una prueba ya iniciada, lógicamente, es decir, desde el estado \lq\lq Realizando prueba\rq\rq. Nada más entrar en este estado se desactiva el acceso a la red, por tanto, si se pretende finalizar la prueba, se ha tenido que realizar la misma sin acceso a la red. Además el acto de enviar los resultados se implementa de modo que no se pueda modificar el fichero una vez habilitada la red pero antes de transferirlo definitivamente.
 \newline
 
 Para entrar en el estado \lq\lq Realizando prueba\rq\rq, se pueden seguir dos caminos. El normal implica conectar la aplicación del alumno con la aplicación del profesor, cosa que únicamente se puede hacer antes de que de comienzo la prueba, por tanto, tampoco se puede realizar la prueba con acceso a la red y al finalizarla, conectarse y enviar los resultados, la aplicación no aceptaría la conexión.

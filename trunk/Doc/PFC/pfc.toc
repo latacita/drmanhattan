@@ -25,15 +25,15 @@
 \contentsline {section}{\numberline {4.2}Dise\IeC {\~n}o Software}{21}
 \contentsline {chapter}{\numberline {5}Descripci\IeC {\'o}n de la primera iteraci\IeC {\'o}n}{25}
 \contentsline {section}{\numberline {5.1}Incrementos realizados}{25}
-\contentsline {subsection}{\numberline {5.1.1}Interfaces gr\IeC {\'a}ficas}{25}
+\contentsline {subsection}{\numberline {5.1.1}Interfaces gr\IeC {\'a}ficas}{27}
 \contentsline {subsection}{\numberline {5.1.2}Conexi\IeC {\'o}n}{27}
 \contentsline {subsection}{\numberline {5.1.3}Env\IeC {\'\i }o de ficheros}{29}
 \contentsline {section}{\numberline {5.2}Pruebas}{29}
 \contentsline {chapter}{\numberline {6}Descripci\IeC {\'o}n de la segunda iteraci\IeC {\'o}n}{31}
-\contentsline {section}{\numberline {6.1}Incrementos realizados}{31}
+\contentsline {section}{\numberline {6.1}Incrementos realizados}{32}
 \contentsline {subsection}{\numberline {6.1.1}Inicio de la prueba}{32}
-\contentsline {subsection}{\numberline {6.1.2}Examen temporizado}{32}
-\contentsline {subsection}{\numberline {6.1.3}Denegar acceso a red}{33}
+\contentsline {subsection}{\numberline {6.1.2}Examen temporizado}{33}
+\contentsline {subsection}{\numberline {6.1.3}Denegar acceso a red}{34}
 \contentsline {section}{\numberline {6.2}Pruebas}{35}
 \contentsline {chapter}{\numberline {7}Despliegue y aceptaci\IeC {\'o}n}{37}
 \contentsline {section}{\numberline {7.1}Despliegue}{37}
@@ -41,4 +41,3 @@
 \contentsline {chapter}{\numberline {8}Conclusiones y Trabajos Futuros}{43}
 \contentsline {section}{\numberline {8.1}Conclusiones}{43}
 \contentsline {section}{\numberline {8.2}Trabajos futuros}{44}
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{47}

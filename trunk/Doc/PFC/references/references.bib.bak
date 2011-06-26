@@ -11,7 +11,7 @@
 }
 
 @BOOK{linux:2004,
-  title = {{Linux Pocket Guide}},
+  title = {Linux Pocket Guide},
   publisher = {O'Reilly},
   year = {2004},
   author = {Daniel J. Barrett}
@@ -44,6 +44,15 @@
   timestamp = {2011.06.24}
 }
 
+@BOOK{ARQ:2010,
+  title = {Lean Architecture: for Agile Software Development},
+  publisher = {Wiley},
+  year = {2010},
+  author = {James O. Coplien},
+  owner = {Manuel},
+  timestamp = {2011.06.25}
+}
+
 @BOOK{MD5:2007,
   title = {Cryptography for Developers},
   publisher = {Syngress},
@@ -51,6 +60,24 @@
   author = {Tom St. Denis},
   owner = {Manuel},
   timestamp = {2011.06.24}
+}
+
+@BOOK{GUI:1999,
+  title = {Java Gui Development},
+  publisher = {Sams},
+  year = {1999},
+  author = {Java Gui Development},
+  owner = {Manuel},
+  timestamp = {2011.06.25}
+}
+
+@BOOK{UML2:2004,
+  title = {Unified Modeling Language Reference Manual},
+  publisher = {Addison-Wesley Professional},
+  year = {2004},
+  author = {Grady Booch, Ivar Jacobson, James Rumbaugh},
+  owner = {Manuel},
+  timestamp = {2011.06.25}
 }
 
 @BOOK{java:2005,
@@ -72,6 +99,15 @@
   timestamp = {2011.06.24}
 }
 
+@BOOK{DEBIAN:2005,
+  title = {The Debian System: Concepts and Techniques},
+  publisher = {No Starch Press},
+  year = {2005},
+  author = {Martin F. Krafft},
+  owner = {Manuel},
+  timestamp = {2011.06.25}
+}
+
 @BOOK{RUP:2003,
   title = {The Rational Unified Process: An Introduction},
   publisher = {Addison-Wesley Professional},
@@ -90,6 +126,43 @@
   timestamp = {2011.06.24}
 }
 
+@BOOK{UML:2004,
+  title = {Object-Oriented Modeling and Design with UML},
+  publisher = {Prentice Hall},
+  year = {2004},
+  author = {Michael Blaha, James Rumbaugh},
+  owner = {Manuel},
+  timestamp = {2011.06.25}
+}
+
+@BOOK{EVENTOS:2010,
+  title = {Distributed Event-Based Systems},
+  publisher = {Springer},
+  year = {2010},
+  author = {Gero Mühl},
+  owner = {Manuel},
+  timestamp = {2011.06.25}
+}
+
+@BOOK{THREAD:2004,
+  title = {Java Threads},
+  publisher = {O'Reilly Media},
+  year = {2004},
+  author = {Scott Oaks},
+  owner = {Manuel},
+  timestamp = {2011.06.25}
+}
+
+@BOOK{JAVA:1998,
+  title = {The Java Class Libraries, Volume 1: java.io, java.lang, java.math,
+	java.net, java.text, java.util},
+  publisher = {Addison-Wesley Professional},
+  year = {1998},
+  author = {Patrick Chan, Rosanna Lee, Douglas Kramer},
+  owner = {Manuel},
+  timestamp = {2011.06.25}
+}
+
 @BOOK{UP:2006,
   title = {Agility and Discipline Made Easy: Practices from OpenUP and RUP},
   publisher = {Addison-Wesley Professional},
@@ -99,8 +172,17 @@
   timestamp = {2011.06.24}
 }
 
+@BOOK{JAVANET:2010,
+  title = {Fundamental Networking in Java},
+  publisher = {Springer},
+  year = {2010},
+  author = {Esmond Pitt},
+  owner = {Manuel},
+  timestamp = {2011.06.25}
+}
+
 @BOOK{iptables:2004,
-  title = {{Linux iptables Pocket Reference}},
+  title = {Linux iptables Pocket Reference},
   publisher = {O'Reilly},
   year = {2004},
   author = {Gregor N. Purdy}
@@ -116,9 +198,18 @@
 }
 
 @BOOK{redes:2004,
-  title = {{Comunicaciones y redes de computadores}},
+  title = {Comunicaciones y redes de computadores},
   publisher = {Pearson},
   year = {2004},
   author = {William Stallings}
+}
+
+@BOOK{WEB:1996,
+  title = {Web Server Technology},
+  publisher = {Morgan Kaufmann},
+  year = {1996},
+  author = {Nancy J. Yeager},
+  owner = {Manuel},
+  timestamp = {2011.06.25}
 }
 
