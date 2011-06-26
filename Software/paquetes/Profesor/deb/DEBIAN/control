@@ -1,0 +1,13 @@
+Package: drmanhattan-profesor
+Priority: optional
+Section: utils
+Maintainer: manuel.pando.m@gmail.com
+Architecture: all
+Version: 1.1
+Depends: 
+Provides: drManhattan
+Conflicts:
+Replaces:
+Description: Aplicacion control de accesos
+ Dr Manhattan is a software application to control and organize exams which requires the use of computers connected to a local network and internet. 
+ The application allows network applications, such as sending files from the teacher computer to the student ones; at the same time that it forbides other ones, such as interstudent communication or access to internet. 

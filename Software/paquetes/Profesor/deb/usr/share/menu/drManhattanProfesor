@@ -1,0 +1,6 @@
+?package(drManhattanProfesor):needs="X11" 
+section="Applications/utils"\
+title="drManhattan - Profesor" 
+command="/usr/bin/drManhattanProfesor.sh"\
+description="Control de accesos"
+icon="/usr/share/drManhattanProfesor/iconos/icono.png"

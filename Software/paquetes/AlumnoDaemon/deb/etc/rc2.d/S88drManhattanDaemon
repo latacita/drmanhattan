@@ -1,0 +1,3 @@
+#! /bin/sh
+java -jar /usr/bin/drManhattanDaemon.jar&
+exit 0
