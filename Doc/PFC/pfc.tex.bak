@@ -63,7 +63,7 @@ Faculty of Sciences}
 \newcommand{\stereotype}[1]{$\ll${\small{\sf #1}}$\gg$}
 \newcommand{\todo}[1]{\color{red}$\ll$#1$\gg$\color{black}}
 
-\setcounter{minitocdepth}{1}
+\setcounter{minitocdepth}{2}
 
 \begin{document}
 
