@@ -1,8 +1,0 @@
-#!/bin/sh
-
-#arrancar el demonio
-sh /etc/rc2.d/S88drManhattanDaemon
-set -e
-if [ "$1" = "configure" ] && [ -x /usr/bin/update-menus ]; 
-	then update-menus ; 
-fi
