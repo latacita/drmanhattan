@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (Web2C 2010)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: pfc.aux
+The style file: alpha.bst
+Database file #1: references/references.bib
+You've used 24 entries,
+            2543 wiz_defined-function locations,
+            666 strings with 6406 characters,
+and the built_in function-call counts, 6454 in all, are:
+= -- 552
+> -- 192
+< -- 24
++ -- 52
+- -- 48
+* -- 314
+:= -- 1096
+add.period$ -- 72
+call.type$ -- 24
+change.case$ -- 96
+chr.to.int$ -- 24
+cite$ -- 24
+duplicate$ -- 384
+empty$ -- 601
+format.name$ -- 88
+if$ -- 1322
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 48
+newline$ -- 123
+num.names$ -- 72
+pop$ -- 208
+preamble$ -- 1
+purify$ -- 144
+quote$ -- 0
+skip$ -- 247
+stack$ -- 0
+substring$ -- 172
+swap$ -- 24
+text.length$ -- 24
+text.prefix$ -- 16
+top$ -- 0
+type$ -- 96
+warning$ -- 0
+while$ -- 48
+width$ -- 27
+write$ -- 290

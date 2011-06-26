@@ -1,0 +1,126 @@
+\begin{thebibliography}{CMP08}
+
+\bibitem[AST06]{distribuidos:2006}
+Maarten Van~Steen Andrew S.~Tanenbaum.
+\newblock {\em Distributed Systems: Principles and Paradigms}.
+\newblock Prentice Hall, 2006.
+
+\bibitem[Bar04]{linux:2004}
+Daniel~J. Barrett.
+\newblock {\em Linux Pocket Guide}.
+\newblock O'Reilly, 2004.
+
+\bibitem[BH11]{ubuntu:2011}
+Amber~Graner Benjamin~Hill, Matthew~Helmke.
+\newblock {\em Official Ubuntu Book}.
+\newblock Prentice Hall, 2011.
+
+\bibitem[Bur05]{eclipse:2005}
+Ed~Burnette.
+\newblock {\em Eclipse IDE Pocket Guide}.
+\newblock O'Reilly, 2005.
+
+\bibitem[CMP08]{subversion:2008}
+Brian W.~Fitzpatrick C.~Michael~Pilato, Ben Collins-Sussman.
+\newblock {\em Version Control with Subversion}.
+\newblock O'Reilly, 2008.
+
+\bibitem[Cop10]{ARQ:2010}
+James~O. Coplien.
+\newblock {\em Lean Architecture: for Agile Software Development}.
+\newblock Wiley, 2010.
+
+\bibitem[Den07]{MD5:2007}
+Tom~St. Denis.
+\newblock {\em Cryptography for Developers}.
+\newblock Syngress, 2007.
+
+\bibitem[Dev99]{GUI:1999}
+Java~Gui Development.
+\newblock {\em Java Gui Development}.
+\newblock Sams, 1999.
+
+\bibitem[GB04]{UML2:2004}
+James~Rumbaugh Grady~Booch, Ivar~Jacobson.
+\newblock {\em Unified Modeling Language Reference Manual}.
+\newblock Addison-Wesley Professional, 2004.
+
+\bibitem[KA05]{java:2005}
+David~Holmes Ken~Arnold, James~Gosling.
+\newblock {\em Java Programming Language}.
+\newblock Prentice Hall, 2005.
+
+\bibitem[Koz05]{TCPIP}
+Charles~M. Kozierok.
+\newblock {\em The TCP/IP Guide: A Comprehensive, Illustrated Internet
+  Protocols Reference}.
+\newblock No Starch Press, 2005.
+
+\bibitem[Kra05]{DEBIAN:2005}
+Martin~F. Krafft.
+\newblock {\em The Debian System: Concepts and Techniques}.
+\newblock No Starch Press, 2005.
+
+\bibitem[Kru03]{RUP:2003}
+Philippe Kruchten.
+\newblock {\em The Rational Unified Process: An Introduction}.
+\newblock Addison-Wesley Professional, 2003.
+
+\bibitem[Lar03]{AGIL:2003}
+Craig Larman.
+\newblock {\em Agile and Iterative Development: A Manager's Guide}.
+\newblock Addison-Wesley Professional, 2003.
+
+\bibitem[MB04]{UML:2004}
+James~Rumbaugh Michael~Blaha.
+\newblock {\em Object-Oriented Modeling and Design with UML}.
+\newblock Prentice Hall, 2004.
+
+\bibitem[Mü10]{EVENTOS:2010}
+Gero Mühl.
+\newblock {\em Distributed Event-Based Systems}.
+\newblock Springer, 2010.
+
+\bibitem[Oak04]{THREAD:2004}
+Scott Oaks.
+\newblock {\em Java Threads}.
+\newblock O'Reilly Media, 2004.
+
+\bibitem[PC98]{JAVA:1998}
+Douglas~Kramer Patrick~Chan, Rosanna~Lee.
+\newblock {\em The Java Class Libraries, Volume 1: java.io, java.lang,
+  java.math, java.net, java.text, java.util}.
+\newblock Addison-Wesley Professional, 1998.
+
+\bibitem[Pit10]{JAVANET:2010}
+Esmond Pitt.
+\newblock {\em Fundamental Networking in Java}.
+\newblock Springer, 2010.
+
+\bibitem[PK06]{UP:2006}
+Bruce~MacIsaac Per~Kroll.
+\newblock {\em Agility and Discipline Made Easy: Practices from OpenUP and
+  RUP}.
+\newblock Addison-Wesley Professional, 2006.
+
+\bibitem[Pur04]{iptables:2004}
+Gregor~N. Purdy.
+\newblock {\em Linux iptables Pocket Reference}.
+\newblock O'Reilly, 2004.
+
+\bibitem[Sta04]{redes:2004}
+William Stallings.
+\newblock {\em Comunicaciones y redes de computadores}.
+\newblock Pearson, 2004.
+
+\bibitem[Sta06]{SO:2006}
+William Stallings.
+\newblock {\em Sistemas Operativos}.
+\newblock Pearson, 2006.
+
+\bibitem[Yea96]{WEB:1996}
+Nancy~J. Yeager.
+\newblock {\em Web Server Technology}.
+\newblock Morgan Kaufmann, 1996.
+
+\end{thebibliography}
