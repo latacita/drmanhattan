@@ -84,7 +84,7 @@ El primer paso en una iteración de la fase de construcción de acuerdo a la met
         R07.1 & La identificación del equipo necesaria para la conexión del \emph{Watchman} se realizará por medio de la IP.
         \\ \hline
 
-        R07.2 & El \emph{Watchman} debe soportar conexiones simultaneas.
+        R07.2 & El \emph{Watchman} debe soportar conexiones simultáneas.
         \\ \hline
 
         R07.3 & Para una correcta conexión son necesarios datos del alumno, nombre y apellidos.
@@ -157,10 +157,10 @@ En esta sección se comenta el proceso para implementar el requisito R07 \lq \lq
     \label{fig:iteracion1:casosUso}
 \end{figure}
 
-En este incremento la aplicación del alumno debe, dada la IP del equipo dónde se está ejecutando el computador del profesor, establecer una conexión con el. Este es un punto básico del sistema, si no se es capaz de establecer correctamente una conexión, las dos aplicaciones no podrán comunicarse y no funcionará nada.
+En este incremento la aplicación del alumno debe, dada la IP del equipo dónde se está ejecutando el computador del profesor, establecer una conexión con él. Este es un punto básico del sistema, si no se es capaz de establecer correctamente una conexión, las dos aplicaciones no podrán comunicarse y no funcionará nada.
 \newline
 
-Para que se pueda establecer la conexión se utilizan las clases \lq \lq ServerSocket\rq \rq \  y \lq \lq Socket\rq \rq, de la librería \lq \lq java.net\rq \rq. Con la primera conseguimos que la aplicación del profesor espere nuevas conexiones de alumnos y con la segunda creamos realmente la conexión desde la aplicación del alumno, partiendo de la IP proporcionada. Cada vez que se crea una conexión nueva se almacena en una lista. Además, como no se quiere bloquear la interfaz gráfica del profesor mientras los alumnos se conectan, esto se realiza en un hilo de ejecución aparte.
+Para que se pueda establecer la conexión se utilizan las clases \lq \lq ServerSocket\rq \rq \  y \lq \lq Socket\rq \rq, de la librería \lq \lq java.net\rq \rq\cite{JAVA:1998, JAVANET:2010}. Con la primera conseguimos que la aplicación del profesor espere nuevas conexiones de alumnos y con la segunda creamos realmente la conexión desde la aplicación del alumno, partiendo de la IP proporcionada. Cada vez que se crea una conexión nueva se almacena en una lista. Además, como no se quiere bloquear la interfaz gráfica\cite{GUI:1999} del profesor mientras los alumnos se conectan, esto se realiza en un hilo de ejecución\cite{THREAD:2004} aparte.
 
 
 \subsection{Envío de ficheros}
@@ -176,7 +176,7 @@ Una vez que los alumnos están conectados correctamente el profesor puede enviar
 Después de finalizar la codificación de las funcionalidades descritas en las secciones anteriores es el turno para las pruebas.
 \newline
 
-Debido a la naturaleza del sistema, automatizar pruebas con una herramienta estilo \emph{JUnit} se antoja difícil, ya que funciona a base de eventos y es distribuido, por eso, para probar la aplicación se utilizan secuencias de acciones con el fin de desencadenar los eventos requeridos en cada funcionalidad. En esta iteración se realizan las siguientes:
+Debido a la naturaleza del sistema, automatizar pruebas con una herramienta estilo \emph{JUnit} se antoja difícil, ya que funciona a base de eventos\cite{EVENTOS:2010} y es distribuido, por eso, para probar la aplicación se utilizan secuencias de acciones con el fin de desencadenar los eventos requeridos en cada funcionalidad. En esta iteración se realizan las siguientes:
 
 \begin{itemize}
 

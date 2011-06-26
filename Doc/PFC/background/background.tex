@@ -36,7 +36,7 @@ El funcionamiento de la red está estandarizado siendo el protocolo TCP/IP\cite{
 \section{Cortafuegos : Netfilter/iptables}
 \label{sec:introduction:iptables}
 
-Netfilter es un framework que permite filtrar de paquetes, traducci\'on de direcciones y puertos de red y varias funcionalidades m\'as para el manejo de paquetes. Es parte del n\'ucleo de linux desde la versi\'on 2.4 del mismo, sustituyendo a ipchains, bastante limitado en comparaci\'on con Netfilter.
+Netfilter es un framework que permite filtrar de paquetes, traducci\'on de direcciones y puertos de red y varias funcionalidades m\'as para el manejo de paquetes. Es parte del n\'ucleo de Linux desde la versi\'on 2.4 del mismo, sustituyendo a ipchains, bastante limitado en comparaci\'on con Netfilter.
 \newline
 
 
@@ -86,7 +86,7 @@ Normalmente est\'an cargados en memoria esperando una señal para ser ejecutados
 Un ejemplo claro de demonio es \emph{httpd}, que se ejecuta en los servidores web. El nombre viene de \emph{HTTP D}aemon y es utilizado para aceptar peticiones, una vez que las acepta, crea otros procesos se encargan de atenderlas.
 \newline
 
-En el proyecto se implementa un demonio para interactuar con Netfilter, que como hemos visto en la sección anterior, requiere privilegios de administrador para ello, por eso se ha decidido utilizar un demonio y no realizarlo desde la aplicación principal. Es mas sencillo configurar un programa simple como el demonio, que acepta peticiones y actuar en consecuencia de las órdenes recibidas, para iniciarse en tiempo de arranque con privilegios de administrador, que no ser necesarios permisos especiales para ejecutar la aplicación del alumno.
+En el proyecto se implementa un demonio para interactuar con Netfilter, que como hemos visto en la sección anterior, requiere privilegios de administrador para ello, por eso se ha decidido utilizar un demonio y no realizarlo desde la aplicación principal. Es más sencillo configurar un programa simple como el demonio, que acepta peticiones y actuar en consecuencia de las órdenes recibidas, para iniciarse en tiempo de arranque con privilegios de administrador, que no ser necesarios permisos especiales para ejecutar la aplicación del alumno.
 
 
 \section{MD5}
@@ -97,4 +97,4 @@ MD5\cite{MD5:2007} son las siglas de Message-Digest Algorithm 5, algoritmo resum
 Es utilizado, por ejemplo, para realizar firmas a los paquetes que nos descargamos de los repositorios para instalar aplicaciones en Linux, de este modo, si vemos que la firma MD5 del fichero que hemos descargado, no concuerda con el que debería, puede ser que se haya corrompido en el proceso de descarga, o que lo descargado no sea lo que aparenta.
 \newline
 
-En la aplicación es utilizado para comprobar la integridad de los archivos enviados por la red, se genera el MD5 en el computador local del fichero a transferir, se transfieren el fichero y el resultado del MD5, al recibir, se reconstruye el fichero y se genera un nuevo MD5 a partir de el, si coinciden, tenemos la garantía de que se ha transferido correctamente.
+En la aplicación es utilizado para comprobar la integridad de los archivos enviados por la red, se genera el MD5 en el computador local del fichero a transferir, se transfieren el fichero y el resultado del MD5, al recibir, se reconstruye el fichero y se genera un nuevo MD5 a partir de él, si coinciden, tenemos la garantía de que se ha transferido correctamente.

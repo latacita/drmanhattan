@@ -32,14 +32,50 @@ El funcionamiento de la red está estandarizado siendo el protocolo TCP/IP\cite{
 \newline
 
 
+
+\section{Cortafuegos : Netfilter/iptables}
+\label{sec:introduction:iptables}
+
+Netfilter es un framework que permite filtrar de paquetes, traducci\'on de direcciones y puertos de red y varias funcionalidades m\'as para el manejo de paquetes. Es parte del n\'ucleo de linux desde la versi\'on 2.4 del mismo, sustituyendo a ipchains, bastante limitado en comparaci\'on con Netfilter.
+\newline
+
+
+Para interactuar con Netfilter una de las aplicaciones más usadas es \emph{iptables}\cite{iptables:2004}, siendo necesarios permisos de administrador para ello.
+\newline
+
+Ejemplo de uso de iptables:
+
+\begin{center}
+    \# iptables -A INPUT -s 195.65.34.234 -j ACCEPT\\
+\end{center}
+
+
+El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo es aceptar todos los paquetes entrantes provenientes del host indicado\footnote{en vez de la IP podemos poner su FQDN (\emph{Fully Qualified Domain Name)} si lo deseáramos}. Del mismo modo, si lo que queremos es no aceptar las peticiones se cambiar\'ia ACCEPT por DROP y si nos queremos referir a los paquetes salientes OUTPUT por INPUT.
+\newline
+
+Para cambiar el tratamiento por defecto de un tipo de paquete se puede usar:
+
+\begin{center}
+    \# iptables -P INPUT DROP\\
+\end{center}
+
+Con esta orden conseguimos que por defecto, todos los paquetes entrantes (INPUT) sean rechazados (DROP). Se pueden variar los términos del mismo modo que el ejemplo anterior.
+\newline
+
+
+Si tenemos iptables con la configuración por defecto, se aceptan todos los paquetes entrantes y salientes, no hay ninguna restricción.
+
+
+
+
 \section{Demonio}
 
-Un \emph{demonio} (del inglés, \emph{daemon}\ref{SO:2006}) es un tipo de proceso que posee la siguientes características:
+Un \emph{demonio} (del inglés, \emph{daemon}\cite{SO:2006}) es un tipo de proceso que posee la siguientes características:
 
 \begin{enumerate}
-	\item Se ejecuta en segundo plano;
-	\item Generalmente se inicia en tiempo de arranque;
-	\item No usa los sistemas de entrada/salida est\'andar;
+	\item Se ejecuta en segundo plano,
+	\item Generalmente se inicia en tiempo de arranque,
+	\item No usa los sistemas de entrada/salida est\'andar,
 	\item Mantienen la información que necesitan en ficheros especiales bien identificados.
 \end{enumerate}
 
@@ -50,53 +86,7 @@ Normalmente est\'an cargados en memoria esperando una señal para ser ejecutados
 Un ejemplo claro de demonio es \emph{httpd}, que se ejecuta en los servidores web. El nombre viene de \emph{HTTP D}aemon y es utilizado para aceptar peticiones, una vez que las acepta, crea otros procesos se encargan de atenderlas.
 \newline
 
-En el proyecto se implementa un demonio para interactuar con Netfilter, descrito en la siguiente sección. \todo{comentar que como es privilegiado, menos peligro o algo}
-
-%=========================================================================%
-% NOTA(Pablo): Titular la sección con el nombre del concepto que          %
-%              representan las ip tables                                  %
-%=========================================================================%
-
-\section{Cortafuegos : Netfilter/iptables}
-\label{sec:introduction:iptables}
-
-%=========================================================================%
-% NOTA(Pablo): Esto sin ningún tipo de intoducción, así a bocajarro,      %
-%              queda un poco duro                                         %
-%=========================================================================%
-
-Netfilter es un framework que permite filtrar de paquetes, traducci\'on de direcciones y puertos de red y varias funcionalidades m\'as para el manejo de paquetes. Es parte del n\'ucleo de linux desde la versi\'on 2.4 del mismo, sustituyendo a ipchains, bastante limitado en comparaci\'on con Netfilter.
-\newline
-%=========================================================================%
-% NOTA(Pablo): Demasiado técnico y poco interesante, lo borramos          %
-%=========================================================================%
-% Iptables es una aplicaci\'on de l\'inea de comandos, que permite a un
-% usuario con privilegios de administrador, configurar un conjunto de
-% reglas para el filtrado de paquetes.
-%
-%  Tambi\'en es parte del mismo proyecto que Netfilter, por lo que
-% generalmente se suele hablar solamente de iptables, puesto que es el
-% programa con el que interact\'ua directamente el usuario, para referirse
-% al d\'uo netfilter/iptables.
-%
-
-
-Para interactuar con Netfilter una de las aplicaciones más usadas es \emph{iptables}\cite{iptables:2004}, siendo necesarios permisos de administrador para ello.
-
-Ejemplo de uso de iptables:
-
-\begin{center}
-\# iptables -A INPUT -s 195.65.34.234 -j ACCEPT\\
-\end{center}
-
-
-El par\'ametro -A indica que se va a a\~nadir una regla, el objetivo de la mismo es aceptar todos los paquetes entrantes provenientes del host indicado\footnote{en vez de la IP podemos poner su FQDN (\emph{Fully Qualified Domain Name)} si lo deseáramos}. Del mismo modo, si lo que queremos es no aceptar las peticiones se cambiar\'ia ACCEPT por DROP y si nos queremos referir a los paquetes salientes OUTPUT por INPUT.
-%============================================================================%
-% NOTA(Pablo): Por defecto ¿qué pasa cuando un paquete                       %
-%              proviniente de un host llega y no se ha tocado iptables?      %
-%              ¿Se rechaza o se acepta?                                      %
-%============================================================================%
-Si tenemos iptables con la configuración por defecto, se aceptan todos los paquetes entrantes y salientes, no hay ninguna restricción.
+En el proyecto se implementa un demonio para interactuar con Netfilter, que como hemos visto en la sección anterior, requiere privilegios de administrador para ello, por eso se ha decidido utilizar un demonio y no realizarlo desde la aplicación principal. Es más sencillo configurar un programa simple como el demonio, que acepta peticiones y actuar en consecuencia de las órdenes recibidas, para iniciarse en tiempo de arranque con privilegios de administrador, que no ser necesarios permisos especiales para ejecutar la aplicación del alumno.
 
 
 \section{MD5}

@@ -10,18 +10,23 @@
 \chapterheader{Primera iteración}{Descripción de la primera iteración}
 \label{chap:iteracion1}
 
-\chaptertoc
 
 En el siguiente capítulo se describe lo realizado en la primera iteración de la fase de construcción.
 \newline
 
+
 La base de la que se parte son los resultados de las iteraciones anteriores, correspondientes a las fases de iniciación y elaboración, es decir, los requisitos del sistema y su arquitectura.
 \newline
 
-\todo{revisar los refs, salen mal los numeros a veces}
-
 De acuerdo con lo planificado en la sección \ref{sec:planificacion:iteraciones}, el objetivo de esta iteración es el de crear la base del sistema distribuido, implementando los requisitos de la tabla \ref{tabla:iteracion1:requisitosObjetivo} que son el subconjunto de los casos de uso mostrados en la figura \ref{fig:iteracion1:casosUso}.
 \newline
+
+El primer paso en una iteración de la fase de construcción de acuerdo a la metodología es refinar los requisitos de alto nivel a implementar, con lo que obtenemos la tabla \ref{tabla:iteracion1:requisitosObjetivoRefinados}
+\newline
+
+
+\chaptertoc
+
 
 \begin{table}
     \begin{tabular}{|c|p{10cm}|}
@@ -45,13 +50,11 @@ De acuerdo con lo planificado en la sección \ref{sec:planificacion:iteraciones}
         R13 & La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
         \\ \hline
 
-    \end{tabular}    
+    \end{tabular}
     \caption{Requisitos objetivo de la iteración}
     \label{tabla:iteracion1:requisitosObjetivo}
 \end{table}
 
-El primer paso en una iteración de la fase de construcción de acuerdo a la metodología es refinar los requisitos de alto nivel a implementar, con lo que obtenemos la tabla \ref{tabla:iteracion1:requisitosObjetivoRefinados}
-\newline
 
 \begin{table}
     \begin{tabular}{|c|p{10cm}|}
@@ -81,7 +84,7 @@ El primer paso en una iteración de la fase de construcción de acuerdo a la met
         R07.1 & La identificación del equipo necesaria para la conexión del \emph{Watchman} se realizará por medio de la IP.
         \\ \hline
 
-        R07.2 & El \emph{Watchman} debe soportar conexiones simultaneas.
+        R07.2 & El \emph{Watchman} debe soportar conexiones simultáneas.
         \\ \hline
 
         R07.3 & Para una correcta conexión son necesarios datos del alumno, nombre y apellidos.
@@ -100,8 +103,8 @@ El primer paso en una iteración de la fase de construcción de acuerdo a la met
         \\ \hline
 
     \end{tabular}
-    \label{tabla:iteracion1:requisitosObjetivoRefinados}
     \caption{Requisitos objetivo refinados de la iteración}
+    \label{tabla:iteracion1:requisitosObjetivoRefinados}
 \end{table}
 
 
@@ -157,7 +160,7 @@ En esta sección se comenta el proceso para implementar el requisito R07 \lq \lq
 En este incremento la aplicación del alumno debe, dada la IP del equipo dónde se está ejecutando el computador del profesor, establecer una conexión con el. Este es un punto básico del sistema, si no se es capaz de establecer correctamente una conexión, las dos aplicaciones no podrán comunicarse y no funcionará nada.
 \newline
 
-Para que se pueda establecer la conexión se utilizan las clases \lq \lq ServerSocket\rq \rq \  y \lq \lq Socket \rq \rq, de la librería \lq \lq java.net \rq \rq. Con la primera hacemos que la aplicación del profesor espere nuevas conexiones de alumnos y con la segunda creamos realmente la conexión desde la aplicación del alumno, partiendo de la IP proporcionada. Cada vez que se crea una conexión nueva se almacena en una lista. Además, como no se quiere bloquear la interfaz gráfica del profesor mientras los alumnos se conectan, esto se realiza en un hilo de ejecución aparte.
+Para que se pueda establecer la conexión se utilizan las clases \lq \lq ServerSocket\rq \rq \  y \lq \lq Socket\rq \rq, de la librería \lq \lq java.net\rq \rq\cite{JAVA:1998, JAVANET:2010}. Con la primera conseguimos que la aplicación del profesor espere nuevas conexiones de alumnos y con la segunda creamos realmente la conexión desde la aplicación del alumno, partiendo de la IP proporcionada. Cada vez que se crea una conexión nueva se almacena en una lista. Además, como no se quiere bloquear la interfaz gráfica\cite{GUI:1999} del profesor mientras los alumnos se conectan, esto se realiza en un hilo de ejecución\cite{THREAD:2004} aparte.
 
 
 \subsection{Envío de ficheros}
@@ -168,13 +171,12 @@ Una vez que los alumnos están conectados correctamente el profesor puede enviar
 
 
 \section{Pruebas}
-
-\todo{el tema de que las pruebas unitarias se sobreentienden}
+\label{sec:iteracion1:pruebas}
 
 Después de finalizar la codificación de las funcionalidades descritas en las secciones anteriores es el turno para las pruebas.
 \newline
 
-Debido a la naturaleza del sistema, automatizar pruebas con una herramienta estilo \emph{JUnit} es prácticamente imposible, ya que funciona a base de eventos y es distribuido, por eso, para probar la aplicación se utilizan secuencias de acciones con el fin de desencadenar los eventos requeridos en cada funcionalidad. En esta iteración se realizan las siguientes:
+Debido a la naturaleza del sistema, automatizar pruebas con una herramienta estilo \emph{JUnit} se antoja difícil, ya que funciona a base de eventos\cite{EVENTOS:2010} y es distribuido, por eso, para probar la aplicación se utilizan secuencias de acciones con el fin de desencadenar los eventos requeridos en cada funcionalidad. En esta iteración se realizan las siguientes:
 
 \begin{itemize}
 
@@ -196,6 +198,7 @@ Debido a la naturaleza del sistema, automatizar pruebas con una herramienta esti
     \end{itemize}
 
     \item {\bfseries R06} -  El profesor debe ser capaz desde el \emph{Watchman} de enviar el fichero de enunciado al resto de computadores.
+        \newline
 
     \item  {\bfseries R13} La aplicación ha de ser capaz de comprobar que los archivos se han enviado correctamente.
 
@@ -207,6 +210,10 @@ Debido a la naturaleza del sistema, automatizar pruebas con una herramienta esti
 
         \item Prueba: Enviar un fichero a varios alumnos conectados.
         \item Objetivo: Cada alumno recibe correctamente una copia del fichero original.
+        \newline
+
+        \item Prueba: Enviar un fichero a varios alumnos conectados y forzar una comprobación de integridad errónea.
+        \item Objetivo: Cada alumno es alertado de que ha habido problemas en la transferencia del fichero.
 
     \end{itemize}
 

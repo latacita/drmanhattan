@@ -15,7 +15,7 @@
 \section{Despliegue}
 \label{sec:despliegue:despliegue}
 
-Para que la aplicación pueda ser usada de un modo cómodo fuera del ambiente de desarrollo se hace necesaria la creación de instaladores. Esto se puede hacer, por ejemplo, con el comando \emph{dpkg} en sistemas Linux derivados de Debian, ya que con el se crear archivos .deb. En nuestro caso se han de crear dos instaladores, uno para la aplicación del profesor, y otro para la aplicación de los alumnos.
+Para que la aplicación pueda ser usada de un modo cómodo fuera del ambiente de desarrollo se hace necesaria la creación de instaladores. Esto se puede hacer, por ejemplo, con el comando \emph{dpkg} en sistemas Linux derivados de Debian\cite{DEBIAN:2005}, ya que con él se crear archivos .deb. En nuestro caso se han de crear dos instaladores, uno para la aplicación del profesor, y otro para la aplicación de los alumnos.
 \newline
 
 En el sistema de archivos, cada carpeta tiene su utilidad, de modo que si, por ejemplo, queremos conocer los logs generados por alguna aplicación sabemos que hemos de buscar en /var/log/, /etc/ para los aspectos de configuraciones, etc.
@@ -88,7 +88,7 @@ Una vez que están definidos los archivos y el directorio dónde los ha de coloc
 Dentro de la carpeta raíz se ha de crear además de lo anterior, un directorio llamado \lq\lq DEBIAN\rq \rq \ con tres ficheros, \lq\lq control\rq \rq, \lq\lq postinst\rq \rq \ y \lq\lq postrm\rq \rq . En el primero se especifican las características del paquete y los otros dos se ejecutan justo después de instalar el paquete y justo después de desinstalarlo, respectivamente, en nuestro caso actualizan los menús desplegables para que aparezca o desparezca la aplicación.
 \newline
 
-Una vez que tenemos todo creado, cambiamos los permisos del directorio raiz y subdirectorios así:
+Una vez que tenemos todo creado, cambiamos los permisos del directorio raíz y subdirectorios así:
 
 \begin{center}
     \emph{chown root.root -R /home/usuario/deb/}
@@ -141,7 +141,7 @@ Como se comentó en la sección \ref{sec:iteracion1:pruebas} en la que se explic
     \newline
 
     \item Iniciar prueba con varios alumnos conectados.
-    \item Objetivo: Desde los computadores de los alumnos no se puede acceder a al red. No se admiten nuevas conexiones.
+    \item Objetivo: Desde los computadores de los alumnos no se puede acceder a la red. No se admiten nuevas conexiones.
     \newline
 
 
@@ -172,7 +172,7 @@ Como se comentó en la sección \ref{sec:iteracion1:pruebas} en la que se explic
 
 
     \item Iniciar prueba normal y reiniciar el computador de un alumno para intentar reconectar sin acabar la prueba.
-    \item Objetivo: Al reiniciar un computador con el que se estaba realizando una prueba, la aplicación del alumno reconoce el estado previo y deniega el acceso a al red.
+    \item Objetivo: Al reiniciar un computador con el que se estaba realizando una prueba, la aplicación del alumno reconoce el estado previo y deniega el acceso a la red.
     \newline
 
     \item Iniciar prueba normal, reiniciar el computador de un alumno, finalizar la prueba e intentar reconectar.

@@ -45,12 +45,11 @@ Actualmente cuando se desea que un alumno no tenga acceso a la red durante prueb
 \section{Estructura del Documento}
 \label{sec:intr:organization}
 
-Esto es una especie de índice ampliado y se deja, suele ser bastante útil para que el que esté vago se lea esto y se acabe el problema.
+A continuación se hace un breve resumen de los contenidos a tratar en capítulos posteriores del documento.
 
 \paragraph{Capítulo 2: Descripción y Planificación del Proyecto} \ \\
 
-Se describe el ámbito funcional del proyecto y la metodología escogida para su construcción. De acuerdo a ella se realiza una planificación y se enumeran los requisitos de alto nivel que el software a desarrollar ha de cumplir, así como las herramientas a utilizar.
-
+Se describe el ámbito funcional del proyecto y la metodología escogida para su construcción. De acuerdo a ella se realiza una planificación y se enumeran los requisitos de alto nivel que el software a desarrollar ha de cumplir, así como las herramientas a utilizar durante el diseño y desarrollo.
 
 
 \paragraph{Capítulo 3: Antecedentes} \ \\
@@ -62,24 +61,24 @@ Se explicarán brevemente conceptos básicos que utilizará la solución a crear
 \paragraph{Capítulo 4: Definición Arquitectónica y Diseño Software} \ \\
 
 
-Se explicarán mediante diagramas UML la arquitectura y el diseño propuestos para que la aplicación ha desarrollar  sea correcta y segura en el cumplimiento de los requisitos, además de para tener una visión global de su funcionamiento.
+Se explicarán mediante diagramas UML la arquitectura y el diseño propuestos para que la aplicación a desarrollar  sea correcta y segura en el cumplimiento de los requisitos, además de para tener una visión global de su funcionamiento.
 
 
 \paragraph{Capítulo 5: Descripción de la primera iteración} \ \\
 
 
-En este capítulo se describirá el proceso realizado en la primera iteración de la fase de construcción de acuerdo a lo explicado en el capítulo 2 sobre la metodología. En esta primera iteración se crea un sistema distribuido base dónde el profesor puede enviar ficheros a sus alumnos.
+En este capítulo se describirá el proceso realizado en la primera iteración de la fase de construcción de acuerdo a lo explicado en el capítulo 2 sobre la metodología. En esta primera iteración se crea un sistema distribuido base, dónde el profesor puede enviar ficheros a sus alumnos.
 
 
 \paragraph{Capítulo 6: Descripción de la segunda iteración} \ \\
 
-Se describirá en este capítulo la iteración continuación a la explicada en el capítulo anterior que tiene como principal objetivo es el de denegar el acceso a la red una vez que el profesor decide iniciar la prueba. 
+Se describirá en este capítulo la iteración continuación a la explicada en el capítulo anterior que tiene como principal objetivo el de denegar el acceso a la red una vez que el profesor decide iniciar la prueba.
 \newline
 
 Veremos como gracias a seguir una metodología, el desarrollo se convierte en un proceso repetitivo que si es realizado correctamente disminuirá posibles fallos y por tanto, aumentará la calidad de la solución desarrollada.
 
 
-\paragraph{Capítulo 7: Despliegue y aceptación} \ \\
+\paragraph{Capítulo 7: Despliegue y Aceptación} \ \\
 
 
 Se describirá el proceso de despliegue escogido, consistente en el empaquetamiento del software creado para posibilitar una cómoda distribución y de las pruebas realizadas una vez que se ha finalizado el desarrollo del sistema.
@@ -87,4 +86,4 @@ Se describirá el proceso de despliegue escogido, consistente en el empaquetamie
 
 \paragraph{Capítulo 8: Conclusiones y Trabajos Futuros} \ \\
 
-Se finalizará la memoria exponiendo conclusiones y enumerando una lista de posibles líneas de desarrollo futuras.
+Se finalizará la memoria exponiendo conclusiones y enumerando una lista de posibles líneas de desarrollo futuras. 
