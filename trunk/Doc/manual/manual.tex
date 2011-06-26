@@ -63,7 +63,7 @@
 
 drManhattan nace con motivo del proyecto de fin de carrera de Manuel Pando Muñoz, ofertado por Pablo Sánchez Barreiro en la Universidad de Cantabria para acceder al título de Ingeniero en informática.
 
-El objetivo del proyecto era trata de desarrollar un software que, una vez instalado en los laboratorios con computadores del centro, permitiese controlar el acceso del alumnado a la red durante la realización de pruebas evaluables, de forma que el software permita el uso lícito de la red, pero bloquee el ilícito.
+El objetivo del proyecto era tratar de desarrollar un software que, una vez instalado en los laboratorios con computadores del centro, permitiese controlar el acceso del alumnado a la red durante la realización de pruebas evaluables, de forma que el software permita el uso lícito de la red, pero bloquee el ilícito.
 
 Con uso ilícito nos referimos, por ejemplo, a consultar posibles soluciones en internet, o comunicarse con otro alumno, esto es deseable evitarlo, pero a su vez, el que haya una red que interconecte los computadores permite enviar ficheros de modo casi automático por parte del profesor, o la recogida de los resultados de los alumnos, esos serían usos lícitos.
 
@@ -166,7 +166,7 @@ Otra opción para utilizar el software es descargarse el código fuente del \hre
 
 
 
-\subsection{Destinstalación}
+\subsection{Desinstalación}
 
 \subsubsection{Visual}
 
@@ -196,7 +196,7 @@ La desinstalación por consola es también muy parecida a la instalación, hay q
     dpkg -P drmanhattan-profesor
 \end{center}
 
-En función de cual de los dos paquetes se quiera desinstalar.
+En función de cuál de los dos paquetes se quiera desinstalar.
 
 \begin{center}
 
@@ -251,7 +251,7 @@ Cuándo los alumnos que realizarán la prueba se han conectado, sección \ref{se
     \includegraphics[width=.90\linewidth]{imagenes/enviar}
 \end{center}
 
-Cuando finalize el envío se notificará en la región de texto inferior.
+Cuando finalice el envío se notificará en la región de texto inferior.
 
 \begin{center}
     \includegraphics[width=.90\linewidth]{imagenes/eventoEnviar}
@@ -299,7 +299,7 @@ Las pruebas pueden finalizar de cuatro modos distintos:
 
 \end{enumerate}
 
-La primera ocurre cuándo el profesor pulsa el botón de \lq\lq Fin de prueba\rq\rq, esto manda una señal a las aplicaciones de los alumnos indicando que se ha acabado el tiempo, no se recogerán resultados después de pulsar el botón.
+La primera ocurre cuando el profesor pulsa el botón de \lq\lq Fin de prueba\rq\rq, esto manda una señal a las aplicaciones de los alumnos indicando que se ha acabado el tiempo, no se recogerán resultados después de pulsar el botón.
 
 La segunda sucede durante una prueba temporizada, cuándo se agota el tiempo destinado para la misma. Tampoco se recogen resultados después de que acabe la prueba.
 
@@ -307,7 +307,7 @@ La tercera se explica en la sección \ref{sec:finAlumno} y la cuarta en la \ref{
 
 \subsubsection{Recogida de resultados}
 
-Cuándo los alumnos envían sus resultados, la aplicación del profesor los recoge y crea un árbol de directorios tomando cómo base el establecido en el campo de texto \lq\lq Recibir resultados en\rq\rq. Dentro de ese directorio se crea otro con el nombre de la asignatura definido y a su vez, dentro de el, se crea, por cada alumno que envíe resultados, otra carpeta utilizando los apellidos y el nombre del alumno, dónde se almacena el archivo de resultados.
+Cuándo los alumnos envían sus resultados, la aplicación del profesor los recoge y crea un árbol de directorios tomando como base el establecido en el campo de texto \lq\lq Recibir resultados en\rq\rq. Dentro de ese directorio se crea otro con el nombre de la asignatura definido y a su vez, dentro de el, se crea, por cada alumno que envíe resultados, otra carpeta utilizando los apellidos y el nombre del alumno, dónde se almacena el archivo de resultados.
 
 Se realiza una comprobación de integridad del fichero utilizando el algoritmo MD5 para garantizar la falta de errores durante la transferencia.
 
@@ -395,9 +395,10 @@ Si hay algún problema en el envío del fichero, se notifica, tanto al alumno co
 \newpage
 \section{Protección frente a errores en el sistema}
 
-El software drManhattan, concretamente en la parte del alumno, es capaz de guardar su estado, es decir, si durante la realización de una prueba, algún alumno, por el motivo que sea, se ve obligado a reiniciar el sistema, cuando se vuelva a iniciar la aplicación, esta reconectará de forma automática con la aplicación del profesor, volviendo al estado previo, antes del error, es decir, realizando la prueba, y por tanto, sin acceso a la red. 
+El software drManhattan, concretamente en la parte del alumno, es capaz de guardar su estado, es decir, si durante la realización de una prueba, algún alumno, por el motivo que sea, se ve obligado a reiniciar el sistema, cuando se vuelva a iniciar la aplicación, esta reconectará de forma automática con la aplicación del profesor, volviendo al estado previo, antes del error, es decir, realizando la prueba, y por tanto, sin acceso a la red.
 \newline
 
 También se incluyen comprobaciones de integridad a los ficheros transferidos, de modo que  se pueda garantizar una correcta entrega de los resultados, ya que es un elemento bastante sensible.
+
 
 \end{document} 
