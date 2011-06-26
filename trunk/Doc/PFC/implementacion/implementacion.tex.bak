@@ -88,7 +88,7 @@ Una vez que están definidos los archivos y el directorio dónde los ha de coloc
 Dentro de la carpeta raíz se ha de crear además de lo anterior, un directorio llamado \lq\lq DEBIAN\rq \rq \ con tres ficheros, \lq\lq control\rq \rq, \lq\lq postinst\rq \rq \ y \lq\lq postrm\rq \rq . En el primero se especifican las características del paquete y los otros dos se ejecutan justo después de instalar el paquete y justo después de desinstalarlo, respectivamente, en nuestro caso actualizan los menús desplegables para que aparezca o desparezca la aplicación.
 \newline
 
-Una vez que tenemos todo creado, cambiamos los permisos del directorio raiz y subdirectorios así:
+Una vez que tenemos todo creado, cambiamos los permisos del directorio raíz y subdirectorios así:
 
 \begin{center}
     \emph{chown root.root -R /home/usuario/deb/}
@@ -105,6 +105,33 @@ Para instalar, teniendo permisos de administrador:
 \begin{center}
     \emph{dpkg -i /home/usuario/paquete.deb}
 \end{center}
+
+
+\subsection{Página web}
+
+Para dotar de una mayor visibilidad al proyecto se ha construido una web sencilla en la que se puede encontrar información, documentación y el código fuente del proyecto. Se han creado además un videotutorial, disponible en la propia web, para poder visualizar el funcionamiento de la aplicación.
+
+
+ Para una mayor difusión de la aplicación se creo una página %\href{http://www.angeltezanos.com/Apolo}{web}
+        dentro del dominio \emph{www.angeltezanos.com} en la cual se puede encontrar toda la información y descargas de Apolo.
+
+        \begin{figure}[!tb]
+            \begin{center}
+               \includegraphics[width=0.9\linewidth]{despliegueAceptacion/images/web.eps}
+               \caption{Web de Apolo (http://www.angeltezanos.com/Apolo)}
+               \label{fig:implementacion:web}
+            \end{center}
+        \end{figure}
+
+        Se trato de crear una web que fuera sencilla y a la vez muy practica, mostrando una imagen llamativa y agradable de Apolo en todas las secciones.
+
+        Se aprovecho el servicio de \emph{Google Analytics} para conocer los visitantes de la web y su procedencia, así como el numero de descargas realizadas.
+
+        Con el fin de facilitar el aprendizaje del software se crearon una seria de videotutoriales, los cuales muestran como realizar la mayoría de lass tareas. De esta manera un usuario, puede conocer como realizar una acción sin tener que leerse el manual, o incluso conocer el funcionamiento de la aplicación sin tener que instalarla.
+
+
+
+
 
 
 %Listado de pruebas
@@ -141,7 +168,7 @@ Como se comentó en la sección \ref{sec:iteracion1:pruebas} en la que se explic
     \newline
 
     \item Iniciar prueba con varios alumnos conectados.
-    \item Objetivo: Desde los computadores de los alumnos no se puede acceder a al red. No se admiten nuevas conexiones.
+    \item Objetivo: Desde los computadores de los alumnos no se puede acceder a la red. No se admiten nuevas conexiones.
     \newline
 
 
@@ -172,7 +199,7 @@ Como se comentó en la sección \ref{sec:iteracion1:pruebas} en la que se explic
 
 
     \item Iniciar prueba normal y reiniciar el computador de un alumno para intentar reconectar sin acabar la prueba.
-    \item Objetivo: Al reiniciar un computador con el que se estaba realizando una prueba, la aplicación del alumno reconoce el estado previo y deniega el acceso a al red.
+    \item Objetivo: Al reiniciar un computador con el que se estaba realizando una prueba, la aplicación del alumno reconoce el estado previo y deniega el acceso a la red.
     \newline
 
     \item Iniciar prueba normal, reiniciar el computador de un alumno, finalizar la prueba e intentar reconectar.

@@ -157,7 +157,7 @@ En esta sección se comenta el proceso para implementar el requisito R07 \lq \lq
     \label{fig:iteracion1:casosUso}
 \end{figure}
 
-En este incremento la aplicación del alumno debe, dada la IP del equipo dónde se está ejecutando el computador del profesor, establecer una conexión con el. Este es un punto básico del sistema, si no se es capaz de establecer correctamente una conexión, las dos aplicaciones no podrán comunicarse y no funcionará nada.
+En este incremento la aplicación del alumno debe, dada la IP del equipo dónde se está ejecutando el computador del profesor, establecer una conexión con él. Este es un punto básico del sistema, si no se es capaz de establecer correctamente una conexión, las dos aplicaciones no podrán comunicarse y no funcionará nada.
 \newline
 
 Para que se pueda establecer la conexión se utilizan las clases \lq \lq ServerSocket\rq \rq \  y \lq \lq Socket\rq \rq, de la librería \lq \lq java.net\rq \rq\cite{JAVA:1998, JAVANET:2010}. Con la primera conseguimos que la aplicación del profesor espere nuevas conexiones de alumnos y con la segunda creamos realmente la conexión desde la aplicación del alumno, partiendo de la IP proporcionada. Cada vez que se crea una conexión nueva se almacena en una lista. Además, como no se quiere bloquear la interfaz gráfica\cite{GUI:1999} del profesor mientras los alumnos se conectan, esto se realiza en un hilo de ejecución\cite{THREAD:2004} aparte.
