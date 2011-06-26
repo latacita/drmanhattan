@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  26 JUN 2011 22:26
+This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  26 JUN 2011 22:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -804,6 +804,10 @@ Package minitoc Info: I0033
 (minitoc)             Writing pfc.mtc9.
 \openout3 = `pfc.mtc9'.
 
+Package minitoc Info: I0033
+(minitoc)             Writing pfc.mtc10.
+\openout3 = `pfc.mtc10'.
+
  [7
 
 ] [8
@@ -812,14 +816,7 @@ Package minitoc Info: I0033
 \tf@toc=\write4
 \openout4 = `pfc.toc'.
 
- [10] (./pfc.lof
-
-LaTeX Warning: Citation `UP:2006' on page XI undefined on input line 6.
-
-
-LaTeX Warning: Citation `RUP:2003' on page XI undefined on input line 7.
-
-)
+ [10] (./pfc.lof)
 \tf@lof=\write5
 \openout5 = `pfc.lof'.
 
@@ -827,14 +824,15 @@ LaTeX Warning: Citation `RUP:2003' on page XI undefined on input line 7.
 
 ] [12
 
-] (./pfc.lot)
+]
+(./pfc.lot)
 \tf@lot=\write6
 \openout6 = `pfc.lot'.
 
  [13] [14
 
-]) (./Config/headers.tex)
-(./config/chapters.tex) (./introduction/introduction.tex
+]) (./Config/headers.tex) (./config/chapters.tex)
+(./introduction/introduction.tex
 Cap\'{\i }tulo 1.
 \openout3 = `pfc.mtc'.
 
@@ -937,10 +935,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 112--114
  []
 
 [7]
-
-LaTeX Warning: Citation `AGIL:2003' on page 8 undefined on input line 115.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 115--117
 
  []
@@ -954,23 +948,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 119--122
 File: planificacion/iteracionIncremento.png Graphic file (type png)
 
 <use planificacion/iteracionIncremento.png>
-
-LaTeX Warning: Citation `UP:2006' on page 8 undefined on input line 127.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 131--133
 
  []
 
 [8 <./planificacion/iteracionIncremento.png>]
-<planificacion/trabajoFases.png, id=110, 335.00156pt x 173.89969pt>
+<planificacion/trabajoFases.png, id=109, 335.00156pt x 173.89969pt>
 File: planificacion/trabajoFases.png Graphic file (type png)
 
 <use planificacion/trabajoFases.png>
-
-LaTeX Warning: Citation `RUP:2003' on page 9 undefined on input line 152.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 156--158
 
  []
@@ -981,7 +967,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 159--161
  []
 
 [9 <./planificacion/trabajoFases.png>]
-<planificacion/casosUsoSistema2.png, id=115, 731.73375pt x 501.37312pt>
+<planificacion/casosUsoSistema2.png, id=114, 731.73375pt x 501.37312pt>
 File: planificacion/casosUsoSistema2.png Graphic file (type png)
 
 <use planificacion/casosUsoSistema2.png>
@@ -993,10 +979,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 196--226
 Overfull \hbox (18.93263pt too wide) in paragraph at lines 231--280
 [][] 
  []
-
-
-LaTeX Warning: Citation `distribuidos:2006' on page 11 undefined on input line 
-290.
 
 [11]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 292.
@@ -1017,16 +999,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 327--329
  []
 
 
-LaTeX Warning: Citation `eclipse:2005' on page 12 undefined on input line 335.
-
-
-LaTeX Warning: Citation `java:2005' on page 12 undefined on input line 335.
-
-
-LaTeX Warning: Citation `subversion:2008' on page 12 undefined on input line 33
-6.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 335--338
 
  []
@@ -1041,9 +1013,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 342--344
 
  []
 
-
-LaTeX Warning: Citation `ubuntu:2011' on page 13 undefined on input line 345.
-
 )
 Underfull \hbox (badness 10000) in paragraph at lines 345--98
 
@@ -1054,9 +1023,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 345--98
 ]
 Cap\'{\i }tulo 3.
 
-LaTeX Warning: Citation `linux:2004' on page 15 undefined on input line 15.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 15--17
 
  []
@@ -1066,10 +1032,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--17
 \openout3 = `pfc.mtc'.
 
 (./pfc.mtc3)
-
-LaTeX Warning: Citation `redes:2004' on page 15 undefined on input line 25.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 25--27
 
  []
@@ -1082,11 +1044,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 28--30
 [15
 
 ]
-
-LaTeX Warning: Citation `TCPIP' on page 16 undefined on input line 31.
-
-
-Overfull \hbox (16.82382pt too wide) in paragraph at lines 31--33
+Overfull \hbox (40.24864pt too wide) in paragraph at lines 31--33
 []\T1/cmr/m/n/10.95 El fun-cio-na-mien-to de la red es-tá es-tan-da-ri-za-do si
 en-do el pro-to-co-lo TCP/IP[[]]
  []
@@ -1100,9 +1058,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 31--33
 Underfull \hbox (badness 10000) in paragraph at lines 39--41
 
  []
-
-
-LaTeX Warning: Citation `iptables:2004' on page 16 undefined on input line 43.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 43--45
@@ -1119,9 +1074,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 62--64
 
  []
 
-
-LaTeX Warning: Citation `SO:2006' on page 16 undefined on input line 73.
-
 [16]
 Underfull \hbox (badness 10000) in paragraph at lines 82--84
 
@@ -1131,9 +1083,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--84
 Underfull \hbox (badness 10000) in paragraph at lines 86--88
 
  []
-
-
-LaTeX Warning: Citation `MD5:2007' on page 17 undefined on input line 94.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 94--96
@@ -1147,15 +1096,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 97--99
 
 ) [17] (./arquitectura/arquitectura.tex [18]
 Cap\'{\i }tulo 4.
-
-LaTeX Warning: Citation `UML:2004' on page 19 undefined on input line 14.
-
-
-LaTeX Warning: Citation `UML2:2004' on page 19 undefined on input line 14.
-
-
-LaTeX Warning: Citation `ARQ:2010' on page 19 undefined on input line 14.
-
 \openout3 = `pfc.mtc'.
 
 \openout3 = `pfc.mtc'.
@@ -1165,7 +1105,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--23
 
  []
 
-<arquitectura/componentes.png, id=149, 718.93594pt x 280.79906pt>
+<arquitectura/componentes.png, id=148, 718.93594pt x 280.79906pt>
 File: arquitectura/componentes.png Graphic file (type png)
 
 <use arquitectura/componentes.png>
@@ -1177,7 +1117,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--35
 
 
  <./arquitectura/componentes.png (PNG copy)>]
-<arquitectura/despliegueSistema.png, id=153, 383.18156pt x 368.1253pt>
+<arquitectura/despliegueSistema.png, id=152, 383.18156pt x 368.1253pt>
 File: arquitectura/despliegueSistema.png Graphic file (type png)
 
 <use arquitectura/despliegueSistema.png>
@@ -1191,7 +1131,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--48
  []
 
 [20 <./arquitectura/despliegueSistema.png (PNG copy)>]
-<arquitectura/actividadSistema.png, id=158, 792.71156pt x 707.64375pt>
+<arquitectura/actividadSistema.png, id=157, 792.71156pt x 707.64375pt>
 File: arquitectura/actividadSistema.png Graphic file (type png)
 
 <use arquitectura/actividadSistema.png>
@@ -1199,7 +1139,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--65
 
  []
 
-<arquitectura/estadosAlumno.png, id=159, 758.08218pt x 616.55344pt>
+<arquitectura/estadosAlumno.png, id=158, 758.08218pt x 616.55344pt>
 File: arquitectura/estadosAlumno.png Graphic file (type png)
 
 <use arquitectura/estadosAlumno.png>
@@ -1279,7 +1219,7 @@ Overfull \hbox (18.93263pt too wide) in paragraph at lines 60--106
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 111.
 
-<iteracion1/casosUso.png, id=172, 735.49782pt x 505.89pt>
+<iteracion1/casosUso.png, id=171, 735.49782pt x 505.89pt>
 File: iteracion1/casosUso.png Graphic file (type png)
 
 <use iteracion1/casosUso.png>
@@ -1289,11 +1229,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 126--128
 
 [25
 
-] [26] <iteracion1/GUIProfesor.png, id=181, 451.6875pt x 444.91219pt>
+] [26] <iteracion1/GUIProfesor.png, id=180, 451.6875pt x 444.91219pt>
 File: iteracion1/GUIProfesor.png Graphic file (type png)
 
 <use iteracion1/GUIProfesor.png>
-<iteracion1/GUIAlumno.png, id=182, 451.6875pt x 277.78781pt>
+<iteracion1/GUIAlumno.png, id=181, 451.6875pt x 277.78781pt>
 File: iteracion1/GUIAlumno.png Graphic file (type png)
 
 <use iteracion1/GUIAlumno.png>
@@ -1301,25 +1241,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 150--152
 
  []
 
-<iteracion1/secConectar.png, id=183, 574.39594pt x 324.46219pt>
+<iteracion1/secConectar.png, id=182, 574.39594pt x 324.46219pt>
 File: iteracion1/secConectar.png Graphic file (type png)
 
 <use iteracion1/secConectar.png>
 Underfull \hbox (badness 10000) in paragraph at lines 160--162
 
  []
-
-
-LaTeX Warning: Citation `JAVA:1998' on page 27 undefined on input line 163.
-
-
-LaTeX Warning: Citation `JAVANET:2010' on page 27 undefined on input line 163.
-
-
-LaTeX Warning: Citation `GUI:1999' on page 27 undefined on input line 163.
-
-
-LaTeX Warning: Citation `THREAD:2004' on page 27 undefined on input line 163.
 
 [27 <./iteracion1/casosUso.png (PNG copy)>] [28 <./iteracion1/GUIProfesor.png (
 PNG copy)> <./iteracion1/GUIAlumno.png (PNG copy)>]
@@ -1331,9 +1259,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 169--171
 Underfull \hbox (badness 10000) in paragraph at lines 176--178
 
  []
-
-
-LaTeX Warning: Citation `EVENTOS:2010' on page 29 undefined on input line 179.
 
 [29 <./iteracion1/secConectar.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 188--190
@@ -1408,7 +1333,7 @@ Underfull \vbox (badness 2717) has occurred while \output is active []
 
 
 ]
-[32] <iteracion2/tiempoRestante.png, id=204, 414.04688pt x 254.45062pt>
+[32] <iteracion2/tiempoRestante.png, id=203, 414.04688pt x 254.45062pt>
 File: iteracion2/tiempoRestante.png Graphic file (type png)
 
 <use iteracion2/tiempoRestante.png>
@@ -1423,9 +1348,6 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \hbox (badness 10000) in paragraph at lines 156--158
 
  []
-
-
-LaTeX Warning: Citation `WEB:1996' on page 34 undefined on input line 169.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 169--171
@@ -1449,10 +1371,6 @@ Cap\'{\i }tulo 7.
 \openout3 = `pfc.mtc'.
 
 (./pfc.mtc7)
-
-LaTeX Warning: Citation `DEBIAN:2005' on page 37 undefined on input line 18.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 18--20
 
  []
@@ -1480,7 +1398,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 88--90
 
  []
 
-<implementacion/web.png, id=224, 648.92438pt x 578.16pt>
+<implementacion/web.png, id=223, 648.92438pt x 578.16pt>
 File: implementacion/web.png Graphic file (type png)
 
 <use implementacion/web.png>
@@ -1604,10 +1522,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 30--32
  []
 
 
-LaTeX Warning: Reference `sec:implementacion:pruebas' on page 44 undefined on i
-nput line 34.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 34--36
 
  []
@@ -1618,8 +1532,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--36
 Ap\'{e}ndice A.
 ) (./config/bibliography.tex [47] [48
 
+]) (./pfc.bbl [49
+
 ])
-No file pfc.bbl.
 Package minitoc Info: I0009
 (minitoc)             Listing minitoc auxiliary files. 
 (minitoc)             Creating the pfc.maf file.
@@ -1628,47 +1543,43 @@ Package minitoc Info: I0009
 Package minitoc(hints) Info: I0019
 (minitoc(hints))             No hints have been written 
 (minitoc(hints))             in the pfc.log file..
-(./pfc.aux)
-
-LaTeX Warning: There were undefined references.
-
+ [50] (./pfc.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5008 strings out of 493763
- 66437 string characters out of 3148267
- 146674 words of memory out of 3000000
- 7851 multiletter control sequences out of 15000+200000
- 28371 words of font info for 69 fonts, out of 3000000 for 9000
+ 5024 strings out of 493763
+ 66650 string characters out of 3148267
+ 146863 words of memory out of 3000000
+ 7865 multiletter control sequences out of 15000+200000
+ 27595 words of font info for 68 fonts, out of 3000000 for 9000
  716 hyphenation exceptions out of 8191
  38i,12n,43p,1255b,470s stack positions out of 5000i,500n,10000p,200000b,50000s
 {c:/texlive/2010/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
 ive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2010/
 texmf-dist/fonts/type1/public/cm-super/sfbl1095.pfb><c:/texlive/2010/texmf-dist
-/fonts/type1/public/cm-super/sfbx0900.pfb><c:/texlive/2010/texmf-dist/fonts/typ
-e1/public/cm-super/sfbx1000.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/
-cm-super/sfbx1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/s
-fbx1200.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pf
-b><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb><c:/texl
-ive/2010/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2010/t
-exmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/texlive/2010/texmf-dist/
-fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2010/texmf-dist/fonts/type
-1/public/cm-super/sfrm0900.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/c
-m-super/sfrm1000.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sf
-rm1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb
-><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><c:/texli
-ve/2010/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texlive/2010/te
-xmf-dist/fonts/type1/public/cm-super/sfrm2488.pfb><c:/texlive/2010/texmf-dist/f
-onts/type1/public/cm-super/sfsl1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1
-/public/cm-super/sfti0900.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm
--super/sfti1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/urw/zapfding/uzdr.p
-fb>
-Output written on pfc.pdf (65 pages, 1518619 bytes).
+/fonts/type1/public/cm-super/sfbx1000.pfb><c:/texlive/2010/texmf-dist/fonts/typ
+e1/public/cm-super/sfbx1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/
+cm-super/sfbx1200.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/s
+fbx1440.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pf
+b><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texl
+ive/2010/texmf-dist/fonts/type1/public/cm-super/sfrm0600.pfb><c:/texlive/2010/t
+exmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2010/texmf-dist/
+fonts/type1/public/cm-super/sfrm0900.pfb><c:/texlive/2010/texmf-dist/fonts/type
+1/public/cm-super/sfrm1000.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/c
+m-super/sfrm1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sf
+rm1200.pfb><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb
+><c:/texlive/2010/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><c:/texli
+ve/2010/texmf-dist/fonts/type1/public/cm-super/sfrm2488.pfb><c:/texlive/2010/te
+xmf-dist/fonts/type1/public/cm-super/sfsl1095.pfb><c:/texlive/2010/texmf-dist/f
+onts/type1/public/cm-super/sfti0900.pfb><c:/texlive/2010/texmf-dist/fonts/type1
+/public/cm-super/sfti1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/urw/zapfd
+ing/uzdr.pfb>
+Output written on pfc.pdf (67 pages, 1515162 bytes).
 PDF statistics:
- 329 PDF objects out of 1000 (max. 8388607)
- 218 compressed objects within 3 object streams
+ 332 PDF objects out of 1000 (max. 8388607)
+ 220 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,4 +1,4 @@
-% This file was created with JabRef 2.6.
+﻿% This file was created with JabRef 2.6.
 % Encoding: Cp1252
 
 @BOOK{distribuidos:2006,
@@ -139,7 +139,7 @@
   title = {Distributed Event-Based Systems},
   publisher = {Springer},
   year = {2010},
-  author = {Gero M�hl},
+  author = {Gero Mühl},
   owner = {Manuel},
   timestamp = {2011.06.25}
 }
@@ -212,4 +212,3 @@
   owner = {Manuel},
   timestamp = {2011.06.25}
 }
-
