@@ -1,0 +1,48 @@
+%=============================================================================%
+% Author : Manuel Pando Muñoz                                                 %
+% Author : Pablo Sánchez Barreiro                                             %
+% Version: 1.0, 25/06/2011                                                    %
+% Memoria del Proyecto Fin de Carrera                                         %
+%=============================================================================%
+
+
+
+
+\cdpchapter{Resumen}
+
+
+El presente Proyecto de Fin de Carrera, perteneciente a la titulación de Ingeniería en Informática de la Universidad de Cantabria tiene como objetivo implementar un sistema de control de acceso a red durante el transcurso de pruebas evaluables en salas con computadores.
+\newline
+
+Si partimos de la base de que el deseo de los profesores es conseguir que sus alumnos aprendan y que la meta de las pruebas evaluables es determinar el grado de conocimiento de los alumnos en cierta materia, si el alumno puede consultar contenidos online o comunicarse con otros y la prueba no ha sido diseñada para permitir esto, se puede asegurar que los resultados no serán reales y ciertamente no ayuda al aprendizaje del estudiante.
+\newline
+
+Por tanto, tener un sistema que asegure el cumplimiento de los términos de la prueba y que además se aproveche de la gran utilidad que tienen las redes de computadores para hacer más cómodas ciertas tareas, parece bastante deseable. La creación de ese sistema es el objetivo de este proyecto.
+\newline
+
+Como resultado de la realización del proyecto se ha desarrollado un software que consta de una aplicación a ejecutar en el computador utilizado por el docente y otra a ejecutar en el computador de cada alumno que pretende realizar la prueba de modo que, desde la primera, se pueda tener control sobre la segunda.
+\newline
+
+Ambas aplicaciones han sido desarrolladas en Java, con interfaces gráficas simples para tratar de que el uso de los programas sea lo más intuitivo posible.
+
+
+
+%\cdpchapter{Preface}
+
+\chapter{Cuak}
+
+This Thesis Project, part of the Computer Engineering degree from the University of Cantabria aims to develop a network access control system during the course of tests conducted with computers.
+\newline
+
+If we assume that the desire of professors is to get their students to learn and that the goal of testing is to measure how much knowledge students have, in certain subject, if the student can consult online content or communicate with others, and the test is not designed to allow this, you can ensure that the results are not real and certainly does not help the student learning.
+\newline
+
+So, having a system to ensure compliance with the terms of the test, and can also take advantage of the network to automate and make more comfortable certain tasks seems quite desirable. The goal of this project is to create that system.
+\newline
+
+
+The result of the project was the development of a distributed software, consisting of two applications. The first one runs on the professors's computer, the second in the computer of every student who wants to perform the test. The professor can control the student's access to the network using his application.
+\newline
+
+
+Both applications have been developed using the Java programming language, with simple graphical interfaces to try to make the use of the programs as intuitive as possible.

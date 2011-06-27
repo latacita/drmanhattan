@@ -109,28 +109,14 @@ Para instalar, teniendo permisos de administrador:
 
 \subsection{Página web}
 
-Para dotar de una mayor visibilidad al proyecto se ha construido una web sencilla en la que se puede encontrar información, documentación y el código fuente del proyecto. Se han creado además un videotutorial, disponible en la propia web, para poder visualizar el funcionamiento de la aplicación.
+Para dotar de una mayor visibilidad al proyecto se ha construido una web sencilla, alojada en {\bfseries http://www.alumnos.unican.es/mpm14/} en la que se puede encontrar información, documentación y el código fuente del proyecto. Se han creado además un videotutorial, disponible en la propia web, para poder visualizar el funcionamiento de la aplicación.
 
-
- Para una mayor difusión de la aplicación se creo una página %\href{http://www.angeltezanos.com/Apolo}{web}
-        dentro del dominio \emph{www.angeltezanos.com} en la cual se puede encontrar toda la información y descargas de Apolo.
-
-        \begin{figure}[!tb]
-            \begin{center}
-               \includegraphics[width=0.9\linewidth]{despliegueAceptacion/images/web.eps}
-               \caption{Web de Apolo (http://www.angeltezanos.com/Apolo)}
-               \label{fig:implementacion:web}
-            \end{center}
-        \end{figure}
-
-        Se trato de crear una web que fuera sencilla y a la vez muy practica, mostrando una imagen llamativa y agradable de Apolo en todas las secciones.
-
-        Se aprovecho el servicio de \emph{Google Analytics} para conocer los visitantes de la web y su procedencia, así como el numero de descargas realizadas.
-
-        Con el fin de facilitar el aprendizaje del software se crearon una seria de videotutoriales, los cuales muestran como realizar la mayoría de lass tareas. De esta manera un usuario, puede conocer como realizar una acción sin tener que leerse el manual, o incluso conocer el funcionamiento de la aplicación sin tener que instalarla.
-
-
-
+\begin{figure}
+    \centering
+    \includegraphics[width=.90\linewidth]{implementacion/web}
+    \caption{Página web del proyecto.}
+    \label{fig:implementacion:web}
+\end{figure}
 
 
 
@@ -220,4 +206,6 @@ Como se comentó en la sección \ref{sec:iteracion1:pruebas} en la que se explic
 
 Esta lista contiene las pruebas de integración y validación realizadas, esto es, cuándo se prueba el funcionamiento del sistema completo para comprobar que cumple los requisitos establecidos en la tabla \ref{tabla:requisitos}.
 \newline
+
+\section{Sumario}
 

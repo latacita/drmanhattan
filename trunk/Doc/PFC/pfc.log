@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  26 JUN 2011 22:42
+This is pdfTeX, Version 3.1415926-1.40.11 (Web2C 2010) (format=pdflatex 2011.2.3)  27 JUN 2011 16:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -433,6 +433,13 @@ File: english.mld 2006/01/13
 )
 (c:/texlive/2010/texmf-dist/tex/latex/minitoc/english.mld
 File: english.mld 2006/01/13
+)
+Package minitoc Info: I0010
+(minitoc)             The spanish language is selected.
+(minitoc)              on input line 4911.
+
+(c:/texlive/2010/texmf-dist/tex/latex/minitoc/spanish.mld
+File: spanish.mld 2008/04/03
 ))
 (c:/texlive/2010/texmf-dist/tex/generic/epsf/epsf.sty
 This is `epsf.tex' v2.7.3 <23 July 2005>
@@ -893,132 +900,127 @@ Cap\'{\i }tulo 2.
 \openout3 = `pfc.mtc'.
 
 (./pfc.mtc2)
-Underfull \hbox (badness 10000) in paragraph at lines 24--25
+Underfull \hbox (badness 10000) in paragraph at lines 22--23
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 34--46
+Underfull \hbox (badness 10000) in paragraph at lines 32--44
 
  []
 
 [5
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 47--49
+Underfull \hbox (badness 10000) in paragraph at lines 45--47
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--60
+Underfull \hbox (badness 10000) in paragraph at lines 55--58
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
+Underfull \hbox (badness 10000) in paragraph at lines 65--67
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 97--99
+Underfull \hbox (badness 10000) in paragraph at lines 95--97
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 100--102
+Underfull \hbox (badness 10000) in paragraph at lines 98--100
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--114
+Underfull \hbox (badness 10000) in paragraph at lines 110--112
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 115--117
+Underfull \hbox (badness 10000) in paragraph at lines 113--115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--122
+Underfull \hbox (badness 10000) in paragraph at lines 117--120
 
  []
 
-<planificacion/iteracionIncremento.png, id=101, 517.18219pt x 403.5075pt>
+<planificacion/iteracionIncremento.png, id=100, 517.18219pt x 403.5075pt>
 File: planificacion/iteracionIncremento.png Graphic file (type png)
 
 <use planificacion/iteracionIncremento.png>
-Underfull \hbox (badness 10000) in paragraph at lines 131--133
+Underfull \hbox (badness 10000) in paragraph at lines 129--131
 
  []
 
 [8 <./planificacion/iteracionIncremento.png>]
-<planificacion/trabajoFases.png, id=109, 335.00156pt x 173.89969pt>
+<planificacion/trabajoFases.png, id=108, 335.00156pt x 173.89969pt>
 File: planificacion/trabajoFases.png Graphic file (type png)
 
 <use planificacion/trabajoFases.png>
-Underfull \hbox (badness 10000) in paragraph at lines 156--158
+Underfull \hbox (badness 10000) in paragraph at lines 154--156
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--161
+Underfull \hbox (badness 10000) in paragraph at lines 157--159
 
  []
 
 [9 <./planificacion/trabajoFases.png>]
-<planificacion/casosUsoSistema2.png, id=114, 731.73375pt x 501.37312pt>
+<planificacion/casosUsoSistema2.png, id=113, 731.73375pt x 501.37312pt>
 File: planificacion/casosUsoSistema2.png Graphic file (type png)
 
 <use planificacion/casosUsoSistema2.png>
-Underfull \hbox (badness 10000) in paragraph at lines 196--226
+Underfull \hbox (badness 10000) in paragraph at lines 194--224
 
  []
 
 [10 <./planificacion/casosUsoSistema2.png>]
-Overfull \hbox (18.93263pt too wide) in paragraph at lines 231--280
+Overfull \hbox (18.93263pt too wide) in paragraph at lines 229--278
 [][] 
  []
 
 [11]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 292.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 290.
 
  (c:/texlive/2010/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 292.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 290.
 
-Underfull \hbox (badness 10000) in paragraph at lines 324--326
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 327--329
+Underfull \hbox (badness 10000) in paragraph at lines 322--324
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--338
+Underfull \hbox (badness 10000) in paragraph at lines 329--332
 
  []
 
 [12]
+Underfull \hbox (badness 10000) in paragraph at lines 333--335
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 336--338
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 339--341
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 342--344
-
- []
-
-)
-Underfull \hbox (badness 10000) in paragraph at lines 345--98
-
- []
-
-(./background/background.tex [13] [14
+) (./background/background.tex [13] [14
 
 ]
 Cap\'{\i }tulo 3.
@@ -1094,7 +1096,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 97--99
 
  []
 
-) [17] (./arquitectura/arquitectura.tex [18]
+[17]) (./arquitectura/arquitectura.tex [18]
 Cap\'{\i }tulo 4.
 \openout3 = `pfc.mtc'.
 
@@ -1285,7 +1287,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 212--214
 
  []
 
-) (./iteracion2/iteracion2.tex [30]
+) (./iteracion2/iteracion2.tex [30] [31] [32
+
+]
 Cap\'{\i }tulo 6.
 
 Underfull \hbox (badness 10000) in paragraph at lines 14--17
@@ -1326,14 +1330,9 @@ Overfull \hbox (18.93263pt too wide) in paragraph at lines 83--122
 [][] 
  []
 
+[33
 
-Underfull \vbox (badness 2717) has occurred while \output is active []
-
- [31
-
-
-]
-[32] <iteracion2/tiempoRestante.png, id=203, 414.04688pt x 254.45062pt>
+] [34] <iteracion2/tiempoRestante.png, id=209, 414.04688pt x 254.45062pt>
 File: iteracion2/tiempoRestante.png Graphic file (type png)
 
 <use iteracion2/tiempoRestante.png>
@@ -1344,7 +1343,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 153--155
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [33]
+ [35]
 Underfull \hbox (badness 10000) in paragraph at lines 156--158
 
  []
@@ -1359,146 +1358,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 172--174
 
  []
 
-[34 <./iteracion2/tiempoRestante.png (PNG copy)>]
+[36 <./iteracion2/tiempoRestante.png (PNG copy)>]
 Underfull \hbox (badness 10000) in paragraph at lines 182--184
 
  []
 
-[35]) (./implementacion/implementacion.tex [36]
+[37]) (./implementacion/implementacion.tex [38]
 Cap\'{\i }tulo 7.
 \openout3 = `pfc.mtc'.
 
 \openout3 = `pfc.mtc'.
 
 (./pfc.mtc7)
-Underfull \hbox (badness 10000) in paragraph at lines 18--20
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 21--23
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--26
-
- []
-
-[37
-
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 85--87
-
- []
-
-[38]
-Underfull \hbox (badness 10000) in paragraph at lines 88--90
-
- []
-
-<implementacion/web.png, id=223, 648.92438pt x 578.16pt>
-File: implementacion/web.png Graphic file (type png)
-
-<use implementacion/web.png>
-Underfull \hbox (badness 10000) in paragraph at lines 129--131
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 137--139
-
- []
-
-[39]
-Underfull \hbox (badness 10000) in paragraph at lines 141--143
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 145--147
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 149--151
-
- []
-
-[40 <./implementacion/web.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 153--155
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 157--159
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 162--164
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 166--168
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 170--172
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 175--177
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--181
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 183--185
-
- []
-
-[41]
-Underfull \hbox (badness 10000) in paragraph at lines 188--190
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 192--194
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 197--199
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 201--203
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 207--209
-
- []
-
-) (./futuro/futuro.tex [42]
-Cap\'{\i }tulo 8.
-
-Underfull \hbox (badness 10000) in paragraph at lines 17--19
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 20--22
 
  []
@@ -1509,15 +1380,143 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--25
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 26--28
+
+ []
+
+[39
+
+
+] [40]
+Underfull \hbox (badness 10000) in paragraph at lines 87--89
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--92
+
+ []
+
+<implementacion/web.png, id=229, 648.92438pt x 578.16pt>
+File: implementacion/web.png Graphic file (type png)
+
+<use implementacion/web.png>
+Underfull \hbox (badness 10000) in paragraph at lines 131--133
+
+ []
+
+[41]
+Underfull \hbox (badness 10000) in paragraph at lines 139--141
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 143--145
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 147--149
+
+ []
+
+[42 <./implementacion/web.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 151--153
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--157
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--161
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--166
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 168--170
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--174
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--179
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 181--183
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 185--187
+
+ []
+
+[43]
+Underfull \hbox (badness 10000) in paragraph at lines 190--192
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 194--196
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 199--201
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 203--205
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--211
+
+ []
+
+) [44] (./futuro/futuro.tex [45] [46
+
+]
+Cap\'{\i }tulo 8.
+\openout3 = `pfc.mtc'.
+
+\openout3 = `pfc.mtc'.
+
+(./pfc.mtc8)
+Underfull \hbox (badness 10000) in paragraph at lines 21--23
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--26
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 27--29
 
  []
 
-[43
-
+[47
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 30--32
+Underfull \hbox (badness 10000) in paragraph at lines 31--33
 
  []
 
@@ -1526,13 +1525,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--36
 
  []
 
-[44]) (./config/appendix.tex) (./apendice/apendice.tex [45] [46
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--40
+
+ []
+
+[48]) (./config/appendix.tex) (./apendice/apendice.tex [49] [50
 
 ]
 Ap\'{e}ndice A.
-) (./config/bibliography.tex [47] [48
+) (./config/bibliography.tex [51] [52
 
-]) (./pfc.bbl [49
+]) (./pfc.bbl [53
 
 ])
 Package minitoc Info: I0009
@@ -1543,19 +1547,19 @@ Package minitoc Info: I0009
 Package minitoc(hints) Info: I0019
 (minitoc(hints))             No hints have been written 
 (minitoc(hints))             in the pfc.log file..
- [50] (./pfc.aux)
+ [54] (./pfc.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5024 strings out of 493763
- 66650 string characters out of 3148267
- 146863 words of memory out of 3000000
- 7865 multiletter control sequences out of 15000+200000
+ 5029 strings out of 493763
+ 66795 string characters out of 3148267
+ 146940 words of memory out of 3000000
+ 7866 multiletter control sequences out of 15000+200000
  27595 words of font info for 68 fonts, out of 3000000 for 9000
  716 hyphenation exceptions out of 8191
- 38i,12n,43p,1255b,470s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,12n,43p,1255b,468s stack positions out of 5000i,500n,10000p,200000b,50000s
 {c:/texlive/2010/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texl
 ive/2010/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2010/
 texmf-dist/fonts/type1/public/cm-super/sfbl1095.pfb><c:/texlive/2010/texmf-dist
@@ -1576,10 +1580,10 @@ xmf-dist/fonts/type1/public/cm-super/sfsl1095.pfb><c:/texlive/2010/texmf-dist/f
 onts/type1/public/cm-super/sfti0900.pfb><c:/texlive/2010/texmf-dist/fonts/type1
 /public/cm-super/sfti1095.pfb><c:/texlive/2010/texmf-dist/fonts/type1/urw/zapfd
 ing/uzdr.pfb>
-Output written on pfc.pdf (67 pages, 1515162 bytes).
+Output written on pfc.pdf (71 pages, 1519341 bytes).
 PDF statistics:
- 332 PDF objects out of 1000 (max. 8388607)
- 220 compressed objects within 3 object streams
+ 344 PDF objects out of 1000 (max. 8388607)
+ 228 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

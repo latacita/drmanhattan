@@ -31,7 +31,7 @@ Merece la pena \lq\lq perder\rq\rq \ el tiempo revisando los requisitos y sus po
 \newline
 
 
-Durante la realización de las pruebas descritas en la sección \ref{sec:implementacion:pruebas} se encontraba presente el administrador de sistemas de la Facultad, que propuso la funcionalidad de recuperar el estado frente a reinicios del sistema, parecía algo interesante añadirlo a la aplicación, así que se hizo. Esto realmente no significa un cambio en uno de los requisitos, sino la adición de uno nuevo, y gracias a la metodología usada para la construcción, que es flexible y prevé posibles cambios en los requisitos, el tiempo extra de codificación y diseño no fue mucho, comparado con lo que podría haber sido de utilizar una metodología en cascada.
+Durante la realización de las pruebas descritas en la sección \ref{sec:despliegue:pruebas} se encontraba presente el administrador de sistemas de la Facultad, que propuso la funcionalidad de recuperar el estado frente a reinicios del sistema, parecía algo interesante añadirlo a la aplicación, así que se hizo. Esto realmente no significa un cambio en uno de los requisitos, sino la adición de uno nuevo, y gracias a la metodología usada para la construcción, que es flexible y prevé posibles cambios en los requisitos, el tiempo extra de codificación y diseño no fue mucho, comparado con lo que podría haber sido de utilizar una metodología en cascada.
 \newline
 
 En la siguiente sección se detallan posibles mejoras o adaptaciones a realizar en la aplicación para aumentar su funcionalidad, usabilidad y atractivo en general.
