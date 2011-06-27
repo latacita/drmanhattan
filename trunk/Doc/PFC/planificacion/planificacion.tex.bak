@@ -228,7 +228,7 @@ En concreto, se han identificado los requisitos de alto nivel para nuestro siste
 \begin{table}
 \begin{tabular}{|c|p{10cm}|}
 	\hline
-	\textbf{Identificador} & {\centering \textbf{Descripción}}
+	\textbf{Identificador} & \textbf{Descripción}
 	\\ \hline
 
 	R01 & Un computador de la red debe poder ser designado como \emph{Watchman}.
@@ -321,10 +321,6 @@ En esta sección se describen las iteraciones previstas para el desarrollo de la
 
 En cuanto a los requisitos R01 y R02 están implementados en arquitectura del sistema, no son funcionalidades.
 \newline
-
-En este capítulo se ha descrito el ámbito funcional del sistema y la metodología a utilizar para desarrollarlo. De acuerdo a este plan de desarrollo, se han obtenido los requisitos y planteado una serie de iteraciones a seguir para la construcción de la aplicación.
-\newline
-
 
 
 \section{Construcción}
