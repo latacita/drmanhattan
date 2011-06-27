@@ -27,9 +27,7 @@ Ambas aplicaciones han sido desarrolladas en Java, con interfaces gráficas simp
 
 
 
-%\cdpchapter{Preface}
-
-\chapter{Cuak}
+\cdpchapter{Preface}
 
 This Thesis Project, part of the Computer Engineering degree from the University of Cantabria aims to develop a network access control system during the course of tests conducted with computers.
 \newline

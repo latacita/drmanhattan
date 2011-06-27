@@ -24,12 +24,6 @@ En esta sección se describe la vista lógica de la arquitectura mediante un dia
 
 \begin{figure}
     \centering
-    \includegraphics{arquitectura/actividad}
-\end{figure}
-
-
-\begin{figure}
-    \centering
     \includegraphics[width=\linewidth]{arquitectura/componentes}
     \caption{Diagrama de componentes}
     \label{fig:arquitectura:componentes}
@@ -96,7 +90,7 @@ A la hora de volver a permitir el acceso a la red, basta con modificar la polít
 Vemos en la imagen que el único modo de finalizar la prueba es partiendo de una prueba ya iniciada, lógicamente, es decir, desde el estado \lq\lq Realizando prueba\rq\rq. Nada más entrar en este estado se desactiva el acceso a la red, por tanto, si se pretende finalizar la prueba, se ha tenido que realizar la misma sin acceso a la red. Además el acto de enviar los resultados se implementa de modo que no se pueda modificar el fichero una vez habilitada la red pero antes de transferirlo definitivamente.
 \newline
 
-Para entrar en el estado \lq\lq Realizando prueba\rq\rq, se pueden seguir dos caminos. El normal implica conectar la aplicación del alumno con la aplicación del profesor, cosa que únicamente se puede hacer antes de que dé comienzo la prueba, por tanto, tampoco se puede realizar la prueba con acceso a la red y al finalizarla, conectarse y enviar los resultados, la aplicación no aceptaría la conexión.
+Para entrar en el estado \lq\lq Realizando prueba\rq\rq, se pueden seguir dos caminos. El normal implica conectar la aplicación del alumno con la aplicación del profesor, cosa que únicamente se puede hacer antes de que dé comienzo la prueba, por consiguiente, tampoco se puede realizar la prueba con acceso a la red y al finalizarla, conectarse y enviar los resultados, la aplicación no aceptaría la conexión.
 \newline
 
 El otro camino involucra a una funcionalidad que tiene el sistema que consiste en permitir reconexiones de alumnos que estuviesen realizando la prueba y por el motivo que sea, un error en el sistema, por ejemplo, hayan tenido que reiniciar el computador, cuándo la aplicación del alumno vuelva a ejecutarse, al inicio de la sesión automáticamente, se reconectará con la aplicación del profesor. En la imagen se observa que sólo se puede reconectar si previamente se estaba realizando la prueba y al reconectar volveríamos automáticamente a ese estado, en el que la red se desactiva al entrar, es decir, que aunque se reinicie el computador del alumno durante el transcurso de la prueba no se conseguiría acceso a la red.
@@ -104,7 +98,8 @@ El otro camino involucra a una funcionalidad que tiene el sistema que consiste e
 
 
 
-
 %Otro punto importante es el de la recogida de resultados automática, se ha de garantizar que el archivo no se ha corrompido a lo largo de la transferencia, para ello se realizan, tanto en el equipo que envía el fichero como en el que lo recibe, firmas MD5 al mismo para comprobar que no ha habido errores en la transferencia.
 
+\section{Sumario}
 
+En este capítulo se ha presentado, mediante diagramas UML, la base arquitectónica en la que se basará todo el desarrollo de la aplicación y el protocolo a implementar para intentar garantizar la integridad de la prueba. En el siguiente capítulo se describe una de las iteraciones realizadas a lo largo del desarrollo del software.
