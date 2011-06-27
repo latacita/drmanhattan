@@ -147,7 +147,7 @@ Los requisitos R01 y R02 no reflejan funcionalidades que ha de tener el sistema,
 \subsection{Conexión}
 \label{sec:iteracion1:conexion}
 
-En esta sección se comenta el proceso para implementar el requisito R07 \lq \lq El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}\rq \rq \ el caso de uso \lq \lq Conectarse\rq \rq \ representado en el diagrama de secuencia de la imagen \ref{fig:iteracion1:casosUso}. \todo{el resto de diagramas de cada caso de uso se encuentran en el CD carpeta...}
+En esta sección se comenta el proceso para implementar el requisito R07 \lq \lq El alumno desde su computador debe ser capaz de conectarse al \emph{Watchman}\rq \rq \ el caso de uso \lq \lq Conectarse\rq \rq \ representado en el diagrama de secuencia de la imagen \ref{fig:iteracion1:casosUso}. El resto de diagramas de cada caso de uso se encuentran en el CD, en la carpeta UML.
 \newline
 
 \begin{figure}

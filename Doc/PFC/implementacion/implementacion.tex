@@ -10,6 +10,8 @@
 \chapterheader{Despliegue y aceptación}{Despliegue y aceptación}
 \label{chap:despliegue}
 
+En el siguiente capítulo se presentan lo realizado en torno al despliegue y la aceptación una vez la aplicación ha sido desarrollada.
+
 \chaptertoc
 
 \section{Despliegue}
@@ -137,67 +139,67 @@ Como se comentó en la sección \ref{sec:iteracion1:pruebas} en la que se explic
     \item Objetivo: La aplicación informa del error y permite volver a introducir los datos de conexión.
     \newline
 
-    \item Sin alumnos conectados, enviar fichero de enunciado.
+    \item Prueba: Sin alumnos conectados, enviar fichero de enunciado.
     \item Objetivo: La aplicación del profesor no produce errores y permite seguir ejecutándose.
     \newline
 
-    \item Con un alumno conectado, enviar ficheros de enunciado.
+    \item Prueba: Con un alumno conectado, enviar ficheros de enunciado.
     \item Objetivo: El alumno recibe correctamente el fichero.
     \newline
 
-    \item Con varios alumnos conectados, enviar ficheros de enunciado.
+    \item Prueba: Con varios alumnos conectados, enviar ficheros de enunciado.
     \item Objetivo: Todos los alumnos reciben correctamente los ficheros.
     \newline
 
-    \item Iniciar prueba sin alumnos conectados.
+    \item Prueba: Iniciar prueba sin alumnos conectados.
     \item Objetivo: La prueba queda iniciada, no se admiten nuevas conexiones.
     \newline
 
-    \item Iniciar prueba con varios alumnos conectados.
+    \item Prueba: Iniciar prueba con varios alumnos conectados.
     \item Objetivo: Desde los computadores de los alumnos no se puede acceder a la red. No se admiten nuevas conexiones.
     \newline
 
 
-    \item Introducir hora errónea e iniciar prueba.
+    \item Prueba: Introducir hora errónea e iniciar prueba.
     \item Objetivo: La aplicación informa del error y la prueba no se inicia.
     \newline
 
-    \item Iniciar prueba temporizada y esperar a que acabe el tiempo.
+    \item Prueba: Iniciar prueba temporizada y esperar a que acabe el tiempo.
     \item Objetivo: Cuándo finaliza el tiempo los alumnos recuperan acceso a la red pero no pueden enviar resultados.
     \newline
 
-    \item Iniciar prueba temporizada y finalizar manualmente.
+    \item Prueba: Iniciar prueba temporizada y finalizar manualmente.
     \item Objetivo: Al finalizar manualmente, cada alumno que esté realizando la prueba recibe un aviso de que ha finalizado. No se pueden enviar ficheros de resultado y se devuelve el acceso a la red.
     \newline
 
 
-    \item Iniciar prueba normal y finalizar todos los alumnos sin resultados.
+    \item Prueba: Iniciar prueba normal y finalizar todos los alumnos sin resultados.
     \item Objetivo: Cada alumno deja de poder acceder a la red al iniciar la prueba, cuándo finalizan se les devuelve correctamente el acceso. En la aplicación del profesor se muestran los logs correctos.
     \newline
 
-    \item Iniciar prueba normal y finalizar alumnos sin resultados y alumnos con ellos.
+    \item Prueba: Iniciar prueba normal y finalizar alumnos sin resultados y alumnos con ellos.
     \item Objetivo: El árbol de directorios se crea correctamente para almacenar los resultados. Los archivos son transferidos correctamente.
     \newline
 
-    \item Iniciar prueba normal y finalizar mientras hay alumnos realizando la prueba.
+    \item Prueba: Iniciar prueba normal y finalizar mientras hay alumnos realizando la prueba.
     \item Objetivo: Cada alumno que esté realizando la prueba recibe un aviso de que ha finalizado. No se pueden enviar ficheros de resultado y se devuelve el acceso a la red.
     \newline
 
 
-    \item Iniciar prueba normal y reiniciar el computador de un alumno para intentar reconectar sin acabar la prueba.
+    \item Prueba: Iniciar prueba normal y reiniciar el computador de un alumno para intentar reconectar sin acabar la prueba.
     \item Objetivo: Al reiniciar un computador con el que se estaba realizando una prueba, la aplicación del alumno reconoce el estado previo y deniega el acceso a la red.
     \newline
 
-    \item Iniciar prueba normal, reiniciar el computador de un alumno, finalizar la prueba e intentar reconectar.
+    \item Prueba: Iniciar prueba normal, reiniciar el computador de un alumno, finalizar la prueba e intentar reconectar.
     \item Objetivo: Al reiniciar un computador con el que se estaba realizando una prueba, la aplicación del alumno reconoce el estado previo, intenta reconectarse pero como ya ha finalizado muestra mensaje de error. La red no se desactiva.
     \newline
 
 
-    \item Iniciar prueba temporizada y reiniciar el computador de un alumno para reconectar antes de que se acabe la prueba.
+    \item Prueba: Iniciar prueba temporizada y reiniciar el computador de un alumno para reconectar antes de que se acabe la prueba.
     \item Objetivo: Al reiniciar, reconecta correctamente y el tiempo restante es correcto.
     \newline
 
-    \item Iniciar prueba temporizada y reiniciar el computador de un alumno para reconectar después de que se acabe la prueba.
+    \item Prueba: Iniciar prueba temporizada y reiniciar el computador de un alumno para reconectar después de que se acabe la prueba.
     \item Objetivo: Al intentar reconectar no puedo puesto que ya ha finalizado y muestra un error.
     \newline
 
@@ -207,3 +209,7 @@ Como se comentó en la sección \ref{sec:iteracion1:pruebas} en la que se explic
 Esta lista contiene las pruebas de integración y validación realizadas, esto es, cuándo se prueba el funcionamiento del sistema completo para comprobar que cumple los requisitos establecidos en la tabla \ref{tabla:requisitos}.
 \newline
 
+
+\section{Sumario}
+
+En este capítulo se han presentado el despliegue de la aplicación, consistente en la creación de paquetes instaladores y la creación de una página web para otorgar una mayor visibilidad al proyecto y las pruebas de integración y aceptación realizadas para comprobar el cumplimiento de los requisitos. En el siguiente capítulo concluye el documento exponiendo conclusiones y presentando unas posibles líneas de desarrollo futuro.
