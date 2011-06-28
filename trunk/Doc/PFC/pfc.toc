@@ -1,52 +1,54 @@
 \select@language {spanish}
+\contentsline {paragraph}{Palabras clave:}{V}
+\contentsline {paragraph}{Keywords:}{VII}
 \contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}
 \contentsline {section}{\numberline {1.1}Introducci\IeC {\'o}n}{1}
-\contentsline {section}{\numberline {1.2}Estructura del Documento}{2}
+\contentsline {section}{\numberline {1.2}Estructura del Documento}{1}
 \contentsline {paragraph}{Cap\IeC {\'\i }tulo 2: Descripci\IeC {\'o}n y Planificaci\IeC {\'o}n del Proyecto}{2}
 \contentsline {paragraph}{Cap\IeC {\'\i }tulo 3: Antecedentes}{2}
 \contentsline {paragraph}{Cap\IeC {\'\i }tulo 4: Definici\IeC {\'o}n Arquitect\IeC {\'o}nica y Dise\IeC {\~n}o Software}{2}
-\contentsline {paragraph}{Cap\IeC {\'\i }tulo 5: Descripci\IeC {\'o}n de la primera iteraci\IeC {\'o}n}{2}
-\contentsline {paragraph}{Cap\IeC {\'\i }tulo 6: Descripci\IeC {\'o}n de la segunda iteraci\IeC {\'o}n}{2}
-\contentsline {paragraph}{Cap\IeC {\'\i }tulo 7: Despliegue y Aceptaci\IeC {\'o}n}{3}
+\contentsline {paragraph}{Cap\IeC {\'\i }tulo 5: Creaci\IeC {\'o}n del sistema distribuido base}{2}
+\contentsline {paragraph}{Cap\IeC {\'\i }tulo 6: Comienzo de prueba y denegaci\IeC {\'o}n de acceso a red}{2}
+\contentsline {paragraph}{Cap\IeC {\'\i }tulo 7: Despliegue y Aceptaci\IeC {\'o}n}{2}
 \contentsline {paragraph}{Cap\IeC {\'\i }tulo 8: Conclusiones y Trabajos Futuros}{3}
 \contentsline {chapter}{\numberline {2}Descripci\IeC {\'o}n y Planificaci\IeC {\'o}n del Proyecto}{5}
 \contentsline {section}{\numberline {2.1}Descripci\IeC {\'o}n Funcional del Sistema}{5}
 \contentsline {section}{\numberline {2.2}Metodolog\IeC {\'\i }a de Desarrollo}{7}
-\contentsline {section}{\numberline {2.3}Requisitos de Alto Nivel del Sistema}{10}
-\contentsline {section}{\numberline {2.4}Iteraciones}{11}
-\contentsline {section}{\numberline {2.5}Construcci\IeC {\'o}n}{13}
+\contentsline {section}{\numberline {2.3}Requisitos de Alto Nivel del Sistema}{9}
+\contentsline {section}{\numberline {2.4}Iteraciones}{10}
+\contentsline {section}{\numberline {2.5}Construcci\IeC {\'o}n}{12}
 \contentsline {section}{\numberline {2.6}Sumario}{13}
 \contentsline {chapter}{\numberline {3}Antecedentes}{15}
 \contentsline {section}{\numberline {3.1}Red local}{15}
 \contentsline {section}{\numberline {3.2}Cortafuegos : Netfilter/iptables}{16}
-\contentsline {section}{\numberline {3.3}Demonio}{17}
+\contentsline {section}{\numberline {3.3}Demonio}{16}
 \contentsline {section}{\numberline {3.4}MD5}{17}
-\contentsline {section}{\numberline {3.5}Sumario}{18}
+\contentsline {section}{\numberline {3.5}Sumario}{17}
 \contentsline {chapter}{\numberline {4}Definici\IeC {\'o}n Arquitect\IeC {\'o}nica y Dise\IeC {\~n}o Software}{19}
 \contentsline {section}{\numberline {4.1}Vista l\IeC {\'o}gica de la arquitectura}{19}
-\contentsline {section}{\numberline {4.2}Dise\IeC {\~n}o Software}{21}
+\contentsline {section}{\numberline {4.2}Dise\IeC {\~n}o Software}{20}
 \contentsline {section}{\numberline {4.3}Sumario}{23}
-\contentsline {chapter}{\numberline {5}Descripci\IeC {\'o}n de la primera iteraci\IeC {\'o}n}{25}
+\contentsline {chapter}{\numberline {5}Creaci\IeC {\'o}n del sistema distribuido base}{25}
 \contentsline {section}{\numberline {5.1}Incrementos realizados}{25}
 \contentsline {subsection}{\numberline {5.1.1}Interfaces gr\IeC {\'a}ficas}{27}
 \contentsline {subsection}{\numberline {5.1.2}Conexi\IeC {\'o}n}{27}
-\contentsline {subsection}{\numberline {5.1.3}Env\IeC {\'\i }o de ficheros}{29}
-\contentsline {section}{\numberline {5.2}Pruebas}{29}
-\contentsline {section}{\numberline {5.3}Sumario}{30}
-\contentsline {chapter}{\numberline {6}Descripci\IeC {\'o}n de la segunda iteraci\IeC {\'o}n}{33}
+\contentsline {subsection}{\numberline {5.1.3}Env\IeC {\'\i }o de ficheros}{28}
+\contentsline {section}{\numberline {5.2}Pruebas}{30}
+\contentsline {section}{\numberline {5.3}Sumario}{31}
+\contentsline {chapter}{\numberline {6}Comienzo de prueba y denegaci\IeC {\'o}n de acceso a red}{33}
 \contentsline {section}{\numberline {6.1}Incrementos realizados}{34}
 \contentsline {subsection}{\numberline {6.1.1}Inicio de la prueba}{34}
 \contentsline {subsection}{\numberline {6.1.2}Examen temporizado}{35}
-\contentsline {subsection}{\numberline {6.1.3}Denegar acceso a red}{36}
+\contentsline {subsection}{\numberline {6.1.3}Denegar acceso a red}{35}
 \contentsline {section}{\numberline {6.2}Pruebas}{37}
 \contentsline {section}{\numberline {6.3}Sumario}{38}
 \contentsline {chapter}{\numberline {7}Despliegue y aceptaci\IeC {\'o}n}{39}
 \contentsline {section}{\numberline {7.1}Despliegue}{39}
 \contentsline {subsection}{\numberline {7.1.1}P\IeC {\'a}gina web}{41}
 \contentsline {section}{\numberline {7.2}Pruebas}{41}
-\contentsline {section}{\numberline {7.3}Sumario}{45}
-\contentsline {chapter}{\numberline {8}Conclusiones y Trabajos Futuros}{47}
-\contentsline {section}{\numberline {8.1}Conclusiones}{47}
-\contentsline {section}{\numberline {8.2}Trabajos futuros}{48}
-\contentsline {chapter}{\numberline {A}Contenidos del CD}{51}
-\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{53}
+\contentsline {section}{\numberline {7.3}Sumario}{44}
+\contentsline {chapter}{\numberline {8}Conclusiones y Trabajos Futuros}{45}
+\contentsline {section}{\numberline {8.1}Conclusiones}{45}
+\contentsline {section}{\numberline {8.2}Trabajos futuros}{46}
+\contentsline {chapter}{\numberline {A}Contenidos del CD}{47}
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{49}

@@ -35,7 +35,7 @@ Los dos componentes principales \emph{DrManhattanProfesor} y \emph{DrManhattanAl
 
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{arquitectura/despliegueSistema}
+    \includegraphics[width=\linewidth]{arquitectura/Sin título-1}
     \caption{Diagrama despliegue del sistema}
     \label{fig:arquitectura:despliegueSistema}
 \end{figure}
@@ -83,7 +83,7 @@ El acto desactivar la red se consigue por medio de iptables, sección \ref{sec:i
 Por defecto iptables permite todo el tráfico que entre y salga del equipo, modificando las reglas para que deseche cualquier paquete destinado a cualquier equipo, conseguimos que no se pueda realizar ninguna petición a ningún nodo de la red, y, por tanto, tampoco recibiremos el contenido de la posible respuesta, el equipo del alumno queda aislado del resto.
 \newline
 
-A la hora de volver a permitir el acceso a la red, basta con modificar la política para el tratamiento de los paquetes salientes y restaurarla al estado anterior. Un alumno corriente no puede realizar esta operación ya que son necesarios privilegios de administrador para ello, por tanto, una vez que la aplicación desactiva la red, un alumno no puede interactuar con iptables para activarla de nuevo.
+A la hora de volver a permitir el acceso a la red, basta con modificar la política para el tratamiento de los paquetes salientes y restaurarla al estado anterior. Un alumno corriente no puede realizar esta operación ya que son necesarios privilegios de administrador para ello, entonces, una vez que la aplicación desactiva la red, un alumno no puede interactuar con iptables para activarla de nuevo.
 \newline
 
 

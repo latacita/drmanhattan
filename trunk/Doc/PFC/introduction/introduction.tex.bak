@@ -33,7 +33,9 @@
 
 Este documento es la memoria de Proyecto de Fin de Carrera en el que se muestra el proceso realizado para construir una aplicación de control de accesos a red durante pruebas evaluables. Tras una breve introducción al problema que se pretende resolver se describe la estructura del documento.
 
-\chaptertoc
+%\chaptertoc
+
+\minitoc
 
 \section{Introducción}
 \label{sec:intr:introduction}
@@ -64,7 +66,7 @@ Se explicarán brevemente conceptos básicos que utilizará la solución a crear
 Se explicarán mediante diagramas UML la arquitectura y el diseño propuestos para que la aplicación a desarrollar  sea correcta y segura en el cumplimiento de los requisitos, además de para tener una visión global de su funcionamiento.
 
 
-\paragraph{Capítulo 5: Descripción de la primera iteración} \ \\
+\paragraph{Capítulo 5: Creación del sistema distribuido base} \ \\
 
 
 En este capítulo se describirá el proceso realizado en la primera iteración de la fase de construcción de acuerdo a lo explicado en el capítulo 2 sobre la metodología. En esta primera iteración se crea un sistema distribuido base, dónde el profesor puede enviar ficheros a sus alumnos.
