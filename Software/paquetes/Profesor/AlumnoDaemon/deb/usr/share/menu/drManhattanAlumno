@@ -1,6 +1,0 @@
-?package(drManhattanAlumno):needs="X11" 
-section="Applications/utils"\
-title="drManhattan - Alumno" 
-command="/usr/bin/drManhattanAlumno.sh"\
-description="Control de accesos"
-icon="/usr/share/drManhattanAlumno/iconos/icono.png"
