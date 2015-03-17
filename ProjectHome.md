@@ -1,0 +1,3 @@
+Dr Manhattan is a software application to control and organize exams which requires the use of computers connected to a local network and internet. The application allows network applications, such as sending files from the teacher computer to the student ones; at the same time that it forbides other ones, such as interstudent communication or access to internet.
+
+http://www.alumnos.unican.es/mpm14/
